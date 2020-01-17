@@ -18,7 +18,7 @@ organizations:
   url: "https://www.bristol.ac.uk/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include mcmc, variational inference and genomic data.
 
 interests:
 - Artificial Intelligence
@@ -45,10 +45,10 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: twitter
+  link: mailto:maurocamaraescudero@gmail.com #'#contact'  # For a direct email link, use "mailto:test@example.org".
+- icon: stack-overflow
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://stackoverflow.com/users/6435921/euler-salter
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
