@@ -1,0 +1,36 @@
+---
+title: Visualizing Measure Theory for Markov Chains
+author: Mauro Camara Escudero
+date: '2020-03-04'
+slug: visualizing-measure-theory-for-markov-chains
+categories:
+  - visualization
+  - mcmc
+  - markov-chains
+  - markov-chain-monte-carlo
+  - measure-theory
+tags:
+  - visualization
+  - mcmc
+  - markov-chains
+  - markov-chains-monte-carlo
+  - measure-theory
+  - diagrams
+subtitle: 'Visualizing Push-Forward Measures and Transition Kernels with Diagrams'
+summary: 'Here we explore basic measure-theoretic concepts underpinning the development of Markov Chains and Markov Chains Monte Carlo (MCMC) using insightful diagrams.'
+authors: [Mauro Camara Escudero]
+lastmod: '2020-03-04T23:14:47Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+Basic Measure-Theoretic Concepts.
+
+
+
+
+
+
