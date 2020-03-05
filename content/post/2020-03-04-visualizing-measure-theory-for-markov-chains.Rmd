@@ -32,16 +32,23 @@ projects: []
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Let's include an image
+# Sample Space
+<img src="sample_space.png" alt="sample space" width="200"/>
 
-![some](./images/sample_space.png)
+# Event Space
+<img src="event_space.png" alt="event space" width="600"/>
 
+# Probability Measure and Probability Space
+<img src="probability_space.png" alt="probability space" width="400"/>
 
+# Random Variable
+<img src="random_variable.png" alt="random variable" width="600"/>
 
+# Probability Distribution
+<img src="probability_distribution.png" alt="probability distribution" width="700"/>
 
-
-
-
+# Markov Transition Kernel
+<img src="markov_transition_kernel.png" alt="Markov Transition Kernel" width="700"/>
 
 
 
