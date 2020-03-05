@@ -34,6 +34,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Sample Space
 <img src="sample_space.png" alt="sample space" width="200"/>
+![some](sample_space.png)
 
 # Event Space
 <img src="event_space.png" alt="event space" width="600"/>
