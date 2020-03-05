@@ -259,3 +259,4 @@ plugins_js  = []
 [marketing]
   google_analytics = "UA-123451981-5"
   google_tag_manager = ""
+  google_site_verification = "44na-DZr8YUrIusHkZ8-jyL8xoliXLvjTd-1EdFwwtc"
