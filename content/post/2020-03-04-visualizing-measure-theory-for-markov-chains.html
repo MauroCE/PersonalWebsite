@@ -32,11 +32,25 @@ projects: []
 
 <div id="sample-space" class="section level1">
 <h1>Sample Space</h1>
+<p>The sample space <span class="math inline">\(\Omega\)</span> is the <strong>set</strong> of all <strong>outcomes</strong> of our probabilistic experiment.</p>
 <p><img src="/sample_space.png" alt="sample space" width="200"/></p>
+<p>For instance:</p>
+<ul>
+<li>Experiment: A single toss of a coin.</li>
+<li>Possible Outcomes: <span class="math inline">\(\omega_1 = \text{Head}\)</span> and <span class="math inline">\(\omega_2 = \text{Tail}\)</span>.</li>
+<li>Sample Space: <span class="math inline">\(\Omega := \{\omega_1, \omega_2\} = \{\text{Head}, \text{Tail}\}\)</span></li>
+</ul>
 </div>
 <div id="event-space" class="section level1">
 <h1>Event Space</h1>
+<p>The event space is a <strong>sigma-algebra</strong> on the sample space. It is a subset of the power set of <span class="math inline">\(\Omega\)</span> whose elements, called <strong>events</strong>, satisfy some regularity conditions. When <span class="math inline">\(\Omega\)</span> is finite and discrete, the power set <span class="math inline">\(\mathcal{P}(\Omega)\)</span> is a valid sigma algebra that can be used as the event space.</p>
 <p><img src="/event_space.png" alt="event space" width="600"/></p>
+<p>Practically <span class="math inline">\(\mathcal{F}\subseteq \mathcal{P}(\Omega)\)</span> satisfying</p>
+<ul>
+<li><span class="math inline">\(\Omega \in \mathcal{F}\)</span> The sample space is an event (called the “sure” event).</li>
+<li><span class="math inline">\(A\in \mathcal{F} \quad \implies \quad A^c\in\mathcal{F}\)</span> Closed under <strong>complementation</strong>.</li>
+<li><span class="math inline">\(A_1, A_2, \ldots\in\mathcal{F} \quad \implies \quad \cup_iA_i \in \mathcal{F}\)</span> Closed under <strong>countable unions</strong>.</li>
+</ul>
 </div>
 <div id="probability-measure-and-probability-space" class="section level1">
 <h1>Probability Measure and Probability Space</h1>

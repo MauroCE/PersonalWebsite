@@ -33,10 +33,26 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Sample Space
+The sample space $\Omega$ is the **set** of all **outcomes** of our probabilistic experiment.
+
 <img src="/sample_space.png" alt="sample space" width="200"/>
 
+For instance:
+
+- Experiment: A single toss of a coin.
+- Possible Outcomes: $\omega_1 = \text{Head}$ and $\omega_2 = \text{Tail}$.
+- Sample Space: $\Omega := \{\omega_1, \omega_2\} = \{\text{Head}, \text{Tail}\}$
+
 # Event Space
+The event space is a **sigma-algebra** on the sample space. It is a subset of the power set of $\Omega$ whose elements, called **events**, satisfy some regularity conditions. When $\Omega$ is finite and discrete, the power set $\mathcal{P}(\Omega)$ is a valid sigma algebra that can be used as the event space.
+
 <img src="/event_space.png" alt="event space" width="600"/>
+
+Practically $\mathcal{F}\subseteq \mathcal{P}(\Omega)$ satisfying
+
+- $\Omega \in \mathcal{F}$ The sample space is an event (called the "sure" event).
+- $A\in \mathcal{F} \quad \implies \quad A^c\in\mathcal{F}$ Closed under **complementation**.
+- $A_1, A_2, \ldots\in\mathcal{F} \quad \implies \quad \cup_iA_i \in \mathcal{F}$ Closed under **countable unions**.
 
 # Probability Measure and Probability Space
 <img src="/probability_space.png" alt="probability space" width="400"/>
