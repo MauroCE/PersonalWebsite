@@ -9,7 +9,7 @@ tags:
   - classification
   - logistic regression
 subtitle: ''
-summary: ''
+summary: 'Rigorous summary of results and formulas concerning Bayesian Logistic Regression.'
 authors: []
 lastmod: '2020-01-17T02:41:40Z'
 featured: no
