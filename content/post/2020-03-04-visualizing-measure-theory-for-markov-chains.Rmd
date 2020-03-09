@@ -17,7 +17,7 @@ tags:
   - measure-theory
   - diagrams
 subtitle: 'Visualizing Push-Forward Measures and Transition Kernels with Diagrams'
-summary: 'Here we explore basic measure-theoretic concepts underpinning the development of Markov Chains and Markov Chains Monte Carlo (MCMC) using insightful diagrams.'
+summary: 'Measure-theoretic concepts underpinning the development of Markov Chains and Markov Chains Monte Carlo (MCMC) via insightful diagrams.'
 authors: [Mauro Camara Escudero]
 lastmod: '2020-03-04T23:14:47Z'
 featured: no
