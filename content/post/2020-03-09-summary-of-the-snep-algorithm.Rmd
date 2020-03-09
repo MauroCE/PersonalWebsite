@@ -32,7 +32,7 @@ bibliography: bibliography.bib
 
 <!-- # The SNEP Algorithm in a Nutshell -->
 # Context
-Prior is in the base exponential family
+In @SNEP the prior is in the base exponential family
 $$
 p_0(x) = \exp(\theta_0^\top s(x) - A(\theta_0))
 $$
