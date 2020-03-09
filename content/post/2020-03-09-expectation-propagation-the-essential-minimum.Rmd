@@ -36,7 +36,7 @@ also form the **tilted distribution** by including $f_k(\theta)$ to the cavity d
 $$
 g_{\backslash k}(\theta) \propto f_k(\theta) g_{-k}(\theta)
 $$
-The algorithm updates the site approximation $g_k(\theta)$ so that the new global approximation approximates the tilted distributiion
+The algorithm updates the site approximation $g_k(\theta)$ so that the new global approximation approximates the tilted distribution
 $$
 g_k(\theta)^{\text{new}}g_{-k}(\theta) \approx f_k(\theta)g_{-k}(\theta)
 $$
