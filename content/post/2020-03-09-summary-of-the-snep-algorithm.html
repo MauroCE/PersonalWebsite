@@ -28,6 +28,19 @@ bibliography: bibliography.bib
 
 
 <!-- # The SNEP Algorithm in a Nutshell -->
+<div id="at-a-glance" class="section level1">
+<h1>At a Glance</h1>
+<p>Coordinate maximization of
+<span class="math display">\[
+\begin{alignat}{2}
+    &amp;\!\max_{\mu_0, [\mu_i, \nu_i, \theta_i&#39;]_{i=1}^n}       &amp;\qquad&amp; \left\{\langle\mu_0, \theta_0\rangle + \sum_{i=1}^{n} \langle \nu_i, 1\rangle  - A^*(\mu_0) -\sum_{i=1}^{n} \beta_i[A^*(\mu_i, \nu_i)+ A(\theta_i&#39;) - \mu_i^\top \theta_i&#39;]\right\}\\
+    &amp;\text{s.t.} &amp;      &amp; (\mu_i, \nu_i)\in \mathcal{M}(s(x), \ell_i(x)) &amp;\forall i=1, \ldots, n\\
+    &amp;            &amp;      &amp; \mu_i = \mu_0  &amp; \forall i=1, \ldots, n\\
+    &amp;            &amp;      &amp; \mu_0\in \mathcal{M}(s(x)) \\
+    &amp;            &amp;      &amp; \theta_i&#39;\in\Theta
+\end{alignat}
+\]</span></p>
+</div>
 <div id="context" class="section level1">
 <h1>Context</h1>
 <p>In <span class="citation">Hasenclever et al. (2017)</span> the prior is in the base exponential family
@@ -67,6 +80,50 @@ Solving this gives an approximation to the posterior that belongs to the exponen
 \widetilde{p}(x)\propto \exp\left(\left\langle \theta_0 + \sum_{i=1}^n \lambda_i, s(x)\right\rangle\right)
 \]</span>
 Since exponential family is closed under multiplication (adding up the coefficients), we can interpret this approximation as follows. Each <span class="math inline">\(\lambda_i\)</span> is the natural parameter of an exponential family approximating the intractable likelihood term in site <span class="math inline">\(i\)</span> given by <span class="math inline">\(\exp(\ell_i(x))\)</span>.</p>
+</div>
+<div id="updates" class="section level1">
+<h1>Updates</h1>
+<p>The <strong>tilted distribution</strong> in each node is given by
+<span class="math display">\[
+p_i(x) \propto \exp\left(\left\langle \theta_0 + \sum_{j=1}^n \lambda_j - \frac{\lambda_i}{\beta_i}, s(x) \right\rangle + \left\langle \frac{1}{\beta_i}, \ell_i(x)\right\rangle\right)
+\]</span>
+Therefore at each iteration we compute the mean parameters of the tilted distribution
+<span class="math display">\[
+\left(\mathbb{E}_{p_i}[s(X)], \mathbb{E}_{p_i}[\ell_i(X)]\right)  = (\mu_i, \nu_i)
+\]</span>
+and then perform <strong>moment matching</strong> by adjusting <span class="math inline">\(\lambda_i\)</span>
+<span class="math display">\[
+\lambda_i^{\text{new}} \longleftarrow \nabla_{\mu_i} A^*(\mu_i) - \theta_0 - \sum_{j\neq i} \lambda_j
+\]</span></p>
+<p>In practice, to avoid oscillations, we add some damping
+<span class="math display">\[
+\lambda_i^{\text{new}} \longleftarrow \alpha \lambda_i + (1-\alpha)\left(\nabla_{\mu_i} A^*(\mu_i) - \theta_0 - \sum_{j\neq i} \lambda_j\right) \qquad\qquad \text{where } \alpha\in[0, 1]
+\]</span>
+Notice that here <span class="math inline">\(\nabla_{\mu_i} A^*(\mu_i)\)</span> is the natural parameter corresponding to the mean parameter <span class="math inline">\(\mu_i\)</span>.</p>
+</div>
+<div id="stochastic-natural-gradient-expectation-propagation" class="section level1">
+<h1>Stochastic Natural-Gradient Expectation Propagation</h1>
+<p>The only difficult step is to compute the mean parameters of the tilted distribution
+<span class="math display">\[
+\mathbb{E}_{p_i}\left[(s(X), \ell_i(X)\right]
+\]</span>
+because <span class="math inline">\(\ell_i(x)\)</span> are intractable. For this reason, authors derive <strong>an alternative</strong> to EP and PowerEP. Basically they introduce additional auxiliary natural parameter vector <span class="math inline">\(\theta&#39;\)</span>, obtaining a new variational objective function.
+<span class="math display">\[
+\begin{alignat}{2}
+    &amp;\!\max_{\mu_0, [\mu_i, \nu_i]_{i=1}^n}       &amp;\qquad&amp; \left\{\langle\mu_0, \theta_0\rangle + \sum_{i=1}^{n} \langle \nu_i, 1\rangle  - A^*(\mu_0) -\sum_{i=1}^{n} \beta_i[A^*(\mu_i, \nu_i)+ A(\theta_i&#39;) - \mu_i^\top \theta_i&#39;]\right\}\\
+    &amp;\text{s.t.} &amp;      &amp; (\mu_i, \nu_i)\in \mathcal{M}(s(x), \ell_i(x)) &amp;\forall i=1, \ldots, n\\
+    &amp;            &amp;      &amp; \mu_i = \mu_0  &amp; \forall i=1, \ldots, n\\
+    &amp;            &amp;      &amp; \mu_0\in \mathcal{M}(s(x)) \\
+    &amp;            &amp;      &amp; \theta_i&#39;\in\Theta
+\end{alignat}
+\]</span>
+The key is that maximizing this new objective with respect to the auxiliary variables <span class="math inline">\(\theta&#39;\)</span> yields the original problem. To solve this new variational problem they introduce Lagrange multipliers and switch to the dual problem.
+<span class="math display">\[
+\begin{alignat}{2}
+    &amp;\!\max_{[\theta_i&#39;]_{i=1}^n}\min_{[\lambda_i]_{i=1}^n}   &amp;\qquad&amp; A\left(\theta_0 + \sum_{i=1}^n \lambda_i\right) + \sum_{i=1}^{n} \beta_i\left[A_i\left(\theta_i&#39;-\frac{\lambda_i}{\beta_i}, \frac{1}{\beta_i}\right)- A(\theta_i&#39;)\right]\\
+    &amp;\text{s.t.} &amp;      &amp; \theta_i&#39;\in\Theta \qquad \qquad \forall \, i=1, \ldots, n
+\end{alignat}
+\]</span></p>
 <!-- # Introduction -->
 <!-- Computation of posterior in Bayesian model is intractable. Approximate schemes include -->
 <!-- - Variational Inference [@ExpFamVarInf] -->

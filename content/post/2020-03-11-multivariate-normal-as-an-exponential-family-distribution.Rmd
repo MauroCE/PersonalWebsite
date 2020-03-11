@@ -1,0 +1,107 @@
+---
+title: Multivariate Normal as an Exponential Family Distribution
+author: Mauro Camara Escudero
+date: '2020-03-11'
+slug: multivariate-normal-as-an-exponential-family-distribution
+categories:
+  - statistics
+tags:
+  - multivariate-normal
+  - multivariate-gaussian
+  - exponential-family
+subtitle: ''
+summary: 'How to rewrite a Multivariate Normal distribution as a member of the Exponential Family.'
+authors: []
+lastmod: '2020-03-11T13:35:34Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\nc}[2]{\newcommand{#1}{#2}}
+\nc{\vx}{\vect{x}}
+\nc{\vmu}{\vect{\mu}}
+\nc{\vSigma}{\vect{\Sigma}}
+\nc{\vtheta}{\vect{\theta}}
+
+### Exponential Family of Distributions
+A density $f(\vx)$ belongs to the exponential family of distributions if we can write it as
+$$
+f(\vx; \vtheta) = \exp\left\{\langle\vtheta, \phi(\vx)\rangle  - A(\vtheta)\right\}
+$$
+
+### Multivariate Normal Distribution
+A pdf $f$ is a multivariate normal distribution if
+$$
+f(\vx) = (2\pi)^{-\frac{d}{2}}\text{det}(\vSigma)^{-\frac{1}{2}}\exp\left\{-\frac{1}{2}(\vx - \vmu)^\top \vSigma^{-1}(\vx - \vmu)\right\}
+$$
+
+This can be rearranged as
+$$
+f(\vx) = \exp\left\{\vx^\top\vSigma^{-1}\vmu -\frac{1}{2}\vx^\top\vSigma^{-1}\vx -\frac{1}{2}\left[d\log2\pi + \log|\vSigma| +\vmu^\top\vSigma^{-1}\vmu\right]\right\}
+$$
+
+### Frobenius Inner Product
+Notice that we can write the second term as
+$$
+\vx^\top \vSigma^{-1}\vx = \sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}x_j
+$$
+similarly, the following expression can be written in the same way
+$$
+\begin{align}
+\text{tr}\left[\vSigma\vx\vx^\top\right] &= 
+\text{tr}\left[
+\begin{pmatrix}
+\Sigma_{11} & \cdots & \Sigma_{1d} \\
+\vdots & \ddots & \vdots \\
+\Sigma_{d1} & \cdots & \Sigma_{dd} 
+\end{pmatrix}
+\begin{pmatrix}
+x_1^2 & \cdots & x_1x_d\\
+\vdots & \ddots & \vdots\\
+x_dx_1 & \cdots & x_d^2
+\end{pmatrix}
+\right]\\
+&= 
+\text{tr}\left[
+\begin{pmatrix}
+\sum_{j=1}^d\Sigma_{1j}x_jx_1 & \cdots & \sum_{j=1}\Sigma_{1j}x_jx_d \\
+ \vdots & \ddots & \vdots \\
+\sum_{j=1}^d \Sigma_{dj}x_jx_1 & \cdots & \sum_{j=1}^d \Sigma_{dj}x_jx_d
+\end{pmatrix}
+\right] = \sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}x_j
+\end{align}
+$$
+Now notice that this is nothing but the Frobenius inner product between two **real** and **symmetric** matrices
+$$
+\langle \vSigma, \vx\vx^\top\rangle_F = \text{tr}(\vSigma\vx\vx^\top)
+$$
+which allows us to write the pdf as
+$$
+f(\vx) = \exp\left\{\langle \vSigma^{-1}\vmu, \vx\rangle + \left\langle -\frac{1}{2}\vSigma, \vx\vx^\top\right\rangle_F -\frac{1}{2}\left[d\log2\pi + \log|\vSigma| +\vmu^\top\vSigma^{-1}\vmu\right]\right\}
+$$
+
+where we recognize
+$$
+\vtheta = 
+\begin{pmatrix}
+\vSigma^{-1}\vmu \\
+-\frac{1}{2}\vSigma
+\end{pmatrix} \qquad
+\phi(\vx) = \begin{pmatrix}\vx \\ \vx\vx^\top
+\end{pmatrix}
+$$
+and the mean parameters are
+$$
+\mathbb{E}\left[\phi(\vx)\right] = \mathbb{E}\left[\begin{pmatrix}\vx \\ \vx\vx^\top
+\end{pmatrix}\right] = \begin{pmatrix}
+\vmu \\
+\vSigma + \vmu\vmu^\top
+\end{pmatrix}
+$$
+
+
+

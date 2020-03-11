@@ -1,0 +1,103 @@
+---
+title: Multivariate Normal as an Exponential Family Distribution
+author: Mauro Camara Escudero
+date: '2020-03-11'
+slug: multivariate-normal-as-an-exponential-family-distribution
+categories:
+  - statistics
+tags:
+  - multivariate-normal
+  - multivariate-gaussian
+  - exponential-family
+subtitle: ''
+summary: 'How to rewrite a Multivariate Normal distribution as a member of the Exponential Family.'
+authors: []
+lastmod: '2020-03-11T13:35:34Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+
+<div id="exponential-family-of-distributions" class="section level3">
+<h3>Exponential Family of Distributions</h3>
+<p>A density <span class="math inline">\(f(\boldsymbol{\mathbf{x}})\)</span> belongs to the exponential family of distributions if we can write it as
+<span class="math display">\[
+f(\boldsymbol{\mathbf{x}}; \boldsymbol{\mathbf{\theta}}) = \exp\left\{\langle\boldsymbol{\mathbf{\theta}}, \phi(\boldsymbol{\mathbf{x}})\rangle  - A(\boldsymbol{\mathbf{\theta}})\right\}
+\]</span></p>
+</div>
+<div id="multivariate-normal-distribution" class="section level3">
+<h3>Multivariate Normal Distribution</h3>
+<p>A pdf <span class="math inline">\(f\)</span> is a multivariate normal distribution if
+<span class="math display">\[
+f(\boldsymbol{\mathbf{x}}) = (2\pi)^{-\frac{d}{2}}\text{det}(\boldsymbol{\mathbf{\Sigma}})^{-\frac{1}{2}}\exp\left\{-\frac{1}{2}(\boldsymbol{\mathbf{x}}- \boldsymbol{\mathbf{\mu}})^\top \boldsymbol{\mathbf{\Sigma}}^{-1}(\boldsymbol{\mathbf{x}}- \boldsymbol{\mathbf{\mu}})\right\}
+\]</span></p>
+<p>This can be rearranged as
+<span class="math display">\[
+f(\boldsymbol{\mathbf{x}}) = \exp\left\{\boldsymbol{\mathbf{x}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}-\frac{1}{2}\boldsymbol{\mathbf{x}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}-\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
+\]</span></p>
+</div>
+<div id="frobenius-inner-product" class="section level3">
+<h3>Frobenius Inner Product</h3>
+<p>Notice that we can write the second term as
+<span class="math display">\[
+\boldsymbol{\mathbf{x}}^\top \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}= \sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}x_j
+\]</span>
+similarly, the following expression can be written in the same way
+<span class="math display">\[
+\begin{align}
+\text{tr}\left[\boldsymbol{\mathbf{\Sigma}}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right] &amp;= 
+\text{tr}\left[
+\begin{pmatrix}
+\Sigma_{11} &amp; \cdots &amp; \Sigma_{1d} \\
+\vdots &amp; \ddots &amp; \vdots \\
+\Sigma_{d1} &amp; \cdots &amp; \Sigma_{dd} 
+\end{pmatrix}
+\begin{pmatrix}
+x_1^2 &amp; \cdots &amp; x_1x_d\\
+\vdots &amp; \ddots &amp; \vdots\\
+x_dx_1 &amp; \cdots &amp; x_d^2
+\end{pmatrix}
+\right]\\
+&amp;= 
+\text{tr}\left[
+\begin{pmatrix}
+\sum_{j=1}^d\Sigma_{1j}x_jx_1 &amp; \cdots &amp; \sum_{j=1}\Sigma_{1j}x_jx_d \\
+ \vdots &amp; \ddots &amp; \vdots \\
+\sum_{j=1}^d \Sigma_{dj}x_jx_1 &amp; \cdots &amp; \sum_{j=1}^d \Sigma_{dj}x_jx_d
+\end{pmatrix}
+\right] = \sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}x_j
+\end{align}
+\]</span>
+Now notice that this is nothing but the Frobenius inner product between two <strong>real</strong> and <strong>symmetric</strong> matrices
+<span class="math display">\[
+\langle \boldsymbol{\mathbf{\Sigma}}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\rangle_F = \text{tr}(\boldsymbol{\mathbf{\Sigma}}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top)
+\]</span>
+which allows us to write the pdf as
+<span class="math display">\[
+f(\boldsymbol{\mathbf{x}}) = \exp\left\{\langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle -\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right\rangle_F -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
+\]</span></p>
+<p>where we recognize
+<span class="math display">\[
+\boldsymbol{\mathbf{\theta}}= 
+\begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\\
+-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}
+\end{pmatrix} \qquad
+\phi(\boldsymbol{\mathbf{x}}) = \begin{pmatrix}\boldsymbol{\mathbf{x}}\\ \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top
+\end{pmatrix}
+\]</span>
+and the mean parameters are
+<span class="math display">\[
+\mathbb{E}\left[\phi(\boldsymbol{\mathbf{x}})\right] = \mathbb{E}\left[\begin{pmatrix}\boldsymbol{\mathbf{x}}\\ \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top
+\end{pmatrix}\right] = \begin{pmatrix}
+\boldsymbol{\mathbf{\mu}}\\
+\boldsymbol{\mathbf{\Sigma}}+ \boldsymbol{\mathbf{\mu}}\boldsymbol{\mathbf{\mu}}^\top
+\end{pmatrix}
+\]</span></p>
+</div>
