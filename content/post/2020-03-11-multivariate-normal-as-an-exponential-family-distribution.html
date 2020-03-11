@@ -82,7 +82,10 @@ which allows us to write the pdf as
 <span class="math display">\[
 f(\boldsymbol{\mathbf{x}}) = \exp\left\{\langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle -\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right\rangle_F -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
 \]</span></p>
-<p>where we recognize
+</div>
+<div id="natural-parameters-and-mean-parameters" class="section level3">
+<h3>Natural Parameters and Mean Parameters</h3>
+<p>From the expression above we recognize
 <span class="math display">\[
 \boldsymbol{\mathbf{\theta}}= 
 \begin{pmatrix}
@@ -99,5 +102,164 @@ and the mean parameters are
 \boldsymbol{\mathbf{\mu}}\\
 \boldsymbol{\mathbf{\Sigma}}+ \boldsymbol{\mathbf{\mu}}\boldsymbol{\mathbf{\mu}}^\top
 \end{pmatrix}
+\]</span></p>
+</div>
+<div id="in-practice" class="section level3">
+<h3>In Practice</h3>
+<p>We write
+<span class="math display">\[
+\begin{align}
+\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}&amp;=
+\begin{pmatrix}
+\Sigma_{11}^{-1} &amp; \cdots &amp; \Sigma_{1d}^{-1}\\
+\vdots &amp; \cdots &amp; \vdots \\
+\Sigma_{d1}^{-1} &amp; \cdots &amp; \Sigma_{dd}^{-1}
+\end{pmatrix}
+\begin{pmatrix}
+\mu_1 \\
+\vdots \\
+\mu_d
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j \\
+\vdots \\
+\sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j
+\end{pmatrix}_{d\times 1}
+\end{align}
+\]</span>
+In addition, we notice that for two real matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> the Frobenious inner product can be written as
+<span class="math display">\[
+\langle A, B\rangle_F = \text{vec}(A)^\top \text{vec}(B)
+\]</span>
+Where the <span class="math inline">\(\text{vec}\)</span> operator simply stacks one row at a time to obtain a single vector of length <span class="math inline">\(mn\)</span>.
+<span class="math display">\[
+\text{vec}[A] = \text{vec}\left[\begin{pmatrix} a_{11} &amp; \cdots &amp; a_{1m} \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; \cdots &amp; a_{nm}\end{pmatrix}\right] = \begin{pmatrix} a_{11} \\ \vdots  \\ a_{1m} \\ \vdots \\ a_{nm}\end{pmatrix}
+\]</span></p>
+<p>So we can write
+<span class="math display">\[
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right] = \begin{pmatrix}
+-\frac{1}{2}\Sigma_{11} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}\\ 
+\end{pmatrix}
+\]</span>
+and
+<span class="math display">\[
+\text{vec}\left[\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right] = \text{vec}\left[
+\begin{pmatrix}
+x_1^2 &amp; \cdots &amp; x_1x_d \\
+\vdots &amp; \ddots &amp; \vdots \\\
+x_dx_1 &amp; \cdots &amp; x_d^2
+\end{pmatrix}
+\right] = \begin{pmatrix}
+x_1^2 \\ \vdots \\ x_1x_d \\ \vdots \\ x_d^2
+\end{pmatrix}
+\]</span>
+Then we can write our natural parameters and our sufficient statistics more practically
+<span class="math display">\[
+\boldsymbol{\mathbf{\theta}}= 
+\begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\\
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right]
+\end{pmatrix} 
+= 
+\begin{pmatrix}
+\sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j \\
+\vdots \\
+\sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j \\
+-\frac{1}{2}\Sigma_{11} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}
+\end{pmatrix}_{(d + d^2)\times 1}
+\]</span>
+and
+<span class="math display">\[
+\phi(\boldsymbol{\mathbf{x}}) = \begin{pmatrix}
+\boldsymbol{\mathbf{x}}\\
+\text{vec}(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top)
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_1 \\
+\vdots \\
+x_d \\
+x_1^2 \\ \vdots \\ x_1x_d \\ \vdots \\ x_d^2
+\end{pmatrix}_{(d + d^2)\times 1}
+\]</span>
+So that
+<span class="math display">\[
+\begin{align}
+\langle \boldsymbol{\mathbf{\theta}}, \phi(\boldsymbol{\mathbf{x}})\rangle 
+&amp;= 
+\left\langle\begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\\
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right]
+\end{pmatrix} ,  
+\begin{pmatrix}
+\boldsymbol{\mathbf{x}}\\
+\text{vec}(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top)
+\end{pmatrix}\right\rangle \\
+&amp;= \left(\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right]\right)^\top  \begin{pmatrix}
+\boldsymbol{\mathbf{x}}\\
+\text{vec}(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top)
+\end{pmatrix} \\
+&amp;= \langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle  + \left\langle \text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right], \text{vec}(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top)\right\rangle \\
+&amp;= \langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle -\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right\rangle_F
+\end{align}
+\]</span></p>
+</div>
+<div id="at-a-glance" class="section level3">
+<h3>At a Glance</h3>
+<p><span class="math display">\[\begin{align}
+f(\boldsymbol{\mathbf{x}}) &amp;= \exp\left\{\langle \theta, \phi(\boldsymbol{\mathbf{x}})\rangle - A(\boldsymbol{\mathbf{\theta}})\right\} \\
+&amp;= \exp\left\{
+  \left(\sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j, \cdots, \sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j,
+  -\frac{1}{2}\Sigma_{11}, \cdots, -\frac{1}{2}\Sigma_{1d},  \cdots, -\frac{1}{2}\Sigma_{dd}
+  \right)^\top
+  
+  \begin{pmatrix}
+  x_1 \\
+  \vdots \\
+  x_d \\
+  x_1^2 \\ \vdots \\ x_1x_d \\ \vdots \\ x_d^2
+  \end{pmatrix} -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]
+  \right\}
+\end{align}\]</span></p>
+</div>
+<div id="division-of-multivariate-normal-distributions" class="section level3">
+<h3>Division of Multivariate Normal Distributions</h3>
+<p>Suppose we have two multivariate normal distributions with the same sufficient statistics
+<span class="math display">\[
+\exp\left\{\boldsymbol{\mathbf{\theta}}_1^\top \phi(\boldsymbol{\mathbf{x}}) - A(\boldsymbol{\mathbf{\theta}}_1)\right\} \qquad \text{and} \qquad \exp\left\{\boldsymbol{\mathbf{\theta}}_2^\top\phi(\boldsymbol{\mathbf{x}}) - A(\boldsymbol{\mathbf{\theta}}_2)\right\}
+\]</span>
+Dividing the two pdfs we obtain
+<span class="math display">\[
+\exp\left\{(\boldsymbol{\mathbf{\theta}}_1 - \boldsymbol{\mathbf{\theta}}_2)^\top \phi(\boldsymbol{\mathbf{x}}) - A&#39;(\boldsymbol{\mathbf{\theta}}_1 - \boldsymbol{\mathbf{\theta}}_2)\right\}
+\]</span>
+In our case we have
+<span class="math display">\[
+\boldsymbol{\mathbf{\theta}}_1 = \begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}^{-1}_1\boldsymbol{\mathbf{\mu}}_1 \\
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}_1\right]
+\end{pmatrix}
+\qquad
+\text{and} 
+\qquad
+\boldsymbol{\mathbf{\theta}}_2 = \begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}^{-1}_2\boldsymbol{\mathbf{\mu}}_2 \\
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}_2\right]
+\end{pmatrix}
+\]</span>
+Subtracting them we get
+<span class="math display">\[
+\begin{align}
+\boldsymbol{\mathbf{\theta}}_1 - \boldsymbol{\mathbf{\theta}}_2 
+&amp;= 
+\begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}_1^{-1}\boldsymbol{\mathbf{\mu}}_1 - \boldsymbol{\mathbf{\Sigma}}_2^{-1}\boldsymbol{\mathbf{\mu}}_2 \\
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}_1\right] - \text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}_2\right]
+\end{pmatrix} \\
+&amp;= \begin{pmatrix}
+\boldsymbol{\mathbf{\Sigma}}_1^{-1}\boldsymbol{\mathbf{\mu}}_1 - \boldsymbol{\mathbf{\Sigma}}_2^{-1}\boldsymbol{\mathbf{\mu}}_2  \\
+-\frac{1}{2}\text{vec}\left[\boldsymbol{\mathbf{\Sigma}}_1 - \boldsymbol{\mathbf{\Sigma}}_2\right]
+\end{pmatrix}
+\end{align}
 \]</span></p>
 </div>
