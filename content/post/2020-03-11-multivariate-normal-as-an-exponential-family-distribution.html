@@ -47,17 +47,17 @@ f(\boldsymbol{\mathbf{x}}) = \exp\left\{\boldsymbol{\mathbf{x}}^\top\boldsymbol{
 <h3>Frobenius Inner Product</h3>
 <p>Notice that we can write the second term as
 <span class="math display">\[
--\frac{1}{2}\boldsymbol{\mathbf{x}}^\top \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}= -\frac{1}{2}\sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}x_j
+-\frac{1}{2}\boldsymbol{\mathbf{x}}^\top \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}= -\frac{1}{2}\sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}^{-1}x_j
 \]</span>
 similarly, the following expression can be written in the same way
 <span class="math display">\[
 \begin{align}
-\text{tr}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right] &amp;= 
+\text{tr}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right] &amp;= 
 -\frac{1}{2}\text{tr}\left[
 \begin{pmatrix}
-\Sigma_{11} &amp; \cdots &amp; \Sigma_{1d} \\
+\Sigma_{11}^{-1} &amp; \cdots &amp; \Sigma_{1d}^{-1} \\
 \vdots &amp; \ddots &amp; \vdots \\
-\Sigma_{d1} &amp; \cdots &amp; \Sigma_{dd} 
+\Sigma_{d1}^{-1} &amp; \cdots &amp; \Sigma_{dd}^{-1} 
 \end{pmatrix}
 \begin{pmatrix}
 x_1^2 &amp; \cdots &amp; x_1x_d\\
@@ -68,20 +68,20 @@ x_dx_1 &amp; \cdots &amp; x_d^2
 &amp;= 
 -\frac{1}{2}\text{tr}\left[
 \begin{pmatrix}
-\sum_{j=1}^d\Sigma_{1j}x_jx_1 &amp; \cdots &amp; \sum_{j=1}\Sigma_{1j}x_jx_d \\
+\sum_{j=1}^d\Sigma_{1j}^{-1}x_jx_1 &amp; \cdots &amp; \sum_{j=1}\Sigma_{1j}^{-1}x_jx_d \\
  \vdots &amp; \ddots &amp; \vdots \\
-\sum_{j=1}^d \Sigma_{dj}x_jx_1 &amp; \cdots &amp; \sum_{j=1}^d \Sigma_{dj}x_jx_d
+\sum_{j=1}^d \Sigma_{dj}^{-1}x_jx_1 &amp; \cdots &amp; \sum_{j=1}^d \Sigma_{dj}^{-1}x_jx_d
 \end{pmatrix}
 \right]\\
-&amp;= -\frac{1}{2}\sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}x_j
+&amp;= -\frac{1}{2}\sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}^{-1}x_j
 \end{align}
 \]</span>
 Now notice that this is nothing but the Frobenius inner product between two <strong>real</strong> and <strong>symmetric</strong> matrices (which can be written both in terms of a trace and in terms of <span class="math inline">\(\text{vec}\)</span>-torizing operations)
 <span class="math display">\[
 \begin{align}
-\left\langle -\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right\rangle_F 
-&amp;= \text{tr}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right) \\
-&amp;= \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right)^\top\text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)
+\left\langle -\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}, \boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right\rangle_F 
+&amp;= \text{tr}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right) \\
+&amp;= \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\right)^\top\text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)
 \end{align}
 \]</span>
 where the vectorized operation for an <span class="math inline">\(n\times m\)</span> matrix <span class="math inline">\(A\)</span> simply stacks the rows one at a time to create a <span class="math inline">\((nm)\times 1\)</span> vector
@@ -90,7 +90,7 @@ where the vectorized operation for an <span class="math inline">\(n\times m\)</s
 \]</span></p>
 <p>this allows us to write the pdf as
 <span class="math display">\[
-f(\boldsymbol{\mathbf{x}}) = \exp\left\{\langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right), \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\rangle -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
+f(\boldsymbol{\mathbf{x}}) = \exp\left\{\langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\right), \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\rangle -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
 \]</span></p>
 </div>
 <div id="natural-parameters-of-a-multivariate-normal-distribution" class="section level3">
@@ -109,14 +109,14 @@ the natural parameters are given by
 \boldsymbol{\mathbf{\theta}}= 
 \begin{pmatrix}
 \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\\
-\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}\right]
+\text{vec}\left[-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\right]
 \end{pmatrix} 
 = 
 \begin{pmatrix}
 \sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j \\
 \vdots \\
 \sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j \\
--\frac{1}{2}\Sigma_{11} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}
+-\frac{1}{2}\Sigma_{11}^{-1} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d}^{-1} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}^{-1}
 \end{pmatrix}_{(d + d^2)\times 1}
 \]</span></p>
 <p>In a similar fashion, we can find the sufficient statistics as
@@ -138,7 +138,7 @@ x_1^2 \\ \vdots \\ x_1x_d \\ \vdots \\ x_d^2
 f(\boldsymbol{\mathbf{x}}) &amp;= \exp\left\{\langle \theta, \phi(\boldsymbol{\mathbf{x}})\rangle - A(\boldsymbol{\mathbf{\theta}})\right\} \\
 &amp;= \exp\left\{
   \left(\sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j, \cdots, \sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j,
-  -\frac{1}{2}\Sigma_{11}, \cdots, -\frac{1}{2}\Sigma_{1d},  \cdots, -\frac{1}{2}\Sigma_{dd}
+  -\frac{1}{2}\Sigma_{11}^{-1}, \cdots, -\frac{1}{2}\Sigma_{1d}^{-1},  \cdots, -\frac{1}{2}\Sigma_{dd}^{-1}
   \right)^\top
   
   \begin{pmatrix}

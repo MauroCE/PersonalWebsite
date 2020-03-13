@@ -50,17 +50,17 @@ $$
 ### Frobenius Inner Product
 Notice that we can write the second term as
 $$
--\frac{1}{2}\vx^\top \vSigma^{-1}\vx = -\frac{1}{2}\sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}x_j
+-\frac{1}{2}\vx^\top \vSigma^{-1}\vx = -\frac{1}{2}\sum_{k=1}^d \sum_{j=1}^d x_k\Sigma_{kj}^{-1}x_j
 $$
 similarly, the following expression can be written in the same way
 $$
 \begin{align}
-\text{tr}\left[-\frac{1}{2}\vSigma\vx\vx^\top\right] &= 
+\text{tr}\left[-\frac{1}{2}\vSigma^{-1}\vx\vx^\top\right] &= 
 -\frac{1}{2}\text{tr}\left[
 \begin{pmatrix}
-\Sigma_{11} & \cdots & \Sigma_{1d} \\
+\Sigma_{11}^{-1} & \cdots & \Sigma_{1d}^{-1} \\
 \vdots & \ddots & \vdots \\
-\Sigma_{d1} & \cdots & \Sigma_{dd} 
+\Sigma_{d1}^{-1} & \cdots & \Sigma_{dd}^{-1} 
 \end{pmatrix}
 \begin{pmatrix}
 x_1^2 & \cdots & x_1x_d\\
@@ -71,20 +71,20 @@ x_dx_1 & \cdots & x_d^2
 &= 
 -\frac{1}{2}\text{tr}\left[
 \begin{pmatrix}
-\sum_{j=1}^d\Sigma_{1j}x_jx_1 & \cdots & \sum_{j=1}\Sigma_{1j}x_jx_d \\
+\sum_{j=1}^d\Sigma_{1j}^{-1}x_jx_1 & \cdots & \sum_{j=1}\Sigma_{1j}^{-1}x_jx_d \\
  \vdots & \ddots & \vdots \\
-\sum_{j=1}^d \Sigma_{dj}x_jx_1 & \cdots & \sum_{j=1}^d \Sigma_{dj}x_jx_d
+\sum_{j=1}^d \Sigma_{dj}^{-1}x_jx_1 & \cdots & \sum_{j=1}^d \Sigma_{dj}^{-1}x_jx_d
 \end{pmatrix}
 \right]\\
-&= -\frac{1}{2}\sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}x_j
+&= -\frac{1}{2}\sum_{k=1}^d\sum_{j=1}^d x_{k}\Sigma_{kj}^{-1}x_j
 \end{align}
 $$
 Now notice that this is nothing but the Frobenius inner product between two **real** and **symmetric** matrices (which can be written both in terms of a trace and in terms of $\text{vec}$-torizing operations)
 $$
 \begin{align}
-\left\langle -\frac{1}{2}\vSigma, \vx\vx^\top\right\rangle_F 
-&= \text{tr}\left(-\frac{1}{2}\vSigma\vx\vx^\top\right) \\
-&= \text{vec}\left(-\frac{1}{2}\vSigma\right)^\top\text{vec}\left(\vx\vx^\top\right)
+\left\langle -\frac{1}{2}\vSigma^{-1}, \vx\vx^\top\right\rangle_F 
+&= \text{tr}\left(-\frac{1}{2}\vSigma^{-1}\vx\vx^\top\right) \\
+&= \text{vec}\left(-\frac{1}{2}\vSigma^{-1}\right)^\top\text{vec}\left(\vx\vx^\top\right)
 \end{align}
 $$
 where the vectorized operation for an $n\times m$ matrix $A$ simply stacks the rows one at a time to create a $(nm)\times 1$ vector
@@ -94,7 +94,7 @@ $$
 
 this allows us to write the pdf as
 $$
-f(\vx) = \exp\left\{\langle \vSigma^{-1}\vmu, \vx\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\vSigma\right), \text{vec}\left(\vx\vx^\top\right)\right\rangle -\frac{1}{2}\left[d\log2\pi + \log|\vSigma| +\vmu^\top\vSigma^{-1}\vmu\right]\right\}
+f(\vx) = \exp\left\{\langle \vSigma^{-1}\vmu, \vx\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\vSigma^{-1}\right), \text{vec}\left(\vx\vx^\top\right)\right\rangle -\frac{1}{2}\left[d\log2\pi + \log|\vSigma| +\vmu^\top\vSigma^{-1}\vmu\right]\right\}
 $$
 
 ### Natural Parameters of a Multivariate Normal Distribution
@@ -112,14 +112,14 @@ $$
 \vtheta = 
 \begin{pmatrix}
 \vSigma^{-1}\vmu \\
-\text{vec}\left[-\frac{1}{2}\vSigma\right]
+\text{vec}\left[-\frac{1}{2}\vSigma^{-1}\right]
 \end{pmatrix} 
 = 
 \begin{pmatrix}
 \sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j \\
 \vdots \\
 \sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j \\
--\frac{1}{2}\Sigma_{11} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}
+-\frac{1}{2}\Sigma_{11}^{-1} \\ \vdots \\ -\frac{1}{2}\Sigma_{1d}^{-1} \\ \vdots \\ -\frac{1}{2}\Sigma_{dd}^{-1}
 \end{pmatrix}_{(d + d^2)\times 1}
 $$
 
@@ -144,7 +144,7 @@ This gives the complete expression for the multivariate normal distribution as p
 f(\vx) &= \exp\left\{\langle \theta, \phi(\vx)\rangle - A(\vtheta)\right\} \\
 &= \exp\left\{
   \left(\sum_{j=1}^d \Sigma_{1j}^{-1}\mu_j, \cdots, \sum_{j=1}^d \Sigma_{dj}^{-1}\mu_j,
-  -\frac{1}{2}\Sigma_{11}, \cdots, -\frac{1}{2}\Sigma_{1d},  \cdots, -\frac{1}{2}\Sigma_{dd}
+  -\frac{1}{2}\Sigma_{11}^{-1}, \cdots, -\frac{1}{2}\Sigma_{1d}^{-1},  \cdots, -\frac{1}{2}\Sigma_{dd}^{-1}
   \right)^\top
   
   \begin{pmatrix}
