@@ -108,7 +108,7 @@ $$
 because $\ell_i(x)$ are intractable. For this reason, authors derive **an alternative** to EP and PowerEP. Basically they introduce additional auxiliary natural parameter vector $\theta'$, obtaining a new variational objective function. 
 $$
 \begin{alignat}{2}
-    &\!\max_{\mu_0, [\mu_i, \nu_i]_{i=1}^n}       &\qquad& \left\{\langle\mu_0, \theta_0\rangle + \sum_{i=1}^{n} \langle \nu_i, 1\rangle  - A^*(\mu_0) -\sum_{i=1}^{n} \beta_i[A^*(\mu_i, \nu_i)+ A(\theta_i') - \mu_i^\top \theta_i']\right\}\\
+    &\!\max_{\mu_0, [\mu_i, \nu_i, \theta'_i]_{i=1}^n}       &\qquad& \left\{\langle\mu_0, \theta_0\rangle + \sum_{i=1}^{n} \langle \nu_i, 1\rangle  - A^*(\mu_0) -\sum_{i=1}^{n} \beta_i[A^*(\mu_i, \nu_i)+ A(\theta_i') - \mu_i^\top \theta_i']\right\}\\
     &\text{s.t.} &      & (\mu_i, \nu_i)\in \mathcal{M}(s(x), \ell_i(x)) &\forall i=1, \ldots, n\\
     &            &      & \mu_i = \mu_0  & \forall i=1, \ldots, n\\
     &            &      & \mu_0\in \mathcal{M}(s(x)) \\
