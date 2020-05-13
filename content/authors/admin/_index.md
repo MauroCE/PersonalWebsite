@@ -71,4 +71,5 @@ user_groups:
 - Visitors
 ---
 
-I'm a first year Ph.D. student in Computational Statistics and Data Science (COMPASS) at the University of Bristol. My main research interests lie in sampling methods for bayesian inference and in variational methods. I am also interested in the application of such methods to Genomics data.
+I'm a first year Ph.D. student in Computational Statistics and Data Science (COMPASS) at the University of Bristol. My main research interests lie in sampling methods for bayesian inference and in variational methods. I am also interested in the application of such methods to Genomics data. 
+I co-run two reading groups: one on [Neural Networks](https://neuralnetworksbristol.netlify.app/) and one on [Statistic Population Genetics](https://statisticalpopulationgenetics.netlify.app/). Some of my `R` portfolios are available [here](https://statisticalcomputingportfolio.netlify.com/).

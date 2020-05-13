@@ -1,0 +1,45 @@
+---
+title: 'Towards SMC: Sequential Importance Sampling'
+author: Mauro Camara Escudero
+date: '2020-05-12'
+slug: towards-smc-sequential-importance-sampling
+categories:
+  - sequential-importance-sampling
+  - sequential-monte-carlo
+  - importance-sampling
+tags:
+  - sequential-monte-carlo
+  - importance-sampling
+  - sequential-importance-sampling
+subtitle: 'Simple Explanation of Sequential Importance Sampling for Sequential Monte Carlo (SMC)'
+summary: 'Sequential Importance Sampling tutorial for Sequential Monte Carlo (SMC)'
+authors: []
+lastmod: '2020-05-12T17:22:50+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+bibliography: biblio_is.bib
+nocite: |
+  @esmc, @smc_bf, @mcs_sc, @mcsm, @bda,@brml
+---
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\vtheta}{\vect{\theta}}
+\newcommand{\vy}{\vect{y}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\vx}{\vect{x}}
+
+### Reminder: Importance Sampling on Sequential Data
+Suppose that we start off with data $x_1$ at time $t=1$ and for every successive time $t>1$ 
+
+
+
+
+
+
+
+
+
+# Bibliography
