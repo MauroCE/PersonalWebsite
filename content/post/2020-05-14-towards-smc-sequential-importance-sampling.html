@@ -1,0 +1,53 @@
+---
+title: 'Towards SMC: Sequential Importance Sampling'
+author: Mauro Camara Escudero
+date: '2020-05-14'
+slug: towards-smc-sequential-importance-sampling
+categories:
+  - sequential-importance-sampling
+  - sequential-monte-carlo
+  - sequential-data
+tags:
+  - sequential-data
+  - sequential-monte-carlo
+  - sequential-importance-sampling
+subtitle: 'Sequential Importance Sampling tutorial for Sequential Monte Carlo (SMC)'
+summary: 'Sequential Importance Sampling intuition simply explained for SMC'
+authors: []
+lastmod: '2020-05-14T14:06:20+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+
+<div id="review-of-importance-sampling-for-sequential-data" class="section level3">
+<h3>Review of Importance Sampling for Sequential Data</h3>
+<p>At time <span class="math inline">\(t=1\)</span> we receive data <span class="math inline">\(x_1\)</span>, and at time <span class="math inline">\(t&gt;1\)</span> we receive data <span class="math inline">\(x_t\)</span>. Let <span class="math inline">\(\boldsymbol{\mathbf{x}}_t=(x_1, \ldots, x_t)\)</span>. Suppose that at each time <span class="math inline">\(t\)</span> our aim is to do inference based on the current posterior distribution <span class="math inline">\(\gamma_t(\boldsymbol{\mathbf{x}}_t)\)</span>. Such inference could, for instance, be to approximate the current posterior expectation of a function of <span class="math inline">\(h(\boldsymbol{\mathbf{x}}_t)\)</span>, i.e. <span class="math inline">\(\mathbb{E}_{\gamma_t(\boldsymbol{\mathbf{x}}_t)}[h(\boldsymbol{\mathbf{x}}_t)]\)</span>. Importance sampling works as follows:</p>
+<ul>
+<li>Sample <span class="math inline">\(\boldsymbol{\mathbf{x}}_t^{(i)}\)</span> from an <strong>importance distribution</strong> <span class="math inline">\(q_t(\boldsymbol{\mathbf{x}}_t)\)</span> for <span class="math inline">\(i=1, \ldots, N\)</span>.</li>
+<li>Compute the unnormalized importance weights and normalize them, to find the <strong>normalized importance weights</strong>
+<span class="math display">\[
+\widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)}) = \frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t^{(i)})}{q_t(\boldsymbol{\mathbf{x}}^{(i)})}\qquad \qquad \text{and} \qquad\qquad w_t(\boldsymbol{\mathbf{x}}_t^{(i)}) = \frac{\widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)})}{\sum_{j=1}^N \widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)})}  \quad \text{for } i=1, \ldots, N
+\]</span></li>
+<li>Use the importance weghts to <strong>approximate the expectation</strong>.
+<span class="math display">\[
+\mathbb{E}_{\gamma_t(\boldsymbol{\mathbf{x}}_t)}[h(\boldsymbol{\mathbf{x}}_t)] \approx \sum_{i=1}^N w_t(\boldsymbol{\mathbf{x}}_t^{(i)}) h(\boldsymbol{\mathbf{x}}_t^{(i)})
+\]</span></li>
+</ul>
+</div>
+<div id="sequential-importance-sampling" class="section level3">
+<h3>Sequential Importance Sampling</h3>
+<p>Sequential Importance Sampling has two main differences with respect to Importance Sampling with sequential data.</p>
+<ul>
+<li>Importance distribution is <strong>autoregressive</strong>:
+<span class="math display">\[
+q_t(\boldsymbol{\mathbf{x}}_t) = \underbrace{q_{t-1}(x_{1:t-1})}_{\substack{\text{Importance} \\ \text{ Distribution} \\ \text{at time } t-1}} q_t(x_t \mid x_{1:t-1})
+\]</span></li>
+</ul>
+</div>

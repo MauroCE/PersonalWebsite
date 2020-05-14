@@ -1,0 +1,53 @@
+---
+title: 'Towards SMC: Sequential Importance Sampling'
+author: Mauro Camara Escudero
+date: '2020-05-14'
+slug: towards-smc-sequential-importance-sampling
+categories:
+  - sequential-importance-sampling
+  - sequential-monte-carlo
+  - sequential-data
+tags:
+  - sequential-data
+  - sequential-monte-carlo
+  - sequential-importance-sampling
+subtitle: 'Sequential Importance Sampling tutorial for Sequential Monte Carlo (SMC)'
+summary: 'Sequential Importance Sampling intuition simply explained for SMC'
+authors: []
+lastmod: '2020-05-14T14:06:20+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\vtheta}{\vect{\theta}}
+\newcommand{\vy}{\vect{y}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\vx}{\vect{x}}
+
+### Review of Importance Sampling for Sequential Data
+At time $t=1$ we receive data $x_1$, and at time $t>1$ we receive data $x_t$. Let $\vx_t=(x_1, \ldots, x_t)$. Suppose that at each time $t$ our aim is to do inference based on the current posterior distribution $\gamma_t(\vx_t)$. Such inference could, for instance, be to approximate the current posterior expectation of a function of $h(\vx_t)$, i.e. $\Ebb_{\gamma_t(\vx_t)}[h(\vx_t)]$. Importance sampling works as follows:
+
+- Sample $\vx_t^{(i)}$ from an **importance distribution** $q_t(\vx_t)$ for $i=1, \ldots, N$.
+- Compute the unnormalized importance weights and normalize them, to find the **normalized importance weights**
+$$
+\widetilde{w}_t(\vx_t^{(i)}) = \frac{\widetilde{\gamma_t}(\vx_t^{(i)})}{q_t(\vx^{(i)})}\qquad \qquad \text{and} \qquad\qquad w_t(\vx_t^{(i)}) = \frac{\widetilde{w}_t(\vx_t^{(i)})}{\sum_{j=1}^N \widetilde{w}_t(\vx_t^{(i)})}  \quad \text{for } i=1, \ldots, N
+$$
+- Use the importance weghts to **approximate the expectation**.
+$$
+\Ebb_{\gamma_t(\vx_t)}[h(\vx_t)] \approx \sum_{i=1}^N w_t(\vx_t^{(i)}) h(\vx_t^{(i)})
+$$
+
+### Sequential Importance Sampling
+Sequential Importance Sampling has two main differences with respect to Importance Sampling with sequential data.
+
+- Importance distribution is **autoregressive**:
+$$
+q_t(\vx_t) = \underbrace{q_{t-1}(x_{1:t-1})}_{\substack{\text{Importance} \\ \text{ Distribution} \\ \text{at time } t-1}} q_t(x_t \mid x_{1:t-1})
+$$
+
+
+

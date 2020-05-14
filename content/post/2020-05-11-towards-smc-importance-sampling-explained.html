@@ -77,32 +77,6 @@ Now we approximate this expectation using Monte Carlo using <span class="math in
 <li>Notice that the vector of weights <span class="math inline">\(\boldsymbol{\mathbf{w}} = (w(\boldsymbol{\mathbf{\theta}}^{(1)}), \ldots, w(\boldsymbol{\mathbf{\theta}}^{(N)}))^\top\)</span> tells us how well <span class="math inline">\(q(\boldsymbol{\mathbf{\theta}})\)</span> fits <span class="math inline">\(p(\boldsymbol{\mathbf{\theta}}\mid\boldsymbol{\mathbf{y}})\)</span>. In particular when <span class="math inline">\(q\equiv p\)</span> we have <span class="math inline">\(\boldsymbol{\mathbf{w}} = \left(\frac{1}{N}, \ldots, \frac{1}{N}\right)^\top\)</span>, i.e. a vector of uniform weights. So the more uniform the weights, the better the fit. In practice, there will be only few dominant weights, and if <span class="math inline">\(q\)</span> badly fits <span class="math inline">\(p\)</span> then the vast majority of weights will be neglegible, and one or two weights will dominate.</li>
 </ul>
 </div>
-<div id="importance-sampling-for-sequential-data" class="section level3">
-<h3>Importance Sampling for Sequential Data</h3>
-<p>Suppose now that instead of having one posterior <span class="math inline">\(p(\boldsymbol{\mathbf{\theta}}\mid \boldsymbol{\mathbf{y}})\)</span> we actually have a sequence of posterior distributions. This could happen in a scenario in which data comes in sequentially and we need to estimate the posterior each time. In particular, suppose that at time <span class="math inline">\(t\)</span> we have the following data <span class="math inline">\(\boldsymbol{\mathbf{x}}_{t} = (x_1, \ldots, x_t)^\top\)</span> and the respective posterior is given by <span class="math inline">\(\gamma_t(\boldsymbol{\mathbf{x}}_t)\)</span>. Then we can approximate the expected value of a function <span class="math inline">\(h(\boldsymbol{\mathbf{x}}_t)\)</span> in a similar way as above by rewriting it in terms of an importance distribution <span class="math inline">\(q_t(\boldsymbol{\mathbf{x}}_t)\)</span>
-<span class="math display">\[\begin{align}
-\mathbb{E}_{\gamma_t}\left[h(\boldsymbol{\mathbf{x}}_t)\right] 
-&amp;= \int  h(\boldsymbol{\mathbf{x}}_t)\gamma_t(\boldsymbol{\mathbf{x}}_t) d\boldsymbol{\mathbf{x}}_t \\
-&amp;= \frac{1}{Z_t}\int h(\boldsymbol{\mathbf{x}}_t)\frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t)}{q_t(\boldsymbol{\mathbf{x}}_t)} q_t(\boldsymbol{\mathbf{x}}_t) d\boldsymbol{\mathbf{x}}_t \\
-&amp;= \frac{\mathbb{E}_{q_t}\left[\frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t)}{q_t(\boldsymbol{\mathbf{x}}_t)}h(\boldsymbol{\mathbf{x}}_t)\right]}{\mathbb{E}_{q_t}\left[\frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t)}{q_t(\boldsymbol{\mathbf{x}}_t)}\right]} \\
-&amp;\approx \sum_{i=1}^N w_t(\boldsymbol{\mathbf{x}}_t^{(i)}) h_t(\boldsymbol{\mathbf{x}}_t^{(i)}) &amp;&amp; \boldsymbol{\mathbf{x}}_t^{(i)} \overset{\text{iid}}{\sim} q_t(\, \cdot\,)
-\end{align}\]</span>
-where we have defined the normalized weights and the unnormalized weights as
-<span class="math display">\[
-w_t(\boldsymbol{\mathbf{x}}_t^{(i)}) = \frac{\widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)})}{\sum_{j=1}^N \widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)})} \qquad \text{and} \qquad \widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)}) = \frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t^{(i)})}{q_t(\boldsymbol{\mathbf{x}}^{(i)})}
-\]</span>
-We can also use these weights to obtain an estimate of the normalization constant of the posterior, <span class="math inline">\(Z_t\)</span>, and of the normalized posterior itself. In order to do this, we need to recall the definition of the dirac delta mass.
-<span class="math display">\[\begin{align}
-\gamma_t(\boldsymbol{\mathbf{x}}_t) 
-&amp;= \int \gamma_t(\boldsymbol{\mathbf{x}}_t&#39;)\delta_{\boldsymbol{\mathbf{x}}_t}(\boldsymbol{\mathbf{x}}_t&#39;) d\boldsymbol{\mathbf{x}}_t&#39; \\
-&amp;\approx \frac{\sum_{i=1}^N \frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t^{(i)})}{q_t(\boldsymbol{\mathbf{x}}_t^{(i)})}\delta_{\boldsymbol{\mathbf{x}}_t^{(i)}}(\boldsymbol{\mathbf{x}}_t)}{\sum_{j=1}^N \frac{\widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t^{(j)})}{q_t(\boldsymbol{\mathbf{x}}_t^{(j)})}} \\
-&amp;= \sum_{i=1}^N w_t(\boldsymbol{\mathbf{x}}_t^{(i)}) \delta_{\boldsymbol{\mathbf{x}}_t^{(i)}}(\boldsymbol{\mathbf{x}}_t)
-\end{align}\]</span></p>
-<p>And, similarly, to estimate the normalization constant we do the following
-<span class="math display">\[
-Z_t = \int \widetilde{\gamma_t}(\boldsymbol{\mathbf{x}}_t) d \boldsymbol{\mathbf{x}}_t \approx \sum_{i=1}^N \widetilde{w}_t(\boldsymbol{\mathbf{x}}_t^{(i)})
-\]</span></p>
-</div>
 <div id="bibliography" class="section level1 unnumbered">
 <h1>Bibliography</h1>
 <div id="refs" class="references">
