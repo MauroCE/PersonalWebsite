@@ -59,7 +59,7 @@ $$
 Z_t = \int \widetilde{\gamma_t}(\vx_t) d \vx_t \approx \sum_{i=1}^N \widetilde{w}_t(\vx_t^{(i)})
 $$
 
-
+  
 
 
 
