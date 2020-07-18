@@ -350,7 +350,7 @@ _After training_, one can estimate the log marginal likelihood by using **import
 ## Variational Autoencoders
 Before introducing what a Variational Autoencoder is, we need to understand what we mean when we say that we parametrise a distribution using a neural network. Suppose that $\vx$ is a binary vector of Bernoulli trials. Then $p_{\vtheta}(\vx\mid\vz)$ is parametrized by a vector of probabilities $\vect{p}$ which can be constructed via a Multi-Layer Perceptron with an approrpriate output layer (e.g. softmax).
 
-![](/mlp.png)
+<img src="/mlp.png" alt="Parametrizing a distribution with a MLP" width="200"/>
 
 and the log-likelihood is, of course
 $$
@@ -359,7 +359,7 @@ $$
 
 A Variational Autoencoder is simply Auto-Encoding Variational Bayes where both the approximating distribution $\encoder$ and $p_{\vtheta}(\vx\mid\vz)$ are parametrized using two different Neural Networks, as shown below.
 
-![](/vae.png)
+<img src="/vae.png" alt="Variational Autoencoder Diagram" width="200"/>
 
 ## Relationship between EM algorithm and VAE
 
