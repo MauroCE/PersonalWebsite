@@ -359,7 +359,7 @@ $$
 
 A Variational Autoencoder is simply Auto-Encoding Variational Bayes where both the approximating distribution $\encoder$ and $p_{\vtheta}(\vx\mid\vz)$ are parametrized using two different Neural Networks, as shown below.
 
-<img src="/vae.png" alt="Variational Autoencoder Diagram" width="200"/>
+<img src="/vae.png" alt="Variational Autoencoder Diagram" width="800"/>
 
 ## Relationship between EM algorithm and VAE
 
