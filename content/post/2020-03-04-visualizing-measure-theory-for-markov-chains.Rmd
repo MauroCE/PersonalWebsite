@@ -102,6 +102,8 @@ The key idea is that, given a set $B$ in $\mathcal{E}$, we can use a random vari
 
 <img src="/probability_distribution.png" alt="probability distribution" width="700"/>
 
+The probability distribution, or pushforward, is then denoted as $X_*\mathbb{P}$ or $\mathbb{P} \circ \X^{-1}$.
+
 # Markov Transition Kernel
 <img src="/markov_transition_kernel.png" alt="Markov Transition Kernel" width="700"/>
 
