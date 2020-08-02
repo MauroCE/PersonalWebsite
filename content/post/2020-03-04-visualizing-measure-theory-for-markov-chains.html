@@ -86,9 +86,12 @@ to be such that the preimage <span class="math inline">\(X^{-1}(B)\)</span> of a
 X^{-1}(B) = \{\omega\in \Omega \, :\, X(\omega) \in B \} \in \mathcal{F} \qquad \forall \, B \in \mathcal{E}
 \]</span></p>
 <p><img src="/random_variable.png" alt="random variable" width="600"/></p>
+<p>In the diagram above we can see how the set <span class="math inline">\(B\)</span>, which is an element of <span class="math inline">\(\mathcal{E}\)</span> has a pre-image, which we call <span class="math inline">\(X^{-1}(B)\)</span>, which is an element of <span class="math inline">\(\mathcal{F}\)</span>!</p>
 </div>
 <div id="probability-distribution" class="section level1">
 <h1>Probability Distribution</h1>
+<p>A probability distribution is also called a <strong>pushforward measure</strong> of the probability measure <span class="math inline">\(\mathbb{P}\)</span> via the random variable <span class="math inline">\(X\)</span>. Suppose we have a probability space <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span>. This means we can assign probabilities to events in <span class="math inline">\(\mathcal{F}\)</span>. Now suppose we have a measurable spae <span class="math inline">\((\mathsf{E}, \mathcal{E})\)</span> but we don’t yet have a probability measure to measure events in it. How can we go about measuring sets in <span class="math inline">\(\mathcal{E}\)</span>?</p>
+<p>The key idea is that, given a set <span class="math inline">\(B\)</span> in <span class="math inline">\(\mathcal{E}\)</span>, we can use a random variable <span class="math inline">\(X\)</span> to find the pre-image of such set in the event space <span class="math inline">\(\mathcal{F}\)</span> and then measure this set via the probability measure <span class="math inline">\(\mathcal{P}\)</span>. This will then be our probability measurament also for <span class="math inline">\(B\)</span>, as shown in the figure below.</p>
 <p><img src="/probability_distribution.png" alt="probability distribution" width="700"/></p>
 </div>
 <div id="markov-transition-kernel" class="section level1">

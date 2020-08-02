@@ -93,7 +93,13 @@ $$
 
 <img src="/random_variable.png" alt="random variable" width="600"/>
 
+In the diagram above we can see how the set $B$, which is an element of $\mathcal{E}$ has a pre-image, which we call $X^{-1}(B)$, which is an element of $\mathcal{F}$! 
+
 # Probability Distribution
+A probability distribution is also called a **pushforward measure** of the probability measure $\mathbb{P}$ via the random variable $X$. Suppose we have a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. This means we can assign probabilities to events in $\mathcal{F}$. Now suppose we have a measurable spae $(\mathsf{E}, \mathcal{E})$ but we don't yet have a probability measure to measure events in it. How can we go about measuring sets in $\mathcal{E}$? 
+
+The key idea is that, given a set $B$ in $\mathcal{E}$, we can use a random variable $X$ to find the pre-image of such set in the event space $\mathcal{F}$ and then measure this set via the probability measure $\mathcal{P}$. This will then be our probability measurament also for $B$, as shown in the figure below.
+
 <img src="/probability_distribution.png" alt="probability distribution" width="700"/>
 
 # Markov Transition Kernel
