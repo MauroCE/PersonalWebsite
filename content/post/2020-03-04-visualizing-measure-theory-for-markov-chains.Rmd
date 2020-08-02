@@ -55,6 +55,24 @@ Practically $\mathcal{F}\subseteq \mathcal{P}(\Omega)$ satisfying
 - $A_1, A_2, \ldots\in\mathcal{F} \quad \implies \quad \cup_iA_i \in \mathcal{F}$ Closed under **countable unions**.
 
 # Probability Measure and Probability Space
+After you've defined the sigma-algebra called Event Space, the next step is to define a **probability space**. A probability space is a triplet $(\Omega, \mathcal{F}, \mathbb{P})$, i.e. it is composed of three elements, two of which we already know.
+
+- A sample space $\Omega$.
+- An event space $\mathcal{F}$ which is a sigma-algebra on $\Omega$.
+- A **probability measure** $\mathbb{P}$.
+
+A probability measure is a special case of a **measure**. Suppose you have a measurable space $(\Omega, \mathcal{F})$ (also referred to as $\Omega\times\mathcal{F})$). Then a function 
+$$
+\mathbb{P}: \mathcal{F} \to [0, +\infty)
+$$
+is called a **measure** on $(\Omega, \mathcal{F})$ if it gives a size of zero to the empty set and if it is countably additive:
+
+- $\mathbb{P}(\emptyset) = 0$
+- $\mathbb{P}\left(\bigcup_i A_i\right) = \sum_i \mathbb{P}(A_i) \qquad \text{for } A_i\in\mathcal{F}$
+
+Notice how the measure takes elements of $\mathcal{F}$ and not elements of the sample space! That is, it maps **events** not outcomes. A probability measure is just a measure, as above, with the additional property that it maps to $[0, 1]$ rather than to $[0, +\infty)$. In order words, it assigns probabilities to events, hence the name.
+
+
 <img src="/probability_space.png" alt="probability space" width="400"/>
 
 # Random Variable

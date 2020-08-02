@@ -54,6 +54,22 @@ projects: []
 </div>
 <div id="probability-measure-and-probability-space" class="section level1">
 <h1>Probability Measure and Probability Space</h1>
+<p>After you’ve defined the sigma-algebra called Event Space, the next step is to define a <strong>probability space</strong>. A probability space is a triplet <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span>, i.e. it is composed of three elements, two of which we already know.</p>
+<ul>
+<li>A sample space <span class="math inline">\(\Omega\)</span>.</li>
+<li>An event space <span class="math inline">\(\mathcal{F}\)</span> which is a sigma-algebra on <span class="math inline">\(\Omega\)</span>.</li>
+<li>A <strong>probability measure</strong> <span class="math inline">\(\mathbb{P}\)</span>.</li>
+</ul>
+<p>A probability measure is a special case of a <strong>measure</strong>. Suppose you have a measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span> (also referred to as <span class="math inline">\(\Omega\times\mathcal{F})\)</span>). Then a function
+<span class="math display">\[
+\mathbb{P}: \mathcal{F} \to [0, +\infty)
+\]</span>
+is called a <strong>measure</strong> on <span class="math inline">\((\Omega, \mathcal{F})\)</span> if it gives a size of zero to the empty set and if it is countably additive:</p>
+<ul>
+<li><span class="math inline">\(\mathbb{P}(\emptyset) = 0\)</span></li>
+<li><span class="math inline">\(\mathbb{P}\left(\bigcup_i A_i\right) = \sum_i \mathbb{P}(A_i) \qquad \text{for } A_i\in\mathcal{F}\)</span></li>
+</ul>
+<p>Notice how the measure takes elements of <span class="math inline">\(\mathcal{F}\)</span> and not elements of the sample space! That is, it maps <strong>events</strong> not outcomes. A probability measure is just a measure, as above, with the additional property that it maps to <span class="math inline">\([0, 1]\)</span> rather than to <span class="math inline">\([0, +\infty)\)</span>. In order words, it assigns probabilities to events, hence the name.</p>
 <p><img src="/probability_space.png" alt="probability space" width="400"/></p>
 </div>
 <div id="random-variable" class="section level1">
