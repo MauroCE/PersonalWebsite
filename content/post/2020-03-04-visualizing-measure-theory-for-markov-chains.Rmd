@@ -54,6 +54,8 @@ Practically $\mathcal{F}\subseteq \mathcal{P}(\Omega)$ satisfying
 - $A\in \mathcal{F} \quad \implies \quad A^c\in\mathcal{F}$ Closed under **complementation**.
 - $A_1, A_2, \ldots\in\mathcal{F} \quad \implies \quad \cup_iA_i \in \mathcal{F}$ Closed under **countable unions**.
 
+A pair $(\Omega, \mathcal{F})$ of a set and its sigma algebra (in this case of the sample space and the event space) is called a **measurable space**. This is because we can define a function that "measures" the size of the elements of **all** the elements of $\mathcal{F}$. Indeed, any element of a sigma algebra $B\in\mathcal{F}$ is called a  **measurable** set.
+
 # Probability Measure and Probability Space
 After you've defined the sigma-algebra called Event Space, the next step is to define a **probability space**. A probability space is a triplet $(\Omega, \mathcal{F}, \mathbb{P})$, i.e. it is composed of three elements, two of which we already know.
 
@@ -75,7 +77,20 @@ Notice how the measure takes elements of $\mathcal{F}$ and not elements of the s
 
 <img src="/probability_space.png" alt="probability space" width="400"/>
 
+We can see in the diagram above how the probability measure maps the empty set to zero, the sample space to $1$ and any other event to some number in $[0, 1]$.
+
 # Random Variable
+A random variable is also called a **measurable function**. Suppose you have two measurable spaces. One could be the pair of sample space and event space $(\Omega, \mathcal{F})$, and the other one could be some other arbitrary pair of a set and of its sigma algebra $(\mathsf{E}, \mathcal{E})$, although usually we choose $\mathsf{E} = \mathbb{R}$ and $\mathcal{E} = \mathcal{B}(\mathbb{R})$. Then a measurable function is a function that maps elements in $\Omega$ to elements in $\mathsf{E}$ with some additional properties. Notice how this function maps outcomes to elements of $\mathsf{E}$, it does not map events. 
+
+What property should this map satisfy? Imagine that we knew our sample space and event space, as in the coin tossing example. It might be a bit unhelpful to work on the actual sample space and event space, so instead we map them to alternative ones, that we are more comfortable using. For instance $\mathbb{R}$ and $\mathcal{B}(\mathbb{R})$. Then, it's clear that we want our mapping to have a property that can guarantee us a sort of correspondence between the events in our original event space $\mathcal{F}$ and our transformed event space $\mathcal{E}$. For this reason, we require our measureable function, or random variable
+$$
+X: \Omega \to \mathsf{E}
+$$
+to be such that the preimage $X^{-1}(B)$ of any $\mathcal{E}$-measurable set $B\in\mathcal{E}$ is a $\mathcal{F}$-measurable set.
+$$
+X^{-1}(B) = \{\omega\in \Omega \, :\, X(\omega) \in B \} \in \mathcal{F} \qquad \forall \, B \in \mathcal{E}
+$$
+
 <img src="/random_variable.png" alt="random variable" width="600"/>
 
 # Probability Distribution

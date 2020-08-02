@@ -51,6 +51,7 @@ projects: []
 <li><span class="math inline">\(A\in \mathcal{F} \quad \implies \quad A^c\in\mathcal{F}\)</span> Closed under <strong>complementation</strong>.</li>
 <li><span class="math inline">\(A_1, A_2, \ldots\in\mathcal{F} \quad \implies \quad \cup_iA_i \in \mathcal{F}\)</span> Closed under <strong>countable unions</strong>.</li>
 </ul>
+<p>A pair <span class="math inline">\((\Omega, \mathcal{F})\)</span> of a set and its sigma algebra (in this case of the sample space and the event space) is called a <strong>measurable space</strong>. This is because we can define a function that “measures” the size of the elements of <strong>all</strong> the elements of <span class="math inline">\(\mathcal{F}\)</span>. Indeed, any element of a sigma algebra <span class="math inline">\(B\in\mathcal{F}\)</span> is called a <strong>measurable</strong> set.</p>
 </div>
 <div id="probability-measure-and-probability-space" class="section level1">
 <h1>Probability Measure and Probability Space</h1>
@@ -71,9 +72,19 @@ is called a <strong>measure</strong> on <span class="math inline">\((\Omega, \ma
 </ul>
 <p>Notice how the measure takes elements of <span class="math inline">\(\mathcal{F}\)</span> and not elements of the sample space! That is, it maps <strong>events</strong> not outcomes. A probability measure is just a measure, as above, with the additional property that it maps to <span class="math inline">\([0, 1]\)</span> rather than to <span class="math inline">\([0, +\infty)\)</span>. In order words, it assigns probabilities to events, hence the name.</p>
 <p><img src="/probability_space.png" alt="probability space" width="400"/></p>
+<p>We can see in the diagram above how the probability measure maps the empty set to zero, the sample space to <span class="math inline">\(1\)</span> and any other event to some number in <span class="math inline">\([0, 1]\)</span>.</p>
 </div>
 <div id="random-variable" class="section level1">
 <h1>Random Variable</h1>
+<p>A random variable is also called a <strong>measurable function</strong>. Suppose you have two measurable spaces. One could be the pair of sample space and event space <span class="math inline">\((\Omega, \mathcal{F})\)</span>, and the other one could be some other arbitrary pair of a set and of its sigma algebra <span class="math inline">\((\mathsf{E}, \mathcal{E})\)</span>, although usually we choose <span class="math inline">\(\mathsf{E} = \mathbb{R}\)</span> and <span class="math inline">\(\mathcal{E} = \mathcal{B}(\mathbb{R})\)</span>. Then a measurable function is a function that maps elements in <span class="math inline">\(\Omega\)</span> to elements in <span class="math inline">\(\mathsf{E}\)</span> with some additional properties. Notice how this function maps outcomes to elements of <span class="math inline">\(\mathsf{E}\)</span>, it does not map events.</p>
+<p>What property should this map satisfy? Imagine that we knew our sample space and event space, as in the coin tossing example. It might be a bit unhelpful to work on the actual sample space and event space, so instead we map them to alternative ones, that we are more comfortable using. For instance <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>. Then, it’s clear that we want our mapping to have a property that can guarantee us a sort of correspondence between the events in our original event space <span class="math inline">\(\mathcal{F}\)</span> and our transformed event space <span class="math inline">\(\mathcal{E}\)</span>. For this reason, we require our measureable function, or random variable
+<span class="math display">\[
+X: \Omega \to \mathsf{E}
+\]</span>
+to be such that the preimage <span class="math inline">\(X^{-1}(B)\)</span> of any <span class="math inline">\(\mathcal{E}\)</span>-measurable set <span class="math inline">\(B\in\mathcal{E}\)</span> is a <span class="math inline">\(\mathcal{F}\)</span>-measurable set.
+<span class="math display">\[
+X^{-1}(B) = \{\omega\in \Omega \, :\, X(\omega) \in B \} \in \mathcal{F} \qquad \forall \, B \in \mathcal{E}
+\]</span></p>
 <p><img src="/random_variable.png" alt="random variable" width="600"/></p>
 </div>
 <div id="probability-distribution" class="section level1">
