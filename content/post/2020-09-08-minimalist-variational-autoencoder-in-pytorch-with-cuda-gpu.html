@@ -28,7 +28,7 @@ projects: []
 
 <div id="introduction-to-variational-autoencoders-vae-in-pytorch" class="section level2">
 <h2>Introduction to Variational Autoencoders (VAE) in Pytorch</h2>
-<p>Coding a Variational Autoencoder in Pytorch and leveraging the power of GPUs can be daunting. This is a minimalist, simple and reproducible example. We will work with the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> Dataset. The training set contains <span class="math inline">\(60\,000\)</span> images, the test set contains only <span class="math inline">\(10\,000\)</span>. We will code the Variational Autoencoder (VAE) in Pytorch because it’s much simpler and yet flexible enough to code it in a few different ways.</p>
+<p>Coding a Variational Autoencoder in Pytorch and leveraging the power of GPUs can be daunting. This is a minimalist, simple and reproducible example. We will work with the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> Dataset. The training set contains <span class="math inline">\(60\,000\)</span> images, the test set contains only <span class="math inline">\(10\,000\)</span>. We will code the Variational Autoencoder (VAE) in Pytorch because it’s much simpler and yet flexible enough to code it in a few different ways. For this reason, we will first see the most minimalist version of a Variational Autoencoder, and then we will see a slightly more verbose version and why that might be more useful.</p>
 </div>
 <div id="download-mnist-dataset" class="section level2">
 <h2>Download MNIST Dataset</h2>
@@ -127,6 +127,10 @@ epochs = 50           # Number of sweeps through the whole dataset</code></pre>
 <p>Then, we feed the batch images of size <code>[batch_size, 784]</code> onto our first set of weights and we feed this into a <strong>Rectified Linear Unit</strong> activation function. At this point our batch of images has shape <code>[batch_size, e_hidden]</code>. Then we feed these activations through two different output layers, thus obtaining our latent <code>mu</code> and <code>logvar</code>. The output of each of these layers has shape <code>[batch_size, latent_dim]</code>.</p>
 <p>Then, during training, we sample from a Normal distribution with that mean and variance. In order to allow backpropagation to flow through the network, we need to use the <a href="https://arxiv.org/pdf/1312.6114.pdf">reparametrization trick</a>. This simply consists in first sampling from a standard normal distribution (with shape <code>[batch_size, latent_dim]</code>), scaling it by the standard deviation and adding the mean to it. If we are not training the network anymore, we simply output <code>mu</code> so that the output is reproducible every time (which also has shape <code>[batch_size, latent_dim]</code>).</p>
 <p>Finally, we take the sampled latent representation, we feed it through a first set of weights, through a Relu activation function (so its shape is not <code>[batch_size, d_hidden]</code>), through a second set of weights (connecting the hidden layer to the output layeter), and finally we feed this through a <strong>Sigmoid</strong> activation function (so that the final shape is <code>[batch_size, 784]</code>). We use sigmoid activation function because, as you can remember from the previous Variational Autoencoders <a href="https://maurocamaraescudero.netlify.app/post/variational-auto-encoders-and-the-expectation-maximization-algorithm/">post</a>, each of our pixels is considered a probability, so we need our output to be between <code>[0, 1]</code>.</p>
+<p>Below is an example of what the encoder looks like:</p>
+<p><img src="/encoder.png" alt="Encoder Pytorch GPU Variational AutoEncoder"/></p>
+<p>And similarly, what the decoder looks like:</p>
+<p><img src="/decoder.png" alt="Decoder Pytorch GPU Variational AutoEncoder"/></p>
 </div>
 <div id="pytorch-vae-training" class="section level2">
 <h2>Pytorch VAE Training</h2>
@@ -194,4 +198,110 @@ for epoch in range(epochs):
   # Update average loss &amp; Log information
   losses[-1] /= number_of_batches
   print(&#39;Epoch [%d / %d] average reconstruction error: %f&#39; % (epoch+1, epochs, losses[-1]))    </code></pre>
+</div>
+<div id="pytorch-vae-testing" class="section level2">
+<h2>Pytorch VAE Testing</h2>
+<p>We can now assess its performance on the test set. There are a few key points to notice, which are discussed also <a href="https://discuss.pytorch.org/t/model-eval-vs-with-torch-no-grad/19615">here</a>:</p>
+<ul>
+<li><code>vae.eval()</code> will tell every layer of the VAE that we are in evaluation mode. In general, this means that dropout and batch normalization layers will work in evaluation mode. In this particular example, <code>vae.eval()</code> will make sure that we are not sampling from the latent space, but we are simply using <code>mu</code>.</li>
+<li><code>torch.no_grad()</code> tells VAE that it doesn’t need to keep track of gradients, which speeds up evaluation.</li>
+</ul>
+<pre class="python"><code># Set VAE to evaluation mode (deactivates potential dropout layers)
+# So that we use the latent mean and we don&#39;t sample from the latent space
+vae.eval()
+
+# Keep track of test loss (notice, we have no epochs)
+test_loss, number_of_batches = 0.0, 0
+
+for test_images, _ in testloader:
+
+  # Do not track gradients
+  with torch.no_grad():
+
+    # Send images to the GPU/CPU
+    test_images = test_images.to(device)
+
+    # Feed images through the VAE to obtain their reconstruction &amp; compute loss
+    reconstructions, latent_mu, latent_logvar = vae(test_images)
+    loss = vae_loss(test_images, reconstructions, latent_mu, latent_logvar)
+
+    # Cumulative loss &amp; Number of batches
+    test_loss += loss.item()
+    number_of_batches += 1
+
+# Now divide by number of batches to get average loss per batch
+test_loss /= number_of_batches
+print(&#39;average reconstruction error: %f&#39; % (test_loss))</code></pre>
+<p>Depending on how many epochs we trained for, we should find a similar loss as to the training set, showing that the network has learned.</p>
+</div>
+<div id="comparing-original-images-with-their-reconstructions" class="section level2">
+<h2>Comparing Original Images with their Reconstructions</h2>
+<p>Now it’s time to see what our reconstructions look like. Notice from the code block above that the last testing batch of images and their reconstructions are saved in the <code>test_images</code> and <code>reconstructions</code> variables. These have shape <code>[100, 1, 28, 28]</code> and <code>[100, 784]</code> respectively. What follows may look a bit messy but we are essentially doing the following operations for both sets of images:</p>
+<ul>
+<li>Send tensor to CPU via <code>.cpu()</code>. This is needed because we cannot transform a tensor to numpy when the tensor is saved on GPU. Therefore we first move it to CPU and then transform it to numpy.</li>
+<li>We “clamp” or “clip” the values to be between <code>0</code> and <code>1</code>. This means that values above <code>1</code> are set to <code>1</code>. Values below <code>0</code> are set to <code>0</code> and values in between are kept the same. This shouldn’t be necessary due to the sigmoid function, but we still do it for good practice.</li>
+<li>We select only the first <code>50</code> images.</li>
+<li>We generate a grid of 5 images by 10 images.</li>
+<li>Finally we transform the tensor to Numpy and shape it correctly to be displayed by <code>plt.imshow()</code>.</li>
+</ul>
+<pre class="python"><code># Finally, use reconstructions to see what they look like
+with torch.no_grad():
+    print(&quot;Original Images&quot;)
+    test_images = test_images.cpu()
+    test_images = test_images.clamp(0, 1)
+    test_images = test_images[:50]
+    test_images = make_grid(test_images, 10, 5)
+    test_images = test_images.numpy()
+    test_images = np.transpose(test_images, (1, 2, 0))
+    plt.imshow(test_images)
+    plt.show()
+    
+    print(&quot;Reconstructions&quot;)
+    reconstructions = reconstructions.view(reconstructions.size(0), 1, 28, 28)
+    reconstructions = reconstructions.cpu()
+    reconstructions = reconstructions.clamp(0, 1)
+    reconstructions = reconstructions[:50]
+    plt.imshow(np.transpose(make_grid(reconstructions, 10, 5).numpy(), (1, 2, 0)))
+    plt.show()</code></pre>
+</div>
+<div id="separating-encoder-and-decoder-in-vae" class="section level2">
+<h2>Separating Encoder and Decoder in VAE</h2>
+<p>With our minimalist version of the Variational Autoencoder, we cannot sample an image or visualize what the latent space looks like. To sample an image we would need to sample from the latent space and then feed this into the “decoder” part of the VAE. To visualize what the latent space looks like we would need to create a grid in the latent space and then feed each latent vector into the decoder to see what the images at each grid point look like. Unfortunately we cannot easily split our network as it currently is. This is why most implementations of the VAE that you will likely find online will separate the encoder and the decoder either as two different methods of the VAE or even as two different classes, each inheriting from <code>nn.Module</code>. For instance, this version of the VAE would allow you to sample images and visualize the latent space:</p>
+<pre class="python"><code>class VAE(nn.Module):
+    def __init__(self):
+        &quot;&quot;&quot;Variational Auto-Encoder Class&quot;&quot;&quot;
+        super(VAE, self).__init__()
+        # Encoding Layers
+        self.e_input2hidden = nn.Linear(in_features=784, out_features=e_hidden)
+        self.e_hidden2mean = nn.Linear(in_features=e_hidden, out_features=latent_dim)
+        self.e_hidden2logvar = nn.Linear(in_features=e_hidden, out_features=latent_dim)
+        
+        # Decoding Layers
+        self.d_latent2hidden = nn.Linear(in_features=latent_dim, out_features=d_hidden)
+        self.d_hidden2image = nn.Linear(in_features=d_hidden, out_features=784)
+        
+    def encoder(self, x):
+        # Shape Flatten image to [batch_size, input_features]
+        x = x.view(-1, 784)
+        # Feed x into Encoder to obtain mean and logvar
+        x = F.relu(self.e_input2hidden(x))
+        return self.e_hidden2mean(x), self.e_hidden2logvar(x)
+        
+    def decoder(self, z):
+        return torch.sigmoid(self.d_hidden2image(torch.relu(self.d_latent2hidden(z))))
+        
+    def forward(self, x):
+        # Encoder image to latent representation mean &amp; std
+        mu, logvar = self.encoder(x)
+        
+        # Sample z from latent space using mu and logvar
+        if self.training:
+            z = torch.randn_like(mu).mul(torch.exp(0.5*logvar)).add_(mu)
+        else:
+            z = mu
+        
+        # Feed z into Decoder to obtain reconstructed image. Use Sigmoid as output activation (=probabilities)
+        x_recon = self.decoder(z)
+        
+        return x_recon, mu, logvar</code></pre>
 </div>
