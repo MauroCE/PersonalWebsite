@@ -352,4 +352,56 @@ class VAE(nn.Module):
         return x_recon, mu, logvar
 ```
 
+To sample images from the generative model we can do something like this. Notice how we set the VAE in evaluation mode and we make sure that Pytorch doesn't keep track of gradients. All we do is sampling an array with shape `[50, latent_dim]` of standard normal variates, making sure that this tensor is saved to GPU. Then, we feed it through the decoder, obtaining a reconstruction, we reshape it the correct image shape. The rest, is just the usual trick to print images from Pytorch GPU with matplotlib. 
+
+```python
+vae.eval()
+with torch.no_grad():
+    # Sample from standard normal distribution
+    z = torch.randn(50, latent_dim, device=device)
+    
+    # Reconstruct images from sampled latent vectors
+    recon_images = vae.decoder(z)
+    recon_images = recon_images.view(recon_images.size(0), 1, 28, 28)
+    recon_images = recon_images.cpu()
+    recon_images = recon_images.clamp(0, 1)
+    
+    # Plot Generated Images
+    plt.imshow(np.transpose(make_grid(recon_images, 10, 5).numpy(), (1, 2, 0)))
+```
+
+The result should look something like this, depending on the number of epochs:
+
+<img src="/data_generation.png" alt="Generated Image with Pytorch GPU Variational AutoEncoder"/>
+
+Finally, we can also visualize the latent space. Notice that since we are using simple linear layers and very few epochs, this will look very messy. For better performance we would need to use convolutional layers in the encoder & decoder.
+
+```python
+with torch.no_grad():
+  # Create empty (x, y) grid
+  latent_x = np.linspace(-1.5, 1.5, 20)
+  latent_y = np.linspace(-1.5, 1.5, 20)
+  latents = torch.FloatTensor(len(latent_x), len(latent_y), 2)
+  # Fill up the grid
+  for i, lx in enumerate(latent_x):
+    for j, ly in enumerate(latent_y):
+      latents[j, i, 0] = lx
+      latents[j, i, 1] = ly
+  # Flatten the grid
+  latents = latents.view(-1, 2)
+  # Send to GPU
+  latents = latents.to(device)
+  # Find their representation
+  reconstructions = vae.decoder(latents)
+  reconstructions = reconstructions.cpu()
+  # Finally, plot
+  fig, ax = plt.subplots(figsize=(10, 10))
+  plt.imshow(np.transpose(make_grid(reconstructions.data[:400], 20, 5).clamp(0, 1).numpy(), (1, 2, 0))) 
+```
+
+Basically we are generating a grid of values in the latent space. Then we are decoding the grid into images, reshaping it and plotting it. The result, looks like this:
+
+<img src="/latent_space.png" alt="Display Latent Space with Pytorch GPU Variational AutoEncoder"/>
+
+
 
