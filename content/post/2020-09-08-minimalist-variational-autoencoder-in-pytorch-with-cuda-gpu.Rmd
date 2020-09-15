@@ -21,6 +21,9 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: biblio_vaepytorch.bib
+nocite: |
+  @kingma, @bergamin, @colab
 ---
 \newcommand{\Ebb}{\mathbb{E}}
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
@@ -402,6 +405,10 @@ with torch.no_grad():
 Basically we are generating a grid of values in the latent space. Then we are decoding the grid into images, reshaping it and plotting it. The result, looks like this:
 
 <img src="/latent_space.png" alt="Display Latent Space with Pytorch GPU Variational AutoEncoder"/>
+
+In order to write the code here I made use of a few resources. Firstly, [Kingma](https://github.com/dpkingma/examples/blob/master/vae/main.py) is a great example of a minimalist variational autoencoder. In addition, this implementation by [Federico Bergamin](https://github.com/federicobergamin/Variational-Autoencoders/blob/master/VAE.py) was extremely helpful in clarifying what does what. Last but not least, [this](https://colab.research.google.com/github/smartgeometry-ucl/dl4g/blob/master/variational_autoencoder.ipynb#scrollTo=TglLFCT1N7iF) Google Colab notebook helped me work out how to display the latent space and how to generate images from the VAE.
+
+# Bibliography
 
 
 

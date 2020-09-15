@@ -21,6 +21,9 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: biblio_vaepytorch.bib
+nocite: |
+  @kingma, @bergamin, @colab
 ---
 
 
@@ -343,4 +346,19 @@ with torch.no_grad():
   plt.imshow(np.transpose(make_grid(reconstructions.data[:400], 20, 5).clamp(0, 1).numpy(), (1, 2, 0))) </code></pre>
 <p>Basically we are generating a grid of values in the latent space. Then we are decoding the grid into images, reshaping it and plotting it. The result, looks like this:</p>
 <p><img src="/latent_space.png" alt="Display Latent Space with Pytorch GPU Variational AutoEncoder"/></p>
+<p>In order to write the code here I made use of a few resources. Firstly, <a href="https://github.com/dpkingma/examples/blob/master/vae/main.py">Kingma</a> is a great example of a minimalist variational autoencoder. In addition, this implementation by <a href="https://github.com/federicobergamin/Variational-Autoencoders/blob/master/VAE.py">Federico Bergamin</a> was extremely helpful in clarifying what does what. Last but not least, <a href="https://colab.research.google.com/github/smartgeometry-ucl/dl4g/blob/master/variational_autoencoder.ipynb#scrollTo=TglLFCT1N7iF">this</a> Google Colab notebook helped me work out how to display the latent space and how to generate images from the VAE.</p>
+</div>
+<div id="bibliography" class="section level1 unnumbered">
+<h1>Bibliography</h1>
+<div id="refs" class="references">
+<div id="ref-kingma">
+<p>Durk Kingma. 2020. “Variational Autoencoder in Pytorch.” <a href="https://github.com/dpkingma/examples/blob/master/vae/main.py">https://github.com/dpkingma/examples/blob/master/vae/main.py</a>.</p>
+</div>
+<div id="ref-bergamin">
+<p>Federico Bergamin. 2020. “Variational-Autoencoders.” <a href="https://github.com/federicobergamin/Variational-Autoencoders/blob/master/VAE.py">https://github.com/federicobergamin/Variational-Autoencoders/blob/master/VAE.py</a>.</p>
+</div>
+<div id="ref-colab">
+<p>Paul Guerrero, Nils Thuerey. 2020. “Smart Geometry Ucl - Variational Autoencoder Pytorch.” <a href="https://colab.research.google.com/github/smartgeometry-ucl/dl4g/blob/master/variational_autoencoder.ipynb#scrollTo=TglLFCT1N7iF">https://colab.research.google.com/github/smartgeometry-ucl/dl4g/blob/master/variational_autoencoder.ipynb#scrollTo=TglLFCT1N7iF</a>.</p>
+</div>
+</div>
 </div>
