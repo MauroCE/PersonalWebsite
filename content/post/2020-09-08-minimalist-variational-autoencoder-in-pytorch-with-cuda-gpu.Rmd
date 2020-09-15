@@ -11,8 +11,8 @@ tags:
   - vae
   - cuda
   - gpu
-subtitle: ''
-summary: ''
+subtitle: 'Variational Autoencoders in Pytorch with CUDA GPU'
+summary: 'Variational Autoencoders in Pytorch with CUDA GPU'
 authors: []
 lastmod: '2020-09-08T16:47:32+01:00'
 featured: no
