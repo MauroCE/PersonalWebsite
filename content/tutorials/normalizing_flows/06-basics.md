@@ -8,10 +8,10 @@ draft: false
 menu:
   normalizing-flows:
     parent: Overview of Normalizing Flows
-    weight: 4
+    weight: 6
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 4
+weight: 6
 ---
 
 Talk about the basics of normalizing flows.

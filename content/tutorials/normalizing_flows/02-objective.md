@@ -18,15 +18,27 @@ weight: 2
 Of course, we know what $p(x)$ looks like, it's just the pdf of a normal distribution. However, in practice, this could be a very complicated density and in that case, we can use the [univariate change of variable formula](https://en.wikipedia.org/wiki/Probability_density_function#Scalar_to_scalar) to find its pdf
 
 $$
-\log p(x) = \log p(g^{-1}(x)) + \log \left| \frac{\partial}{\partial x} g^{-1}(x)\right|
+\log p(x) = \log p(g^{-1}(x)) + \log \left| \frac{\partial}{\partial x} g^{-1}(x)\right|.
 $$
 
-In our case, the inverse transformation is given by $g^{-1}(x) = x - \mu$ and its derivative with respect to $x$ is $\frac{\partial}{\partial x} g^{-1}(x) = 1$. Since $\log(1) = 0$ we obtain:
+The first term can be found by using the pdf for a standard normal distribution
+$$
+\log p(z) = -\frac{1}{2}\log(2\pi) - \frac{z^2}{2}
+$$
+and plugging in the inverse transformation $g^{-1}(x) = x - \mu$
+$$
+\log p(g^{-1}(x)) = -\frac{1}{2}\log(2\pi) - \frac{(x-\mu)^2}{2}.
+$$
+For the second term, we need to compute the derivative of $g^{-1}(x)$ with respect to $x$ 
+$$
+\frac{\partial}{\partial x} g^{-1}(x) = 1
+$$
+and remember that $\log(1) = 0$ to obtain:
 
 $$
 \begin{align}
 \log p(x) 
-&= -\frac{1}{2}\log(2\pi) -\frac{(x-\mu)^2}{2}
+&= -\frac{1}{2}\log(2\pi) -\frac{(x-\mu)^2}{2}.
 \end{align}
 $$
 
