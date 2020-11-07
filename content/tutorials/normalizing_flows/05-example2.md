@@ -83,12 +83,11 @@ n_iter = 500     # Number of iterations
 mus = [mu]
 sigmas = [sigma]
 for i in range(n_iter):
-    # Update mu (given current sigma)
+    # Compute gradients
     mu_grad = (np.mean(x) - mu) / (sigma**2)
-    mu = mu + gamma_mu*mu_grad
-    # Update sigma (given updated mu)
     sigma_grad = (np.mean((x - mu)**2)/sigma**3 - 1 / sigma)
-    sigma = sigma + gamma_sigma*sigma_grad
+    # Update mu and sigma
+    mu, sigma = mu + gamma_mu*mu_grad, sigma + gamma_sigma*sigma_grad
     # Store mu and sigma
     mus.append(mu)
     sigmas.append(sigma)
