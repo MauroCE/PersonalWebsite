@@ -1,12 +1,12 @@
 +++
 # Accomplishments widget.
-widget = "accomplishments"  # See https://sourcethemes.com/academic/docs/page-builder/
+widget = "rants"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Accomplish&shy;ments"
-subtitle = ""
+title = "Rants"
+subtitle = "Tutorials, courses and, of course, rants."
 
 # Date format
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
@@ -19,11 +19,11 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
-  organization = "IBM Cognitive Class"
-  organization_url = "https://cognitiveclass.ai/courses"
-  title = "Deep Learning"
-  url = "https://cognitiveclass.ai/badges/deep-learning"
-  certificate_url = "https://www.youracclaim.com/badges/e0d86f23-c689-44a5-a2e0-961f37b3374a/public_url"
+  organization = "Learn about Normalizing Flows in a hands-on course using Python and Pytorch."
+  organization_url = ""
+  title = "Normalizing Flows Course"
+  url = "rants/"
+  certificate_url = "rants/"
   date_start = "2019-05-01"
   date_end = "2019-05-16"
   description = ""
