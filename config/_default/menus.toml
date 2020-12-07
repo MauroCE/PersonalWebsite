@@ -19,14 +19,14 @@
 #  weight = 30
 
 [[main]]
-  name = "Rants"
-  url = "#rants"
+  name = "Rambling"
+  url = "#rambling"
   weight = 40
 
-#[[main]]
-#  name = "Publications"
-#  url = "#featured"
-#  weight = 50
+[[main]]
+  name = "Cool Blogs"
+  url = "ai-blogs/"
+  weight = 50
 
 [[main]]
   name = "Contact"
