@@ -19,8 +19,8 @@
 #  weight = 30
 
 [[main]]
-  name = "Rambling"
-  url = "#rambling"
+  name = "Ramblings"
+  url = "#ramblings"
   weight = 40
 
 [[main]]

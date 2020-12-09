@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Rambling"
+title = "Ramblings"
 subtitle = "Tutorials, courses and various other rambling. "
 
 # Date format
@@ -22,8 +22,8 @@ date_format = "Jan 2006"
   organization = "Learn about Normalizing Flows in a hands-on course using Python and Pytorch."
   organization_url = ""
   title = "Normalizing Flows Course"
-  url = "rants/"
-  certificate_url = "rants/"
+  url = "ramblings/"
+  certificate_url = "ramblings/"
   date_start = "2019-05-01"
   date_end = "2019-05-16"
   description = ""
