@@ -1,0 +1,40 @@
+---
+title: Book Summaries
+author: Mauro Camara Escudero
+date: '2020-12-28'
+slug: books
+categories:
+tags:
+subtitle: 'A curated list of summaries and insights from Books I enjoyed.'
+summary: 'A curated list of summaries and insights from Books I enjoyed.'
+authors: []
+lastmod: '2020-12-28T14:14:07+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+- <span style="color:darkred">**History and Politics**</span>
+  - [The Shortest History of England](#history-england)
+- <span style="color:goldenrod">**Nutrition**</span>
+
+
+# <span style="color:darkred"> History </span>
+
+<div id='history-england'/>
+## The Shortest History of England
+
+**Summary**: The book gives an insight into the North-South divide in England and how the South-East differs historically from the North and the "Celtics" (Wales, Scotland, Northern Ireland/Ireland). It also gives a fairly clear picture of the political panorama and how the anti-European movements were born and changed over time.
+
+Several Factors contributed to the North-South divide and political landscape:
+
+- **History**: The South-East has historically been reacher, has had a very strong elite and has been ruling over the north and trying to rule over the (old) Celtics. Their privileged position comes from the Roman domination, the Norman (French) domination and the wealth obtained from the slave trade (e.g. Bristol). 
+- **Two Cultures**: The difference in culture between the South-East and the North of England can also be linked to the Danish and the Vikings who, after conquering most of England, where then defeated by the descendants of Wessex and thus they settled in the "Danelaw" (Northumbria, East-Anglia etc). 
+- **Industrial Revolution**: With the first industrial revolution, the north had a chance at ruling over the South-East. A strong new middle / upper class was born not through heredity but through hard work. The North was therefore industrialized but with a different culture. 
+- **Education** Universities in the South-East provided a very skilled elite and upper-middle class. (Nonetheless, the UK was the first EU country to develop, over time, a widespread use of Universities all over the country, so it developed a skilled workforce that spanned across classes and made it the intellectual capital of Europe).
+- **Parties**: Labour essentially stemmed from Scotland. Tory from the South-East elite. Tory wanted the "old splendor" of the empire, whereas Labour wanted to focus more on the four countries, they were more nationalist in that sense. That's why Tory wanted the UK to join what would become the EU whereas Labour was against it. Eventually, roles reversed in modern times because conservatism became nationalist and the center-left supported internationalization and globalization. 
+
+
