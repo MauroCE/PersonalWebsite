@@ -29,3 +29,7 @@ projects: []
 - [Sean Robert Bittner](https://srbittner.github.io/) has some amazing context on normalizing flows and exponential family networks.
 - [Emiel Hoogeboom](https://ehoogeboom.github.io/) has a great post on invertible convolutions with lots of diagrams.
 - [Jonathan Gordon](https://gordonjo.github.io/) has detailed posts on Amortized VI, Few-shot learning and Deep probabilistic models in general.
+
+
+
+
