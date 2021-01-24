@@ -21,19 +21,21 @@ organizations:
 bio: My research interests include mcmc, variational inference and genomic data.
 
 interests:
-- Artificial Intelligence
 - Machine Learning
-- Bayesian Computation
-- Sampling Methods
-- Variational Inference
-- Genomics
-- Population Genetics
+- MCMC and SMC Samplers
+- Variational Inference and VAEs
+- Neural Density Estimation
+- Density-Ratio Estimation and GANs
+- Genomics & Population Genetics
 
 education:
   courses:
   - course: PhD in Computational Statistics and Data Science
     institution: University of Bristol
-    year: 2019
+    year: 2020-2024
+  - course: MRes in Computational Statistics and Data Science
+    institution: University of Bristol
+    year: 2020
   - course: BSc in Mathematics with Year in Employment
     institution: University of Southampton
     year: 2019
@@ -71,5 +73,4 @@ user_groups:
 - Visitors
 ---
 
-I'm a first year Ph.D. student in Computational Statistics and Data Science (COMPASS) at the University of Bristol. My main research interests lie in sampling methods for bayesian inference and in variational methods. I am also interested in the application of such methods to Genomics data. 
-I co-run two reading groups: one on [Neural Networks](https://neuralnetworksbristol.netlify.app/) and one on [Statistic Population Genetics](https://statisticalpopulationgenetics.netlify.app/). Some of my `R` portfolios are available [here](https://statisticalcomputingportfolio.netlify.com/). I also run the [COMPASS Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/) at the University of Bristol.
+I'm a first year Ph.D. student in Computational Statistics and Data Science (COMPASS) at the University of Bristol. My main research interests lie at the intersection of **scalable sampling** and **variational** methods with modern **neural density estimation** techniques, especially in the context of **likelihood-free inference**. I am also interested in the application of such methods to population genetics data. I co-run the Bristol [Neural Networks](https://neuralnetworksbristol.netlify.app/) reading group with [Pierre-Aurélien Gilliot](https://research-information.bris.ac.uk/en/persons/pierre-aurelien-m-a-gilliot). I also run the [COMPASS Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/) at the University of Bristol. Some of my `R` portfolios are available [here](https://statisticalcomputingportfolio.netlify.com/)

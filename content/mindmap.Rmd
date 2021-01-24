@@ -11,8 +11,8 @@ tags:
   - abc
   - smc
   - mcmc
-subtitle: 'A mindmap of smc and abc'
-summary: 'A mindmap of smc and abc'
+subtitle: 'A better way to visualize papers and topics regarding MCMC, SMC, ABC and Deep Generative Models'
+summary: ''
 authors: []
 lastmod: '2020-10-05T14:34:07+01:00'
 featured: no
