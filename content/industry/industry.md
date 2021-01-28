@@ -67,5 +67,16 @@ date_format = "Jan 2006"
   * Research potential competitors and assess their offering
   * Research potential clients and assess their needs and current pipelines
   """
+  
+[[experience]]
+  title = "Innovation and Entreprise Training"
+  company = "Center for Innovation & Entrepreneurship"
+  company_url = "http://www.bristol.ac.uk/innovation/centre/"
+  location = "Bristol"
+  date_start = "2020-01-29"
+  date_end = "2020-01-29"
+  description = """
+  Set of skills and attitudes that can enable a **culture of innovation**, creativity, risk-taking and opportunism that enables entrepreneurships, intrapreneurship and **facilitates knowledge exchange**. [See Enterprise Skill Workshop organised by CRAC, Vitae, RCUK and EPSRC]
+  """
 
 +++
