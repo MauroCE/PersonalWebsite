@@ -26,7 +26,7 @@ date_format = "Jan 2006"
   date_start = "2021-01-20"
   date_end = "2021-01-29"
   description = """
-  TBD
+  Developed a prediction model of total claim amount for insurance company LV. Slides for our final presentation can be found [here](/lv_datathon.pdf)
   """
 
 

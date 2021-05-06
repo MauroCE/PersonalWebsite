@@ -23,4 +23,4 @@ menu:
 
 In this course, you will learn what normalizing flows are, how to code them and you'll learn about the most recent advancements in the field.
 
-- Chapter 1 - [Building an Intuition](/tutorials/normalizing_flows/01-set-up) aims at building an intuition around how Normalizing Flows work via the simplest example: shifting a Gaussian distribution. At the end of the chapter, I will summarize what we have learnt and offer a bonus example. 
+- Chapter 1 - [Building an Intuition](/ramblings/normalizing_flows/01-set-up) aims at building an intuition around how Normalizing Flows work via the simplest example: shifting a Gaussian distribution. At the end of the chapter, I will summarize what we have learnt and offer a bonus example. 

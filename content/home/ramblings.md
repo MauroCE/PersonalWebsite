@@ -22,10 +22,20 @@ date_format = "Jan 2006"
   organization = "Learn about Normalizing Flows in a hands-on course using Python and Pytorch."
   organization_url = ""
   title = "Normalizing Flows Course"
-  url = "ramblings/"
-  certificate_url = "ramblings/"
+  url = "ramblings/normalizing_flows/"
+  certificate_url = "ramblings/normalizing_flows/"
   date_start = "2019-05-01"
   date_end = "2019-05-16"
+  description = ""
+  
+[[item]]
+  organization = "Learn about Approximate Bayesian Computation."
+  organization_url = ""
+  title = "Approximate Bayesian Computation Course"
+  url = "ramblings/approximate-bayesian-computation/"
+  certificate_url = "ramblings/approximate-bayesian-computation/"
+  date_start = "2021-04-01"
+  date_end = "2021-04-01"
   description = ""
 
 +++
