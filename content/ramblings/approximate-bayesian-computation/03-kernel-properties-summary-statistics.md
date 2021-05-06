@@ -40,12 +40,12 @@ $$
 $$
 where $\zkernel$ is the normalizing constant for the kernel. Thanks to this property we can show that the ABC likelihood tends to the true likelihood (and hence the ABC posterior tends to the true posterior)
 $$
-\lim\_{\epsilon \to 0} \ABClike = \lim\_{\epsilon \to 0}\frac{\displaystyle \int \kerneltilde \like dx}{\displaystyle \int \kerneltilde dx} = \frac{\displaystyle \int \delta\_{\ystar}(y) \like dx}{\displaystyle \int \delta\_{\ystar}(y) dx} = \truelike
+\lim\_{\epsilon \to 0} \ABClike = \lim\_{\epsilon \to 0}\frac{\displaystyle \int \kerneltilde \like dy}{\displaystyle \int \kerneltilde dy} = \frac{\displaystyle \int \delta\_{\ystar}(y) \like dy}{\displaystyle \int \delta\_{\ystar}(y) dy} = \truelike
 $$
 - As the tolerance gets larger, the ABC likelihood gives no information and is in fact constant, so that the ABC posterior tends to the prior.
 $$
 \lim\_{\epsilon \to \infty} \ABCpost = 
-\left[\int\_{\Ycal} \like dx \right] \prior = \prior
+\left[\int\_{\Ycal} \like dy \right] \prior = \prior
 $$
 
 ### Summary of Approximations in ABC

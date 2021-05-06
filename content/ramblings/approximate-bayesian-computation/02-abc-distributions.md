@@ -36,7 +36,7 @@ $$
 $$
 In right-hand side of the expression above we have defined the **ABC likelihood** as a convolution between the true likelihood and the normalized kernel function
 $$
-\ABClike = \int\_{\Ycal} \kernel \like dx.
+\ABClike = \int\_{\Ycal} \kernel \like dy.
 $$
 This convolution operation has a simple interpretation if you break it down: given a parameter value $\theta$ the ABC likelihood is formed as a weighted average of the true likelihood and the normalized kernel function. This operation \textbf{smoothes out} the intractable likelihood. In practice, this marginalization operation is performed simply by dropping the auxiliary dataset: the remaining $\theta$ samples will be from $\ABCpost$.
 
