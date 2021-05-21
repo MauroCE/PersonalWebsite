@@ -17,12 +17,15 @@ $\newcommand{\ystar}{y^{\*}}
 \newcommand{\Ycal}{\mathcal{Y}}
 \newcommand{\isample}{^{(i)}}
 \newcommand{\kernel}{p\_{\epsilon}(\ystar \mid y)}
+\newcommand{\tkernel}{\tilde{p}\_{\epsilon}(\ystar \mid y)}
 \newcommand{\jointABCpost}{p_\{\epsilon}(\theta, y \mid \ystar)}
 \newcommand{\like}{p(y \mid \theta)}
 \newcommand{\prior}{p(\theta)}
 \newcommand{\truepost}{p(\theta \mid \ystar)}
 \newcommand{\ABCpost}{p\_{\epsilon}(\theta \mid \ystar)}
-\newcommand{\ABClike}{p\_{\epsilon}(\ystar \mid \theta)}$
+\newcommand{\ABClike}{p\_{\epsilon}(\ystar \mid \theta)}
+\newcommand{\Ebb}{\mathbb{E}}$
+
 
 ### ABC Posterior and ABC Kernel
 
@@ -30,7 +33,7 @@ In the previous subsection, we realised that we need a way to compare the simula
 $$
 (y, \theta) \sim \jointABCpost \propto \kernel \like \prior.
 $$
-which we call the **joint ABC posterior**. Of course our original aim was to sample from $\truepost$ so we need to marginalize out the auxiliary dataset $y$ to obtain an approximate parameter posterior distribution, which we call **ABC posterior**
+which we call the **augmented ABC posterior**. Of course our original aim was to sample from $\truepost$ so we need to marginalize out the auxiliary dataset $y$ to obtain an approximate parameter posterior distribution, which we call **ABC posterior**
 $$
 \ABCpost = \int\_{\Ycal} \jointABCpost dy \propto \int\_{\Ycal} \kernel \like \prior dy = \ABClike \prior.
 $$
@@ -38,7 +41,7 @@ In right-hand side of the expression above we have defined the **ABC likelihood*
 $$
 \ABClike = \int\_{\Ycal} \kernel \like dy.
 $$
-This convolution operation has a simple interpretation if you break it down: given a parameter value $\theta$ the ABC likelihood is formed as a weighted average of the true likelihood and the normalized kernel function. This operation \textbf{smoothes out} the intractable likelihood. In practice, this marginalization operation is performed simply by dropping the auxiliary dataset: the remaining $\theta$ samples will be from $\ABCpost$.
+This convolution operation has a simple interpretation if you break it down: given a parameter value $\theta$ the ABC likelihood is formed as a weighted average of the true likelihood and the normalized kernel function. This operation *smoothes out* the intractable likelihood. In practice, this marginalization operation is performed simply by dropping the auxiliary dataset: the remaining $\theta$ samples will be from $\ABCpost$.
 
 
 <table>
@@ -47,7 +50,7 @@ This convolution operation has a simple interpretation if you break it down: giv
         <td><b>Notation</b></td>
     </tr>
     <tr>
-        <td>Joint ABC Posterior</td>
+        <td>Augmented ABC Posterior</td>
         <td>$\jointABCpost$</td>
     </tr>
     <tr>
@@ -63,12 +66,6 @@ This convolution operation has a simple interpretation if you break it down: giv
         <td>$\kernel$</td>
     </tr>
 </table>
-
-### A first ABC algorithm
-The algorithm that I have just described can be summarized as follows: At each iteration we first sample from the prior, we then run the simulator with the new parameter value and finally feed the output of the simulator in the kernel which will give us a weight representing the similarity between $y$ and $\ystar$.
-
-<img src="/generalabc.png" alt="General Approximate Bayesian Computation Algorithm with Kernel" width="700"/>
-
 
 
 
