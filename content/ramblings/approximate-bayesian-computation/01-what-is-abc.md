@@ -46,3 +46,6 @@ Instead, we can come up with some indirect method. If you sample a parameter fro
 > If generate many parameters from the prior and use them to generate data from the likelihood the chances are that some of that generated data will be quite close to the observed data. If we now discard all those parameters that led to rubbish simulated data and only keep those that produced verisimilar data, then we are left with parameters that probably are quite similar to the true parameter. 
 
 This is the core intuition behind an algorithm called Rejection ABC which I will talk in the subchapter "Rejection ABC".
+
+
+# Bibliography
