@@ -8,10 +8,10 @@ draft: false
 menu:
   abc:
     parent: 2) Sampling Schemes for ABC
-    weight: 6
+    weight: 7
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 6
+weight: 7
 ---
 $\newcommand{\ystar}{y^{\*}}
 \newcommand{\Ycal}{\mathcal{Y}}

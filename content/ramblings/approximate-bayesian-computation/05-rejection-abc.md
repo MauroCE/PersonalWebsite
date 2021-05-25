@@ -7,7 +7,7 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   abc:
-    parent: 1) Foundations of ABC
+    parent: 2) Rejection and IS ABC
     weight: 5
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
@@ -57,4 +57,38 @@ so that each $\tilde{w}_n$ is either $1$ or $0$. Suppose out of $w_1, \ldots, w_
 Of course, this is extremely inefficient in high dimensions as the probability of "hitting the data" $\ystar$ with our $\epsilon$-ball $B\_{\epsilon}(y)$ becomes negligible. If you compare this with Algorithm 1 you can see that accepted samples are those with weight of one $w_n=1$ while rejected samples have zero weight $w_n=0$.
 
 As a side note, the posterior distribution targeted by Rejection Sampling is sometimes denoted $p(\theta \mid \rho(y, \ystar) \leq \epsilon)$ rather than the more general $\ABCpost$.
+
+### Two Moon Example
+Again, we come back to the Two Moon example. Here is an example of how we could code a rejection sampler. Notice how I have set a maximum number of iterations to avoid the loop running indefinitely.
+```{python}
+def rejection_abc(prior, simulator, distance, epsilon, N, y_star, maxiter=50):
+    """General Rejection ABC Algorithm."""
+    samples = np.zeros((N, len(y_star)))  # Accepted samples
+    
+    n = 0   # Number of accepted samples so far
+    i = 0   # Number of iterations so far
+
+    while (n < N) and (i < maxiter):
+
+      # Sample from the prior
+      theta_n = prior()
+
+      # Run the simulator with new parameter
+      y_n = simulator(theta_n)
+
+      # Accept only if data is within epsilon distance from ystar
+      if distance(y_n, y_star) <= epsilon:
+          samples[n] = theta_n
+          n += 1
+          
+      # Increase iteration count
+      i += 1
+    return samples
+```
+We can see below how Rejection ABC, imposing a "hard constraint", gets fewer and fewer samples accepted as our tolerance $\epsilon$ becomes smaller. 
+
+<img src="/twomoon_rejectionabc.png" alt="Two Moon example - Rejection ABC" width="700"/>
+
+Once again, feel free to play around with this example with the following [notebook](https://colab.research.google.com/drive/1dH5aPEXhDyjsiVsAzzT2bjJI7i2Io1sh?usp=sharing).
+
 
