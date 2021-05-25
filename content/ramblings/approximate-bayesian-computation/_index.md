@@ -27,8 +27,9 @@ In this Approximate Bayesian Computation course you are going to learn about the
     - [What is ABC](/ramblings/approximate-bayesian-computation/01-what-is-abc): Introduces the problem of estimating the parameter posterior with an intractable likelihood.
     - [ABC Distributions](/ramblings/approximate-bayesian-computation/02-abc-distributions): Sets the notation and nomenclature for the rest of the course. I explore the ABC likelihood, the ABC posterior, the augmented ABC posterior and the kernel. 
     - [ABC Kernel and Summary Statistics](/ramblings/approximate-bayesian-computation/03-kernel-properties-summary-statistics): Building on the previous section, I motivate the usage of the Kernel and why it is a good idea. I also briefly mention summary statistics. 
-    - [Soft ABC](/ramblings/approximate-bayesian-computation/04-soft-abc): This is the first ABC algorithm you will encounter in this course. It resembles imporance sampling and sets the foundation for rejection ABC.
+- Chapter 2 - **Rejection and Importance Sampling ABC**
+      - [Soft ABC](/ramblings/approximate-bayesian-computation/04-soft-abc): This is the first ABC algorithm you will encounter in this course. It resembles imporance sampling and sets the foundation for rejection ABC.
     - [Rejection ABC](/ramblings/approximate-bayesian-computation/05-rejection-abc): I frame Rejection ABC as a special case of Soft ABC with a uniform kernel. 
-    
-- Chapter 2 - **Sampling Schemes for ABC**
+    - [Generalizations](/ramblings/approximate-bayesian-computation/06-generalizations): Generalize Soft-ABC to IS-ABC and Rejection-ABC to Rejection-Sampling-ABC.
+- Chapter 3 - **Sampling Schemes for ABC**
     - [MCMC-ABC](/ramblings/approximate-bayesian-computation/06-mcmc-abc): You will explore MCMC-ABC as a standard Metropolis-Hastings targeting the augmented ABC posterior and derive the pseudocode for it.
