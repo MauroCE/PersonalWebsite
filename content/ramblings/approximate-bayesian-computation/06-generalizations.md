@@ -49,6 +49,32 @@ It is immediately clear that Soft-ABC is just a special case of this where our p
 You can play around with IS-ABC applied to the Two Moons example [here](https://colab.research.google.com/drive/1RCFjmtItp_-1uUP4BtlxBBAw6sWCwO94?usp=sharing). Notice that it may take a while to run. 
 
 ### Generalized Rejection ABC
+One can generalize Rejection-ABC to a likelihood-free rejection sampler. The target distribution is still the augmented ABC posterior
+$$
+\jointABCpost = \kernel \like \prior
+$$
+and, as typical in rejection sampling, we require a proposal density $q(\theta, s)$ satisfying the following bound
+$$
+\jointABCposttilde \leq M q(\theta, s) \qquad \qquad \text{for some } M > 0
+$$
+One can then sample from $q(\theta, s)$ and accept draws with probability 
+$$
+\frac{\jointABCposttilde}{M q(\theta, s)}
+$$
+In particular, here we choose the following proposal distribution 
+$$
+q(\theta, s) = \like q(\theta)
+$$
+for some $q(\theta)$ satisfying the bound above. Of course, the reason of this choice of proposal distribution is so that the intractable likelihood cancels out in the acceptance probability
+$$
+\frac{\jointABCposttilde}{M q(\theta, s)} = \frac{\kerneltilde \like \prior}{ M\like q(\theta)} = \frac{\kerneltilde \prior}{ Q q(\theta)}
+$$
+The the generalized rejection-ABC algorithm is given below.
 
+<img src="/generalizedrejectionabc.png" alt="Generalized Rejection ABC" width="700"/>
 
+It is well-known in Rejection sampling that the optimal value for the constant $M$ is
+$$
+M^* = \max\_{\theta, y} \frac{\jointABCposttilde}{\like q(\theta)} = \max\_{\theta, y} \frac{\kerneltilde \prior}{q(\theta)} = \max\_{y} \kerneltilde \max\_{\theta} \frac{\prior}{q(\theta)}
+$$
 

@@ -52,8 +52,11 @@ where in the last line we have used the fact that $\mathbb{I}\_{B\_{\epsilon}(y)
 
 <img src="/mcmc-abc.png" alt="MCMC ABC Pseudocode - Approximate Bayesian Computation" width="700"/>
 
+The notebook with the code for the MCMC-ABC algorithm with Hard Kernel can be found [here](https://colab.research.google.com/drive/1xPw_NTzv98eV4uWV8JjUidAm7z3v3JKH?usp=sharing).
+
 ### MCMC-ABC with Soft Kernel
 Wilkinson 2008 generalizes this to the use of a soft kernel so that the acceptance probability now includes the ratio of the two kernels.
 
 <img src="/mcmc-abc-soft.png" alt="MCMC ABC with Soft Kernel Pseudocode - Approximate Bayesian Computation" width="700"/>
 
+The notebook with the code for the MCMC-ABC algorithm with Soft Kernel can be found [here](https://colab.research.google.com/drive/1VP4i7_idhyjlPL1nB39AOXos_o3jbG7i?usp=sharing).
