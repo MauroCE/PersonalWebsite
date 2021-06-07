@@ -1,6 +1,6 @@
 ---
-title: ABC Distributions
-linktitle: ABC Distributions
+title: ABC Densities
+linktitle: ABC Densities
 toc: true
 type: docs
 date: "2019-05-05T00:00:00+01:00"
@@ -29,11 +29,11 @@ $\newcommand{\ystar}{y^{\*}}
 
 ### ABC Posterior and ABC Kernel
 
-In the previous subsection, we realised that we need a way to compare the simulated data $y$ and the observed data $\ystar$. Suppose that we have sampled a parameter value from the prior $\theta \sim p(\theta)$ and generated an auxiliary dataset with that parameter value $y \sim p(y \mid \theta)$. We could weight the sample $(y, \theta)\sim p(y \mid \theta) p(\theta)$ by a function that measures the similarity between $y$ and $\ystar$. We call this function a *normalized* **kernel function** and we denote it by $\kernel$ where $\epsilon$ is the tolerance or bandwidth parameter. The result of this sampling and weighting operation is that we are sampling from the following distribution
+In the previous subsection, we realised that we need a way to compare the simulated data $y$ and the observed data $\ystar$. Suppose that we have sampled a parameter value from the prior $\theta \sim p(\theta)$ and generated an auxiliary dataset with that parameter value $y \sim p(y \mid \theta)$. We could weight the sample $(y, \theta)\sim p(y \mid \theta) p(\theta)$ by a function that measures the similarity between $y$ and $\ystar$. We call this function a *normalized* **kernel function** and we denote it by $\kernel$ where $\epsilon$ is the tolerance or bandwidth parameter. The result of this sampling and weighting operation is that we are sampling from the following density
 $$
 (y, \theta) \sim \jointABCpost \propto \kernel \like \prior.
 $$
-which we call the **augmented ABC posterior**. Of course our original aim was to sample from $\truepost$ so we need to marginalize out the auxiliary dataset $y$ to obtain an approximate parameter posterior distribution, which we call **ABC posterior**
+which we call the **augmented ABC posterior**. Of course our original aim was to sample from $\truepost$ so we need to marginalize out the auxiliary dataset $y$ to obtain an approximate parameter posterior density, which we call **ABC posterior**
 $$
 \ABCpost = \int\_{\Ycal} \jointABCpost dy \propto \int\_{\Ycal} \kernel \like \prior dy = \ABClike \prior.
 $$

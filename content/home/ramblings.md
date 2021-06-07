@@ -29,9 +29,9 @@ date_format = "Jan 2006"
   description = ""
   
 [[item]]
-  organization = "Learn about Approximate Bayesian Computation."
+  organization = "Basics and Recent Literature"
   organization_url = ""
-  title = "Approximate Bayesian Computation Course"
+  title = "Approximate Bayesian Computation"
   url = "ramblings/approximate-bayesian-computation/"
   certificate_url = "ramblings/approximate-bayesian-computation/"
   date_start = "2021-04-01"
