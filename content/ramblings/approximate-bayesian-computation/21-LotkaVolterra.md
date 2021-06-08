@@ -74,3 +74,14 @@ def LV_simulator(theta):
 ```
 
 You can find more information at the following [Google Colab notebook](https://colab.research.google.com/drive/1mu7AGcMrT97eDx3tG3q_ELWs6zTnOzZh?usp=sharing).
+
+### Summary Statistics
+Sometimes (see Epsilon-free Inference and Graham's PhD thesis) one can use the following sufficient statistics:
+
+- The mean of the prey population
+- The mean of the predator population
+- The standard deviation of the prey population (or the log variance)
+- The standard deviation of the predator population (or the log variance)
+- The autocorrelation coefficient of lag 1 and 2 of the prey population
+- The autocorrelation coefficient of lag 1 and 2 of the predator population
+- The cross correlation coefficient between the prey and the predator population.
