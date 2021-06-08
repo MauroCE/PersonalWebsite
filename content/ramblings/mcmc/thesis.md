@@ -140,7 +140,24 @@ Notice also that the change of variables formula can be written as
 $$
 \Ebb\_{Z\_{\*}\mu}[f] = \Ebb\_{\mu}[f \circ Z]
 $$
-Indeed the change of variables formula allow us to write down the definition of expected value in the usual way
+Indeed the change of variables formula allow us to write down the definition of expected value in the a more useful way. First of all, let $\text{Id}:\Ysf\to\Ysf$ be the identity function on $\Ysf$ mapping $\text{Id}(y) = y$ for every $y\in\Ysf$. Then the function $\text{Id}\circ : \Xsf \to \Ysf$ is measurable and so it is a random variable and indeed it identical to the random variable as $Z$. We can now write the expectation as follows
+$$
+\begin{align}
+\Ebb[Z]
+&= \Ebb[\text{Id} \circ Z] && \text{$\text{Id}\circ Z = Z$} \newline
+&= \int\_{\Xsf} \text{Id} \circ Z d\mu && \text{Def of Expectation} \newline
+&= \int\_{Z(\Xsf)} \text{Id} \\, dZ\_{\*} \mu && \text{Change of Variables} \newline
+&= \int\_{\Ysf} \text{Id}(y) \\, dP_z(y) && \text{Def of $P_Z$} \newline
+&= \int\_{\Ysf} y \frac{d P_Z}{d y} dy && \text{Def $\text{Id}$ and $P_Z \ll dy$} \newline
+&= \int\_{\Ysf} y p_z(y) dy && \text{Radon-Nikodym}
+\end{align}
+$$
+
+Where we have assumed that we have access to a measure $dy$ on $(\Ysf, \Ycal)$ such that $P_Z \ll dy$, i.e. $P_Z$ is absolutely continuous with respect to $dy$. Alternatively we can also say that $dy$ dominates or is a dominating measure for $P_Z$.
+
+One can generalize the result above to any measurable function. This result is sometimes called Law of the Unconscious Statistician.
+
+### Expectation of a Function
 
 
 
