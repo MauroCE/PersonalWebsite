@@ -32,4 +32,4 @@ I will talk about the key algorithms used in ABC, some of the ideas surrounding 
     - [Rejection ABC](/ramblings/approximate-bayesian-computation/05-rejection-abc): I frame Rejection ABC as a special case of Soft ABC with a uniform kernel. 
     - [Generalizations](/ramblings/approximate-bayesian-computation/06-generalizations): Generalize Soft-ABC to IS-ABC and Rejection-ABC to Rejection-Sampling-ABC.
 - Chapter 3 - **Sampling Schemes for ABC**
-    - [MCMC-ABC](/ramblings/approximate-bayesian-computation/06-mcmc-abc): Explores MCMC-ABC as a standard Metropolis-Hastings targeting the augmented ABC posterior and derives the pseudocode for it.
+    - [MCMC-ABC](/ramblings/approximate-bayesian-computation/07-mcmc-abc): Explores MCMC-ABC as a standard Metropolis-Hastings targeting the augmented ABC posterior and derives the pseudocode for it.

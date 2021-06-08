@@ -7,7 +7,7 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   abc:
-    parent: 3) Sampling Schemes for ABC
+    parent: 3) MCMC ABC
     weight: 7
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
@@ -60,3 +60,5 @@ Wilkinson 2008 generalizes this to the use of a soft kernel so that the acceptan
 <img src="/mcmc-abc-soft.png" alt="MCMC ABC with Soft Kernel Pseudocode - Approximate Bayesian Computation" width="700"/>
 
 The notebook with the code for the MCMC-ABC algorithm with Soft Kernel can be found [here](https://colab.research.google.com/drive/1VP4i7_idhyjlPL1nB39AOXos_o3jbG7i?usp=sharing).
+
+The original paper is [Markov Chain Monte Carlo without likelihoods](https://www.pnas.org/content/pnas/100/26/15324.full.pdf).
