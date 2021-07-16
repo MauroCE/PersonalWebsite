@@ -48,9 +48,6 @@ social:
 - icon: envelope
   icon_pack: fas
   link: mailto:maurocamaraescudero@gmail.com #'#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: stack-overflow
-  icon_pack: fab
-  link: https://stackoverflow.com/users/6435921/euler-salter
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
