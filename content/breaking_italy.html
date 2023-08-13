@@ -28,7 +28,7 @@
 
             // Fetch dictionary and stopwords
             const dictionary = await fetchData("https://maurocamaraescudero.netlify.app/breaking_italy_references.json");
-            const stopwords = await fetchData("https://maurocamaraescudero.netflify.app/italian.json");
+            const stopwords = await fetchData("italian.json") //fetchData("https://maurocamaraescudero.netflify.app/italian.json");
 
             if (dictionary && stopwords) {
                 // Remove stopwords from inputWords
