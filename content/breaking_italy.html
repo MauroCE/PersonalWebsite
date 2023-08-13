@@ -122,12 +122,12 @@
                   // Generate a set from the first list of urls (initiate to zero, if the key is not in the dictionary)
                   const initialSet = new Set(dictionary[firstKey] || []);
                   // Compute intersection
-                  const results = filteredInputWords.slice(1).reduce((currentSet, key) => {
+                  const intersection = filteredInputWords.slice(1).reduce((currentSet, key) => {
                       const keyList = dictionary[key] || [];
                       return new Set([...currentSet].filter(item => keyList.includes(item)));
                   }, initialSet);
                 }
-
+                const results = Array.from(intersection);
                 // Look up filteredInputWords in the dictionary
                 //const results = [];
                 //for (const word of filteredInputWords) {
