@@ -13,11 +13,11 @@
             background-size: cover;
         }
 
-        .container {
+        .search-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -79,8 +79,10 @@
 </head>
 <body>
     <h1 style="font-family: 'Bulldog-BlackItalic', sans-serif;">BREAKING ITALY'S REFERENCES</h1>
-    <input type="text" id="searchInput" placeholder="Enter keywords...">
-    <button onclick="search()">Search</button>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter keywords..." onkeypress="handleKeyPress(event)">
+        <button id="searchButton" onclick="search()">Search</button>
+    </div>
     <div id="results"></div>
 
     <script>
