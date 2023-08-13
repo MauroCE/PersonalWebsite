@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dictionary Search</title>
+    <title>Breaking Italy Reference Search</title>
+    <style>
+        body {
+            font-family: "Bulldog-BlackItalic", sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+        }
+
+        #results {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dictionary Search</h1>
+    <h1 style="font-family: 'Bulldog-BlackItalic', sans-serif;">Look up Breaking Italy's references</h1>
     <input type="text" id="searchInput" placeholder="Enter words...">
     <button onclick="search()">Search</button>
     <div id="results"></div>
@@ -28,7 +57,7 @@
 
             // Fetch dictionary and stopwords
             const dictionary = await fetchData("https://maurocamaraescudero.netlify.app/breaking_italy_references.json");
-            const stopwords = await fetchData("italian.json") //fetchData("https://maurocamaraescudero.netflify.app/italian.json");
+            const stopwords = await fetchData("italian.json"); //fetchData("https://maurocamaraescudero.netflify.app/italian.json");
 
             if (dictionary && stopwords) {
                 // Remove stopwords from inputWords
