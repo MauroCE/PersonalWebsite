@@ -110,7 +110,7 @@
         // Function to perform the search
         async function search() {
             const input = document.getElementById("searchInput").value;
-            const inputWords = input.split(" ");
+            const inputWords = input.toLowerCase().split(" ");
 
             // Fetch dictionary and stopwords
             const dictionary = await fetchData("https://maurocamaraescudero.netlify.app/breaking_italy_references.json");
