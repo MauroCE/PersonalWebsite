@@ -54,6 +54,7 @@
         }
 
         #results {
+            display: none;
             margin-top: 20px;
             font-size: 16px;
             padding: 10px; /* Add padding to the results container */
@@ -80,61 +81,94 @@
 <body>
     <h1 style="font-family: 'Bulldog-BlackItalic', sans-serif;">BREAKING ITALY'S REFERENCES</h1>
     <input type="text" id="searchInput" placeholder="Enter keywords...">
-    <button onclick="search()">Search</button>
-    <div id="results"></div>
-
+    <div class="container">
+        <!-- ... (rest of the container contents) ... -->
+        <button id="searchButton" onclick="search()">Search</button>
+        <!-- The results container div will be added here -->
+    </div>
     <script>
-        function handleKeyDown(event) {
-            if (event.key === "Enter") {
-                search();
-            }
+<script>
+    // Function to perform the search
+    async function search() {
+        const input = document.getElementById('searchInput').value;
+        const inputWords = input.trim().toLowerCase().split(/\s+/);
+
+        // Fetch stopwords and dictionary data
+        const stopWords = await fetchStopWords();
+        const dictionary = await fetchDictionary();
+
+        // Remove stopwords from input words
+        const filteredInputWords = inputWords.filter(word => !stopWords.includes(word));
+
+        // Get the intersection of results for input words
+        const searchResults = getIntersectionResults(filteredInputWords, dictionary, stopWords);
+
+        // Display the results if there are search results
+        if (searchResults.length > 0) {
+            displayResults(searchResults);
         }
-        // Function to fetch the dictionary and stopwords data
-        async function fetchData(url) {
+    }
+
+    // Function to fetch stopwords from the server (replace with actual URL)
+    async function fetchStopWords() {
+        return await fetchData('italian.json');
+    }
+
+    // Function to fetch dictionary data from the server (replace with actual URL)
+    async function fetchDictionary() {
+        return await fetchData('https://maurocamaraescudero.netlify.app/breaking_italy.json');
+    }
+
+    // Function to get the intersection of results for input words
+    function getIntersectionResults(inputWords, dictionary) {
+        let intersection = null;
+
+        inputWords.forEach((word) => {
+            if (dictionary.hasOwnProperty(word)) {
+                const wordResults = dictionary[word];
+                if (intersection === null) {
+                    // Initialize intersection with the first set of results
+                    intersection = new Set(wordResults);
+                } else {
+                    // Compute intersection with the subsequent sets of results
+                    intersection = new Set([...intersection].filter(url => wordResults.includes(url)));
+                }
+            }
+        });
+
+        // Convert the intersection set to an array
+        return intersection !== null ? Array.from(intersection) : [];
+    }
+
+    // Function to display search results
+    function displayResults(results) {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = ''; // Clear previous results
+
+        // Populate the results container with the URLs
+        results.forEach((url) => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.textContent = url;
+            resultsContainer.appendChild(link);
+            resultsContainer.appendChild(document.createElement('br')); // Add a line break
+        });
+
+        // Show the results container
+        resultsContainer.style.display = 'block';
+    }
+
+    // Fetch data using the Fetch API
+    async function fetchData(url) {
+        try {
             const response = await fetch(url);
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error("Failed to fetch data.");
-                return null;
-            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return null;
         }
-
-        // Function to perform the search
-        async function search() {
-            const input = document.getElementById("searchInput").value;
-            const inputWords = input.split(" ");
-
-            // Fetch dictionary and stopwords
-            const dictionary = await fetchData("https://maurocamaraescudero.netlify.app/breaking_italy_references.json");
-            const stopwords = await fetchData("italian.json"); //fetchData("https://maurocamaraescudero.netflify.app/italian.json");
-
-            if (dictionary && stopwords) {
-                // Remove stopwords from inputWords
-                const filteredInputWords = inputWords.filter(word => !stopwords.includes(word));
-
-                // Look up filteredInputWords in the dictionary
-                const results = [];
-                for (const word of filteredInputWords) {
-                    if (dictionary[word]) {
-                        results.push(...dictionary[word]);
-                    }
-                }
-
-                // Display results
-                const resultsDiv = document.getElementById("results");
-                resultsDiv.innerHTML = "";
-                for (const result of results) {
-                    // Create a clickable link for each result
-                    const link = document.createElement("a");
-                    link.href = result;
-                    link.target = "_blank";
-                    link.textContent = result;
-                    resultsDiv.appendChild(link);
-                    resultsDiv.appendChild(document.createElement("br"));
-                }
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
