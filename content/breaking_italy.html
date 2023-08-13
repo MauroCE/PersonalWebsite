@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dictionary Search</title>
+</head>
+<body>
+    <h1>Dictionary Search</h1>
+    <input type="text" id="searchInput" placeholder="Enter words...">
+    <button onclick="search()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        // Function to fetch the dictionary and stopwords data
+        async function fetchData(url) {
+            const response = await fetch(url);
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error("Failed to fetch data.");
+                return null;
+            }
+        }
+
+        // Function to perform the search
+        async function search() {
+            const input = document.getElementById("searchInput").value;
+            const inputWords = input.split(" ");
+
+            // Fetch dictionary and stopwords
+            const dictionary = await fetchData("https://maurocamaraescudero.netlify.app/breaking_italy_references.json");
+            const stopwords = await fetchData("https://maurocamaraescudero.netflify.app/italian.json");
+
+            if (dictionary && stopwords) {
+                // Remove stopwords from inputWords
+                const filteredInputWords = inputWords.filter(word => !stopwords.includes(word));
+
+                // Look up filteredInputWords in the dictionary
+                const results = [];
+                for (const word of filteredInputWords) {
+                    if (dictionary[word]) {
+                        results.push(...dictionary[word]);
+                    }
+                }
+
+                // Display results
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = "";
+                for (const result of results) {
+                    // Create a clickable link for each result
+                    const link = document.createElement("a");
+                    link.href = result;
+                    link.target = "_blank";
+                    link.textContent = result;
+                    resultsDiv.appendChild(link);
+                    resultsDiv.appendChild(document.createElement("br"));
+                }
+            }
+        }
+    </script>
+</body>
+</html>
