@@ -114,20 +114,21 @@
                 const filteredInputWords = inputWords.filter(word => !stopwords.includes(word));
 
                 //
-                if (filteredInputWords.length === 0) {
-                    const results = [];
-                } else {
-                  // Grab first input word
-                  const firstKey = filteredInputWords[0];
-                  // Generate a set from the first list of urls (initiate to zero, if the key is not in the dictionary)
-                  const initialSet = new Set(dictionary[firstKey] || []);
-                  // Compute intersection
-                  const intersection = filteredInputWords.slice(1).reduce((currentSet, key) => {
-                      const keyList = dictionary[key] || [];
-                      return new Set([...currentSet].filter(item => keyList.includes(item)));
-                  }, initialSet);
+                function computeIntersection(filteredInputWords, dictionary) {
+                    // Initialize the intersection set with the values of the first key in filteredInputWords
+                    const firstKey = filteredInputWords[0];
+                    const initialSet = new Set(dictionary[firstKey] || []);
+
+                    // Compute the intersection for the remaining keys in filteredInputWords
+                    const intersection = filteredInputWords.slice(1).reduce((currentSet, key) => {
+                        const keyList = dictionary[key] || [];
+                        return new Set([...currentSet].filter(item => keyList.includes(item)));
+                    }, initialSet);
+
+                    // Convert the intersection set to an array
+                    return Array.from(intersection);
                 }
-                const results = Array.from(intersection);
+                const results = computeIntersection(filteredInputWords, dictionary)
                 // Look up filteredInputWords in the dictionary
                 //const results = [];
                 //for (const word of filteredInputWords) {
