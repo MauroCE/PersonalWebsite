@@ -36,7 +36,7 @@ url_video: ''
 slides: example
 ---
 
-# Exploring News Through Data: A Data-Driven Dive into News
+# Exploring News Through Data: Where Insightful Journalism Meets Analytics
 
 Get ready to dive into the world of news, info, and Italy like never before. This project is a hands-on journey through data science, machine learning, and Python programming, and it's all about peeling back the layers of the biggest infotainment YouTube channel in Italy.
 
