@@ -36,7 +36,7 @@ url_video: ''
 slides: example
 ---
 
-Get ready to dive into the world of news, info, and Italy like never before. This project is a hands-on journey through data science, machine learning, and Python programming, and it's all about peeling back the layers of the biggest infotainment YouTube channel in Italy.
+This project is a hands-on journey through data science, machine learning, and Python programming, and it's all about peeling back the layers of the biggest infotainment YouTube channel in Italy.
 
 ### What's in the Mix
 I rolled up my sleeves and jumped into the data behind the scenes. With 1068 videos in the mix, I took the YouTube Data API for a spin, snagging titles, keywords, and descriptions. But there's more to the story—two tasks that'll leave you intrigued:
