@@ -46,6 +46,7 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
 1. **Word Cloud Synthesis**: Ever felt the pulse of news and info? I certainly have. I sifted through the keywords, ditching the fluff, and crafted a word cloud that captures the essence of those videos in a single captivating visual.
 
 2. **Crafting Connections**: I extracted URLs from video descriptions and wove them together with keywords, titles, and descriptions. The result? A dynamic dictionary that helps you navigate through a sea of knowledge, making connections like a true journalist. Hold tight as we map the trail of references scattered across video descriptions. Think of it as your guide to a labyrinth of insights, where every keyword holds a treasure trove of URLs. Give it a try [here](https://maurocamaraescudero.netlify.app/breaking_italy.html).
+3. **Sentiment Analysis**: 
 
 **Search Made Smarter:**
 No more sifting through haystacks. I built a search bar with HTML and JavaScript smarts. Just type in your keywords, give 'em some space, and let my program do the heavy lifting. The magic happens when URLs crisscross, giving you the good stuff without the noise.
