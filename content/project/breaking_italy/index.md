@@ -19,6 +19,10 @@ image:
   height: 150
 
 links:
+  - icon: github
+    icon_pack: fab
+    name: Project Code
+    url: https://github.com/MauroCE
   - icon: twitter
     icon_pack: fab
     name: Follow
