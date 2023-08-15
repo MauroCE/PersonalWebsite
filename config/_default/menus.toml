@@ -13,35 +13,35 @@
   url = "#posts"
   weight = 20
 
-#[[main]]
-#  name = "Projects"
-#  url = "#projects"
-#  weight = 30
+[[main]]
+  name = "Projects"
+  url = "#projects"
+  weight = 30
 
 [[main]]
   name = "Additional Experience"
   url = "industry/"
-  weight = 30
+  weight = 40
 
 [[main]]
   name = "Ramblings"
   url = "#ramblings"
-  weight = 40
+  weight = 50
 
 [[main]]
   name = "Cool Blogs"
   url = "ai-blogs/"
-  weight = 50
+  weight = 60
 
 [[main]]
   name = "Books"
   url = "books"
-  weight = 60
+  weight = 70
 
 [[main]]
   name = "Contact"
   url = "#contact"
-  weight = 70
+  weight = 80
 
 
 # Link to a PDF of your resume/CV from the menu.
