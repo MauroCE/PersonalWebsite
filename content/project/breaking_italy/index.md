@@ -1,6 +1,6 @@
 ---
-title: Data Journalism
-summary: YouTube Data API
+title: Exploring News Through Data
+summary: Where Insightful Journalism Meets Analytics
 tags:
   - NLP
   - Data Journalism
@@ -15,8 +15,8 @@ external_link: ''
 image:
   caption: Breaking Italy keyword cloud
   focal_point: Smart
-  width: "100"
-  height: "150"
+  width: 100
+  height: 150
 
 links:
   - icon: twitter
@@ -35,8 +35,6 @@ url_video: ''
 #   Otherwise, set `slides = ""`.
 slides: example
 ---
-
-# Exploring News Through Data: Where Insightful Journalism Meets Analytics
 
 Get ready to dive into the world of news, info, and Italy like never before. This project is a hands-on journey through data science, machine learning, and Python programming, and it's all about peeling back the layers of the biggest infotainment YouTube channel in Italy.
 
