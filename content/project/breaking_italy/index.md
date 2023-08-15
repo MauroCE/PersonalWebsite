@@ -15,8 +15,8 @@ external_link: ''
 image:
   caption: Breaking Italy keyword cloud
   focal_point: Smart
-  width: "200"
-  height: "300"
+  width: "100"
+  height: "150"
 
 links:
   - icon: twitter
