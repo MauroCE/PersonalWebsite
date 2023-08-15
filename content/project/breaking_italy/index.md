@@ -3,6 +3,10 @@ title: Data Journalism
 summary: YouTube Data API
 tags:
   - NLP
+  - Data Journalism
+  - Breaking Italy
+  - YouTube Data API
+  - Sentiment Analysis
 date: '2023-08-15T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
@@ -11,6 +15,8 @@ external_link: ''
 image:
   caption: Breaking Italy keyword cloud
   focal_point: Smart
+  width: "200"
+  height: "300"
 
 links:
   - icon: twitter
