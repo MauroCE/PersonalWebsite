@@ -26,7 +26,7 @@ links:
   - icon: twitter
     icon_pack: fab
     name: Follow
-    url: https://twitter.com/MauroCE
+    url: https://twitter.com/MauroCamaraE
 url_code: ''
 url_pdf: ''
 url_slides: ''
@@ -47,7 +47,7 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
 
 1. **Word Cloud Synthesis**: Ever felt the pulse of news and info? I certainly have. I sifted through the keywords, ditching the fluff, and crafted a word cloud that captures the essence of those videos in a single captivating visual. [Give it a go](https://colab.research.google.com/drive/16yfS7oRSjJbhcZGoKDyWco1rn2pBEiXu?usp=sharing).
 
-2. **Crafting Connections**: I extracted URLs from video descriptions and wove them together with keywords, titles, and descriptions. The result? A dynamic dictionary that helps you navigate through a sea of knowledge, making connections like a true journalist. Hold tight as we map the trail of references scattered across video descriptions. Think of it as your guide to a labyrinth of insights, where every keyword holds a treasure trove of URLs. [Give it a go](https://maurocamaraescudero.netlify.app/breaking_italy.html).
+2. **Crafting Connections**: I extracted URLs from video descriptions and wove them together with keywords, titles, and descriptions. The result? A dynamic dictionary that helps you navigate through a sea of knowledge, making connections like a true journalist. Hold tight as we map the trail of references scattered across video descriptions. Think of it as your guide to a labyrinth of insights, where every keyword holds a treasure trove of URLs. [Give it a go](https://maurocamaraescudero.netlify.app/breaking_italy.html) and [Try the code](https://colab.research.google.com/drive/1ldJPBgfyRRGr2QYfp8zg6Ar0PPefn3vr?usp=sharing).
 
 3. **Sentiment Analysis**: 
 
