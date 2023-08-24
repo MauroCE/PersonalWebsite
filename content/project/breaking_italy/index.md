@@ -49,7 +49,7 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
 
 2. **Crafting Connections**: I extracted URLs from video descriptions and wove them together with keywords, titles, and descriptions. The result? A dynamic dictionary that helps you navigate through a sea of knowledge, making connections like a true journalist. Hold tight as we map the trail of references scattered across video descriptions. Think of it as your guide to a labyrinth of insights, where every keyword holds a treasure trove of URLs. [Give it a go](https://maurocamaraescudero.netlify.app/breaking_italy.html) and [Try the code](https://colab.research.google.com/drive/1ldJPBgfyRRGr2QYfp8zg6Ar0PPefn3vr?usp=sharing).
 
-3. **Sentiment Analysis**: 
+3. **Sentiment Analysis and LDA**: COMING SOON.
 
 **Search Made Smarter:**
 No more sifting through haystacks. I built a search bar with HTML and JavaScript: just type in your keywords and let my program do the heavy lifting. The magic happens when URLs crisscross, giving you the good stuff without the noise.
