@@ -11,13 +11,15 @@ location: Levi, Finland
 #  postcode: '94305'
 #  country: United States
 
-summary: An example talk using Academic's Markdown slides feature.
+summary: Sampling from distributions concentrated around a manifold.
 abstract: "Sampling from a probability density concentrated around a lower-dimensional submanifold is of importance in numerous applications arising in machine learning, statistics and statistical physics. This task is particularly challenging due to the extreme anisotropy and high-dimensionality of the problem, and the correlation between the variables. We propose a new family of bespoke algorithms to sample efficiently from these densities and show their computational superiority to general purpose and specialized samplers. In particular, we show that in some cases it is able to efficiently sample from densities that are several orders of magnitude tighter around the submanifold."
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2030-06-01T13:00:00Z"
-date_end: "2030-06-01T15:00:00Z"
+#date: "2023-03-15T13:00:00Z"
+date: "2023-03-15T09:00:00Z"
+#date_end: "2023-03-17T15:00:00Z"
+date_end: "2023-03-17T17:00:00Z"
 all_day: false
 
 # Schedule page publish date (NOT talk date).
@@ -30,7 +32,7 @@ tags: [approximate-manifold-sampling]
 featured: true
 
 image:
-  caption: 'Example photo'
+  caption: 'Example of a Filamentary Distribution'
   focal_point: Right
 
 links:
@@ -40,7 +42,7 @@ links:
   url: https://twitter.com/MauroCamaraE
 url_code: ""
 url_pdf: ""
-url_slides: ""
+url_slides: "BayesComp2023_slides.pdf"
 url_video: ""
 
 # Markdown Slides (optional).
@@ -49,7 +51,7 @@ url_video: ""
 #   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
 # slides: example
-slides: ""
+# slides : BayesComp2023_slides
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -63,7 +65,7 @@ slides: ""
 math: true
 ---
 
-{{% alert note %}}
+<!--{{% alert note %}}
 Click on the **Slides** button above to view the built-in slides feature.
 {{% /alert %}}
 
@@ -73,4 +75,4 @@ Slides can be added in a few ways:
 - **Upload** an existing slide deck to `static/` and link using `url_slides` parameter in the front matter of the talk file
 - **Embed** your slides (e.g. Google Slides) or presentation video on this page using [shortcodes](https://sourcethemes.com/academic/docs/writing-markdown-latex/).
 
-Further talk details can easily be added to this page using *Markdown* and $\rm \LaTeX$ math code.
+Further talk details can easily be added to this page using *Markdown* and $\rm \LaTeX$ math code.-->
