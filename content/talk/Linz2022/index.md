@@ -1,5 +1,5 @@
 ---
-title: Approximate Manifold Sampling via HUG sampler
+title: The THUG sampler
 event: MCQMC 2022
 event_url: https://www.ricam.oeaw.ac.at/events/conferences/mcqmc2022/
 
@@ -26,7 +26,7 @@ all_day: false
 publishDate: "2017-01-01T00:00:00Z"
 
 authors: []
-tags: [approximate-manifold-sampling]
+tags: [approximate-manifold-sampling, tangential-hug, thug-sampler]
 
 # Is this a featured talk? (true/false)
 featured: true
