@@ -32,7 +32,7 @@ tags: [approximate-manifold-sampling]
 featured: true
 
 image:
-  caption: 'Example of a Filamentary Distribution'
+  caption: 'AI generated image representing samples around a manifold.'
   focal_point: Right
 
 links:
