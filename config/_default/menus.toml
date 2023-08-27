@@ -24,8 +24,8 @@
   weight = 30
 
 [[main]]
-  name = "Additional Experience"
-  url = "industry/"
+  name = "Consulting"
+  url = "consulting/"
   weight = 40
 
 [[main]]
