@@ -33,15 +33,15 @@
   url = "#ramblings"
   weight = 50
 
-[[main]]
-  name = "Cool Blogs"
-  url = "ai-blogs/"
-  weight = 60
+#[[main]]
+#  name = "Cool Blogs"
+#  url = "ai-blogs/"
+#  weight = 60
 
-[[main]]
-  name = "Books"
-  url = "books"
-  weight = 70
+#[[main]]
+#  name = "Books"
+#  url = "books"
+#  weight = 70
 
 [[main]]
   name = "Contact"
