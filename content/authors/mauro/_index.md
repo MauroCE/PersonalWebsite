@@ -32,7 +32,7 @@ education:
   courses:
   - course: PhD in Computational Statistics and Data Science
     institution: University of Bristol
-    year: 2020-2024
+    year: 2020-2023
   - course: MRes in Computational Statistics and Data Science
     institution: University of Bristol
     year: 2020
