@@ -40,10 +40,13 @@ url_video: ''
 slides: example
 ---
 
-This project is a hands-on journey through the YouTube Data API and NLP, and it's all about peeling back the layers of the biggest infotainment YouTube channel in Italy.
+Breaking Italy has been my favorite infotainment YouTube channel since I was in high school. It's one of the largest YouTube communities in the Italian scene, and it features a mix of news and opinions. What I love the most about the channel is that Alessandro Masala, the creator and host of the show, always makes an effort to provide the backstory for the news, and this allows you to have an eagle-eye on what is happening in the world. Alessandro also provides a wealth of references that any user can use to read more about each topic discussed in the video.
+
+I have often found myself looking for a reference, be it a newspaper article or a report, that I wanted to read again but I was unable to because I had no way to quickly search through the thousands of videos Breaking Italy has posted over the years. This presented me with a great opportunity to try the YouTube Data API and use my coding skills. At the time, I was mostly interested in finding a Gender Gap report that Alessandro talked about in one of his videos.
+
 
 ### What's in the Mix
-I rolled up my sleeves and jumped into the data behind the scenes. With 1068 videos in the mix, I took the YouTube Data API for a spin, snagging titles, keywords, and descriptions. But there's more to the story - three tasks that'll leave you intrigued:
+I rolled up my sleeves and jumped into the data behind the scenes. With 1068 videos in the mix, I took the YouTube Data API for a spin, snagging titles, keywords, and descriptions. Here's three tasks I worked on:
 
 1. **Word Cloud Synthesis**: Ever felt the pulse of news and info? I certainly have. I sifted through the keywords, ditching the fluff, and crafted a word cloud that captures the essence of those videos in a single captivating visual. [Give it a go](https://colab.research.google.com/drive/16yfS7oRSjJbhcZGoKDyWco1rn2pBEiXu?usp=sharing).
 
