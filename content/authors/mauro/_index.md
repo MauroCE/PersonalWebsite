@@ -18,7 +18,7 @@ organizations:
   url: "https://www.bristol.ac.uk/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include mcmc, variational inference and genomic data.
+bio: My research interests include approximate manifold sampling, and generative models.
 
 interests:
 - Machine Learning
