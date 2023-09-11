@@ -22,10 +22,10 @@ bio: My research interests include approximate manifold sampling, and generative
 
 interests:
 - Machine Learning
-- MCMC and SMC Samplers
-- Variational Inference and VAEs
-- Neural Density Estimation
-- Density-Ratio Estimation and GANs
+- Approximate Manifold Sampling
+- Generative Models (VAEs, NFs, GANs)
+- Distributed Variational Inference
+- MCMC and SMC
 - Genomics & Population Genetics
 
 education:
