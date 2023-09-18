@@ -36,8 +36,6 @@ date_format = "Jan 2006"
   date_start = "2017-06-26"
   date_end = "2018-08-26"
   description = """
-  Responsibilities include:
-  
   * Led a high-value project with technical and client development components.
   * Developed gas turbine blades damage detection software in OpenCV.
   * Modelled and implemented back-end software in SQLServer and Cassandra.
