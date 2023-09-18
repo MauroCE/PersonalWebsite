@@ -62,8 +62,9 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
     2. Removed Italian stopwords using the [NLTK](https://www.nltk.org/api/nltk.html).
     3. Latent Dirichlet Allocation with [GenSim](https://pypi.org/project/gensim/).
     4. For each topic, run Sentiment Analysis in Italian with [Polyglot](https://polyglot.readthedocs.io/en/latest/Sentiment.html).
-    5. Visualization with [pyLDAvis](https://pypi.org/project/pyLDAvis/#:~:text=pyLDAvis%20is%20designed%20to%20help,an%20interactive%20web%2Dbased%20visualization)
-  Of course, there are many limitations to this. First and foremost, working with social media data, such as comments, can be messy due to high levels of sarcasm, inner-jokes, and general internet references (memes, emojis, set phrases). Another limitation is that these videos don't have very large numbers of comments, limiting the generalization of the results. Nonetheless, I found the results very interesting. It is generally quite difficult to give a rule-of-thumb for the number of topics for LDA, but upon reading the comments myself, I thought there would be less than $5$ major topics. Using $n=3$ we obtain the following output (translated by me):
+    5. Visualization with [pyLDAvis](https://pypi.org/project/pyLDAvis/#:~:text=pyLDAvis%20is%20designed%20to%20help,an%20interactive%20web%2Dbased%20visualization).
+    
+    Of course, there are many limitations to this. First and foremost, working with social media data, such as comments, can be messy due to high levels of sarcasm, inner-jokes, and general internet references (memes, emojis, set phrases). Another limitation is that these videos don't have very large numbers of comments, limiting the generalization of the results. Nonetheless, I found the results very interesting. It is generally quite difficult to give a rule-of-thumb for the number of topics for LDA, but upon reading the comments myself, I thought there would be less than $5$ major topics. Using $n=3$ we obtain the following output (translated by me):
   ```
   LDA Topics:
   (0, '0.019*"joy" + 0.019*"tears" + 0.007*"video" + 0.006*"state" + 0.005*"before" + 0.005*"mercenaries" + 0.005*"never" + 0.004*"do" + 0.004*"toilet" + 0.004*"Moscow"')
@@ -73,6 +74,7 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
   Topic: 1 - Polarity: -0.0379746835443038
   Topic: 2 - Polarity: 0.1891891891891892
   ```
+  
   Topic 2 gathers comments thanking the creator for making the video and, this is reflected in the polarity. Topic 3 contains mostly comments either explaining what happened, correcting the creator, starting a discussion on the topic, or generally just talking plainly about what happened. Upon reading some of the comments in this topic myself, I am unsure why the polarity is not lower. Finally, the first topic, is the trickier one and requires context to be understood. In the video the creator makes a joke about getting a notification about this news while on the toilet (he makes other jokes towards his community later on in the video). This topic mostly gathers jokes, laughs, statements of surprise or ridiculising what happened, references to this one joke "toilet". Importantly, the first two words come from repeated use of the face-with-tears-of-joy emoji. It seems clear that the polarity did not capture sarcasm. The topics are not fully separated since a good portion of users wrote comments containing both jokes and serious statements. Of course, a much more elaborate preprocessing of comments would allow better insight. Although this is just a simple and preliminary analysis, I did find the results interesting. [Try the Code](https://colab.research.google.com/drive/12mlMV-mzG5mUzzXyTOMczoVfBW8NlLNm?usp=sharing).
   
 
