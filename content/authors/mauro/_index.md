@@ -23,7 +23,7 @@ bio: My research interests include approximate manifold sampling and generative 
 interests:
 - Machine Learning
 - Approximate Manifold Sampling
-- Generative Models (VAEs, NFs, GANs)
+- Generative Models
 - Distributed Variational Inference
 - MCMC and SMC
 - Genomics & Population Genetics
@@ -69,7 +69,9 @@ user_groups:
 - ResearchersContact
 - Visitors
 ---
+Passionate about leveraging data to drive **positive change**, particularly in tech-for-good sectors such as energy, environmental sciences, and healthcare. I specialize in scalable sampling, variational methods, and generative modelling. During my PhD, I pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of **Markov Snippets**, with a focus on Simulator-Based Inference (SBI).
 
-I am passionate about tackling environmental and healthcare issues using data. I am a final year Ph.D. student in Computational Statistics and Data Science (COMPASS) at the University of Bristol. My research initially focused on Generative models (VAEs, GANs, Normalizing Flows), whereas in the second part I have focused on Sampling algorithms. Specifically, I have developed the first bespoke sampler for Approximate Manifold Sampling.
+- [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/)
+- [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/)
+- [R Portfolios](https://statisticalcomputingportfolio.netlify.com/)
 
-My main research interests lie at the intersection of **scalable sampling** and **variational** methods with modern **neural density estimation** techniques, especially in the context of **likelihood-free inference**. I am also interested in the application of such methods to population genetics data. I co-run the Bristol [Neural Networks](https://neuralnetworksbristol.netlify.app/) reading group with [Pierre-Aurélien Gilliot](https://research-information.bris.ac.uk/en/persons/pierre-aurelien-m-a-gilliot). I also run the [COMPASS Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/) at the University of Bristol. Some of my `R` portfolios are available [here](https://statisticalcomputingportfolio.netlify.com/)
