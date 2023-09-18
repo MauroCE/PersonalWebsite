@@ -1,6 +1,6 @@
 ---
 title: Exploring News Through Data
-summary: LDA + Topic Modelling on YouTube comments.
+summary: LDA & Sentiment Analysis on YouTube comments.
 tags:
   - NLP
   - Data Journalism
@@ -20,10 +20,10 @@ image:
   height: 150
 
 links:
-  - icon: github
-    icon_pack: fab
-    name: Project Code
-    url: https://github.com/MauroCE
+#  - icon: github
+#    icon_pack: fab
+#    name: Project Code
+#    url: https://github.com/MauroCE
   - icon: twitter
     icon_pack: fab
     name: Follow
@@ -77,4 +77,4 @@ I rolled up my sleeves and jumped into the data behind the scenes. With 1068 vid
   
 
 ### Why it Resonates with Me
-I'm a data journalism enthusiast to the core, and Breaking Italy is one of my go-to for insights. However, I'd watch videos, get all pumped up, and months later, I'd struggle to find those golden nuggets buried in descriptions. So, I put my data science hat on and thought, "Why not blend my passions?". This was a genuine itch I needed to scratch. I dug deep into YouTube's data treasure trove to create something practical—something that helps not just me, but anyone who's ever found themselves lost in the vast sea of videos.
+I'm a data journalism enthusiast to the core, and Breaking Italy is one of my go-to for insights. However, I'd watch videos and months later, I'd struggle to find those references buried in the descriptions. So, I put my data science hat on and thought, "Why not blend my passions?". This was a genuine itch I needed to scratch. Hopefully, I have create something practical — something that helps not just me, but anyone who's ever found themselves lost in the vast sea of videos of Breaking Italy.
