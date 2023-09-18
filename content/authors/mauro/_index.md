@@ -69,7 +69,7 @@ user_groups:
 - ResearchersContact
 - Visitors
 ---
-Passionate about leveraging data to drive **positive change**, particularly in tech-for-good sectors such as energy, environmental sciences, and healthcare. I specialize in scalable sampling, variational methods, and generative modelling. During my PhD, I pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of **Markov Snippets**, with a focus on Simulator-Based Inference (SBI).
+Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as energy, environmental sciences, and healthcare. I specialize in scalable sampling, variational methods, and generative modelling. During my PhD, I pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of **Markov Snippets**, with a focus on Simulator-Based Inference (SBI).
 
 - [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/)
 - [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/)
