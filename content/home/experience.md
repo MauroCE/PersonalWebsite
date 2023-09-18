@@ -25,7 +25,7 @@ date_format = "Jan 2006"
   date_start = "2021-09-20"
   date_end = "2021-12-17"
   description = """
-  Designed a high-speed, high-accuracy low-rank treatment effect model in Julia, outperforming the company's current approach by over an order of magnitude.
+  Designed a high-speed, high-accuracy low-rank **treatment effect model** in Julia, outperforming the company's current approach by over an order of magnitude.
   """
 
 [[experience]]
@@ -37,10 +37,11 @@ date_format = "Jan 2006"
   date_end = "2018-08-26"
   description = """
   * Led a high-value project with technical and client development components.
-  * Developed gas turbine blades damage detection software in OpenCV.
-  * Modelled and implemented back-end software in SQLServer and Cassandra.
-  * Developed wind power forecasting models with Keras and Sklearn.
+  * Developed gas turbine blades **damage detection** software in OpenCV.
+  * Modelled and implemented back-end software in **SQLServer** and **Cassandra**.
+  * Developed **wind power forecasting** models with Keras and Sklearn.
   * Designed gradient-free optimization methods to enhance wind farm layout.
+  * Deployed bespoke **Tableau** dashboards to aid gas traders.
   """
 
 [[experience]]
