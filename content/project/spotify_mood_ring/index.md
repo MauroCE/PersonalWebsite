@@ -1,6 +1,6 @@
 ---
-title: Spotify Mood Ring
-summary: Real-time mood estimation on recently-played songs on Spotify
+title: Weekly Spotify Wrapped
+summary: Real-time Data Visualization via the Spotify API.
 tags:
   - Spotify API
   - Flask
@@ -10,7 +10,7 @@ tags:
 date: '2023-08-15T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
-external_link: 'https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com'
+external_link: ''
 
 image:
   caption: Spotify Mood Ring
@@ -19,10 +19,10 @@ image:
   height: 150
 
 links:
-#  - icon: github
-#    icon_pack: fab
-#    name: Project Code
-#    url: https://github.com/MauroCE
+  - icon: github
+    icon_pack: fab
+    name: GitHub
+    url: https://github.com/MauroCE/Spotify-Wrapped-Weekly
   - icon: twitter
     icon_pack: fab
     name: Follow
@@ -39,3 +39,14 @@ url_video: ''
 #   Otherwise, set `slides = ""`.
 slides: example
 ---
+I had been meaning to learn how to use the Spotify API for a while so I embarked on creating my very own [Weekly Spotify Wrapped](https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com). Here's a summary of what I did:
+
+- I used my `CLIENT_ID` and `CLIENT_SECRET` to get an access token with [Authorization Code](https://developer.spotify.com/documentation/web-api/tutorials/code-flow) grant type. To avoid having to repeatedly authorize the application, I also use a [refresh token](https://developer.spotify.com/documentation/ios/concepts/token-swap-and-refresh).
+- I used token to grab recently played songs that have been played in the current week. Since there is a limit of `50` songs, I use a while loop to make sure I cover the whole week, see `get_recently_played()` in `main.py`.
+- For each recently played song, I grabbed the `genres` from their `artist_id` and the time of the day that they were `played_at`.
+- I have then used this data and [Chart.js](https://www.chartjs.org/) to produce the following three visualizations:
+    1. **Pie Chart** showing which artists I have listened to this week.
+    2. **Bar Chart** showing at what time of the day I have mostly listened to songs.
+    3. **Bar Chart** showing the genres of the songs.
+    
+My aim in the future will be to implement a mood ring, by inferring the mood from songs either based on lyrics or metrics such as tempo and cadence. A redacted copy of the code is available in my [GitHub Repository](https://github.com/MauroCE/Spotify-Wrapped-Weekly).
