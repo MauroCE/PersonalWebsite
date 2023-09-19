@@ -1,5 +1,5 @@
 ---
-title: Weekly Spotify Wrapped
+title: Spotify Wrapped Weekly
 summary: Real-time Data Visualization via the Spotify API.
 tags:
   - Spotify API
