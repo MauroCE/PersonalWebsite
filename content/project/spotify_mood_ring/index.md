@@ -1,11 +1,12 @@
 ---
 title: Spotify Mood Ring
-summary: Real-time mood estimation with Spotify
+summary: Real-time mood estimation on recently-played songs on Spotify
 tags:
   - Spotify API
   - Flask
   - Heroku
   - HTML
+  - Spotify
 date: '2023-08-15T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
