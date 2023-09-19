@@ -15,8 +15,8 @@ external_link: ''
 image:
   caption: AI Generated Black Spotify Logo
   focal_point: Smart
-  width: 100
-  height: 150
+  width: 20
+  height: 30
 
 links:
   - icon: github
