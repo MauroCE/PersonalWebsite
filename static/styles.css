@@ -1,0 +1,15 @@
+/* Define the button styles */
+.button {
+    background-color: #1DB954; /* Spotify green color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Adjust padding to your preference */
+    border-radius: 10px; /* Rounded edges */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove border */
+    cursor: pointer;
+}
+
+/* Define the hover effect */
+.button:hover {
+    background-color: #169f43; /* Darker green on hover */
+}

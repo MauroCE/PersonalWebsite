@@ -3,3 +3,28 @@
   padding: 0 10px 0 10px;
   margin: 0 auto 0 auto;
 }
+
+/* Center the button horizontally and vertically */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Optional: This centers it vertically within the viewport */
+    margin: 0; /* Remove margin from the container */
+}
+
+/* Define the button styles */
+.button {
+    background-color: #1DB954; /* Spotify green color */
+    color: #fff; /* Text color */
+    border-radius: 10px; /* Rounded edges */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove border */
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+/* Define the hover effect */
+.button:hover {
+    background-color: #169f43; /* Darker green on hover */
+}
