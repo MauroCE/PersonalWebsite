@@ -13,7 +13,7 @@ date: '2023-08-15T00:00:00Z'
 external_link: ''
 
 image:
-  caption: Spotify Mood Ring
+  caption: AI Generated Black Spotify Logo
   focal_point: Smart
   width: 100
   height: 150
