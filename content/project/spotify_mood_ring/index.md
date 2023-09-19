@@ -10,7 +10,7 @@ tags:
 date: '2023-08-15T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
-external_link: 'https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com/'
+external_link: 'https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com'
 
 image:
   caption: Spotify Mood Ring
