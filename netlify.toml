@@ -25,6 +25,10 @@
   [headers.values]
     Content-Type = "application/rss+xml"
 
+[[redirects]]
+  from = "/project/spotify_mood_ring"
+  to = "/project/spotify_wrapped_weekly"
+
 
 
 
