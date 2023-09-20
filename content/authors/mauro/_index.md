@@ -2,6 +2,8 @@
 # Display name
 name: Mauro Camara Escudero
 
+# R PORTFOLIO: https://statisticalcomputingportfolio.netlify.com/
+
 # Username (this should match the folder name)
 authors:
 - admin
@@ -70,9 +72,11 @@ user_groups:
 - Visitors
 ---
 Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as energy, environmental sciences, and healthcare. Specilized in scalable sampling, variational methods, and generative modelling. 
-Pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of **Markov Snippets**, with a focus on Simulator-Based Inference (SBI).
+Pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of **Markov Snippets**, with a focus on Simulator-Based Inference (SBI). In the past, I have organised:
 
 - [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/)
 - [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/)
-- [R Portfolios](https://statisticalcomputingportfolio.netlify.com/)
+- [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/)
+
+
 
