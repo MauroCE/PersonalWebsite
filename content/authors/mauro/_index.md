@@ -77,6 +77,7 @@ Pioneered the first algorithm for efficient **Approximate Manifold Sampling** an
 - [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/)
 - [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/)
 - [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/)
+- [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/)
 
 
 
