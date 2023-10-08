@@ -44,8 +44,13 @@ I had been meaning to learn how to use the Spotify API for a while so I embarked
 <div style="text-align: center;">
 <button class="button" align="center" onclick="window.location.href='https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com'">Check out this Week's Spotify Wrapped</button>
 </div>
-
-
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cf-gotham-fonts@1.0.0/gotham-font.min.css">
+<div class="button-container">
+    <a class="button" href='https://spotify-mood-ring-2a2e81fbe0b0.herokuapp.com'>
+        Check out this Week's Spotify Wrapped
+    </a>
+</div> -->
+<p></p>
 Here's a summary of what I did:
 
 - I used my `CLIENT_ID` and `CLIENT_SECRET` to get an access token with [Authorization Code](https://developer.spotify.com/documentation/web-api/tutorials/code-flow) grant type. To avoid having to repeatedly authorize the application, I also use a [refresh token](https://developer.spotify.com/documentation/ios/concepts/token-swap-and-refresh).

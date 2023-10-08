@@ -11,6 +11,7 @@
     align-items: center; /* Center vertically */
     height: 100vh; /* Optional: This centers it vertically within the viewport */
     margin: 0; /* Remove margin from the container */
+    text-decoration: none;
 }
 
 /* Define the button styles */
@@ -22,6 +23,12 @@
     border: none; /* Remove border */
     cursor: pointer;
     margin: 0 !important;
+    font-family: 'Gotham', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 30px;
+    transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 /* Define the hover effect */
