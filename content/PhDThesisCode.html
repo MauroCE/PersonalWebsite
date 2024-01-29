@@ -27,4 +27,16 @@ projects: []
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&amp;mute=1">
 </iframe>
-<p>I will populate this page with links to various coding resources regarding my PhD thesis “Approximate Manifold Sampling”.</p>
+<p>Sadly, Chromium does not allow embedded links to be on autoplay unless they are on mute, so yes, technically you have not been Rick-rolled. This webpage is a one-stop-shop for all things code regarding my PhD thesis “Approximate Manifold Sampling”.</p>
+<div id="why-have-i-structured-the-code-this-way" class="section level3">
+<h3>Why have I structured the code this way?</h3>
+<p>I believe there are two reasons researchers check out a paper’s accompanying code:</p>
+<ol style="list-style-type: decimal">
+<li>They want to check how something is implemented, perhaps they have not understood something in the text.</li>
+<li>They want to use the code to either reproduce the experiments or to apply it seemlessly into their application.</li>
+</ol>
+<p>Something that has frustrated me a lot has been that these two aims have been muddled up together, and I think this is counterproductive. People in the first group want to simply check their understanding, people in the second group don’t necessarily need to understand the inner working of the algorithm, they just want a quick-and-easy way to test if the algorithm works in their application. I claim these are two entirely different tasks which are usually solved together. As a result, huge well-crafted Python packages are typically created which can be incredibly hard to read, but very easy to use for simple purposes, but hard to adapt. This is what I believe:</p>
+<blockquote>
+<p>A researcher aiming to check their understanding or see how an algorithm is implemented should take less than one minute to find the relevant part of the code.</p>
+</blockquote>
+</div>
