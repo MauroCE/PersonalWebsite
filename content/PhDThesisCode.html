@@ -32,6 +32,7 @@ projects: []
 <li>Quick, easy, simple code to check your understanding.
 <ul>
 <li><a href="https://colab.research.google.com/drive/1x8_sjd5zMat6ECRdX_PaiDREUzbTG1uG?usp=sharing">THUG sampler</a></li>
+<li><a href="https://colab.research.google.com/drive/15cW5SylXrvni1Es-l2BTRh396VXrRKIB?usp=sharing">SMC with a mixture of THUG and NHUG</a></li>
 </ul></li>
 <li>Reproduce the experiments in the thesis.</li>
 <li>Off-the-shelf implementation</li>
@@ -43,8 +44,6 @@ projects: []
 <li>They want to check how something is implemented, perhaps they have not understood something in the text.</li>
 <li>They want to use the code to either reproduce the experiments or to apply it seemlessly into their application.</li>
 </ol>
-<p>Something that has frustrated me a lot has been that these two aims have been muddled up together, and I think this is counterproductive. People in the first group want to simply check their understanding, people in the second group don’t necessarily need to understand the inner working of the algorithm, they just want a quick-and-easy way to test if the algorithm works in their application. I claim these are two entirely different tasks which are usually solved together. As a result, huge well-crafted Python packages are typically created which can be incredibly hard to read, but very easy to use for simple purposes, but hard to adapt. This is what I believe:</p>
-<blockquote>
-<p>A researcher aiming to check their understanding or see how an algorithm is implemented should take less than one minute to find the relevant part of the code.</p>
-</blockquote>
+<p>Something that has frustrated me a lot has been that these two aims have been muddled up together, and I think this is counterproductive. People in the first group want to simply check their understanding, people in the second group don’t necessarily need to understand the inner working of the algorithm, they just want a quick-and-easy way to test if the algorithm works in their application. I claim these are two entirely different tasks which are usually solved together. As a result, huge well-crafted Python packages are typically created which can be incredibly hard to read, but very easy to use for simple purposes, but hard to adapt. This is what I believe that a researcher aiming to check their understanding or see how an algorithm is implemented should take less than one minute to find the relevant part of the code.</p>
+<p>For instance the <a href="https://colab.research.google.com/drive/1x8_sjd5zMat6ECRdX_PaiDREUzbTG1uG?usp=sharing">THUG Sampler Colab Notebook</a>’s aim is to maximise readability and minimize time spent looking for the revelant part of the code. For this reason, I have imported most NumPy functions to create less visual clutter, and I have minimised commenting (which was painful, since I love creating helpful docstrings).</p>
 </div>
