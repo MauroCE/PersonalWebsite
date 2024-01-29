@@ -22,5 +22,7 @@ image:
   preview_only: no
 projects: []
 ---
+{{< youtube dQw4w9WgXcQ >}}
+
 I will populate this page with links to various coding resources regarding my PhD thesis "Approximate Manifold Sampling".
 
