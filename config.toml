@@ -10,6 +10,7 @@
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+      linkify = true
 
 
 
