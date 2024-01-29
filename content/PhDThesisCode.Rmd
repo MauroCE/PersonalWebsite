@@ -29,6 +29,10 @@ src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1">
 
 Sadly, Chromium does not allow embedded links to be on autoplay unless they are on mute, so yes, technically you have not been Rick-rolled. This webpage is a one-stop-shop for all things code regarding my PhD thesis "Approximate Manifold Sampling". 
 
+1. Quick, easy, simple code to check your understanding.
+    - [THUG sampler](https://colab.research.google.com/drive/1x8_sjd5zMat6ECRdX_PaiDREUzbTG1uG?usp=sharing)
+2. Reproduce the experiments in the thesis.
+3. Off-the-shelf implementation
 
 ### Why have I structured the code this way?
 I believe there are two reasons researchers check out a paper's accompanying code:
