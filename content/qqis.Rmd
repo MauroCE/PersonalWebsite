@@ -4,9 +4,9 @@ author: Mauro Camara Escudero
 date: '2024-01-29'
 slug: qqis
 categories:
-  - abc
-  - smc
-  - mcmc
+  - rick
+  - roll
+  - never-gonna-give-you-up
 tags:
   - abc
   - smc
