@@ -33,7 +33,9 @@ Sadly, Chromium does not allow embedded links to be on autoplay unless they are 
     - [THUG sampler](https://colab.research.google.com/drive/1x8_sjd5zMat6ECRdX_PaiDREUzbTG1uG?usp=sharing)
     - [SMC with a mixture of THUG and NHUG](https://colab.research.google.com/drive/15cW5SylXrvni1Es-l2BTRh396VXrRKIB?usp=sharing)
     - [GHUMS](https://colab.research.google.com/drive/1Jxr_H0C7Ja_PYBbHlxELI_vq4sOt_zCZ?usp=sharing)
-2. Reproduce the experiments in the thesis.
+2. Reproduce the experiments/figures in the thesis.
+    - Chapter 2
+    - Chapter 3
 3. Off-the-shelf implementation
 
 ### Why have I structured the code this way?
