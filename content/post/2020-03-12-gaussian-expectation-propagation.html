@@ -24,14 +24,13 @@ bibliography: bibliography.bib
 
 
 
-
 <div id="multivariate-normal-distribution-in-the-exponential-family" class="section level2">
 <h2>Multivariate Normal Distribution in the Exponential Family</h2>
 <p>Remember from a previous blog post that a pdf <span class="math inline">\(p(\boldsymbol{\mathbf{x}}) = \mathcal{N}(\boldsymbol{\mathbf{x}}; \boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{\Sigma}})\)</span> can be written as
 <span class="math display">\[
 p(\boldsymbol{\mathbf{x}}) = \exp\left\{\langle \boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{\Sigma}}^{-1}\right), \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\rangle -\frac{1}{2}\left[d\log2\pi + \log|\boldsymbol{\mathbf{\Sigma}}| +\boldsymbol{\mathbf{\mu}}^\top\boldsymbol{\mathbf{\Sigma}}^{-1}\boldsymbol{\mathbf{\mu}}\right]\right\}
 \]</span></p>
-<p>Following the work of <span class="citation">Barthelmé, Chopin, and Cottet (2015)</span> we can relabel the expression above as follows
+<p>Following the work of <span class="citation">Barthelmé, Chopin, and Cottet (<a href="#ref-barthelm2015divide">2015</a>)</span> we can relabel the expression above as follows
 <span class="math display">\[
 p(\boldsymbol{\mathbf{x}}) \propto \exp\left\{\langle \boldsymbol{\mathbf{r}}, \boldsymbol{\mathbf{x}}\rangle + \left\langle \text{vec}\left(-\frac{1}{2}\boldsymbol{\mathbf{Q}}\right), \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\rangle \right\}
 \]</span>
@@ -102,7 +101,7 @@ In other words, the natural parameters of the cavity distribution are found by t
 <p>In general, computing moments of this distribution will be intractable, however we how that calculating moments of this distribution will be easier than calculating moments of the entire target distribution.
 <span class="math display">\[
 \begin{align}
-g_{\backslash k}(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k) 
+g_{\backslash k}(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k)
 &amp;\propto f_k(\boldsymbol{\mathbf{\gamma}}_k) \exp\left\{\left(\boldsymbol{\mathbf{r}}- \boldsymbol{\mathbf{r}}_k\right)^\top\boldsymbol{\mathbf{x}}+ \text{vec}\left(-\frac{1}{2}\left(\boldsymbol{\mathbf{Q}}- \boldsymbol{\mathbf{Q}}_k\right)\right)^\top  \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\}
 \end{align}
 \]</span></p>
@@ -129,7 +128,7 @@ g_{\backslash k}(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k)
 \]</span></li>
 <li>Sample from the <strong>tilted distribution</strong> using an MCMC sampler to obtain <span class="math inline">\(N\)</span> samples <span class="math inline">\(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k^{(1)}, \ldots, \widetilde{\boldsymbol{\mathbf{\gamma}}}_k^{(N)}\)</span> from
 <span class="math display">\[
-g_{\backslash k}(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k) 
+g_{\backslash k}(\widetilde{\boldsymbol{\mathbf{\gamma}}}_k)
 \propto f_k(\boldsymbol{\mathbf{\gamma}}_k) \exp\left\{\left(\boldsymbol{\mathbf{r}}- \boldsymbol{\mathbf{r}}_k\right)^\top\boldsymbol{\mathbf{x}}+ \text{vec}\left(-\frac{1}{2}\left(\boldsymbol{\mathbf{Q}}- \boldsymbol{\mathbf{Q}}_k\right)\right)^\top  \text{vec}\left(\boldsymbol{\mathbf{x}}\boldsymbol{\mathbf{x}}^\top\right)\right\}
 \]</span></li>
 <li>Perform <strong>moment-matching</strong> by computing the mean and the variance-coviariance matrix from the samples, and assign those values to the mean and the variance-covariance matrix of the newly-found global gaussian approximation.
@@ -166,9 +165,9 @@ Notice that every site <span class="math inline">\(k=1, \ldots, K\)</span> has f
 </div>
 <div id="bibliography" class="section level1 unnumbered">
 <h1>Bibliography</h1>
-<div id="refs" class="references">
-<div id="ref-barthelm2015divide">
-<p>Barthelmé, Simon, Nicolas Chopin, and Vincent Cottet. 2015. “Divide and Conquer in Abc: Expectation-Progagation Algorithms for Likelihood-Free Inference.”</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-barthelm2015divide" class="csl-entry">
+Barthelmé, Simon, Nicolas Chopin, and Vincent Cottet. 2015. <span>“Divide and Conquer in ABC: Expectation-Progagation Algorithms for Likelihood-Free Inference.”</span> <a href="https://arxiv.org/abs/1512.00205">https://arxiv.org/abs/1512.00205</a>.
 </div>
 </div>
 </div>
