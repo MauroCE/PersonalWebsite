@@ -41,7 +41,7 @@ $$
 \begin{align}
     Y^{(m)} &= \text{MHSA}(\bar{X}^{(m-1)}) = \sum_{h=1}^H V_h \bar{X}^{(m-1)} A_h^{(m)} && \text{where }\, V_h\in\mathbb{R}^{D\times D} \text{ and } A_h^{(m)}\in\mathbb{R}^{N\times N}\\
     (A_h)_{n, n'}
-    &= \frac{\displaystyle \exp\left\{\left\langle\mathbf{k}_{h, n}^{(m)}, \mathbf{q}_{h, n'}^{(m)} \right\rangle\right\}}{\displaystyle \sum_{n''=1}^N \exp\left\{\left\langle\mathbf{k}_{h, n''}^{(m)}, \mathbf{q}_{h, n'}^{(m)} \right\rangle\right\}} && \text{where } \, \mathbf{q}_{h, n}^{(m)} = U_{\mathbf{q}, h}^{(m)} \bar{\mathbf{x}}_n^{(m-1)} \text{ and } \mathbf{k}_{h, n}^{(m)} = U_{\mathbf{k}, h}^{(m)}\bar{\mathbf{x}}_n^{(m-1)}.
+    &= \frac{\displaystyle \exp\left\{\frac{\left\langle\mathbf{k}_{h, n}^{(m)}, \mathbf{q}_{h, n'}^{(m)} \right\rangle}{\sqrt{D}}\right\}}{\displaystyle \sum_{n''=1}^N \exp\left\{\frac{\left\langle\mathbf{k}_{h, n''}^{(m)}, \mathbf{q}_{h, n'}^{(m)} \right\rangle}{\sqrt{D}}\right\}} && \text{where } \, \mathbf{q}_{h, n}^{(m)} = U_{\mathbf{q}, h}^{(m)} \bar{\mathbf{x}}_n^{(m-1)} \text{ and } \mathbf{k}_{h, n}^{(m)} = U_{\mathbf{k}, h}^{(m)}\bar{\mathbf{x}}_n^{(m-1)}.
 \end{align}
 $$
 The vectors $\mathbf{q}$ and $\mathbf{k}$ are known as **queries** and **keys** respectively and we use the matrices $U_{\mathbf{q}}$ and $U_{\mathbf{k}}$ to introduce a notion of asymmetry of the relationship between the various tokens. Each element of $A_h^{(m)}$ is then the softmax of this relationship and we use multiple heads because each head is *capturing a different type of relationship*. The parameters for this layer are $U_{\mathbf{q}, h}, U_{\mathbf{k}, h}$ and $V_h$ for every $h=1, \ldots, H$.
