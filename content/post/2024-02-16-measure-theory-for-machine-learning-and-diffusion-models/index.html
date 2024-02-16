@@ -1,0 +1,39 @@
+---
+title: Measure Theory for ML, AI and Diffusion Models
+author: Mauro Camara Escudero
+date: '2024-02-16'
+slug: []
+categories: []
+tags: []
+subtitle: 'A summary of measure theory required for machine learning and artificial intelligence.'
+summary: 'Measure Theory for Machine Learning from Scratch'
+authors: []
+lastmod: '2024-02-16T13:46:31Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<div id="what-this-post-is-about" class="section level1">
+<h1>What this post is about</h1>
+<p>In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming <strong>very few prerequisites</strong>. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models.</p>
+<p>If you find any mistake, typo or for anything else, don’t hesitate to contact me.</p>
+</div>
+<div id="randomness-and-mathematics" class="section level1">
+<h1>Randomness and Mathematics</h1>
+<p>In everyday language, we sometimes use the expression “the probability of/that”. For instance,</p>
+<blockquote>
+<p>The <span style="color:darkorange">probability</span> of <span style="color:deepskyblue">rolling a six</span> is <span style="color:#D81159"><span class="math inline">\(1/6\)</span></span>.</p>
+</blockquote>
+<p>I have emphasized in three different colors the key components of that sentence. Measure theory can be used to define each of those three terms rigorously. Specifically, it can answer these questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is a probability? (<span style="color:darkorange">orange</span> and <span style="color:#D81159">magenta</span>)</li>
+<li>What “things” can have an associated probability? (<span style="color:deepskyblue">blue</span>)</li>
+</ol>
+<p>All we need are <strong>sets</strong> and <strong>functions</strong>. A probability of something happening is a numeric value that tells us how likely that something is to happen (if this seems circular, that’s good, because it is). Ideally, we would like to have a <strong>maximum</strong> probability value for things that are <strong>certain</strong> and a <strong>minimum</strong> probability value for things that are impossible. We could choose any two values, but historically, mathematicians have settled for <span class="math inline">\(1\)</span> and <span class="math inline">\(0\)</span> respectively.</p>
+</div>

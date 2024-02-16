@@ -1,0 +1,39 @@
+---
+title: Measure Theory for ML, AI and Diffusion Models
+author: Mauro Camara Escudero
+date: '2024-02-16'
+slug: []
+categories: []
+tags: []
+subtitle: 'A summary of measure theory required for machine learning and artificial intelligence.'
+summary: 'Measure Theory for Machine Learning from Scratch'
+authors: []
+lastmod: '2024-02-16T13:46:31Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+# What this post is about
+In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
+
+If you find any mistake, typo or for anything else, don't hesitate to contact me. 
+
+# Randomness and Mathematics
+In everyday language, we sometimes use the expression "the probability of/that". For instance,
+
+> The <span style="color:darkorange">probability</span> of <span style="color:deepskyblue">rolling a six</span> is <span style="color:#D81159">$1/6$</span>.
+
+I have emphasized in three different colors the key components of that sentence. Measure theory can be used to define each of those three terms rigorously. Specifically, it can answer these questions:
+
+1. What is a probability? (<span style="color:darkorange">orange</span> and <span style="color:#D81159">magenta</span>)
+2. What "things" can have an associated probability? (<span style="color:deepskyblue">blue</span>)
+
+All we need are **sets** and **functions**. A probability of something happening is a numeric value that tells us how likely that something is to happen (if this seems circular, that's good, because it is). Ideally, we would like to have a **maximum** probability value for things that are **certain** and a **minimum** probability value for things that are impossible. We could choose any two values, but historically, mathematicians have settled for $1$ and $0$ respectively.
+
+
+
+
+
