@@ -16,12 +16,23 @@ image:
   preview_only: no
 projects: []
 ---
-# What this post is about
+\usepackage{xcolor}
+\usepackage{amsthm} 
+\theoremstyle{definition}
+\newtheorem{def}{Definition}[thm]
+**Table of Contents**
+
+- [Randomness, Mathematics, and Intuition](#randomness)
+- [Sets and Measures](#sets-and-measures)
+
+# Introduction
 In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
 
 If you find any mistake, typo or for anything else, don't hesitate to contact me. 
 
-# Randomness and Mathematics
+<a name="randomness"></a>
+
+# Randomness, Mathematics, and Intuition
 In everyday language, we sometimes use the expression "the probability of/that". For instance,
 
 > The <span style="color:darkorange">probability</span> of <span style="color:deepskyblue">rolling a six</span> is <span style="color:#D81159">$1/6$</span>.
@@ -31,9 +42,54 @@ I have emphasized in three different colors the key components of that sentence.
 1. What is a probability? (<span style="color:darkorange">orange</span> and <span style="color:#D81159">magenta</span>)
 2. What "things" can have an associated probability? (<span style="color:deepskyblue">blue</span>)
 
-All we need are **sets** and **functions**. A probability of something happening is a numeric value that tells us how likely that something is to happen (if this seems circular, that's good, because it is). Ideally, we would like to have a **maximum** probability value for things that are **certain** and a **minimum** probability value for things that are impossible. We could choose any two values, but historically, mathematicians have settled for $1$ and $0$ respectively.
+All we need are **sets** and **functions**. 
 
+## What this is all about
+Until we have built enough measure theory to talk about machine learning, I will often talk about this very simple scenario: A person rolling a six-sided die and observing which number comes out on top. This is a classic and straightforward scenario considered in probability theory, but will allow me to talk about various notions in measure theory without getting lost in the details. I will assume:
 
+- The die will *always* land with exactly one face up, meaning that it will never get stuck in any crack or height difference. Imagine the die is roll on an infinitely long and perfectly flat surface.
+- The person will *always* be able to observe which number comes out on top.
 
+Basically, I am making this super easy: the person rolls the die and observes either $1$, $2$, $3$, $4$, $5$, or $6$ written on top. This is known as an **experiment** in probability. I know, rolling a die is hardly an experiment, but the choice of this word is very fitting. It is called an experiment because, **before performing it, we do not know what the outcome of the experiment will be** (otherwise, if the die would always roll a $1$, we would not roll it and board games would be a lot less fun). 
 
+Rolling a die and observing the number on top is just a specific "experiment". The concept of experiment is central to probability theory because whenever we talk about probabilities, we have in mind some sort of experiment, which will result in exactly one outcome, and we are interested in figuring out what is the probability of **some** of these outcomes. I say some because at times we are not interested in the probability of a single outcome, but in the probability of some outcomes. For instance, we may be interested in the probability of <span style="color:deepskyblue">rolling an even number</span>. As we will see soon, we can call **event** the collection of all the "outcomes" that we are interested in.
+
+## Intuition behind probabilities
+A probability of something happening is a numeric value that tells us how likely that something is to happen (if this seems circular, that's good, because it is). Ideally, we would like to have a **maximum** probability value for things that are **certain** and a **minimum** probability value for things that are **impossible**. We could choose any two values, but historically, mathematicians have settled for $1$ and $0$ respectively. It makes sense to construct a **function** that takes a "thing" as input and outputs the probability of that thing happening, which is a value in $[0, 1]$.
+
+## Intuition behind events
+What "things" can we assign a probability to? Imagine that measure theory has not been developed yet and you find yourself wanting to write the statement above mathematically. What mathematical object can represent the words <span style="color:deepskyblue">rolling a six</span>? A first attempt could be to set it to the number six
+$$
+\underbrace{\textcolor{deepskyblue}{\text{rolling a six}}}_{\text{everyday language}} = \underbrace{6}_{\text{mathematics}}
+$$
+This approach doesn't seem to bad because it works seamlessly for other numbers, for instance "rolling a one" would simply be $1$ and so on. However, this approach breaks down when we consider more complicated expressions, for instance, it is not clear how one should "encode"
+
+> Rolling an even number (i.e. either 2, 4, or 6)
+
+using this convention. There are infinitely many natural numbers, so one could potentially encode this and many more complicated expressions for larger and larger numbers. For instance, <span style="color:deepskyblue">rolling an even number</span> could be represented as $7$, and <span style="color:deepskyblue">rolling an odd number</span> could be represented as $8$. There are various issues with this approach, but perhaps the most intuitive to understand is that this way we would have to manually encode each "thing" into a number. Thankfully, there is a better approach.
+
+After attempting to represents "things" with numbers, one may switch to sets. Consider again the task of rolling a six-sided die and observing which number comes on top. We assume that the die cannot get stuck anywhere and always lands on one face or the other, and that we can always observe the number on top. The possible outcomes of this task are that we observe $1$, $2$, $3$, $4$, $5$, or $6$. No other outcome is possible. The phrase <span style="color:deepskyblue">rolling a six</span> could then be encoded as a set
+$$
+\underbrace{\textcolor{deepskyblue}{\text{rolling a six}}}_{\text{everyday language}} = \underbrace{\{6\}}_{\text{mathematics}}.
+$$
+You may think that we have not improved the situation by much, since in this set there is only a single element (we say $\{6\}$ is a singleton set). However, this makes talking about more complex "things" a lot easier. For instance, <span style="color:deepskyblue">rolling an even number</span> can be represented by the set containing all the even numbers, and similarly for <span style="color:deepskyblue">rolling an odd number</span>
+$$
+\underbrace{\textcolor{deepskyblue}{\text{rolling an even number}}}_{\text{everyday language}} = \underbrace{\{2, 4, 6\}}_{\text{mathematics}}.
+$$
+Sometimes in board games you will need to roll a number above a certain value. This can also be represented easily, for instance 
+$$
+\underbrace{\textcolor{deepskyblue}{\text{rolling a number larger than three}}}_{\text{everyday language}} = \underbrace{\{4, 5, 6\}}_{\text{mathematics}}.
+$$
+It turns out, sets are **very flexible** and a great candidate to represent "things" that we want to assign a probability to. Speaking of, all the phrases I have colored in <span style="color:deepskyblue">blue</span> are called **events**. 
+
+> If we can talk about the probability of "something" happening, that something is known as an **event**.
+
+Something that may come as a shock, is that not every set is an event. There are sets for which we cannot talk about their "probability", we will talk more about that later. 
+
+## Intuition behind relationship of probabilities and events
+Okay, we can represent events as sets and it seems to be a sensible choice. Now, what does it mean that a certain event has a probability? We need to define the **probability function**. As we expect, this should take *sets* as inputs and return a value between $0$ and $1$, the higher the value, the more likely the event represented by the set, is to happen.
+
+<a name="sets-and-measures"><a/>
+
+# Sets and Measures
 
