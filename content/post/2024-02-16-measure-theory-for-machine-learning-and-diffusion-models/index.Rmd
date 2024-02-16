@@ -95,7 +95,7 @@ then an event is any subset $\mathsf{E}\subseteq \Omega$. It turns out that when
 $$
 \mathcal{F} = 2^\Omega.
 $$
-For example, $\{2, 4, }
+For example, $\{2, 4, 6\}\in\mathcal{F}$.
 
 <a name="sets-and-measures"><a/>
 
