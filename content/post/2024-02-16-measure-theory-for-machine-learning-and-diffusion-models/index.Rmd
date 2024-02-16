@@ -87,9 +87,18 @@ It turns out, sets are **very flexible** and a great candidate to represent "thi
 Something that may come as a shock, is that not every set is an event. There are sets for which we cannot talk about their "probability", we will talk more about that later. 
 
 ## Intuition behind relationship of probabilities and events
-Okay, we can represent events as sets and it seems to be a sensible choice. Now, what does it mean that a certain event has a probability? We need to define the **probability function**. As we expect, this should take *sets* as inputs and return a value between $0$ and $1$, the higher the value, the more likely the event represented by the set, is to happen.
+Okay, we can represent events as sets and it seems to be a sensible choice. Now, what does it mean that a certain event has a probability? We need to define the **probability function**. As we expect, this should take *sets* as inputs and return a value between $0$ and $1$, the higher the value, the more likely the event represented by the set, is to happen. Since the function takes sets as inputs, one may think that its domain is the *power set of all possible outcomes*. In other words, if we collect together all outcomes into a single set, which we call the **sample space**
+$$
+\Omega := \left\{1, 2, 3, 4, 5, 6\right\}
+$$
+then an event is any subset $\mathsf{E}\subseteq \Omega$. It turns out that when we have finitely many possible outcomes (such as in the die example) this is true, but when we have infinitely many, not all subsets are valid events. In either case, we call **event space** the set of all valid events. By definition, we know that this is a set whose elements are subsets of $\Omega$, but not necessarily *all* subsets. Typically, the event space is denoted by $\mathcal{F}$. In our six-sided die example, $\mathcal{F}$ contains all the subsets (since $\Omega$ has finitely many elements)
+$$
+\mathcal{F} = 2^\Omega.
+$$
+For example, $\{2, 4, }
 
 <a name="sets-and-measures"><a/>
 
 # Sets and Measures
+
 

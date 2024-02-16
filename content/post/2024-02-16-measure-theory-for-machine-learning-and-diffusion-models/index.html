@@ -87,7 +87,15 @@ It turns out, sets are <strong>very flexible</strong> and a great candidate to r
 </div>
 <div id="intuition-behind-relationship-of-probabilities-and-events" class="section level2">
 <h2>Intuition behind relationship of probabilities and events</h2>
-<p>Okay, we can represent events as sets and it seems to be a sensible choice. Now, what does it mean that a certain event has a probability? We need to define the <strong>probability function</strong>. As we expect, this should take <em>sets</em> as inputs and return a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, the higher the value, the more likely the event represented by the set, is to happen.</p>
+<p>Okay, we can represent events as sets and it seems to be a sensible choice. Now, what does it mean that a certain event has a probability? We need to define the <strong>probability function</strong>. As we expect, this should take <em>sets</em> as inputs and return a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, the higher the value, the more likely the event represented by the set, is to happen. Since the function takes sets as inputs, one may think that its domain is the <em>power set of all possible outcomes</em>. In other words, if we collect together all outcomes into a single set, which we call the <strong>sample space</strong>
+<span class="math display">\[
+\Omega := \left\{1, 2, 3, 4, 5, 6\right\}
+\]</span>
+then an event is any subset <span class="math inline">\(\mathsf{E}\subseteq \Omega\)</span>. It turns out that when we have finitely many possible outcomes (such as in the die example) this is true, but when we have infinitely many, not all subsets are valid events. In either case, we call <strong>event space</strong> the set of all valid events. By definition, we know that this is a set whose elements are subsets of <span class="math inline">\(\Omega\)</span>, but not necessarily <em>all</em> subsets. Typically, the event space is denoted by <span class="math inline">\(\mathcal{F}\)</span>. In our six-sided die example, <span class="math inline">\(\mathcal{F}\)</span> contains all the subsets (since <span class="math inline">\(\Omega\)</span> has finitely many elements)
+<span class="math display">\[
+\mathcal{F} = 2^\Omega.
+\]</span>
+For example, ${2, 4, }</p>
 <p><a name="sets-and-measures"><a/></p>
 </div>
 </div>
