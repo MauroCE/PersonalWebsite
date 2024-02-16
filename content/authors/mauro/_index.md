@@ -12,7 +12,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Computational Statistics and Data Science Ph.D.
+role: Statistical Machine Learning Ph.D.
 
 # Organizations/Affiliations
 organizations:
@@ -23,12 +23,15 @@ organizations:
 bio: My research interests include approximate manifold sampling and generative models.
 
 interests:
-- Machine Learning
+- Score-based sampling (HMC, MALA)
+- Generative Modelling (VAEs, NFs, DDGM)
+- Denoising Diffusion Models
 - Approximate Manifold Sampling
-- Generative Models
-- Distributed Variational Inference
-- MCMC and SMC
-- Genomics & Population Genetics
+- Scalable and Robust inference
+- Particle methods (SMC)
+- Simulator-Based inference
+- Variational Inference
+- General Machine Learning
 
 education:
   courses:
