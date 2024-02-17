@@ -102,3 +102,8 @@ For example, $\{2, 4, 6\}\in\mathcal{F}$.
 # Sets and Measures
 
 
+> **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $T$ be any set such that $X_t:\Omega\to\mathsf{X}$ is a random variable. The collection of random variables indexed by $T$, $\{X_t\,: t\in T\}$, is called a stochastic process.
+
+
+
+
