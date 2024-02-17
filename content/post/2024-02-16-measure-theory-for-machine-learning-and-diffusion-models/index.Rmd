@@ -205,6 +205,8 @@ $$
 $$
 then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have the same CDFs, then $\mathbb{P}^{\mathrm{X}_1}$ and $\mathbb{P}^{\mathrm{X}_2}$ agree on the $\pi$-system described above and thus they also agree on $\sigma(\mathsf{P})$. Therefore, as long as we choose $\mathcal{X} \equiv \sigma(\mathsf{P})$ then we are done.
 
+> **Cylinder sets**: 
+
 # Stochastic Processes
 
 > **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
