@@ -136,6 +136,9 @@ For example, <span class="math inline">\(\{2, 4, 6\}\in\mathcal{F}\)</span>.</p>
 <blockquote>
 <p><strong>Probability Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> be a measurable space with <span class="math inline">\(\mu\)</span> being a finite measure. If <span class="math inline">\(\mu(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mu\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\nu\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mu = \nu / \nu(\mathsf{X})\)</span>.</p>
 </blockquote>
+</div>
+<div id="random-variables-and-distributions" class="section level1">
+<h1>Random Variables and Distributions</h1>
 <blockquote>
 <p><strong>Random Variable</strong>: Let <span class="math inline">\((\Omega, \mathcal{F})\)</span> and <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be two measurable spaces. A function <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> is <span class="math inline">\(\mathcal{F}\)</span>-measurable if for every set <span class="math inline">\(\mathsf{B}\in\mathcal{X}\)</span> its preimage <span class="math inline">\(\mathrm{X}^{-1}(\mathsf{B})\)</span> is <span class="math inline">\(\mathcal{F}\)</span>-measurable
 <span class="math display">\[
@@ -144,12 +147,23 @@ For example, <span class="math inline">\(\{2, 4, 6\}\in\mathcal{F}\)</span>.</p>
 If <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> is a probability space, then the <span class="math inline">\(\mathcal{X}\)</span>-measurable function <span class="math inline">\(\mathrm{X}\)</span> is called a random variable.</p>
 </blockquote>
 <blockquote>
+<p><strong>Distribution</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a random variable. Then <span class="math inline">\(\mathsf{X}\)</span> induces a probability measure on <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span>, called the (probability) distribution of <span class="math inline">\(\mathrm{X}\)</span> and defined as the <em>pushforward</em> of <span class="math inline">\(\mathbb{P}\)</span> by <span class="math inline">\(\mathrm{X}\)</span>
+<span class="math display">\[
+\mathbb{P}^\mathrm{X} := \mathbb{P}\circ\mathrm{X}^{-1}.
+\]</span>
+For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</span> we write <span class="math inline">\(\mathbb{P}^{\mathrm{X}}(\mathsf{A}) = \mathbb{P}(\mathrm{X}^{-1}(\mathsf{A})) = \mathbb{P}(\mathrm{X}\in\mathsf{A})\)</span>.</p>
+</blockquote>
+</div>
+<div id="stochastic-processes" class="section level1">
+<h1>Stochastic Processes</h1>
+<blockquote>
 <p><strong>Filtration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be a totally-ordered set, which we call an index set. A filtration <span class="math inline">\(\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}\)</span> induced by <span class="math inline">\((\mathsf{T}, \leq)\)</span> is a collection of sub-sigma algebras of <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(\mathcal{F}_q\subseteq\mathcal{F}_s\)</span> when <span class="math inline">\(q\leq s\)</span>.</p>
 </blockquote>
 <blockquote>
 <p><strong>Stochastic Process</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be any totally-ordered set. The collection <span class="math inline">\(\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}\)</span> of random variables <span class="math inline">\(\mathrm{X}_t:\Omega\to\mathsf{X}\)</span> is called a stochastic process. If <span class="math inline">\(\mathsf{T}\)</span> is uncountable, then it is a continuous-time stochastic process, if <span class="math inline">\(\mathsf{T}\)</span> is countable then it is a discrete-time stochastic process.</p>
 </blockquote>
 <blockquote>
-
+<p><strong>Path</strong>: For <span class="math inline">\(\omega\in\Omega\)</span> <strong>fixed</strong> then <span class="math inline">\(t\mapsto \mathrm{X}_t(\omega)\)</span> is a function which we call the path of <span class="math inline">\(\mathrm{X}_t\)</span>.</p>
 </blockquote>
+<p>In fact, to each <span class="math inline">\(\omega\in\Omega\)</span> there corresponds a function <span class="math inline">\(t\mapsto \mathrm{X}_t(\omega)\)</span>, so that we can put <span class="math inline">\(\Omega\)</span> on a one-to-one correspondence with the space <span class="math inline">\(\mathsf{X}^\mathsf{T}\)</span> of functions from <span class="math inline">\(\mathsf{T}\)</span> to <span class="math inline">\(\mathsf{X}\)</span>.</p>
 </div>

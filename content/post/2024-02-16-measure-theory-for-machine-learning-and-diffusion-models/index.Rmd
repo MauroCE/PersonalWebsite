@@ -129,17 +129,30 @@ $$
 
 > **Probability Measure**: Let $(\mathsf{X}, \mathcal{X}, \mu)$ be a measurable space with $\mu$ being a finite measure. If $\mu(\mathsf{X}) = 1$ we say that $\mu$ is a probability measure. Notice that given any finite measure $\nu$, one can define a corresponding probability measure by normalization $\mu = \nu / \nu(\mathsf{X})$.
 
+# Random Variables and Distributions
+
 > **Random Variable**: Let $(\Omega, \mathcal{F})$ and $(\mathsf{X}, \mathcal{X})$ be two measurable spaces. A function $\mathrm{X}:\Omega\to\mathsf{X}$ is $\mathcal{F}$-measurable if for every set $\mathsf{B}\in\mathcal{X}$ its preimage $\mathrm{X}^{-1}(\mathsf{B})$ is $\mathcal{F}$-measurable
 $$
 \mathrm{X}^{-1}(\mathsf{B}) \in\mathcal{F} \qquad\forall\, \mathsf{B}\in\mathcal{X}.
 $$
 If $(\Omega, \mathcal{F}, \mathbb{P})$ is a probability space, then the $\mathcal{X}$-measurable function $\mathrm{X}$ is called a random variable.
 
+> **Distribution**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\mathrm{X}:\Omega\to\mathsf{X}$ be a random variable. Then $\mathsf{X}$ induces a probability measure on $(\mathsf{X}, \mathcal{X})$, called the (probability) distribution of $\mathrm{X}$ and defined as the *pushforward* of $\mathbb{P}$ by $\mathrm{X}$
+$$
+\mathbb{P}^\mathrm{X} := \mathbb{P}\circ\mathrm{X}^{-1}.
+$$
+For any measurable set $\mathsf{A}\in\mathcal{X}$ we write $\mathbb{P}^{\mathrm{X}}(\mathsf{A}) = \mathbb{P}(\mathrm{X}^{-1}(\mathsf{A})) = \mathbb{P}(\mathrm{X}\in\mathsf{A})$.
+
+
+# Stochastic Processes
+
 > **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
 
 > **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $(\mathsf{T}, \leq)$ be any totally-ordered set. The collection $\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}$ of random variables $\mathrm{X}_t:\Omega\to\mathsf{X}$ is called a stochastic process. If $\mathsf{T}$ is uncountable, then it is a continuous-time stochastic process, if $\mathsf{T}$ is countable then it is a discrete-time stochastic process.
 
->
+> **Path**: For $\omega\in\Omega$ **fixed** then $t\mapsto \mathrm{X}_t(\omega)$ is a function which we call the path of $\mathrm{X}_t$. 
+
+In fact, to each $\omega\in\Omega$ there corresponds a function $t\mapsto \mathrm{X}_t(\omega)$, so that we can put $\Omega$ on a one-to-one correspondence with the space $\mathsf{X}^\mathsf{T}$ of functions from $\mathsf{T}$ to $\mathsf{X}$.
 
 
 
