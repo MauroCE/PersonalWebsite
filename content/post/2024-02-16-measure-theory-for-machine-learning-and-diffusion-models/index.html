@@ -134,22 +134,6 @@ and it is the <em>smallest</em> sigma algebra containing <span class="math inlin
 <p><strong>Measurable Space</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathcal{X}\subset\mathcal{P}(\mathsf{X})\)</span> be a sigma algebra on it. The pair <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> is called a measurable space, and any set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</span> is called <span class="math inline">\(\mathcal{X}\)</span>-measurable.</p>
 </blockquote>
 </div>
-<div id="pi-systems-and-lambda-systems" class="section level1">
-<h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>
-<blockquote>
-<p><strong><span class="math inline">\(\pi\)</span>-system</strong>: Let <span class="math inline">\(\mathsf{P}\)</span> be a non-empty set that is closed under finite intersections, meaning that if <span class="math inline">\(\mathsf{A}, \mathsf{B}\in\mathsf{P}\)</span> then <span class="math inline">\(\mathsf{A}\cap\mathsf{B} \in \mathsf{P}\)</span> and by induction for any <span class="math inline">\(n\in\mathbb{N}\)</span> we have
-<span class="math display">\[
-\bigcap_{i=1}^n \mathsf{A}_i \in \mathsf{P} \qquad \text{ where } \mathsf{A}_i\in\mathsf{P} \,\,\forall\, i=1, \ldots, n
-\]</span></p>
-</blockquote>
-<blockquote>
-<p><strong><span class="math inline">\(\pi\)</span>-system over a set</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathsf{P}\subseteq \mathcal{P}(\mathsf{X})\)</span> be a <span class="math inline">\(\pi\)</span>-system whose elements are all subsets of <span class="math inline">\(\mathsf{X}\)</span>. Then <span class="math inline">\(\mathsf{P}\)</span> is a <span class="math inline">\(\pi\)</span>-system over <span class="math inline">\(\mathsf{X}\)</span>.</p>
-</blockquote>
-<p>Of course, since <span class="math inline">\(\mathsf{P}\)</span> is a collection of subsets of <span class="math inline">\(\mathsf{X}\)</span>, one can use it to generate a sigma algebra, <span class="math inline">\(\sigma(\mathsf{P})\)</span> over <span class="math inline">\(\mathsf{X}\)</span>.</p>
-<blockquote>
-<p>**<span class="math inline">\(\lambda\)</span>-system</p>
-</blockquote>
-</div>
 <div id="measures" class="section level1">
 <h1>Measures</h1>
 <blockquote>
@@ -192,6 +176,51 @@ For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</s
 \sigma(f) := \left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\},
 \]</span>
 which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mathsf{X}\)</span> such that <span class="math inline">\(f\)</span> is measurable relative to it, indeed by definition <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma(f)\)</span>-measurable. Therefor one could write <span class="math inline">\(\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)\)</span>.</p>
+</blockquote>
+</div>
+<div id="pi-systems-and-lambda-systems" class="section level1">
+<h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>
+<blockquote>
+<p><strong><span class="math inline">\(\pi\)</span>-system</strong>: Let <span class="math inline">\(\mathsf{P}\)</span> be a non-empty set that is closed under finite intersections, meaning that if <span class="math inline">\(\mathsf{A}, \mathsf{B}\in\mathsf{P}\)</span> then <span class="math inline">\(\mathsf{A}\cap\mathsf{B} \in \mathsf{P}\)</span> and by induction for any <span class="math inline">\(n\in\mathbb{N}\)</span> we have
+<span class="math display">\[
+\bigcap_{i=1}^n \mathsf{A}_i \in \mathsf{P} \qquad \text{ where } \mathsf{A}_i\in\mathsf{P} \,\,\forall\, i=1, \ldots, n
+\]</span></p>
+</blockquote>
+<blockquote>
+<p><strong><span class="math inline">\(\pi\)</span>-system over a set</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathsf{P}\subseteq \mathcal{P}(\mathsf{X})\)</span> be a <span class="math inline">\(\pi\)</span>-system whose elements are all subsets of <span class="math inline">\(\mathsf{X}\)</span>. Then <span class="math inline">\(\mathsf{P}\)</span> is a <span class="math inline">\(\pi\)</span>-system over <span class="math inline">\(\mathsf{X}\)</span>.</p>
+</blockquote>
+<p>Of course, since <span class="math inline">\(\mathsf{P}\)</span> is a collection of subsets of <span class="math inline">\(\mathsf{X}\)</span>, one can use it to generate a sigma algebra, <span class="math inline">\(\sigma(\mathsf{P})\)</span> over <span class="math inline">\(\mathsf{X}\)</span>.</p>
+<blockquote>
+<p><strong><span class="math inline">\(\lambda\)</span>-system over a set</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathcal{L}\subseteq \mathcal{P}(\mathsf{X})\)</span> be a collection of subsets of <span class="math inline">\(\mathsf{X}\)</span>. Then <span class="math inline">\(\mathsf{L}\)</span> is a <span class="math inline">\(\lambda\)</span>-system if<br />
+1. Contains <span class="math inline">\(\mathsf{X}\)</span>: <span class="math inline">\(\mathsf{X}\in\mathsf{L}\)</span><br />
+2. Closed under complementation: <span class="math inline">\(\mathsf{A}\in\mathsf{L} \implies \mathsf{X} \backslash \mathsf{A} \in \mathsf{L}\)</span>.<br />
+3. Closed under countable <em>disjoint</em> unions: If <span class="math inline">\(\mathsf{A}_i \in \mathsf{L}\)</span> for <span class="math inline">\(i\in\mathcal{I}\)</span> with <span class="math inline">\(|\mathcal{I}|\leq \aleph_0\)</span> and <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for <span class="math inline">\(i \neq j\)</span> then
+<span class="math display">\[
+\bigcup_{i\in\mathcal{I}} \mathsf{A}_i \in \mathsf{L}.
+\]</span></p>
+</blockquote>
+<p>Importantly, if <span class="math inline">\(\mathcal{S}\)</span> is both a <span class="math inline">\(\pi\)</span>-system and a <span class="math inline">\(\lambda\)</span>-system over the non-empty set <span class="math inline">\(\mathsf{X}\)</span>, then automatically <span class="math inline">\(\mathcal{S}\)</span> is a sigma-algebra over <span class="math inline">\(\mathsf{X}\)</span>. The next theorem, tells us that the sigma algebra generated by a <span class="math inline">\(\pi\)</span>-system that is strictly contained inside a <span class="math inline">\(\lambda\)</span>-system, is itself strictly contained into the very same <span class="math inline">\(\lambda\)</span>-system.</p>
+<blockquote>
+<p><strong><span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> theorem</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set, <span class="math inline">\(\mathsf{P}\subset\mathsf{L}\)</span> be a <span class="math inline">\(\pi\)</span>-system and a <span class="math inline">\(\lambda\)</span>-system over <span class="math inline">\(\mathsf{X}\)</span> respectively, then <span class="math inline">\(\sigma(\mathsf{P}) \subset \mathsf{L}\)</span>.</p>
+</blockquote>
+<p>The usefulness of this theorem is that if two probability measures agree on a <span class="math inline">\(\pi\)</span>-system, then these measures agree on the sigma algebra generated by it.</p>
+<blockquote>
+<p><strong>Uniqueness of measures on <span class="math inline">\(\pi\)</span>-system</strong>: Let <span class="math inline">\(\mathbb{P}\)</span> and <span class="math inline">\(\mathbb{Q}\)</span> be two probability measures on <span class="math inline">\((\mathsf{X}, \sigma(\mathsf{P}))\)</span>, where <span class="math inline">\(\mathsf{P}\)</span> is a <span class="math inline">\(\pi\)</span>-system over <span class="math inline">\(\mathsf{X}\)</span>. Then
+<span class="math display">\[
+\mathbb{P}(\mathsf{A}) = \mathbb{Q}(\mathsf{A}) \,\,\, \forall\,\mathsf{A}\in\mathsf{P} \implies \mathbb{P}(\mathsf{A}) = \mathbb{Q}(\mathsf{A}) \,\,\,\forall\, \mathsf{A}\in\sigma(\mathsf{P}).
+\]</span></p>
+</blockquote>
+<p>An important application of this is used to motivate the fact that two random variables are <em>equal in distribution</em> whenever they have the same cumulative distribution function. We express this below</p>
+<blockquote>
+<p><strong>Same CDF implies same distribution</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space with <span class="math inline">\((\mathsf{X}, \leq)\)</span> being totally ordered, and <span class="math inline">\(\mathrm{X}_1, \mathrm{X}_2:\Omega\to \mathsf{X}\)</span> be two random variables with distributions <span class="math inline">\(\mathbb{P}^{\mathrm{X}_1}\)</span> and <span class="math inline">\(\mathbb{P}^{\mathrm{X}_2}\)</span> respectively. Then the collection of sets
+<span class="math display">\[
+\mathsf{P} := \left\{ \{y\in\mathsf{X} \, : \, y\leq x\} \,:\, x\in\mathsf{X}\right\}
+\]</span>
+forms a <span class="math inline">\(\pi\)</span>-system, and if we define the Cumulative Distribution Function (CDF) as
+<span class="math display">\[
+\mathrm{F}_{\mathrm{X}_i}(x) := \mathbb{P}_{\mathrm{X}_i}\left(\{y\in\mathsf{X}\,:\,y\leq x\}\right) = \mathbb{P}\left(\left\{\omega\in\Omega\,:\, \mathrm{X}_i(\omega) \leq x\right\}\right) =: \mathbb{P}(\mathrm{X}_i \leq x) \qquad \forall\, x\in\mathsf{X}, \,\, i=1,2,
+\]</span>
+then by the <span class="math inline">\(\pi\)</span>-<span class="math inline">\(\lambda\)</span> theorem, if <span class="math inline">\(\mathrm{X}_1\)</span> and <span class="math inline">\(\mathrm{X}_2\)</span> have the same CDFs, then <span class="math inline">\(\mathbb{P}^{\mathrm{X}_1}\)</span> and <span class="math inline">\(\mathbb{P}^{\mathrm{X}_2}\)</span> agree on the <span class="math inline">\(\pi\)</span>-system described above and thus they also agree on <span class="math inline">\(\sigma(\mathsf{P})\)</span>. Therefore, as long as we choose <span class="math inline">\(\mathcal{X} \equiv \sigma(\mathsf{P})\)</span> then we are done.</p>
 </blockquote>
 </div>
 <div id="stochastic-processes" class="section level1">
