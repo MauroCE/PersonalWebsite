@@ -102,6 +102,54 @@ For example, <span class="math inline">\(\{2, 4, 6\}\in\mathcal{F}\)</span>.</p>
 <div id="sets-and-measures" class="section level1">
 <h1>Sets and Measures</h1>
 <blockquote>
-<p><strong>Stochastic Process</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space, and <span class="math inline">\(T\)</span> be any set such that <span class="math inline">\(X_t:\Omega\to\mathsf{X}\)</span> is a random variable. The collection of random variables indexed by <span class="math inline">\(T\)</span>, <span class="math inline">\(\{X_t\,: t\in T\}\)</span>, is called a stochastic process.</p>
+<p><strong>Sigma Algebra</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set. A set <span class="math inline">\(\mathcal{X}\subseteq \mathcal{P}(\mathsf{X})\)</span> is a sigma algebra over <span class="math inline">\(\mathsf{X}\)</span> if it satisfies:<br />
+1. <span class="math inline">\(\mathsf{X}\in\mathcal{X}\)</span><br />
+2. Closure under the complementation operation
+<span class="math display">\[
+\mathsf{A}\in\mathcal{X} \implies \mathsf{X}\backslash\mathsf{A} \in\mathcal{X}
+\]</span>
+3. Closure under countable unions
+<span class="math display">\[
+\mathsf{A}_i \in \mathcal{X} \,\,\,\,\,\forall\, i\in\mathcal{I}, \text{ with }|\mathcal{I}|\leq \aleph_0 \implies \bigcup_{i\in\mathcal{I}} \mathsf{A}_i \in\mathcal{X}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p><strong>Sub-Sigma Algebras</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a set and <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{X}&#39;\)</span> be two sigma algebras on it. If <span class="math inline">\(\mathcal{X}&#39;\subseteq \mathcal{X}\)</span> then we call <span class="math inline">\(\mathcal{X}&#39;\)</span> a sub-sigma algebra of <span class="math inline">\(\mathcal{X}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Measurable Space</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathcal{X}\subset\mathcal{P}(\mathsf{X})\)</span> be a sigma algebra on it. The pair <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> is called a measurable space, and any set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</span> is called <span class="math inline">\(\mathcal{X}\)</span>-measurable.</p>
+</blockquote>
+<blockquote>
+<p><strong>Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space. A function <span class="math inline">\(\mu:\mathcal{X}\to [0, +\infty]\)</span> is called a measure if it satisfies<br />
+1. <span class="math inline">\(\mu(\emptyset) = 0\)</span><br />
+2. Countable additivity: If <span class="math inline">\(\{\mathsf{A}_i\,:\,i\in\mathcal{I}\}\)</span> with <span class="math inline">\(|\mathcal{I}|\leq \aleph_0\)</span> is a countable collection of <em>pairwise disjoint</em> sets then
+<span class="math display">\[
+\mu\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mu(\mathsf{A}_i)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p><strong>Measure Space</strong>: A triplet <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> is called a measure space if <span class="math inline">\(\mu\)</span> is a measure on the measurable space <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Finite Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> be a measure space. We say <span class="math inline">\(\mu\)</span> is <em>finite</em> if <span class="math inline">\(\mu(\mathsf{X}) &lt; \infty\)</span>. We say <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite if there exists a countable partition <span class="math inline">\(\{\mathsf{X}_n\,:\, n\in\mathbb{N}\}\)</span> of <span class="math inline">\(\mathsf{X}\)</span> (meaning they are mutually disjoint and their union covers all of <span class="math inline">\(\mathsf{X}\)</span>) such that <span class="math inline">\(\mu(\mathsf{X}_n) &lt; \infty\)</span> for each <span class="math inline">\(n\in\mathsf{N}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Probability Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> be a measurable space with <span class="math inline">\(\mu\)</span> being a finite measure. If <span class="math inline">\(\mu(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mu\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\nu\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mu = \nu / \nu(\mathsf{X})\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Random Variable</strong>: Let <span class="math inline">\((\Omega, \mathcal{F})\)</span> and <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be two measurable spaces. A function <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> is <span class="math inline">\(\mathcal{F}\)</span>-measurable if for every set <span class="math inline">\(\mathsf{B}\in\mathcal{X}\)</span> its preimage <span class="math inline">\(\mathrm{X}^{-1}(\mathsf{B})\)</span> is <span class="math inline">\(\mathcal{F}\)</span>-measurable
+<span class="math display">\[
+\mathrm{X}^{-1}(\mathsf{B}) \in\mathcal{F} \qquad\forall\, \mathsf{B}\in\mathcal{X}.
+\]</span>
+If <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> is a probability space, then the <span class="math inline">\(\mathcal{X}\)</span>-measurable function <span class="math inline">\(\mathrm{X}\)</span> is called a random variable.</p>
+</blockquote>
+<blockquote>
+<p><strong>Filtration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be a totally-ordered set, which we call an index set. A filtration <span class="math inline">\(\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}\)</span> induced by <span class="math inline">\((\mathsf{T}, \leq)\)</span> is a collection of sub-sigma algebras of <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(\mathcal{F}_q\subseteq\mathcal{F}_s\)</span> when <span class="math inline">\(q\leq s\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Stochastic Process</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be any totally-ordered set. The collection <span class="math inline">\(\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}\)</span> of random variables <span class="math inline">\(\mathrm{X}_t:\Omega\to\mathsf{X}\)</span> is called a stochastic process. If <span class="math inline">\(\mathsf{T}\)</span> is uncountable, then it is a continuous-time stochastic process, if <span class="math inline">\(\mathsf{T}\)</span> is countable then it is a discrete-time stochastic process.</p>
+</blockquote>
+<blockquote>
+
 </blockquote>
 </div>

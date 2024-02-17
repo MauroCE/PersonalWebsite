@@ -101,8 +101,47 @@ For example, $\{2, 4, 6\}\in\mathcal{F}$.
 
 # Sets and Measures
 
+> **Sigma Algebra**: Let $\mathsf{X}$ be a non-empty set. A set $\mathcal{X}\subseteq \mathcal{P}(\mathsf{X})$ is a sigma algebra over $\mathsf{X}$ if it satisfies:\
+1. $\mathsf{X}\in\mathcal{X}$ \
+2. Closure under the complementation operation
+$$
+\mathsf{A}\in\mathcal{X} \implies \mathsf{X}\backslash\mathsf{A} \in\mathcal{X}
+$$
+3. Closure under countable unions
+$$
+\mathsf{A}_i \in \mathcal{X} \,\,\,\,\,\forall\, i\in\mathcal{I}, \text{ with }|\mathcal{I}|\leq \aleph_0 \implies \bigcup_{i\in\mathcal{I}} \mathsf{A}_i \in\mathcal{X}
+$$
 
-> **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $T$ be any set such that $X_t:\Omega\to\mathsf{X}$ is a random variable. The collection of random variables indexed by $T$, $\{X_t\,: t\in T\}$, is called a stochastic process.
+> **Sub-Sigma Algebras**: Let $\mathsf{X}$ be a set and $\mathcal{X}$ and $\mathcal{X}'$ be two sigma algebras on it. If $\mathcal{X}'\subseteq \mathcal{X}$ then we call $\mathcal{X}'$ a sub-sigma algebra of $\mathcal{X}$.
+
+>**Measurable Space**: Let $\mathsf{X}$ be a non-empty set and $\mathcal{X}\subset\mathcal{P}(\mathsf{X})$ be a sigma algebra on it. The pair $(\mathsf{X}, \mathcal{X})$ is called a measurable space, and any set $\mathsf{A}\in\mathcal{X}$ is called $\mathcal{X}$-measurable.
+
+> **Measure**: Let $(\mathsf{X}, \mathcal{X})$ be a measurable space. A function $\mu:\mathcal{X}\to [0, +\infty]$ is called a measure if it satisfies \
+1. $\mu(\emptyset) = 0$ \
+2. Countable additivity: If $\{\mathsf{A}_i\,:\,i\in\mathcal{I}\}$ with $|\mathcal{I}|\leq \aleph_0$ is a countable collection of *pairwise disjoint* sets then
+$$
+\mu\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mu(\mathsf{A}_i)
+$$
+
+> **Measure Space**: A triplet $(\mathsf{X}, \mathcal{X}, \mu)$ is called a measure space if $\mu$ is a measure on the measurable space $(\mathsf{X}, \mathcal{X})$.
+
+> **Finite Measure**: Let $(\mathsf{X}, \mathcal{X}, \mu)$ be a measure space. We say $\mu$ is *finite* if $\mu(\mathsf{X}) < \infty$. We say $\mu$ is $\sigma$-finite if there exists a countable partition $\{\mathsf{X}_n\,:\, n\in\mathbb{N}\}$ of $\mathsf{X}$ (meaning they are mutually disjoint and their union covers all of $\mathsf{X}$) such that $\mu(\mathsf{X}_n) < \infty$ for each $n\in\mathsf{N}$. 
+
+> **Probability Measure**: Let $(\mathsf{X}, \mathcal{X}, \mu)$ be a measurable space with $\mu$ being a finite measure. If $\mu(\mathsf{X}) = 1$ we say that $\mu$ is a probability measure. Notice that given any finite measure $\nu$, one can define a corresponding probability measure by normalization $\mu = \nu / \nu(\mathsf{X})$.
+
+> **Random Variable**: Let $(\Omega, \mathcal{F})$ and $(\mathsf{X}, \mathcal{X})$ be two measurable spaces. A function $\mathrm{X}:\Omega\to\mathsf{X}$ is $\mathcal{F}$-measurable if for every set $\mathsf{B}\in\mathcal{X}$ its preimage $\mathrm{X}^{-1}(\mathsf{B})$ is $\mathcal{F}$-measurable
+$$
+\mathrm{X}^{-1}(\mathsf{B}) \in\mathcal{F} \qquad\forall\, \mathsf{B}\in\mathcal{X}.
+$$
+If $(\Omega, \mathcal{F}, \mathbb{P})$ is a probability space, then the $\mathcal{X}$-measurable function $\mathrm{X}$ is called a random variable.
+
+> **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
+
+> **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $(\mathsf{T}, \leq)$ be any totally-ordered set. The collection $\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}$ of random variables $\mathrm{X}_t:\Omega\to\mathsf{X}$ is called a stochastic process. If $\mathsf{T}$ is uncountable, then it is a continuous-time stochastic process, if $\mathsf{T}$ is countable then it is a discrete-time stochastic process.
+
+>
+
+
 
 
 
