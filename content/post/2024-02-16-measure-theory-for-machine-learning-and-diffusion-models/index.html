@@ -243,7 +243,8 @@ L^p(\Omega, \mathcal{F}, \mathbb{M}) := \left\{ f:\Omega\to\mathsf{X} \,\,\left|
 and we <strong>define</strong> the <span class="math inline">\(L^p\)</span>-norm as
 <span class="math display">\[
 \|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
-\]</span></p>
+\]</span>
+<span class="math inline">\(L^p\)</span> spaces are Banach spaces themselves.</p>
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">
 <h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>
@@ -295,6 +296,7 @@ then by the <span class="math inline">\(\pi\)</span>-<span class="math inline">\
 </div>
 <div id="stochastic-processes" class="section level1">
 <h1>Stochastic Processes</h1>
+<p>A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the <span class="math inline">\(t^{\text{th}}\)</span> sigma algebra tells you the information available at time <span class="math inline">\(t\)</span> (we call it time because usually the index is time).</p>
 <blockquote>
 <p><strong>Filtration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be a totally-ordered set, which we call an index set. A filtration <span class="math inline">\(\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}\)</span> induced by <span class="math inline">\((\mathsf{T}, \leq)\)</span> is a collection of sub-sigma algebras of <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(\mathcal{F}_q\subseteq\mathcal{F}_s\)</span> when <span class="math inline">\(q\leq s\)</span>.</p>
 </blockquote>
@@ -305,4 +307,12 @@ then by the <span class="math inline">\(\pi\)</span>-<span class="math inline">\
 <p><strong>Path</strong>: For <span class="math inline">\(\omega\in\Omega\)</span> <strong>fixed</strong> then <span class="math inline">\(t\mapsto \mathrm{X}_t(\omega)\)</span> is a function which we call the path of <span class="math inline">\(\mathrm{X}_t\)</span>.</p>
 </blockquote>
 <p>In fact, to each <span class="math inline">\(\omega\in\Omega\)</span> there corresponds a function <span class="math inline">\(t\mapsto \mathrm{X}_t(\omega)\)</span>, so that we can put <span class="math inline">\(\Omega\)</span> on a one-to-one correspondence with the space <span class="math inline">\(\mathsf{X}^\mathsf{T}\)</span> of functions from <span class="math inline">\(\mathsf{T}\)</span> to <span class="math inline">\(\mathsf{X}\)</span>.</p>
+</div>
+<div id="martingales" class="section level1">
+<h1>Martingales</h1>
+<blockquote>
+<p><strong>Martingale</strong>: Let <span class="math inline">\((\mathsf{T}, \leq)\)</span> be a totally ordered set, <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P}, \{\mathcal{F}_t\}_{t\in\mathsf{T}})\)</span> be a filtered complete probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space and <span class="math inline">\(\{\mathrm{X}_t\}_{t\in\mathsf{T}}\)</span> be a stochastic process adapted to <span class="math inline">\(\{\mathcal{F}_t\}_{t\in\mathsf{T}}\)</span>. We say that a stochastic process is a martingale with respect to <span class="math inline">\(\{\mathcal{F}_t\}_{t\in\mathsf{T}}\)</span> and <span class="math inline">\(\mathbb{P}\)</span> if<br />
+1. <span class="math inline">\(\mathbb{E}[|\mathrm{X}_t|] &lt; \infty\)</span> for every <span class="math inline">\(t\)</span> (meaning <span class="math inline">\(\mathrm{X}_t\)</span> is integrable)<br />
+2. <span class="math inline">\(\mathrm{X}_s = \mathbb{E}[\mathrm{X}_t \mid \mathcal{F}_s]\)</span> for <span class="math inline">\(s &lt; t\)</span> (meaning our best guess for <span class="math inline">\(\mathrm{X}_t\)</span> given information up to time <span class="math inline">\(s\)</span> is <span class="math inline">\(\mathrm{X}_s\)</span>)</p>
+</blockquote>
 </div>

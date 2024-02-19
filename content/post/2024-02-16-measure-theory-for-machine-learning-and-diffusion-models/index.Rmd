@@ -241,6 +241,7 @@ and we **define** the $L^p$-norm as
 $$
 \|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
 $$
+$L^p$ spaces are Banach spaces themselves.
 
 
 # $\pi$-Systems and $\lambda$-Systems
@@ -288,6 +289,7 @@ then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have t
 > **Cylinder sets**: 
 
 # Stochastic Processes
+A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time).
 
 > **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
 
@@ -298,7 +300,11 @@ then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have t
 In fact, to each $\omega\in\Omega$ there corresponds a function $t\mapsto \mathrm{X}_t(\omega)$, so that we can put $\Omega$ on a one-to-one correspondence with the space $\mathsf{X}^\mathsf{T}$ of functions from $\mathsf{T}$ to $\mathsf{X}$.
 
 
+# Martingales
 
+> **Martingale**: Let $(\mathsf{T}, \leq)$ be a totally ordered set, $(\Omega, \mathcal{F}, \mathbb{P}, \{\mathcal{F}_t\}_{t\in\mathsf{T}})$ be a filtered complete probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\{\mathrm{X}_t\}_{t\in\mathsf{T}}$ be a stochastic process adapted to $\{\mathcal{F}_t\}_{t\in\mathsf{T}}$. We say that a stochastic process is a martingale with respect to $\{\mathcal{F}_t\}_{t\in\mathsf{T}}$ and $\mathbb{P}$ if \
+1. $\mathbb{E}[|\mathrm{X}_t|] < \infty$ for every $t$ (meaning $\mathrm{X}_t$ is integrable) \
+2. $\mathrm{X}_s = \mathbb{E}[\mathrm{X}_t \mid \mathcal{F}_s]$ for $s < t$ (meaning our best guess for $\mathrm{X}_t$ given information up to time $s$ is $\mathrm{X}_s$)
 
 
 
