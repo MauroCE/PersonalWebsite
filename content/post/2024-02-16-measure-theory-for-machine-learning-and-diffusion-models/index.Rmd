@@ -263,7 +263,6 @@ $$
 
 Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure $\mathbb{M}$ is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in $\mathbb{M}$ being some probability measure $\mathbb{P}$ or some other sigma-finite measure such as the Lebesgue
 
-
 # $L^p$ Spaces
 It is very likely that you will always work on $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, and the abstraction of this post is not necessary. However, it is *sometimes* essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with $L^p$ spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don't worry.
 
@@ -327,6 +326,13 @@ $$
 then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have the same CDFs, then $\mathbb{P}^{\mathrm{X}_1}$ and $\mathbb{P}^{\mathrm{X}_2}$ agree on the $\pi$-system described above and thus they also agree on $\sigma(\mathsf{P})$. Therefore, as long as we choose $\mathcal{X} \equiv \sigma(\mathsf{P})$ then we are done.
 
 > **Cylinder sets**: 
+
+# Transition Kernels
+
+> **Transition Probability Kernel**: Let $(\mathsf{X}, \mathcal{X})$ and $(\mathsf{Y}, \mathcal{Y})$ be two measurable space. A function $K:\mathsf{X}\times\mathcal{Y}\to [0, 1]$ is called a transition probability kernel from $(\mathsf{X}, \mathcal{X})$ to $(\mathsf{Y}, \mathcal{Y})$ if \
+1. the function $K(\cdot, \mathsf{A})$ is $\mathcal{X}$-measurable for every $\mathsf{A}\in\mathcal{Y}$ \
+2. the function $K(x, \cdot)$ is a probability measure on $(\mathsf{Y}, \mathcal{Y})$ for every $x\in\mathsf{X}$
+
 
 # Stochastic Processes
 A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time).
