@@ -101,57 +101,66 @@ For example, <span class="math inline">\(\{2, 4, 6\}\in\mathcal{F}\)</span>.</p>
 </div>
 <div id="sigma-algebras" class="section level1">
 <h1>Sigma Algebras</h1>
+<p>The sigma algebra is the set of all events, i.e. all sets to which we can (and wish) to assign a measure to. One interpretation of a sigma algebra that is helpful for stochastic processes is that a sigma algebra represents information.</p>
 <blockquote>
-<p><strong>Sigma Algebra</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set. A set <span class="math inline">\(\mathcal{X}\subseteq \mathcal{P}(\mathsf{X})\)</span> is a sigma algebra over <span class="math inline">\(\mathsf{X}\)</span> if it satisfies:<br />
-1. <span class="math inline">\(\mathsf{X}\in\mathcal{X}\)</span><br />
+<p><strong>Sigma Algebra</strong>: Let <span class="math inline">\(\Omega\)</span> be a non-empty set. A set <span class="math inline">\(\mathcal{F}\subseteq \mathcal{P}(\Omega)\)</span> is a sigma algebra over <span class="math inline">\(\Omega\)</span> if it satisfies:<br />
+1. <span class="math inline">\(\Omega\in\mathcal{F}\)</span><br />
 2. Closure under the complementation operation
 <span class="math display">\[
-\mathsf{A}\in\mathcal{X} \implies \mathsf{X}\backslash\mathsf{A} \in\mathcal{X}
+\mathsf{A}\in\mathcal{F} \implies \Omega\backslash\mathsf{A} \in\mathcal{F}
 \]</span>
 3. Closure under countable unions
 <span class="math display">\[
-\mathsf{A}_i \in \mathcal{X} \,\,\,\,\,\forall\, i\in\mathcal{I}, \text{ with }|\mathcal{I}|\leq \aleph_0 \implies \bigcup_{i\in\mathcal{I}} \mathsf{A}_i \in\mathcal{X}
+\mathsf{A}_i \in \mathcal{F} \,\,\,\,\,\forall\, i\in\mathcal{I}, \text{ with }|\mathcal{I}|\leq \aleph_0 \implies \bigcup_{i\in\mathcal{I}} \mathsf{A}_i \in\mathcal{F}
 \]</span></p>
 </blockquote>
+<p>Given a non-empty set <span class="math inline">\(\Omega\)</span>, we can build several different sigma algebras on it. Some sigma algebras may be contained within larger sigma algebras. In that case, we refer to the smaller sigma algebra as a sub-sigma algebra. In the interpretation of stochastic processes, a sub-sigma algebra represents less information because it contains fewer events. Sub-sigma algebras are generally used for conditioning: they typically represent partial or conditional information. A common nomenclature is to call smaller sigma algebras <em>coarser</em> and larger sigma algebras <em>finer</em>.</p>
 <blockquote>
-<p><strong>Sub-Sigma Algebras</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a set and <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{X}&#39;\)</span> be two sigma algebras on it. If <span class="math inline">\(\mathcal{X}&#39;\subseteq \mathcal{X}\)</span> then we call <span class="math inline">\(\mathcal{X}&#39;\)</span> a sub-sigma algebra of <span class="math inline">\(\mathcal{X}\)</span>.</p>
+<p><strong>Sub-Sigma Algebras</strong>: Let <span class="math inline">\(\Omega\)</span> be a set and <span class="math inline">\(\mathcal{F}\)</span> and <span class="math inline">\(\mathcal{G}\)</span> be two sigma algebras on it. If <span class="math inline">\(\mathcal{G}\subseteq \mathcal{F}\)</span> then we call <span class="math inline">\(\mathcal{G}\)</span> a sub-sigma algebra of <span class="math inline">\(\mathcal{F}\)</span>.</p>
 </blockquote>
+<p>The intersection of sigma algebras, is itself a sigma algebra. This is true both for a countable and uncountable number of sigma algebras. The intuition is that the intersection of sigma algebras represents the common or mutual information.</p>
 <blockquote>
-<p><strong>Intersection of Sigma Algebras</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set, <span class="math inline">\(\mathcal{I}\)</span> be <em>any</em> set and <span class="math inline">\(\{\mathcal{X}_i\,:\, i\in\mathcal{I}\}\)</span> be a collection of sigma algebras on <span class="math inline">\(\mathsf{X}\)</span>. The intersection of these sigma algebras
+<p><strong>Intersection of Sigma Algebras</strong>: Let <span class="math inline">\(\Omega\)</span> be a non-empty set, <span class="math inline">\(\mathcal{I}\)</span> be <em>any</em> set and <span class="math inline">\(\{\mathcal{F}_i\,:\, i\in\mathcal{I}\}\)</span> be a collection of sigma algebras on <span class="math inline">\(\Omega\)</span>. The intersection of these sigma algebras
 <span class="math display">\[
-\bigcap_{i\in\mathcal{I}} \mathcal{X}_i
+\bigcap_{i\in\mathcal{I}} \mathcal{F}_i
 \]</span>
-is a sigma algebra over <span class="math inline">\(\mathsf{X}\)</span>.</p>
+is a sigma algebra over <span class="math inline">\(\Omega\)</span>.</p>
 </blockquote>
+<p>Given a bunch of subsets of <span class="math inline">\(\Omega\)</span>, it is typically possible to construct several sigma algebras containing all of these subsets. Out of all of these sigma algebras, there is one that is the smallest (or coarser). This is found as the intersection of all possible sigma algebras containing this collection of subsets. The way I make sense of this is that given a bunch of <em>potential</em> events, it is possible to find the smallest sigma algebra such that they are <em>actually</em> valid events.</p>
 <blockquote>
-<p><strong>Sigma algebra generated by a collection of sets</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathcal{C}\)</span> be a collection of subsets of <span class="math inline">\(\mathsf{X}\)</span>. Then the collection <span class="math inline">\(\mathcal{C}\)</span> induces a sigma algebra on <span class="math inline">\(\mathsf{X}\)</span>, which we call the sigma algebra generated by <span class="math inline">\(\mathcal{C}\)</span>, and denote <span class="math inline">\(\sigma(\mathcal{C})\)</span>. This sigma algebra is the intersection of all sigma algebras containing <span class="math inline">\(\mathcal{C}\)</span>
+<p><strong>Sigma algebra generated by a collection of sets</strong>: Let <span class="math inline">\(\Omega\)</span> be a non-empty set and <span class="math inline">\(\mathcal{C}\)</span> be a collection of subsets of <span class="math inline">\(\Omega\)</span>. Then the collection <span class="math inline">\(\mathcal{C}\)</span> induces a sigma algebra on <span class="math inline">\(\Omega\)</span>, which we call the sigma algebra generated by <span class="math inline">\(\mathcal{C}\)</span>, and denote <span class="math inline">\(\sigma(\mathcal{C})\)</span>. This sigma algebra is the intersection of all sigma algebras containing <span class="math inline">\(\mathcal{C}\)</span>
 <span class="math display">\[
-\sigma(\mathcal{C}) = \bigcap_{\substack{\mathcal{C}\in\mathcal{X} \\\text{sigma algebra}}} \mathcal{X}
+\sigma(\mathcal{C}) = \bigcap_{\substack{\mathcal{C}\in\mathcal{F} \\\text{sigma algebra}}} \mathcal{F}
 \]</span>
 and it is the <em>smallest</em> sigma algebra containing <span class="math inline">\(\mathcal{C}\)</span>.</p>
 </blockquote>
+<p>Since we almost always work with a set <span class="math inline">\(\Omega\)</span> and a sigma algebra on it, for convenience we give a name to the pair <span class="math inline">\((\Omega, \mathcal{F})\)</span>.</p>
 <blockquote>
-<p><strong>Measurable Space</strong>: Let <span class="math inline">\(\mathsf{X}\)</span> be a non-empty set and <span class="math inline">\(\mathcal{X}\subset\mathcal{P}(\mathsf{X})\)</span> be a sigma algebra on it. The pair <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> is called a measurable space, and any set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</span> is called <span class="math inline">\(\mathcal{X}\)</span>-measurable.</p>
+<p><strong>Measurable Space</strong>: Let <span class="math inline">\(\Omega\)</span> be a non-empty set and <span class="math inline">\(\mathcal{F}\subset\mathcal{P}(\Omega)\)</span> be a sigma algebra on it. The pair <span class="math inline">\((\Omega, \mathcal{F})\)</span> is called a measurable space, and any set <span class="math inline">\(\mathsf{A}\in\mathcal{F}\)</span> is called <span class="math inline">\(\mathcal{F}\)</span>-measurable.</p>
 </blockquote>
 </div>
 <div id="measures" class="section level1">
 <h1>Measures</h1>
+<p>Measures themselves have nothing to do, per se, with statistics. They are just functions that measure the size (or volume) of something. That something is a set in a sigma algebra. The size of something must be non-negative and if we measure the size of separate things, we should be able to sum them up with no problem. For a bit, I will call a measure <span class="math inline">\(\mathbb{M}\)</span>.</p>
 <blockquote>
-<p><strong>Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space. A function <span class="math inline">\(\mu:\mathcal{X}\to [0, +\infty]\)</span> is called a measure if it satisfies<br />
-1. <span class="math inline">\(\mu(\emptyset) = 0\)</span><br />
+<p><strong>Measure</strong>: Let <span class="math inline">\((\Omega, \mathcal{F})\)</span> be a measurable space. A function <span class="math inline">\(\mathbb{M}:\mathcal{F}\to [0, +\infty]\)</span> is called a measure if it satisfies<br />
+1. <span class="math inline">\(\mathbb{M}(\emptyset) = 0\)</span><br />
 2. Countable additivity: If <span class="math inline">\(\{\mathsf{A}_i\,:\,i\in\mathcal{I}\}\)</span> with <span class="math inline">\(|\mathcal{I}|\leq \aleph_0\)</span> is a countable collection of <em>pairwise disjoint</em> sets then
 <span class="math display">\[
-\mu\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mu(\mathsf{A}_i)
+\mathbb{M}\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mathbb{M}(\mathsf{A}_i)
 \]</span></p>
 </blockquote>
+<p>Again, as mathematicians we like to give names to things. Just as we typically work with measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span>, we typically assume that on this measurable space there is a measure <span class="math inline">\(\mathbb{M}\)</span>, and hence for brevity call <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> a measurable space. Basically, it’s just a space where I have a systematic and coherent way of assigning a “size” value to subsets.</p>
 <blockquote>
-<p><strong>Measure Space</strong>: A triplet <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> is called a measure space if <span class="math inline">\(\mu\)</span> is a measure on the measurable space <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span>.</p>
+<p><strong>Measure Space</strong>: A triplet <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> is called a measure space if <span class="math inline">\(\mathbb{M}\)</span> is a measure on the measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span>.</p>
 </blockquote>
+<p>So far, we have talked about measures as assigning “size” to sets. The key intuition that makes measure theory such a wonderful tool for probability theory, is that a probability is fundamentally the size of something <em>relative to the whole</em>. What does it mean? It means that the whole space <span class="math inline">\(\Omega\)</span> has a finite size, and so a probability measure assigns to any set <span class="math inline">\(\mathsf{A}\in\mathcal{F}\)</span> its relative size to the whole <span class="math inline">\(\Omega\)</span>.</p>
 <blockquote>
-<p><strong>Finite Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> be a measure space. We say <span class="math inline">\(\mu\)</span> is <em>finite</em> if <span class="math inline">\(\mu(\mathsf{X}) &lt; \infty\)</span>. We say <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-finite if there exists a countable partition <span class="math inline">\(\{\mathsf{X}_n\,:\, n\in\mathbb{N}\}\)</span> of <span class="math inline">\(\mathsf{X}\)</span> (meaning they are mutually disjoint and their union covers all of <span class="math inline">\(\mathsf{X}\)</span>) such that <span class="math inline">\(\mu(\mathsf{X}_n) &lt; \infty\)</span> for each <span class="math inline">\(n\in\mathsf{N}\)</span>.</p>
+<p><strong>Finite Measure</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space. We say <span class="math inline">\(\mathbb{M}\)</span> is <em>finite</em> if <span class="math inline">\(\mathbb{M}(\Omega) &lt; \infty\)</span>. We say <span class="math inline">\(\mathbb{M}\)</span> is <span class="math inline">\(\sigma\)</span>-finite if there exists a countable partition <span class="math inline">\(\{\Omega_n\,:\, n\in\mathbb{N}\}\)</span> of <span class="math inline">\(\Omega\)</span> (meaning they are mutually disjoint and their union covers all of <span class="math inline">\(\Omega\)</span>) such that <span class="math inline">\(\mathbb{M}(\Omega_n) &lt; \infty\)</span> for each <span class="math inline">\(n\in\mathsf{N}\)</span>.</p>
 </blockquote>
+<p>Any finite measure can be turned into a probability measure by normalization. Often, for a general probability measure I will use the symbol <span class="math inline">\(\mathbb{P}\)</span> rather than <span class="math inline">\(\mathbb{M}\)</span>.</p>
 <blockquote>
-<p><strong>Probability Measure</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X}, \mu)\)</span> be a measurable space with <span class="math inline">\(\mu\)</span> being a finite measure. If <span class="math inline">\(\mu(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mu\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\nu\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mu = \nu / \nu(\mathsf{X})\)</span>.</p>
+<p><strong>Probability Measure</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a measurable space with <span class="math inline">\(\mathbb{P}\)</span> being a finite measure. If <span class="math inline">\(\mathbb{P}(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mathbb{P}\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\mathbb{M}\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mathbb{P} := \mathbb{M} / \mathbb{M}(\Omega)\)</span>.</p>
 </blockquote>
 </div>
 <div id="random-variables-and-distributions" class="section level1">
