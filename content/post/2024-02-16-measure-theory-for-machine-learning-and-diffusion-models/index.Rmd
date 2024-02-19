@@ -184,6 +184,8 @@ Any finite measure can be turned into a probability measure by normalization. Of
 
 > **Probability Measure**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a measurable space with $\mathbb{P}$ being a finite measure. If $\mathbb{P}(\mathsf{X}) = 1$ we say that $\mathbb{P}$ is a probability measure. Notice that given any finite measure $\mathbb{M}$, one can define a corresponding probability measure by normalization $\mathbb{P} := \mathbb{M} / \mathbb{M}(\Omega)$.
 
+Above, I have define $\sigma$-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini's theorem, which we will see later. In  simpler language: we require $\sigma$-finite measures when we need to work with probability density functions or we need to exchange integrals.
+
 # Random Variables and Distributions
 
 A random variable is a well-behaved function that grabs possible outcomes of an experiments, and maps them to values that are relevant for the problem at hand, and on which we can perform maths. For instance, when flipping a coin, the possible outcomes may be $\Omega = \left\{\text{Head}, \text{Tail}\right\}$, and we note that the two outcomes are *words* and not numbers, in this particular example (in fact, they are not words, but sides of the coin itself). A random variable is a way to *encode* this information more appropriately. In this case, one could map $\text{Head}$ to $0$ and $\text{Tail}$ to $1$ (or vice-versa).
@@ -217,12 +219,24 @@ which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurabl
 In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures, we will see that concept soon enough.
 
 # Expectations
-Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$.
+Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$. 
 
 > **Expected value**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\mathrm{X}:\Omega\to\mathsf{X}$ be a random variable. The expected value of $\mathrm{X}$ is
 $$
 \mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
 $$
+
+
+# Bochner Integration (optional, for nerds)
+More generally, one can talk about the Bochner integral. 
+
+> **Bochner integration**: Let $(\Omega, \mathcal{F}, \mathbb{M})$ be a measure space, $(\mathsf{X}, \mathcal{X})$ be a measurable space where $\mathsf{X}$ is a Banach space with norm $|\cdot|_{\mathsf{X}}$ and let $\mathrm{X}:\Omega\to\mathsf{X}$ be a $\mathcal{F}$-measurable function. We say that $\mathrm{X}$ is Bochner integrable if 
+$$
+\int_{\Omega} |f(\omega)| \, \mathbb{M}(d\omega) < \infty.
+$$
+
+Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure $\mathbb{M}$ is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in $\mathbb{M}$ being some probability measure $\mathbb{P}$ or some other sigma-finite measure such as the Lebesgue 
+
 
 # $L^p$ Spaces
 It is very likely that you will always work on $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, and the abstraction of this post is not necessary. However, it is *sometimes* essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with $L^p$ spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don't worry.

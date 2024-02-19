@@ -187,6 +187,7 @@ Brrr, I remember the first time I saw <span class="math inline">\(d\mathbb{M}\)<
 <blockquote>
 <p><strong>Probability Measure</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a measurable space with <span class="math inline">\(\mathbb{P}\)</span> being a finite measure. If <span class="math inline">\(\mathbb{P}(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mathbb{P}\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\mathbb{M}\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mathbb{P} := \mathbb{M} / \mathbb{M}(\Omega)\)</span>.</p>
 </blockquote>
+<p>Above, I have define <span class="math inline">\(\sigma\)</span>-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini’s theorem, which we will see later. In simpler language: we require <span class="math inline">\(\sigma\)</span>-finite measures when we need to work with probability density functions or we need to exchange integrals.</p>
 </div>
 <div id="random-variables-and-distributions" class="section level1">
 <h1>Random Variables and Distributions</h1>
@@ -227,6 +228,17 @@ which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mat
 \mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
 \]</span></p>
 </blockquote>
+</div>
+<div id="bochner-integration-optional-for-nerds" class="section level1">
+<h1>Bochner Integration (optional, for nerds)</h1>
+<p>More generally, one can talk about the Bochner integral.</p>
+<blockquote>
+<p><strong>Bochner integration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space where <span class="math inline">\(\mathsf{X}\)</span> is a Banach space with norm <span class="math inline">\(|\cdot|_{\mathsf{X}}\)</span> and let <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a <span class="math inline">\(\mathcal{F}\)</span>-measurable function. We say that <span class="math inline">\(\mathrm{X}\)</span> is Bochner integrable if
+<span class="math display">\[
+\int_{\Omega} |f(\omega)| \, \mathbb{M}(d\omega) &lt; \infty.
+\]</span></p>
+</blockquote>
+<p>Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure <span class="math inline">\(\mathbb{M}\)</span> is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in <span class="math inline">\(\mathbb{M}\)</span> being some probability measure <span class="math inline">\(\mathbb{P}\)</span> or some other sigma-finite measure such as the Lebesgue</p>
 </div>
 <div id="lp-spaces" class="section level1">
 <h1><span class="math inline">\(L^p\)</span> Spaces</h1>
