@@ -218,6 +218,16 @@ which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mat
 </blockquote>
 <p>In most machine learning papers, people do not work with distributions but with <em>probability density functions (pdf)</em>, or we can just call them density functions. A distribution is <strong>not</strong> a density function, they are entirely different things, although related. The distribution of a random variable tells you <em>the probability of events</em> filtered through the lens of <span class="math inline">\(X\)</span>. A density function tells you the <strong>relationship</strong> between two measures, we will see that concept soon enough.</p>
 </div>
+<div id="expectations" class="section level1">
+<h1>Expectations</h1>
+<p>Given a random variable <span class="math inline">\(\mathrm{X}\)</span>, its expected value is the “average value” it takes over the possible outcomes, modulated by their probability of occurring, given by <span class="math inline">\(\mathbb{P}\)</span>.</p>
+<blockquote>
+<p><strong>Expected value</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a random variable. The expected value of <span class="math inline">\(\mathrm{X}\)</span> is
+<span class="math display">\[
+\mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
+\]</span></p>
+</blockquote>
+</div>
 <div id="lp-spaces" class="section level1">
 <h1><span class="math inline">\(L^p\)</span> Spaces</h1>
 <p>It is very likely that you will always work on <span class="math inline">\((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))\)</span>, and the abstraction of this post is not necessary. However, it is <em>sometimes</em> essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with <span class="math inline">\(L^p\)</span> spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don’t worry.</p>
@@ -234,16 +244,6 @@ and we <strong>define</strong> the <span class="math inline">\(L^p\)</span>-norm
 <span class="math display">\[
 \|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
 \]</span></p>
-</div>
-<div id="expectations" class="section level1">
-<h1>Expectations</h1>
-<p>Given a random variable <span class="math inline">\(\mathrm{X}\)</span>, its expected value is the “average value” it takes over the possible outcomes, modulated by their probability of occurring, given by <span class="math inline">\(\mathbb{P}\)</span>.</p>
-<blockquote>
-<p><strong>Expected value</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a random variable. The expected value of <span class="math inline">\(\mathrm{X}\)</span> is
-<span class="math display">\[
-\mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
-\]</span></p>
-</blockquote>
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">
 <h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>

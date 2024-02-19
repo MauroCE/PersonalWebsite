@@ -216,6 +216,14 @@ which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurabl
 
 In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures, we will see that concept soon enough.
 
+# Expectations
+Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$.
+
+> **Expected value**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\mathrm{X}:\Omega\to\mathsf{X}$ be a random variable. The expected value of $\mathrm{X}$ is
+$$
+\mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
+$$
+
 # $L^p$ Spaces
 It is very likely that you will always work on $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, and the abstraction of this post is not necessary. However, it is *sometimes* essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with $L^p$ spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don't worry.
 
@@ -233,16 +241,6 @@ and we **define** the $L^p$-norm as
 $$
 \|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
 $$
-
-# Expectations
-Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$.
-
-> **Expected value**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\mathrm{X}:\Omega\to\mathsf{X}$ be a random variable. The expected value of $\mathrm{X}$ is
-$$
-\mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
-$$
-
-
 
 
 # $\pi$-Systems and $\lambda$-Systems
