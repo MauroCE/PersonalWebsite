@@ -225,6 +225,15 @@ $$
 $$
 A **Banach** space is a **complete** normed space. To understand the word "complete" requires a course in analysis, but for our purposes it simply means that we can perform calculus on it, e.g. take limits. A **Hilbert** space is a complete inner product space.
 
+Now, given a measure space $(\Omega, \mathcal{F}, \mathbb{M})$, a measurable space $(\mathsf{X}, \mathcal{X})$ where $\mathsf{X}$ is a Banach space equipped with norm $|\cdot|$, and given a real number $p \geq 1$ we define the following space of functions
+$$
+L^p(\Omega, \mathcal{F}, \mathbb{M}) := \left\{ f:\Omega\to\mathsf{X} \,\,\left| \,\,  f \text{ is }\mathcal{F}\text{-measurable and } \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p} < \infty \right.\right\}
+$$
+and we **define** the $L^p$-norm as
+$$
+\|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
+$$
+
 # Expectations
 Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$.
 

@@ -226,6 +226,14 @@ which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mat
 \|v\| = \sqrt{\langle v, v \rangle}.
 \]</span>
 A <strong>Banach</strong> space is a <strong>complete</strong> normed space. To understand the word “complete” requires a course in analysis, but for our purposes it simply means that we can perform calculus on it, e.g. take limits. A <strong>Hilbert</strong> space is a complete inner product space.</p>
+<p>Now, given a measure space <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span>, a measurable space <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> where <span class="math inline">\(\mathsf{X}\)</span> is a Banach space equipped with norm <span class="math inline">\(|\cdot|\)</span>, and given a real number <span class="math inline">\(p \geq 1\)</span> we define the following space of functions
+<span class="math display">\[
+L^p(\Omega, \mathcal{F}, \mathbb{M}) := \left\{ f:\Omega\to\mathsf{X} \,\,\left| \,\,  f \text{ is }\mathcal{F}\text{-measurable and } \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p} &lt; \infty \right.\right\}
+\]</span>
+and we <strong>define</strong> the <span class="math inline">\(L^p\)</span>-norm as
+<span class="math display">\[
+\|f\|_p := \left(\int |f(\omega)|^p \,\,\mathbb{M}(d\omega)\right)^{1/p}.
+\]</span></p>
 </div>
 <div id="expectations" class="section level1">
 <h1>Expectations</h1>
