@@ -186,6 +186,17 @@ Any finite measure can be turned into a probability measure by normalization. Of
 
 Above, I have define $\sigma$-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini's theorem, which we will see later. In  simpler language: we require $\sigma$-finite measures when we need to work with probability density functions or we need to exchange integrals.
 
+# Lebesgue Measure
+Remember the integrals that we used to solve in high-school?
+$$
+\int f(x) dx
+$$
+The symbol $dx$ is actually representing a very special measure: the Lebesgue measure. Indeed, in more theoretically-oriented textbooks, one would probably write $\text{Leb}(dx)$ or something like that. All you have to know, is that the Lebesgue is $\sigma$-finite and that when we are working on $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ we usually equip this measurable space with the Lebesgue measure on it, and typically call it $\text{Leb}_{\mathbb{R}}$. This measure represents our native way of thinking about length, and a good way to convince ourselves of that, is knowing that the size of an interval $[a, b]$ with $a < b$ is indeed
+$$
+\text{Leb}_\mathbb{R}([a, b]) = b - a.
+$$
+The Lebesgue measure is then defined also for $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$ as a product of "univariate" Lebesgue measures.
+
 # Random Variables and Distributions
 
 A random variable is a well-behaved function that grabs possible outcomes of an experiments, and maps them to values that are relevant for the problem at hand, and on which we can perform maths. For instance, when flipping a coin, the possible outcomes may be $\Omega = \left\{\text{Head}, \text{Tail}\right\}$, and we note that the two outcomes are *words* and not numbers, in this particular example (in fact, they are not words, but sides of the coin itself). A random variable is a way to *encode* this information more appropriately. In this case, one could map $\text{Head}$ to $0$ and $\text{Tail}$ to $1$ (or vice-versa).
@@ -216,8 +227,6 @@ $$
 $$
 which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurable relative to it, indeed by definition $f$ is $\sigma(f)$-measurable. Therefor one could write $\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)$.
 
-In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures, we will see that concept soon enough.
-
 # Expectations
 Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$. 
 
@@ -226,6 +235,23 @@ $$
 \mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
 $$
 
+# Density Functions
+In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures.
+
+Very common in machine learning, is a normal density function with mean $\mu$ and scale $\sigma > 0$
+$$
+p(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right),\qquad\qquad x\in\mathbb{R}
+$$
+We often say that a random variable $\mathrm{X}$ has a Gaussian distribution and then immediately think of the expression above. What is this expression measure-theoretic language? It is not a distribution. A probability density function tells us how much the distribution of $\mathrm{X}$, denoted $\mathbb{P}^{\mathrm{X}}$ changes against another measure. What is this "other measure" and why is it never mentioned? It is rarely mentioned because typically it is always the same: the Lebesgue measure. 
+
+> **Radon-Nikodym Theorem**: Let $(\Omega, \mathcal{F})$ be a measurable space and let $\mathbb{M}_1$ and $\mathbb{M}_2$ be two $\sigma$-finite measures on it, such that $\mathbb{M}_1 \ll \mathbb{M}_2$. Then, there exists a $\mathcal{F}$-measurable function
+$$
+\frac{d\mathbb{M}_1}{d\mathbb{M}_2}:\Omega\to [0, \infty)
+$$
+such that 
+$$
+\mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
+$$
 
 # Bochner Integration (optional, for nerds)
 More generally, one can talk about the Bochner integral. 
@@ -235,7 +261,7 @@ $$
 \int_{\Omega} |f(\omega)| \, \mathbb{M}(d\omega) < \infty.
 $$
 
-Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure $\mathbb{M}$ is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in $\mathbb{M}$ being some probability measure $\mathbb{P}$ or some other sigma-finite measure such as the Lebesgue 
+Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure $\mathbb{M}$ is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in $\mathbb{M}$ being some probability measure $\mathbb{P}$ or some other sigma-finite measure such as the Lebesgue
 
 
 # $L^p$ Spaces

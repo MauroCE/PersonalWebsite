@@ -189,6 +189,18 @@ Brrr, I remember the first time I saw <span class="math inline">\(d\mathbb{M}\)<
 </blockquote>
 <p>Above, I have define <span class="math inline">\(\sigma\)</span>-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini’s theorem, which we will see later. In simpler language: we require <span class="math inline">\(\sigma\)</span>-finite measures when we need to work with probability density functions or we need to exchange integrals.</p>
 </div>
+<div id="lebesgue-measure" class="section level1">
+<h1>Lebesgue Measure</h1>
+<p>Remember the integrals that we used to solve in high-school?
+<span class="math display">\[
+\int f(x) dx
+\]</span>
+The symbol <span class="math inline">\(dx\)</span> is actually representing a very special measure: the Lebesgue measure. Indeed, in more theoretically-oriented textbooks, one would probably write <span class="math inline">\(\text{Leb}(dx)\)</span> or something like that. All you have to know, is that the Lebesgue is <span class="math inline">\(\sigma\)</span>-finite and that when we are working on <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span> we usually equip this measurable space with the Lebesgue measure on it, and typically call it <span class="math inline">\(\text{Leb}_{\mathbb{R}}\)</span>. This measure represents our native way of thinking about length, and a good way to convince ourselves of that, is knowing that the size of an interval <span class="math inline">\([a, b]\)</span> with <span class="math inline">\(a &lt; b\)</span> is indeed
+<span class="math display">\[
+\text{Leb}_\mathbb{R}([a, b]) = b - a.
+\]</span>
+The Lebesgue measure is then defined also for <span class="math inline">\((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))\)</span> as a product of “univariate” Lebesgue measures.</p>
+</div>
 <div id="random-variables-and-distributions" class="section level1">
 <h1>Random Variables and Distributions</h1>
 <p>A random variable is a well-behaved function that grabs possible outcomes of an experiments, and maps them to values that are relevant for the problem at hand, and on which we can perform maths. For instance, when flipping a coin, the possible outcomes may be <span class="math inline">\(\Omega = \left\{\text{Head}, \text{Tail}\right\}\)</span>, and we note that the two outcomes are <em>words</em> and not numbers, in this particular example (in fact, they are not words, but sides of the coin itself). A random variable is a way to <em>encode</em> this information more appropriately. In this case, one could map <span class="math inline">\(\text{Head}\)</span> to <span class="math inline">\(0\)</span> and <span class="math inline">\(\text{Tail}\)</span> to <span class="math inline">\(1\)</span> (or vice-versa).</p>
@@ -217,7 +229,6 @@ For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</s
 \]</span>
 which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mathsf{X}\)</span> such that <span class="math inline">\(f\)</span> is measurable relative to it, indeed by definition <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma(f)\)</span>-measurable. Therefor one could write <span class="math inline">\(\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)\)</span>.</p>
 </blockquote>
-<p>In most machine learning papers, people do not work with distributions but with <em>probability density functions (pdf)</em>, or we can just call them density functions. A distribution is <strong>not</strong> a density function, they are entirely different things, although related. The distribution of a random variable tells you <em>the probability of events</em> filtered through the lens of <span class="math inline">\(X\)</span>. A density function tells you the <strong>relationship</strong> between two measures, we will see that concept soon enough.</p>
 </div>
 <div id="expectations" class="section level1">
 <h1>Expectations</h1>
@@ -226,6 +237,25 @@ which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mat
 <p><strong>Expected value</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a random variable. The expected value of <span class="math inline">\(\mathrm{X}\)</span> is
 <span class="math display">\[
 \mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
+\]</span></p>
+</blockquote>
+</div>
+<div id="density-functions" class="section level1">
+<h1>Density Functions</h1>
+<p>In most machine learning papers, people do not work with distributions but with <em>probability density functions (pdf)</em>, or we can just call them density functions. A distribution is <strong>not</strong> a density function, they are entirely different things, although related. The distribution of a random variable tells you <em>the probability of events</em> filtered through the lens of <span class="math inline">\(X\)</span>. A density function tells you the <strong>relationship</strong> between two measures.</p>
+<p>Very common in machine learning, is a normal density function with mean <span class="math inline">\(\mu\)</span> and scale <span class="math inline">\(\sigma &gt; 0\)</span>
+<span class="math display">\[
+p(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right),\qquad\qquad x\in\mathbb{R}
+\]</span>
+We often say that a random variable <span class="math inline">\(\mathrm{X}\)</span> has a Gaussian distribution and then immediately think of the expression above. What is this expression measure-theoretic language? It is not a distribution. A probability density function tells us how much the distribution of <span class="math inline">\(\mathrm{X}\)</span>, denoted <span class="math inline">\(\mathbb{P}^{\mathrm{X}}\)</span> changes against another measure. What is this “other measure” and why is it never mentioned? It is rarely mentioned because typically it is always the same: the Lebesgue measure.</p>
+<blockquote>
+<p><strong>Radon-Nikodym Theorem</strong>: Let <span class="math inline">\((\Omega, \mathcal{F})\)</span> be a measurable space and let <span class="math inline">\(\mathbb{M}_1\)</span> and <span class="math inline">\(\mathbb{M}_2\)</span> be two <span class="math inline">\(\sigma\)</span>-finite measures on it, such that <span class="math inline">\(\mathbb{M}_1 \ll \mathbb{M}_2\)</span>. Then, there exists a <span class="math inline">\(\mathcal{F}\)</span>-measurable function
+<span class="math display">\[
+\frac{d\mathbb{M}_1}{d\mathbb{M}_2}:\Omega\to [0, \infty)
+\]</span>
+such that
+<span class="math display">\[
+\mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
 \]</span></p>
 </blockquote>
 </div>
