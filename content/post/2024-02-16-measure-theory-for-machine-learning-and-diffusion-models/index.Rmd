@@ -163,6 +163,15 @@ $$
 \mathbb{M}\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mathbb{M}(\mathsf{A}_i)
 $$
 
+We need to talk about notation. The size of a set $\mathsf{A}$ under $\mathbb{M}$ is written $\mathbb{M}(\mathsf{A})$, however there is another way of writing this that makes *explicit* the relationship between measures and integration (after all, if measures "measure" the size of things, it makes sense that they are related to integrals, which compute volumes). Indeed we can write
+$$
+\mathbb{M}(\mathsf{A}) =: \int_{\mathsf{A}}d\mathbb{M} \qquad\qquad\qquad \forall\, \mathsf{A}\in\mathcal{F}.
+$$
+Brrr, I remember the first time I saw $d\mathbb{M}$ without explanation and I was genuinely confused for days. It looks a bit stark to the eye, and a bit weird and "mathsy". If you are a mathematician, you might hate what I am about to say, but in practice just "forget about it". What I mean by that is that for most situations, you don't need to know the precise definition of the integral above. You just have to "get used" to the notation, and learn how to manipulate it. For me studying mathematics is an endless iteration of pretending you understand new notation until it stops being scary and you can gather up the courage to look at the details and definitions. Think of the expression above as saying that the size of $\mathsf{A}$ under $\mathbb{M}$ is obtained by summing up the size of infinitesimal bits of $\mathsf{A}$. Under this intuition, it is helpful to write down the variable of integration, so we may write (I will choose $\omega$ as variable of integration)
+$$
+\mathbb{M}(\mathsf{A}) = \int_{\mathsf{A}} \mathbb{M}(d\omega).
+$$
+
 Again, as mathematicians we like to give names to things. Just as we typically work with measurable space $(\Omega, \mathcal{F})$, we typically assume that on this measurable space there is a measure $\mathbb{M}$, and hence for brevity call $(\Omega, \mathcal{F}, \mathbb{M})$ a measurable space. Basically, it's just a space where I have a systematic and coherent way of assigning a "size" value to subsets.
 
 > **Measure Space**: A triplet $(\Omega, \mathcal{F}, \mathbb{M})$ is called a measure space if $\mathbb{M}$ is a measure on the measurable space $(\Omega, \mathcal{F})$.
@@ -205,7 +214,27 @@ $$
 $$
 which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurable relative to it, indeed by definition $f$ is $\sigma(f)$-measurable. Therefor one could write $\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)$.
 
-In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or just density function. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. 
+In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures, we will see that concept soon enough.
+
+# $L^p$ Spaces
+It is very likely that you will always work on $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, and the abstraction of this post is not necessary. However, it is *sometimes* essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with $L^p$ spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don't worry.
+
+We have seen in the Topology section that a topological space $(\mathsf{X}, \tau)$ presents a notion of closeness. We briefly review the intuition behind other spaces. A **vector space** (over a field $\mathsf{F}$) is a space whose elements can be **added together** and **rescaled**, and satisfy the usual properties that we would expect (e.g. associativity, commutativity, distributivity, etc). If we equip a vector space with a norm, we obtain (surprise surprise) a **normed vector space**, where now we have the notion of **length** of vectors (for nerds: in reality, we also need to equip its field with a norm). Automatically, this also gives us a notion of **distance**, since it can be interpreted as the length of the difference of two vectors. If we equip a vector space with an inner product $\langle \cdot, \cdot\rangle$, we get an **inner product space** where now we additionally have the notion of **orientation** of vectors. Any inner product space is also a normed space, since the inner product **induces** a norm
+$$
+\|v\| = \sqrt{\langle v, v \rangle}.
+$$
+A **Banach** space is a **complete** normed space. To understand the word "complete" requires a course in analysis, but for our purposes it simply means that we can perform calculus on it, e.g. take limits. A **Hilbert** space is a complete inner product space.
+
+# Expectations
+Given a random variable $\mathrm{X}$, its expected value is the "average value" it takes over the possible outcomes, modulated by their probability of occurring, given by $\mathbb{P}$.
+
+> **Expected value**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space and $\mathrm{X}:\Omega\to\mathsf{X}$ be a random variable. The expected value of $\mathrm{X}$ is
+$$
+\mathbb{E}[\mathrm{X}] = \int X\, d\mathbb{P} = \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
+$$
+
+
+
 
 # $\pi$-Systems and $\lambda$-Systems
 
