@@ -381,7 +381,7 @@ $$
 # Change of Variables
 One of the most important tricks that we can use to manipulate integrals, which will be fundamental for Normalizing Flows, is the change of variables formula. You may already be familiar with a simplified version of this result from standard calculus. The idea is that if we are taking the expectation of a function $f$ with respect to $\mathbb{M}^g$ (the pushforward of a measure by a function) then this is equivalent to computing the expectation of $f\circ g$ with respect to $\mathbb{M}$. 
 
->**Change of variables and Jacobians**: Let $(\Omega, \mathcal{F}, \mathbb{M})$ be a measure space, $(\mathsf{X}, \mathcal{B}(\mathsf{X}))$ be a Banach space equipped with the Borel sigma algebra induced by the norm. Let $f, g:\Omega\to\mathsf{X}$ be any two functions. Then $f\in L^1(\Omega, \mathcal{F}, \mathbb{M}^g; \mathsf{X})$ **if and only if** $(f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})$ in which case
+>**Change of variables and Jacobians**: Let $(\Omega, \mathcal{F}, \mathbb{M})$ be a measure space, $(\mathsf{X}, \mathcal{B}(\mathsf{X}))$ be a Banach space equipped with the Borel sigma algebra induced by the norm. Let $f, g:\Omega\to\mathsf{X}$ be any two functions. Then $f\in L^1(\mathsf{X}, \mathcal{B}(\mathsf{X}), \mathbb{M}^g; \mathsf{X})$ **if and only if** $(f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})$ in which case
 $$
 \mathbb{M}^g(f) = \mathbb{M}(f\circ g),
 $$
