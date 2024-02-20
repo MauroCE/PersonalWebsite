@@ -30,6 +30,7 @@ projects: []
 <li><a href="#expectations">Expectations</a></li>
 <li><a href="#lebesgue-measure">Lebesgue Measure</a></li>
 <li><a href="#density-functions">Density Functions</a></li>
+<li><a href="#change-of-variables">Change of Variables</a></li>
 </ul>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
@@ -358,12 +359,24 @@ We call the function <span class="math inline">\(d\mathbb{M}_1 / d\mathbb{M}_2\)
 \frac{d\mathbb{M}_1}{d\mathbb{M}_2}
 \]</span>
 but we could have chosen <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span> or your favorite symbol. However, this notation is <strong>very</strong> handy, because of the special property of this measurable function (notice it is measurable, but not necessarily a random variable, since we have not specified a probability measure on <span class="math inline">\((\Omega, \mathcal{F})\)</span>). The special property is that under the integral we can “change” from <span class="math inline">\(d\mathbb{M}_1\)</span> to a function times <span class="math inline">\(d\mathbb{M}_2\)</span>. For this reason, this property is often referred to as <strong>change of measure</strong>. Basically, all this property is saying is that the expectation of the density times the indicator function of a measurable set <span class="math inline">\(\mathsf{A}\)</span>, taken with respect to <span class="math inline">\(\mathbb{M}_2\)</span>, is just the size of that set under <span class="math inline">\(\mathbb{M}_1\)</span>.</p>
-<p>We can now start to understand what we mean when a random variable has a Gaussian distribution.</p>
+<p>We can now start to understand what we mean when a random variable has a (univariate) Gaussian distribution.</p>
 <blockquote>
 <p><strong>Gaussian distribution</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space and consider <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span> equipped with <span class="math inline">\(\text{Leb}_{\mathbb{R}}\)</span>. Let <span class="math inline">\(\mathrm{X}:\Omega\to\mathbb{R}\)</span> be a random variable with distribution <span class="math inline">\(\mathbb{P}^{\mathrm{X}}\)</span> and assume <span class="math inline">\(\mathbb{P}^{\mathrm{X}}\ll \text{Leb}_{\mathbb{R}}\)</span>. We say that <span class="math inline">\(\mathrm{X}\)</span> is a Gaussian random variable and that <span class="math inline">\(\mathbb{P}^{\mathrm{X}}\)</span> is a Gaussian distribution if for <span class="math inline">\(\mu\in\mathbb{R}\)</span> and <span class="math inline">\(\sigma &gt; 0\)</span> we have
 <span class="math display">\[
 \frac{d\mathbb{P}^{\mathrm{X}}}{d\text{Leb}_{\mathbb{R}}}(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\qquad\qquad x\in\mathbb{R}.
 \]</span></p>
+</blockquote>
+<p><a name="change-of-variables"><a/></p>
+</div>
+<div id="change-of-variables" class="section level1">
+<h1>Change of Variables</h1>
+<p>One of the most important tricks that we can use to manipulate integrals, which will be fundamental for Normalizing Flows, is the change of variables formula. You may already be familiar with a simplified version of this result from standard calculus. The idea is that if we are taking the expectation of a function <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mathbb{M}^g\)</span> (the pushforward of a measure by a function) then this is equivalent to computing the expectation of <span class="math inline">\(f\circ g\)</span> with respect to <span class="math inline">\(\mathbb{M}\)</span>.</p>
+<blockquote>
+<p><strong>Change of variables</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space, <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}))\)</span> be a Banach space equipped with the Borel sigma algebra induced by the norm. Let <span class="math inline">\(f, g:\Omega\to\mathsf{X}\)</span> be any two functions. Then <span class="math inline">\(f\in L^1(\Omega, \mathcal{F}, \mathbb{M}^g; \mathsf{X})\)</span> <strong>if and only if</strong> <span class="math inline">\((f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})\)</span> in which case
+<span class="math display">\[
+\mathbb{M}^g(f) = \mathbb{M}(f\circ g),
+\]</span>
+where <span class="math inline">\(\mathbb{M}^g\)</span> denotes the pushforward of <span class="math inline">\(\mathbb{M}\)</span> by <span class="math inline">\(g\)</span> (defined when <span class="math inline">\(g\)</span> is measurable).</p>
 </blockquote>
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">

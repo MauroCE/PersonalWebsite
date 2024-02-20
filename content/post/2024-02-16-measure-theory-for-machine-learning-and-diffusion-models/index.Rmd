@@ -31,6 +31,7 @@ projects: []
 - [Expectations](#expectations)
 - [Lebesgue Measure](#lebesgue-measure)
 - [Density Functions](#density-functions)
+- [Change of Variables](#change-of-variables)
 
 # Introduction
 In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
@@ -368,12 +369,23 @@ $$
 $$
 but we could have chosen $f$, $g$ or your favorite symbol. However, this notation is **very** handy, because of the special property of this measurable function (notice it is measurable, but not necessarily a random variable, since we have not specified a probability measure on $(\Omega, \mathcal{F})$). The special property is that under the integral we can "change" from $d\mathbb{M}_1$ to a function times $d\mathbb{M}_2$. For this reason, this property is often referred to as **change of measure**. Basically, all this property is saying is that the expectation of the density times the indicator function of a measurable set $\mathsf{A}$, taken with respect to $\mathbb{M}_2$, is just the size of that set under $\mathbb{M}_1$.
 
-We can now start to understand what we mean when a random variable has a Gaussian distribution.
+We can now start to understand what we mean when a random variable has a (univariate) Gaussian distribution.
 
 > **Gaussian distribution**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and consider $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ equipped with $\text{Leb}_{\mathbb{R}}$. Let $\mathrm{X}:\Omega\to\mathbb{R}$ be a random variable with distribution $\mathbb{P}^{\mathrm{X}}$ and assume $\mathbb{P}^{\mathrm{X}}\ll \text{Leb}_{\mathbb{R}}$. We say that $\mathrm{X}$ is a Gaussian random variable and that $\mathbb{P}^{\mathrm{X}}$ is a Gaussian distribution if for $\mu\in\mathbb{R}$ and $\sigma > 0$ we have
 $$
 \frac{d\mathbb{P}^{\mathrm{X}}}{d\text{Leb}_{\mathbb{R}}}(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\qquad\qquad x\in\mathbb{R}.
 $$
+
+<a name="change-of-variables"><a/>
+
+# Change of Variables
+One of the most important tricks that we can use to manipulate integrals, which will be fundamental for Normalizing Flows, is the change of variables formula. You may already be familiar with a simplified version of this result from standard calculus. The idea is that if we are taking the expectation of a function $f$ with respect to $\mathbb{M}^g$ (the pushforward of a measure by a function) then this is equivalent to computing the expectation of $f\circ g$ with respect to $\mathbb{M}$. 
+
+>**Change of variables**: Let $(\Omega, \mathcal{F}, \mathbb{M})$ be a measure space, $(\mathsf{X}, \mathcal{B}(\mathsf{X}))$ be a Banach space equipped with the Borel sigma algebra induced by the norm. Let $f, g:\Omega\to\mathsf{X}$ be any two functions. Then $f\in L^1(\Omega, \mathcal{F}, \mathbb{M}^g; \mathsf{X})$ **if and only if** $(f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})$ in which case
+$$
+\mathbb{M}^g(f) = \mathbb{M}(f\circ g),
+$$
+where $\mathbb{M}^g$ denotes the pushforward of $\mathbb{M}$ by $g$ (defined when $g$ is measurable).
 
 
 # $\pi$-Systems and $\lambda$-Systems
