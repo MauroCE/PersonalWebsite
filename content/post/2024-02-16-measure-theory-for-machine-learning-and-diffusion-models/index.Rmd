@@ -356,12 +356,25 @@ We say that $\mathbb{M}_2$ **dominates** $\mathbb{M}_1$. All it means is that wh
 $$
 \frac{d\mathbb{M}_1}{d\mathbb{M}_2}:\Omega\to [0, \infty)
 $$
-such that its integral with respect to $\mathbb{M}_2$ exists, and
+in $L^1(\Omega, \mathcal{F}, \mathbb{M}_2; \mathbb{R}_{\geq 0})$ such that its integral with respect to $\mathbb{M}_2$ exists, and
 $$
-\mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
+\int_{\mathsf{A}} d\mathbb{M}_1 = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
+$$
+We call the function $d\mathbb{M}_1 / d\mathbb{M}_2$ the Radon-Nikodym derivative of $\mathbb{M}_1$ with respect to $\mathbb{M}_2$ or simply the density of $\mathbb{M}_1$ with respect to $\mathbb{M}_2$.
+
+I remember seeing this and being incredibly confused. Partly because I was thinking "of course it does, the denominator cancels out!" while at the same time thinking "why is there $d$ in the fraction"? Let's go through the theorem slowly. The theorem says that under those two conditions, there **always** exists a measurable function with a special property. We have *decided* to call this measurable function with the symbol
+$$
+\frac{d\mathbb{M}_1}{d\mathbb{M}_2}
+$$
+but we could have chosen $f$, $g$ or your favorite symbol. However, this notation is **very** handy, because of the special property of this measurable function (notice it is measurable, but not necessarily a random variable, since we have not specified a probability measure on $(\Omega, \mathcal{F})$). The special property is that under the integral we can "change" from $d\mathbb{M}_1$ to a function times $d\mathbb{M}_2$. For this reason, this property is often referred to as **change of measure**. Basically, all this property is saying is that the expectation of the density times the indicator function of a measurable set $\mathsf{A}$, taken with respect to $\mathbb{M}_2$, is just the size of that set under $\mathbb{M}_1$.
+
+We can now start to understand what we mean when a random variable has a Gaussian distribution.
+
+> **Gaussian distribution**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space and consider $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ equipped with $\text{Leb}_{\mathbb{R}}$. Let $\mathrm{X}:\Omega\to\mathbb{R}$ be a random variable with distribution $\mathbb{P}^{\mathrm{X}}$ and assume $\mathbb{P}^{\mathrm{X}}\ll \text{Leb}_{\mathbb{R}}$. We say that $\mathrm{X}$ is a Gaussian random variable and that $\mathbb{P}^{\mathrm{X}}$ is a Gaussian distribution if for $\mu\in\mathbb{R}$ and $\sigma > 0$ we have
+$$
+\frac{d\mathbb{P}^{\mathrm{X}}}{d\text{Leb}_{\mathbb{R}}}(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\qquad\qquad x\in\mathbb{R}.
 $$
 
-I remember seeing this and being incredibly confused. Partly because I was thinking "of course it does, the denominator cancels out!" while at the same time thinking "why is there $d$ in the fraction"?
 
 # $\pi$-Systems and $\lambda$-Systems
 
