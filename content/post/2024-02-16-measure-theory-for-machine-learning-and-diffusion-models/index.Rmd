@@ -335,20 +335,33 @@ $$
 # Density Functions
 In most machine learning papers, people do not work with distributions but with *probability density functions (pdf)*, or we can just call them density functions. A distribution is **not** a density function, they are entirely different things, although related. The distribution of a random variable tells you *the probability of events* filtered through the lens of $X$. A density function tells you the **relationship** between two measures.
 
-Very common in machine learning, is a normal density function with mean $\mu$ and scale $\sigma > 0$
+Very common in machine learning, is a normal density function with mean $\mu\in\mathbb{R}$ and scale $\sigma > 0$
 $$
 p(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right),\qquad\qquad x\in\mathbb{R}
 $$
-We often say that a random variable $\mathrm{X}$ has a Gaussian distribution and then immediately think of the expression above. What is this expression measure-theoretic language? It is not a distribution. A probability density function tells us how much the distribution of $\mathrm{X}$, denoted $\mathbb{P}^{\mathrm{X}}$ changes against another measure. What is this "other measure" and why is it never mentioned? It is rarely mentioned because typically it is always the same: the Lebesgue measure. 
+We often say that a random variable $\mathrm{X}$ has a Gaussian distribution and then immediately think of the expression above, but we know that it cannot be a distribution, since it doesn't take sets as input, but rather points in $\mathbb{R}$. What does the expression above mean in measure-theoretic language? 
+
+Suppose $(\Omega, \mathcal{F}, \mathbb{P})$ is a probability space, and $\mathrm{X}:\Omega\to\mathbb{R}$ is a random variable from that space to $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$. We have seen that the distribution of $\mathrm{X}$ is the probability measure $\mathbb{P}^{\mathrm{X}}$ on $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$. The probability density function tells us how this distribution is different from the Lebesgue measure $\text{Leb}_{\mathbb{R}}$. Notice that density functions are not inherently connected to Lebesgue measures: density functions can represent the change between any two appropriate measures, but the reason why people write expressions such as the one above is that in most machine learning examples, one will be using a Lebesgue measure.
+
+I mentioned that a density function represents change between **appropriate** measures. What requirements do we need? It should be make sense that if any of the two measures is not finite, then the "change" between them is a bit meaningless. What is the change between something finite and something infinite? It turns out, that we can do slightly better than that, we need $\sigma$-finite measures. Another thing that we don't want to happen is if the measure that we are comparing against, assigns measure zero to a set, but the other one doesn't. It would create the same sort of awkwardness that we have when a denominator is zero. To avoid this scenario, we give a name to this type of relationship
+
+> **Absolute Continuity** Let $(\Omega, \mathcal{F})$ be a measurable space and $\mathbb{M}_1$ and $\mathbb{M}_2$ be two measures on it. We say that $\mathbb{M}_1$ is absolutely continuous with respect to $\mathbb{M}_2$, which we write $\mathbb{M}_1\ll \mathbb{M}_2$ if
+$$
+\mathbb{M}_2(\mathsf{A}) = 0 \implies \mathbb{M}_1(\mathsf{A}) = 0, \qquad\qquad \forall\, \mathsf{A}\in\mathcal{F}.
+$$
+
+We say that $\mathbb{M}_2$ **dominates** $\mathbb{M}_1$. All it means is that whenever $\mathbb{M}_2$ gives measure zero to a set, then also $\mathbb{M}_1$ does. The intuitive way to think about absolute continuity is that it tells us that we can, in some abstract sense, construct fractions $\mathbb{M}_1 / \mathbb{M}_2$. This is made more precise in the following theorem.
 
 > **Radon-Nikodym Theorem**: Let $(\Omega, \mathcal{F})$ be a measurable space and let $\mathbb{M}_1$ and $\mathbb{M}_2$ be two $\sigma$-finite measures on it, such that $\mathbb{M}_1 \ll \mathbb{M}_2$. Then, there exists a $\mathcal{F}$-measurable function
 $$
 \frac{d\mathbb{M}_1}{d\mathbb{M}_2}:\Omega\to [0, \infty)
 $$
-such that 
+such that its integral with respect to $\mathbb{M}_2$ exists, and
 $$
 \mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
 $$
+
+I remember seeing this and being incredibly confused. Partly because I was thinking "of course it does, the denominator cancels out!" while at the same time thinking "why is there $d$ in the fraction"?
 
 # $\pi$-Systems and $\lambda$-Systems
 
