@@ -26,6 +26,7 @@ projects: []
 - [Sigma Algebras](#sigma-algebras)
 - [Measures](#measures)
 - [Random Variables](#random-variables)
+- [Topology](#mathematical-spaces)
 - [Integration](#integration)
 - [Expectations](#expectations)
 
@@ -153,15 +154,6 @@ $$
 \mathbb{M}\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mathbb{M}(\mathsf{A}_i)
 $$
 
-We need to talk about notation. The size of a set $\mathsf{A}$ under $\mathbb{M}$ is written $\mathbb{M}(\mathsf{A})$, however there is another way of writing this that makes *explicit* the relationship between measures and integration (after all, if measures "measure" the size of things, it makes sense that they are related to integrals, which compute volumes). Indeed we can write
-$$
-\mathbb{M}(\mathsf{A}) =: \int_{\mathsf{A}}d\mathbb{M} \qquad\qquad\qquad \forall\, \mathsf{A}\in\mathcal{F}.
-$$
-Brrr, I remember the first time I saw $d\mathbb{M}$ without explanation and I was genuinely confused for days. It looks a bit stark to the eye, and a bit weird and "mathsy". If you are a mathematician, you might hate what I am about to say, but in practice just "forget about it". What I mean by that is that for most situations, you don't need to know the precise definition of the integral above. You just have to "get used" to the notation, and learn how to manipulate it. For me studying mathematics is an endless iteration of pretending you understand new notation until it stops being scary and you can gather up the courage to look at the details and definitions. Think of the expression above as saying that the size of $\mathsf{A}$ under $\mathbb{M}$ is obtained by summing up the size of infinitesimal bits of $\mathsf{A}$. Under this intuition, it is helpful to write down the variable of integration, so we may write (I will choose $\omega$ as variable of integration)
-$$
-\mathbb{M}(\mathsf{A}) = \int_{\mathsf{A}} \mathbb{M}(d\omega).
-$$
-
 Again, as mathematicians we like to give names to things. Just as we typically work with measurable space $(\Omega, \mathcal{F})$, we typically assume that on this measurable space there is a measure $\mathbb{M}$, and hence for brevity call $(\Omega, \mathcal{F}, \mathbb{M})$ a measurable space. Basically, it's just a space where I have a systematic and coherent way of assigning a "size" value to subsets.
 
 > **Measure Space**: A triplet $(\Omega, \mathcal{F}, \mathbb{M})$ is called a measure space if $\mathbb{M}$ is a measure on the measurable space $(\Omega, \mathcal{F})$.
@@ -210,7 +202,46 @@ which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurabl
 
 Finally, just a remark. In the definition of measurable function $\mathrm{X}$, I have called it $\mathcal{F}$-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra $\mathrm{X}$ will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.
 
-# Topology and Borel Sigma algebras
+<a name="mathematical-spaces"><a/>
+
+# Mathematical Spaces
+Unfortunately, there is no way we can proceed forward without talking about topology. At the most practical level, it is because we need to make sense of $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, but at the more theoretical level it is needed to be able to define expectations and probability density functions appropriately. I will do my best to keep it intuitive and minimalist. The aim of this section is not to understand everything here, but just to connect the pieces together. 
+
+First, we need to have some intuition about what a *topology* is. Given a set $\mathsf{X}$, a topology on $\mathsf{X}$ is basically a bunch of subsets with some special properties. Mathematicians will hate me but **you don't need to remember these properties at all** for machine learning. They are helpful to read before dwelling into a proof, but all you need to know  is that these subsets represent a notion of **"closeness"** between the elements of $\mathsf{X}$. This is not closeness in the "numerical" sense, we are not given any value telling us how close things are. However, these subsets represent **neighborhoods**.
+
+> **Topology**: Given a set $\mathsf{X}$, a topology on it is a collection of its subsets $\tau\subseteq 2^{\mathsf{X}}$ such that \
+1. Contains the empty set and the set itself: $\emptyset,\mathsf{X}\in\tau$ \
+2. Closed under countable and *uncountable* unions.
+3. Closed under *finite* intersection.
+The elements of $\tau$, which are subsets of $\mathsf{X}$, are known as **open sets**.
+
+We call $(\mathsf{X}, \tau)$ a **topological space**. There may be many topologies that one can define on $\mathsf{X}$. Rather than listing all the subsets contained in a topology, sometimes one can find a smaller subset $\mathsf{B}\subset\tau$ such that every set in $\tau$ can be constructed by taking the union of sets in $\mathsf{B}$. The hope is that $\mathsf{B}$ is easier to characterize/describe, and so we can identify a topology by specifying $\mathsf{B}$ rather than $\tau$. Since we can use $\mathsf{B}$ to *generate* $\tau$, we steal the nomenclature from linear algebra and call $\mathsf{B}$ a basis or a base.
+
+> **Base**: Let $(\mathsf{X}, \tau)$ be a topological space and $\mathsf{B}\subseteq\tau$. We say that $\mathsf{B}$ is a base (or basis) for $\tau$ if for any set $\mathsf{A}\in\tau$ there exists a collection $\mathcal{S}\subseteq\mathsf{B}$ such that
+$$
+\mathsf{A} = \bigcup_{\mathsf{S}\in\mathcal{S}} \mathsf{S}
+$$
+
+Lots of notation, but again, don't try to remember all of this. Just absorb the concept that a basis is all you need to generate a topology. We will almost always work with topological spaces in machine learning. Their usefulness is that, given a topology we can use it to generate a sigma algebra (after all, the topology is simply a collection of subsets). This sigma algebra is special and it has a name, the Borel sigma algebra.
+
+> **Borel sigma-algebra**: Let $(\mathsf{X}, \tau)$ be a topological space, and $\sigma(\tau)$ be the sigma algebra generated by $\tau$. We call $\sigma(\tau)$ the Borel sigma algebra on $\mathsf{X}$. 
+
+At first sight, a topology and a sigma algebra look quite similar. Mathematically, they both contain $\emptyset$ and $\mathsf{X}$, and they are closed under finite unions and intersections, but the difference is that the topology is closed under **uncountable** unions (whereas a sigma algebra only countable), and the sigma algebra is closed under **countable** intersections. Another important difference, perhaps the most important, is that a sigma algebra is closed under complementation, but there is no such requirement in a topology. They are superficially similar objects, but the devil is in the details. Okay, cool, but intuitively what does this mean?  
+I have to admit, I struggle to find a valid intuition that is not rooted in mathematical details. However, one way I like to think about it, is that a topology gives you a notion of *closeness* of elements of $\mathsf{X}$, while a sigma algebra gives you the notion of relative sizes of subsets of $\mathsf{X}$. The Borel sigma algebra connects these two concepts. Being generated by the topology, means that every subset in the topology is also an element of the sigma algebra, meaning that we now have both notions! Always think that $\mathcal{B}(\mathsf{X})$ is typically much, much bigger than $\tau$.
+
+A topology represents a notion of **closeness**, but there is no "numeric" value to this closeness. A **vector space** (over a field $\mathsf{F}$) is a space whose elements can be **added together** and **rescaled**, and satisfy the usual properties that we would expect (e.g. associativity, commutativity, distributivity, etc). If we equip a vector space with a norm $\|\cdot\|$, we obtain (surprise surprise) a **normed vector space**, where now we have the notion of **length** of vectors (for nerds: in reality, we also need to equip its field with a norm). Yes, this is a numeric value. Automatically, this also gives us a notion of **distance**, since it can be interpreted as the length of the difference of two vectors. In mathematical language we say that the norm **induces a metric**
+$$
+d(x, y) := \|x - y\|,
+$$
+meaning that even if we didn't specify a metric, having a norm allows us to create one. This is now a notion of closeness that is numeric. If we equip a vector space with an inner product $\langle \cdot, \cdot\rangle$, we get an **inner product space** where now we additionally have the notion of **orientation** of vectors. Any inner product space is also a normed space, since the inner product **induces** a norm
+$$
+\|v\| = \sqrt{\langle v, v \rangle}.
+$$
+A **Banach** space is a **complete** normed space. To understand the word "complete" requires a course in analysis, but for our purposes it simply means that we can perform calculus on it, e.g. take limits. A **Hilbert** space is a complete inner product space. One more thing, a metric induces a topology! Here's a summary (and the only thing you should try understand, really, the rest can be forgotten)
+$$
+\langle \cdot, \cdot \rangle \text{ induces } \|\cdot\| \text{ induces } d(\cdot, \cdot) \text{ induces } \tau.
+$$
+If we know about their orientation, we know about their size. If we know about their size, we know about their distance. If we know about their distance, we know about their closeness. This is helpful because if we are given a Banach space $(\mathsf{X}, \|\cdot\|_\mathsf{X})$ then we automatically know that there is an induced topology $\tau_{\mathsf{X}}$ and therefore we can use it to generate a Borel sigma algebra $\mathcal{B}(\mathsf{X})$.
 
 <a name="integration"><a/>
 
@@ -237,6 +268,18 @@ $$
 $$
 4. When $\mathbb{M}$ is a finite measure, then the spaces are nested $L^q \subset L^p \subset L^1$ for $1 \leq p \leq q < \infty$. Most times, we will only care about $p=1$ or $p=2$.
 
+Typically, we will write the integral of a function $f\in L^1(\Omega, \mathcal{F}, \mathbb{M};\mathsf{X})$ with respect to $\mathbb{M}$ as $\mathbb{M}(f)$. This notation is handy for various reasons, but one cute reason is that for any set $\mathsf{A}\in\mathcal{B}(\mathsf{X})$ we can write $\mathbb{M}(\mathsf{A})$ as an integral of the indicator function
+$$
+1_{\mathsf{A}}(\omega) = \begin{cases}
+    1 & \omega\in\mathsf{A} \\
+    0 & \omega\notin \mathsf{A}.
+\end{cases}
+$$
+Indeed this function is $\mathcal{F}$-measurable and one can write
+$$
+\mathbb{M}(1_{\mathsf{A}}) = \int_{\Omega} 1_{\mathsf{A}}(\omega) \, \mathbb{M}(d\omega) = \int_{\mathsf{A}} \mathbb{M}(d\omega) = \mathbb{M}(\mathsf{A}).
+$$
+
 <a name="expectations"><a/>
 
 # Expectations
@@ -247,7 +290,7 @@ $$
 \mathbb{E}[\mathrm{X}] := \int_{\Omega} X(\omega) \mathbb{P}(d\omega).
 $$
 
-By definition, the expectation only exists when the conditions of $L^1$ are satisfied. 
+By definition, the expectation only exists when the conditions of $L^1$ are satisfied.
 
 # Topology
 By far the most common measurable space you will find in machine learning papers is $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$ for some positive integer $n\in\mathbb{Z}_+$, typically $n=1,2,3$. The sigma algebra $\mathcal{B}(\mathbb{R}^n)$ is called the **Borel** sigma algebra on $\mathbb{R}^n$. But what is it? Its precise definition is beyond the scope of this post, but I will give some intuition. First, we need to have some intuition about what a *topology* is. Given a set $\mathsf{X}$, a topology on $\mathsf{X}$ is basically a bunch of subsets and the way to think about it is that these subsets represent a notion of "closeness" between the elements of $\mathsf{X}$. This is not closeness in the "numerical" sense, we are not given any value telling us how close things are. However, these subsets represent *neighborhoods*.
@@ -314,16 +357,6 @@ such that
 $$
 \mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
 $$
-
-# Bochner Integration (optional, for nerds)
-More generally, one can talk about the Bochner integral. 
-
-> **Bochner integration**: Let $(\Omega, \mathcal{F}, \mathbb{M})$ be a measure space, $(\mathsf{X}, \mathcal{X})$ be a measurable space where $\mathsf{X}$ is a Banach space with norm $|\cdot|_{\mathsf{X}}$ and let $\mathrm{X}:\Omega\to\mathsf{X}$ be a $\mathcal{F}$-measurable function. We say that $\mathrm{X}$ is Bochner integrable if 
-$$
-\int_{\Omega} |f(\omega)| \, \mathbb{M}(d\omega) < \infty.
-$$
-
-Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure $\mathbb{M}$ is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in $\mathbb{M}$ being some probability measure $\mathbb{P}$ or some other sigma-finite measure such as the Lebesgue
 
 # $L^p$ Spaces
 It is very likely that you will always work on $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$, and the abstraction of this post is not necessary. However, it is *sometimes* essential to understand the theory at a higher abstraction level, hence why I try to keep everything written in terms of arbitrary measurable spaces. However, much of the theory (which you will also find in theoretical machine learning papers) deals with $L^p$ spaces. For this tiny section, we will lose some abstraction. But we will come back to general measure theory soon, don't worry.

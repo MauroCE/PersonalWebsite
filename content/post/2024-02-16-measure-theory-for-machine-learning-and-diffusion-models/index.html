@@ -25,6 +25,7 @@ projects: []
 <li><a href="#sigma-algebras">Sigma Algebras</a></li>
 <li><a href="#measures">Measures</a></li>
 <li><a href="#random-variables">Random Variables</a></li>
+<li><a href="#mathematical-spaces">Topology</a></li>
 <li><a href="#integration">Integration</a></li>
 <li><a href="#expectations">Expectations</a></li>
 </ul>
@@ -155,14 +156,6 @@ and it is the <em>smallest</em> sigma algebra containing <span class="math inlin
 \mathbb{M}\left(\bigcup_{i\in\mathcal{I}} \mathsf{A}_i\right) = \sum_{i\in\mathcal{I}} \mathbb{M}(\mathsf{A}_i)
 \]</span></p>
 </blockquote>
-<p>We need to talk about notation. The size of a set <span class="math inline">\(\mathsf{A}\)</span> under <span class="math inline">\(\mathbb{M}\)</span> is written <span class="math inline">\(\mathbb{M}(\mathsf{A})\)</span>, however there is another way of writing this that makes <em>explicit</em> the relationship between measures and integration (after all, if measures “measure” the size of things, it makes sense that they are related to integrals, which compute volumes). Indeed we can write
-<span class="math display">\[
-\mathbb{M}(\mathsf{A}) =: \int_{\mathsf{A}}d\mathbb{M} \qquad\qquad\qquad \forall\, \mathsf{A}\in\mathcal{F}.
-\]</span>
-Brrr, I remember the first time I saw <span class="math inline">\(d\mathbb{M}\)</span> without explanation and I was genuinely confused for days. It looks a bit stark to the eye, and a bit weird and “mathsy”. If you are a mathematician, you might hate what I am about to say, but in practice just “forget about it”. What I mean by that is that for most situations, you don’t need to know the precise definition of the integral above. You just have to “get used” to the notation, and learn how to manipulate it. For me studying mathematics is an endless iteration of pretending you understand new notation until it stops being scary and you can gather up the courage to look at the details and definitions. Think of the expression above as saying that the size of <span class="math inline">\(\mathsf{A}\)</span> under <span class="math inline">\(\mathbb{M}\)</span> is obtained by summing up the size of infinitesimal bits of <span class="math inline">\(\mathsf{A}\)</span>. Under this intuition, it is helpful to write down the variable of integration, so we may write (I will choose <span class="math inline">\(\omega\)</span> as variable of integration)
-<span class="math display">\[
-\mathbb{M}(\mathsf{A}) = \int_{\mathsf{A}} \mathbb{M}(d\omega).
-\]</span></p>
 <p>Again, as mathematicians we like to give names to things. Just as we typically work with measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span>, we typically assume that on this measurable space there is a measure <span class="math inline">\(\mathbb{M}\)</span>, and hence for brevity call <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> a measurable space. Basically, it’s just a space where I have a systematic and coherent way of assigning a “size” value to subsets.</p>
 <blockquote>
 <p><strong>Measure Space</strong>: A triplet <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> is called a measure space if <span class="math inline">\(\mathbb{M}\)</span> is a measure on the measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span>.</p>
@@ -207,9 +200,45 @@ For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</s
 which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mathsf{X}\)</span> such that <span class="math inline">\(f\)</span> is measurable relative to it, indeed by definition <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma(f)\)</span>-measurable. Therefor one could write <span class="math inline">\(\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)\)</span>.</p>
 </blockquote>
 <p>Finally, just a remark. In the definition of measurable function <span class="math inline">\(\mathrm{X}\)</span>, I have called it <span class="math inline">\(\mathcal{F}\)</span>-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra <span class="math inline">\(\mathrm{X}\)</span> will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.</p>
+<p><a name="mathematical-spaces"><a/></p>
 </div>
-<div id="topology-and-borel-sigma-algebras" class="section level1">
-<h1>Topology and Borel Sigma algebras</h1>
+<div id="mathematical-spaces" class="section level1">
+<h1>Mathematical Spaces</h1>
+<p>Unfortunately, there is no way we can proceed forward without talking about topology. At the most practical level, it is because we need to make sense of <span class="math inline">\((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))\)</span>, but at the more theoretical level it is needed to be able to define expectations and probability density functions appropriately. I will do my best to keep it intuitive and minimalist. The aim of this section is not to understand everything here, but just to connect the pieces together.</p>
+<p>First, we need to have some intuition about what a <em>topology</em> is. Given a set <span class="math inline">\(\mathsf{X}\)</span>, a topology on <span class="math inline">\(\mathsf{X}\)</span> is basically a bunch of subsets with some special properties. Mathematicians will hate me but <strong>you don’t need to remember these properties at all</strong> for machine learning. They are helpful to read before dwelling into a proof, but all you need to know is that these subsets represent a notion of <strong>“closeness”</strong> between the elements of <span class="math inline">\(\mathsf{X}\)</span>. This is not closeness in the “numerical” sense, we are not given any value telling us how close things are. However, these subsets represent <strong>neighborhoods</strong>.</p>
+<blockquote>
+<p><strong>Topology</strong>: Given a set <span class="math inline">\(\mathsf{X}\)</span>, a topology on it is a collection of its subsets <span class="math inline">\(\tau\subseteq 2^{\mathsf{X}}\)</span> such that<br />
+1. Contains the empty set and the set itself: <span class="math inline">\(\emptyset,\mathsf{X}\in\tau\)</span><br />
+2. Closed under countable and <em>uncountable</em> unions.
+3. Closed under <em>finite</em> intersection.
+The elements of <span class="math inline">\(\tau\)</span>, which are subsets of <span class="math inline">\(\mathsf{X}\)</span>, are known as <strong>open sets</strong>.</p>
+</blockquote>
+<p>We call <span class="math inline">\((\mathsf{X}, \tau)\)</span> a <strong>topological space</strong>. There may be many topologies that one can define on <span class="math inline">\(\mathsf{X}\)</span>. Rather than listing all the subsets contained in a topology, sometimes one can find a smaller subset <span class="math inline">\(\mathsf{B}\subset\tau\)</span> such that every set in <span class="math inline">\(\tau\)</span> can be constructed by taking the union of sets in <span class="math inline">\(\mathsf{B}\)</span>. The hope is that <span class="math inline">\(\mathsf{B}\)</span> is easier to characterize/describe, and so we can identify a topology by specifying <span class="math inline">\(\mathsf{B}\)</span> rather than <span class="math inline">\(\tau\)</span>. Since we can use <span class="math inline">\(\mathsf{B}\)</span> to <em>generate</em> <span class="math inline">\(\tau\)</span>, we steal the nomenclature from linear algebra and call <span class="math inline">\(\mathsf{B}\)</span> a basis or a base.</p>
+<blockquote>
+<p><strong>Base</strong>: Let <span class="math inline">\((\mathsf{X}, \tau)\)</span> be a topological space and <span class="math inline">\(\mathsf{B}\subseteq\tau\)</span>. We say that <span class="math inline">\(\mathsf{B}\)</span> is a base (or basis) for <span class="math inline">\(\tau\)</span> if for any set <span class="math inline">\(\mathsf{A}\in\tau\)</span> there exists a collection <span class="math inline">\(\mathcal{S}\subseteq\mathsf{B}\)</span> such that
+<span class="math display">\[
+\mathsf{A} = \bigcup_{\mathsf{S}\in\mathcal{S}} \mathsf{S}
+\]</span></p>
+</blockquote>
+<p>Lots of notation, but again, don’t try to remember all of this. Just absorb the concept that a basis is all you need to generate a topology. We will almost always work with topological spaces in machine learning. Their usefulness is that, given a topology we can use it to generate a sigma algebra (after all, the topology is simply a collection of subsets). This sigma algebra is special and it has a name, the Borel sigma algebra.</p>
+<blockquote>
+<p><strong>Borel sigma-algebra</strong>: Let <span class="math inline">\((\mathsf{X}, \tau)\)</span> be a topological space, and <span class="math inline">\(\sigma(\tau)\)</span> be the sigma algebra generated by <span class="math inline">\(\tau\)</span>. We call <span class="math inline">\(\sigma(\tau)\)</span> the Borel sigma algebra on <span class="math inline">\(\mathsf{X}\)</span>.</p>
+</blockquote>
+<p>At first sight, a topology and a sigma algebra look quite similar. Mathematically, they both contain <span class="math inline">\(\emptyset\)</span> and <span class="math inline">\(\mathsf{X}\)</span>, and they are closed under finite unions and intersections, but the difference is that the topology is closed under <strong>uncountable</strong> unions (whereas a sigma algebra only countable), and the sigma algebra is closed under <strong>countable</strong> intersections. Another important difference, perhaps the most important, is that a sigma algebra is closed under complementation, but there is no such requirement in a topology. They are superficially similar objects, but the devil is in the details. Okay, cool, but intuitively what does this mean?<br />
+I have to admit, I struggle to find a valid intuition that is not rooted in mathematical details. However, one way I like to think about it, is that a topology gives you a notion of <em>closeness</em> of elements of <span class="math inline">\(\mathsf{X}\)</span>, while a sigma algebra gives you the notion of relative sizes of subsets of <span class="math inline">\(\mathsf{X}\)</span>. The Borel sigma algebra connects these two concepts. Being generated by the topology, means that every subset in the topology is also an element of the sigma algebra, meaning that we now have both notions! Always think that <span class="math inline">\(\mathcal{B}(\mathsf{X})\)</span> is typically much, much bigger than <span class="math inline">\(\tau\)</span>.</p>
+<p>A topology represents a notion of <strong>closeness</strong>, but there is no “numeric” value to this closeness. A <strong>vector space</strong> (over a field <span class="math inline">\(\mathsf{F}\)</span>) is a space whose elements can be <strong>added together</strong> and <strong>rescaled</strong>, and satisfy the usual properties that we would expect (e.g. associativity, commutativity, distributivity, etc). If we equip a vector space with a norm <span class="math inline">\(\|\cdot\|\)</span>, we obtain (surprise surprise) a <strong>normed vector space</strong>, where now we have the notion of <strong>length</strong> of vectors (for nerds: in reality, we also need to equip its field with a norm). Yes, this is a numeric value. Automatically, this also gives us a notion of <strong>distance</strong>, since it can be interpreted as the length of the difference of two vectors. In mathematical language we say that the norm <strong>induces a metric</strong>
+<span class="math display">\[
+d(x, y) := \|x - y\|,
+\]</span>
+meaning that even if we didn’t specify a metric, having a norm allows us to create one. This is now a notion of closeness that is numeric. If we equip a vector space with an inner product <span class="math inline">\(\langle \cdot, \cdot\rangle\)</span>, we get an <strong>inner product space</strong> where now we additionally have the notion of <strong>orientation</strong> of vectors. Any inner product space is also a normed space, since the inner product <strong>induces</strong> a norm
+<span class="math display">\[
+\|v\| = \sqrt{\langle v, v \rangle}.
+\]</span>
+A <strong>Banach</strong> space is a <strong>complete</strong> normed space. To understand the word “complete” requires a course in analysis, but for our purposes it simply means that we can perform calculus on it, e.g. take limits. A <strong>Hilbert</strong> space is a complete inner product space. One more thing, a metric induces a topology! Here’s a summary (and the only thing you should try understand, really, the rest can be forgotten)
+<span class="math display">\[
+\langle \cdot, \cdot \rangle \text{ induces } \|\cdot\| \text{ induces } d(\cdot, \cdot) \text{ induces } \tau.
+\]</span>
+If we know about their orientation, we know about their size. If we know about their size, we know about their distance. If we know about their distance, we know about their closeness. This is helpful because if we are given a Banach space <span class="math inline">\((\mathsf{X}, \|\cdot\|_\mathsf{X})\)</span> then we automatically know that there is an induced topology <span class="math inline">\(\tau_{\mathsf{X}}\)</span> and therefore we can use it to generate a Borel sigma algebra <span class="math inline">\(\mathcal{B}(\mathsf{X})\)</span>.</p>
 <p><a name="integration"><a/></p>
 </div>
 <div id="integration" class="section level1">
@@ -235,6 +264,17 @@ If <span class="math inline">\(f\in L^p(\Omega, \mathcal{F}, \mathbb{M}; \mathsf
 \]</span></p></li>
 <li><p>When <span class="math inline">\(\mathbb{M}\)</span> is a finite measure, then the spaces are nested <span class="math inline">\(L^q \subset L^p \subset L^1\)</span> for <span class="math inline">\(1 \leq p \leq q &lt; \infty\)</span>. Most times, we will only care about <span class="math inline">\(p=1\)</span> or <span class="math inline">\(p=2\)</span>.</p></li>
 </ol>
+<p>Typically, we will write the integral of a function <span class="math inline">\(f\in L^1(\Omega, \mathcal{F}, \mathbb{M};\mathsf{X})\)</span> with respect to <span class="math inline">\(\mathbb{M}\)</span> as <span class="math inline">\(\mathbb{M}(f)\)</span>. This notation is handy for various reasons, but one cute reason is that for any set <span class="math inline">\(\mathsf{A}\in\mathcal{B}(\mathsf{X})\)</span> we can write <span class="math inline">\(\mathbb{M}(\mathsf{A})\)</span> as an integral of the indicator function
+<span class="math display">\[
+1_{\mathsf{A}}(\omega) = \begin{cases}
+    1 &amp; \omega\in\mathsf{A} \\
+    0 &amp; \omega\notin \mathsf{A}.
+\end{cases}
+\]</span>
+Indeed this function is <span class="math inline">\(\mathcal{F}\)</span>-measurable and one can write
+<span class="math display">\[
+\mathbb{M}(1_{\mathsf{A}}) = \int_{\Omega} 1_{\mathsf{A}}(\omega) \, \mathbb{M}(d\omega) = \int_{\mathsf{A}} \mathbb{M}(d\omega) = \mathbb{M}(\mathsf{A}).
+\]</span></p>
 <p><a name="expectations"><a/></p>
 </div>
 <div id="expectations" class="section level1">
@@ -315,17 +355,6 @@ such that
 \mathbb{M}_1(\mathsf{A}) = \int_\mathsf{A} \frac{d\mathbb{M}_1}{d\mathbb{M}_2} d\mathbb{M}_2 \qquad\qquad\forall\,\, \mathsf{A}\in\mathcal{F}.
 \]</span></p>
 </blockquote>
-</div>
-<div id="bochner-integration-optional-for-nerds" class="section level1">
-<h1>Bochner Integration (optional, for nerds)</h1>
-<p>More generally, one can talk about the Bochner integral.</p>
-<blockquote>
-<p><strong>Bochner integration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space, <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> be a measurable space where <span class="math inline">\(\mathsf{X}\)</span> is a Banach space with norm <span class="math inline">\(|\cdot|_{\mathsf{X}}\)</span> and let <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a <span class="math inline">\(\mathcal{F}\)</span>-measurable function. We say that <span class="math inline">\(\mathrm{X}\)</span> is Bochner integrable if
-<span class="math display">\[
-\int_{\Omega} |f(\omega)| \, \mathbb{M}(d\omega) &lt; \infty.
-\]</span></p>
-</blockquote>
-<p>Notice that the Radon-Nikodym theorem does not always hold on Banach spaces and instead more conditions are required. Basically, this tells us that if the measure <span class="math inline">\(\mathbb{M}\)</span> is general, we are kind of screwed. Luckily, in machine learning we are typically interested either in <span class="math inline">\(\mathbb{M}\)</span> being some probability measure <span class="math inline">\(\mathbb{P}\)</span> or some other sigma-finite measure such as the Lebesgue</p>
 </div>
 <div id="lp-spaces" class="section level1">
 <h1><span class="math inline">\(L^p\)</span> Spaces</h1>
