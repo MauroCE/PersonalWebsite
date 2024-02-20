@@ -30,7 +30,7 @@ projects: []
 <li><a href="#expectations">Expectations</a></li>
 <li><a href="#lebesgue-measure">Lebesgue Measure</a></li>
 <li><a href="#density-functions">Density Functions</a></li>
-<li><a href="#change-of-variables">Change of Variables</a></li>
+<li><a href="#change-of-variables">Change of Variables and Jacobians</a></li>
 </ul>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
@@ -372,12 +372,47 @@ but we could have chosen <span class="math inline">\(f\)</span>, <span class="ma
 <h1>Change of Variables</h1>
 <p>One of the most important tricks that we can use to manipulate integrals, which will be fundamental for Normalizing Flows, is the change of variables formula. You may already be familiar with a simplified version of this result from standard calculus. The idea is that if we are taking the expectation of a function <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mathbb{M}^g\)</span> (the pushforward of a measure by a function) then this is equivalent to computing the expectation of <span class="math inline">\(f\circ g\)</span> with respect to <span class="math inline">\(\mathbb{M}\)</span>.</p>
 <blockquote>
-<p><strong>Change of variables</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space, <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}))\)</span> be a Banach space equipped with the Borel sigma algebra induced by the norm. Let <span class="math inline">\(f, g:\Omega\to\mathsf{X}\)</span> be any two functions. Then <span class="math inline">\(f\in L^1(\Omega, \mathcal{F}, \mathbb{M}^g; \mathsf{X})\)</span> <strong>if and only if</strong> <span class="math inline">\((f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})\)</span> in which case
+<p><strong>Change of variables and Jacobians</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{M})\)</span> be a measure space, <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}))\)</span> be a Banach space equipped with the Borel sigma algebra induced by the norm. Let <span class="math inline">\(f, g:\Omega\to\mathsf{X}\)</span> be any two functions. Then <span class="math inline">\(f\in L^1(\Omega, \mathcal{F}, \mathbb{M}^g; \mathsf{X})\)</span> <strong>if and only if</strong> <span class="math inline">\((f\circ g)\in L^1(\Omega, \mathcal{F}, \mathbb{M}; \mathsf{X})\)</span> in which case
 <span class="math display">\[
 \mathbb{M}^g(f) = \mathbb{M}(f\circ g),
 \]</span>
 where <span class="math inline">\(\mathbb{M}^g\)</span> denotes the pushforward of <span class="math inline">\(\mathbb{M}\)</span> by <span class="math inline">\(g\)</span> (defined when <span class="math inline">\(g\)</span> is measurable).</p>
 </blockquote>
+<p>We can use this to talk about the usual change of variables encountered in basic probability. It’s going to be a bit involved, but bear with me.</p>
+<blockquote>
+<p><strong>Jacobians</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability and consider on <span class="math inline">\((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n), \text{Leb}_{\mathbb{R}^n})\)</span> a random variable <span class="math inline">\(\mathrm{X}:\Omega\to\mathbb{R}^n\)</span> with distribution <span class="math inline">\(\mathbb{P}^{\mathrm{X}}\)</span>. Now, let <span class="math inline">\(f:\mathbb{R}^n\to\mathbb{R}^n\)</span> a diffeomorphism and define the random variable <span class="math inline">\(\mathrm{Y} := f\circ\mathrm{X}\)</span>, with distribution <span class="math inline">\(\mathbb{P}^{\mathrm{Y}}\)</span>. We wish to find an expression for the density function of the random variable <span class="math inline">\(\mathrm{Y}\)</span> with respect to the Lebesgue measure. On one hand, we have for any <span class="math inline">\(\mathsf{A}\in\mathcal{B}(\mathbb{R}^n)\)</span>
+<span class="math display">\[
+\mathbb{P}^{\mathrm{Y}}(\mathsf{A}) = \int_{\mathsf{A}} d\mathbb{P}^{\mathrm{Y}} = \int_{\mathsf{A}} \frac{d\mathbb{P}^{\mathrm{Y}}}{d\text{Leb}_{\mathbb{R}^n}}(y) \text{Leb}_{\mathbb{R}^n}(dy),
+\]</span>
+while on the other hand, using the change of variables formula
+<span class="math display">\[
+\begin{align}
+\mathbb{P}^{\mathrm{Y}}(\mathsf{A})
+&amp;= \int_{\mathbb{R}^n} 1_{\mathsf{A}}(y) \mathbb{P}^{f\circ X}(dy) \\
+&amp;= \int_{\mathbb{R}^n} 1_{\mathsf{A}}(f(x)) d\mathbb{P}^{X}(dx) &amp;&amp; \text{change of variables} \\
+&amp;= \int_{\mathbb{R}^n} 1_{\mathsf{A}}(f(x)) \frac{d\mathbb{P}^{X}}{d\text{Leb}_{\mathbb{R}^n}}(x) \text{Leb}_{\mathbb{R}^n}(dx) &amp;&amp; \text{Radon-Nikodym theorem} \\
+&amp;= \int_{\mathbb{R}^n} 1_{\mathsf{A}}(f(x)) \frac{d\mathbb{P}^{X}}{d\text{Leb}_{\mathbb{R}^n}}(x) \text{Leb}_{\mathbb{R}^n}^{f^{-1}\circ f}(dx) \\
+&amp;= \int_{\mathsf{A}} \frac{d\mathbb{P}^{X}}{d\text{Leb}_{\mathbb{R}^n}}(f^{-1}(y)) \text{Leb}_{\mathbb{R}^n}^{f}(dy) &amp;&amp; \text{change of variables} \\
+&amp;= \int_{\mathsf{A}} \frac{d\mathbb{P}^{X}}{d\text{Leb}_{\mathbb{R}^n}}(f^{-1}(y)) \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y)\text{Leb}_{\mathbb{R}^n}(dy) &amp;&amp; \text{Radon-Nikodym theorem}
+\end{align}
+\]</span>
+Putting these two facts together tells us
+<span class="math display">\[
+\frac{d\mathbb{P}^{\mathrm{Y}}}{d\text{Leb}_{\mathbb{R}^n}}(y) = \frac{d\mathbb{P}^{X}}{d\text{Leb}_{\mathbb{R}^n}}(f^{-1}(y)) \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y).
+\]</span>
+What a horrible-looking equation, but if you squint, it should look familiar. For simplicity, let’s write <span class="math inline">\(p_\mathrm{Y}(\cdot)\)</span> for the density of the distribution of <span class="math inline">\(\mathrm{Y}\)</span> with respect to the Lebesgue and similarly <span class="math inline">\(p_\mathrm{X}\)</span>. Then we have
+<span class="math display">\[
+p_{\mathrm{Y}}(y) = p_{\mathrm{X}}(f^{-1}(y)) \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y).
+\]</span>
+This looks almost exactly like the change of variables formula we find in basic probability courses. In fact, it’s exactly the same formula, because it turns out that the Radon-Nikodym derivative of the pushforward of the Lebesgue measure by the Lebesgue measure is the absolute value of the determinant of the Jacobian of <span class="math inline">\(f^{-1}\)</span>, in other words
+<span class="math display">\[
+\frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y) = \left|\det \mathrm{J}_{f^{-1}}(y)\right|.
+\]</span></p>
+</blockquote>
+<p><a name="transition-kernels"><a/></p>
+</div>
+<div id="transition-kernels" class="section level1">
+<h1>Transition Kernels</h1>
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">
 <h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>
@@ -427,7 +462,7 @@ then by the <span class="math inline">\(\pi\)</span>-<span class="math inline">\
 <p><strong>Cylinder sets</strong>:</p>
 </blockquote>
 </div>
-<div id="transition-kernels" class="section level1">
+<div id="transition-kernels-1" class="section level1">
 <h1>Transition Kernels</h1>
 <blockquote>
 <p><strong>Transition Probability Kernel</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> and <span class="math inline">\((\mathsf{Y}, \mathcal{Y})\)</span> be two measurable space. A function <span class="math inline">\(K:\mathsf{X}\times\mathcal{Y}\to [0, 1]\)</span> is called a transition probability kernel from <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> to <span class="math inline">\((\mathsf{Y}, \mathcal{Y})\)</span> if<br />
