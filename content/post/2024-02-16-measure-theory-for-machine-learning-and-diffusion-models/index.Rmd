@@ -33,12 +33,17 @@ projects: []
 \newcommand{\Ebb}{\mathbb{E}}
 \newcommand{\Xrm}{\mathrm{X}}
 \newcommand{\Yrm}{\mathrm{Y}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Esf}{\mathsf{E}}
+\newcommand{\Ecal}{\mathcal{E}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
 - [Sigma Algebras](#sigma-algebras)
 - [Measures](#measures)
 - [Random Variables](#random-variables)
+- [Comparing Random Variables](#comparing-random-variables)
 - [Topology](#mathematical-spaces)
 - [Integration](#integration)
 - [Expectations](#expectations)
@@ -46,6 +51,7 @@ projects: []
 - [Density Functions](#density-functions)
 - [Change of Variables and Jacobians](#change-of-variables)
 - [Markov Kernels](#markov-kernels)
+- [Conditional Expectations](#conditional-expectations)
 
 # Introduction
 In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
@@ -219,6 +225,19 @@ which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurabl
 
 Finally, just a remark. In the definition of measurable function $\mathrm{X}$, I have called it $\mathcal{F}$-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra $\mathrm{X}$ will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.
 
+<a name="comparing-random-variables"><a/>
+
+# Comparing Random Variables
+Suppose we have a probability space $(\Omega, \Fcal, \Pbb)$ a measurable space $(\Xsf, \Xcal)$ and two random variables $\Xrm_1, \Xrm _2:\Omega\to\Xsf$. The following event
+$$
+\left\{\omega\in\Omega\,:\, \Xrm_1(\omega) = \Xrm_2(\omega) \right\}
+$$
+gathers all the outcomes such that the two random variables have the same value. It could be that two random variables always take on the same value because they are **identical**, and we would expect the probability of this event happening being one. It can also happen, however, that these random variables take on the same values often enough that the set of outcomes where they do not take on the same value has measure zero. In probability we do not work with certainty, but with "almost" certainty. If the complement event (which is always in the sigma algebra) has measure zero, then that's all we care about because it means that our event has measure one. For this reason, when
+$$
+\Pbb\left(\left\{\omega\in\Omega\,:\, \Xrm_1(\omega) = \Xrm_2(\omega) \right\}\right) = 1,
+$$
+we say that $\Xrm_1 = \Xrm_2$ **almost surely** or **with probability one**, and typically write $\Pbb(\Xrm_1 = \Xrm_2) = 1$, or abbreviate $\Xrm_1 = \Xrm_2$ a.s.
+
 <a name="mathematical-spaces"><a/>
 
 # Mathematical Spaces
@@ -259,6 +278,8 @@ $$
 \langle \cdot, \cdot \rangle \text{ induces } \|\cdot\| \text{ induces } d(\cdot, \cdot) \text{ induces } \tau.
 $$
 If we know about their orientation, we know about their size. If we know about their size, we know about their distance. If we know about their distance, we know about their closeness. This is helpful because if we are given a Banach space $(\mathsf{X}, \|\cdot\|_\mathsf{X})$ then we automatically know that there is an induced topology $\tau_{\mathsf{X}}$ and therefore we can use it to generate a Borel sigma algebra $\mathcal{B}(\mathsf{X})$.
+
+> **Banach-Borel space**: From now on, given a Banach space $(\Xsf, \|\cdot\|_\Xsf)$ where the norm induces a metric, which induces a topology $\tau_\Xsf$ which is used to generate the Borel sigma algebra $\Bcal(\Xsf)$, I will call $(\Xsf, \Bcal(\Xsf), \|\cdot\|_\Xsf)$ a Banach-Borel space. I don't think this is common, I just came up with it, but it summarises its main features.
 
 <a name="integration"><a/>
 
@@ -477,6 +498,23 @@ M \circ (L \circ K) = (M \circ L) \circ K
 $$
 which is why one often hears about Markov kernel forming a semigroup. This will be useful in the study of stochastic processes.
 
+<a name="conditional-expectations"><a/>
+
+# Conditional Expectations
+As I mentioned before, a sigma algebra represents **information** since it contains events for which we can talk about probabilities. In line with this interpretation, we can use this information to perform **conditioning**. Suppose that we have some random variable $\Xrm$ that is measurable with respect to a sigma algebra $\Fcal$, which represents information. Now, the expected value $\Ebb[\Xrm]$ is in some sense **relative to** $\Fcal$, because the random variable is measurable with respect to this information, it is compatible with it. Now, given fewer information $\Gcal\subseteq\Fcal$ we wish to define an expectation that is **relative** to this lesser amount of information. In symbols, we could write $\Ebb[\Xrm]$ as $\Ebb[\Xrm \mid \Fcal]$ and we wish to define $\Ebb[\Xrm \mid \Gcal]$. The symbols give away the fact that different amounts of information should allow us to **condition** on them. 
+
+This is the aim of the next definition/theorem, it says that under certain conditions, there exists $\Ebb[\Xrm \mid \Gcal]$. 
+
+> **Conditional Expectation with respect to a sub-sigma algebra**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Esf, \Bcal(\Esf), \|\cdot\|_\Esf)$ be a Banach-Borel space, and $\Xrm:\Omega\to\Esf$ be a random variable such that $\Ebb[\|\Xrm\|_\Esf] <\infty$. Let $\Gcal\subseteq\Fcal$ be a sub-sigma algebra of $\Fcal$. Then, **there exists** a $\Gcal$-measurable function $\Yrm:\Omega\to\Esf$ with $\Ebb[\|\Yrm\|_\Esf] < \infty$ such that
+$$
+\int_{\mathrm{G}} \Yrm \, d\Pbb = \int_{\mathsf{G}} \Xrm \, d\Pbb \qquad\qquad \mathsf{G}\in\Gcal.
+$$
+If there exists another random variable $\tilde{\Yrm}$ satisfying these properties then
+$$
+
+$$
+
+
 # $\pi$-Systems and $\lambda$-Systems
 
 > **$\pi$-system**: Let $\mathsf{P}$ be a non-empty set that is closed under finite intersections, meaning that if $\mathsf{A}, \mathsf{B}\in\mathsf{P}$ then $\mathsf{A}\cap\mathsf{B} \in \mathsf{P}$ and by induction for any $n\in\mathbb{N}$ we have
@@ -521,17 +559,11 @@ then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have t
 
 > **Cylinder sets**: 
 
-# Transition Kernels
-
-> **Transition Probability Kernel**: Let $(\mathsf{X}, \mathcal{X})$ and $(\mathsf{Y}, \mathcal{Y})$ be two measurable space. A function $K:\mathsf{X}\times\mathcal{Y}\to [0, 1]$ is called a transition probability kernel from $(\mathsf{X}, \mathcal{X})$ to $(\mathsf{Y}, \mathcal{Y})$ if \
-1. the function $K(\cdot, \mathsf{A})$ is $\mathcal{X}$-measurable for every $\mathsf{A}\in\mathcal{Y}$ \
-2. the function $K(x, \cdot)$ is a probability measure on $(\mathsf{Y}, \mathcal{Y})$ for every $x\in\mathsf{X}$
-
-
 # Stochastic Processes
-A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time).
+A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time). As time progresses, we gain more information.
 
 > **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
+
 
 > **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $(\mathsf{T}, \leq)$ be any totally-ordered set. The collection $\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}$ of random variables $\mathrm{X}_t:\Omega\to\mathsf{X}$ is called a stochastic process. If $\mathsf{T}$ is uncountable, then it is a continuous-time stochastic process, if $\mathsf{T}$ is countable then it is a discrete-time stochastic process.
 

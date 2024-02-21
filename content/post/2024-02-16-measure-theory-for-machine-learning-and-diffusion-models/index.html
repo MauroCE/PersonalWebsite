@@ -25,6 +25,7 @@ projects: []
 <li><a href="#sigma-algebras">Sigma Algebras</a></li>
 <li><a href="#measures">Measures</a></li>
 <li><a href="#random-variables">Random Variables</a></li>
+<li><a href="#comparing-random-variables">Comparing Random Variables</a></li>
 <li><a href="#mathematical-spaces">Topology</a></li>
 <li><a href="#integration">Integration</a></li>
 <li><a href="#expectations">Expectations</a></li>
@@ -32,6 +33,7 @@ projects: []
 <li><a href="#density-functions">Density Functions</a></li>
 <li><a href="#change-of-variables">Change of Variables and Jacobians</a></li>
 <li><a href="#markov-kernels">Markov Kernels</a></li>
+<li><a href="#conditional-expectations">Conditional Expectations</a></li>
 </ul>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
@@ -204,6 +206,19 @@ For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</s
 which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mathsf{X}\)</span> such that <span class="math inline">\(f\)</span> is measurable relative to it, indeed by definition <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma(f)\)</span>-measurable. Therefor one could write <span class="math inline">\(\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)\)</span>.</p>
 </blockquote>
 <p>Finally, just a remark. In the definition of measurable function <span class="math inline">\(\mathrm{X}\)</span>, I have called it <span class="math inline">\(\mathcal{F}\)</span>-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra <span class="math inline">\(\mathrm{X}\)</span> will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.</p>
+<p><a name="comparing-random-variables"><a/></p>
+</div>
+<div id="comparing-random-variables" class="section level1">
+<h1>Comparing Random Variables</h1>
+<p>Suppose we have a probability space <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> a measurable space <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> and two random variables <span class="math inline">\(\mathrm{X}_1, \mathrm{X}_2:\Omega\to\mathsf{X}\)</span>. The following event
+<span class="math display">\[
+\left\{\omega\in\Omega\,:\, \mathrm{X}_1(\omega) = \mathrm{X}_2(\omega) \right\}
+\]</span>
+gathers all the outcomes such that the two random variables have the same value. It could be that two random variables always take on the same value because they are <strong>identical</strong>, and we would expect the probability of this event happening being one. It can also happen, however, that these random variables take on the same values often enough that the set of outcomes where they do not take on the same value has measure zero. In probability we do not work with certainty, but with “almost” certainty. If the complement event (which is always in the sigma algebra) has measure zero, then that’s all we care about because it means that our event has measure one. For this reason, when
+<span class="math display">\[
+\mathbb{P}\left(\left\{\omega\in\Omega\,:\, \mathrm{X}_1(\omega) = \mathrm{X}_2(\omega) \right\}\right) = 1,
+\]</span>
+we say that <span class="math inline">\(\mathrm{X}_1 = \mathrm{X}_2\)</span> <strong>almost surely</strong> or <strong>with probability one</strong>, and typically write <span class="math inline">\(\mathbb{P}(\mathrm{X}_1 = \mathrm{X}_2) = 1\)</span>, or abbreviate <span class="math inline">\(\mathrm{X}_1 = \mathrm{X}_2\)</span> a.s.</p>
 <p><a name="mathematical-spaces"><a/></p>
 </div>
 <div id="mathematical-spaces" class="section level1">
@@ -243,6 +258,9 @@ A <strong>Banach</strong> space is a <strong>complete</strong> normed space. To 
 \langle \cdot, \cdot \rangle \text{ induces } \|\cdot\| \text{ induces } d(\cdot, \cdot) \text{ induces } \tau.
 \]</span>
 If we know about their orientation, we know about their size. If we know about their size, we know about their distance. If we know about their distance, we know about their closeness. This is helpful because if we are given a Banach space <span class="math inline">\((\mathsf{X}, \|\cdot\|_\mathsf{X})\)</span> then we automatically know that there is an induced topology <span class="math inline">\(\tau_{\mathsf{X}}\)</span> and therefore we can use it to generate a Borel sigma algebra <span class="math inline">\(\mathcal{B}(\mathsf{X})\)</span>.</p>
+<blockquote>
+<p><strong>Banach-Borel space</strong>: From now on, given a Banach space <span class="math inline">\((\mathsf{X}, \|\cdot\|_\mathsf{X})\)</span> where the norm induces a metric, which induces a topology <span class="math inline">\(\tau_\mathsf{X}\)</span> which is used to generate the Borel sigma algebra <span class="math inline">\(\mathcal{B}(\mathsf{X})\)</span>, I will call <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}), \|\cdot\|_\mathsf{X})\)</span> a Banach-Borel space. I don’t think this is common, I just came up with it, but it summarises its main features.</p>
+</blockquote>
 <p><a name="integration"><a/></p>
 </div>
 <div id="integration" class="section level1">
@@ -451,6 +469,21 @@ is also a Markov kernel.</p>
 M \circ (L \circ K) = (M \circ L) \circ K
 \]</span>
 which is why one often hears about Markov kernel forming a semigroup. This will be useful in the study of stochastic processes.</p>
+<p><a name="conditional-expectations"><a/></p>
+</div>
+<div id="conditional-expectations" class="section level1">
+<h1>Conditional Expectations</h1>
+<p>As I mentioned before, a sigma algebra represents <strong>information</strong> since it contains events for which we can talk about probabilities. In line with this interpretation, we can use this information to perform <strong>conditioning</strong>. Suppose that we have some random variable <span class="math inline">\(\mathrm{X}\)</span> that is measurable with respect to a sigma algebra <span class="math inline">\(\mathcal{F}\)</span>, which represents information. Now, the expected value <span class="math inline">\(\mathbb{E}[\mathrm{X}]\)</span> is in some sense <strong>relative to</strong> <span class="math inline">\(\mathcal{F}\)</span>, because the random variable is measurable with respect to this information, it is compatible with it. Now, given fewer information <span class="math inline">\(\mathcal{G}\subseteq\mathcal{F}\)</span> we wish to define an expectation that is <strong>relative</strong> to this lesser amount of information. In symbols, we could write <span class="math inline">\(\mathbb{E}[\mathrm{X}]\)</span> as <span class="math inline">\(\mathbb{E}[\mathrm{X}\mid \mathcal{F}]\)</span> and we wish to define <span class="math inline">\(\mathbb{E}[\mathrm{X}\mid \mathcal{G}]\)</span>. The symbols give away the fact that different amounts of information should allow us to <strong>condition</strong> on them.</p>
+<p>This is the aim of the next definition/theorem, it says that under certain conditions, there exists <span class="math inline">\(\mathbb{E}[\mathrm{X}\mid \mathcal{G}]\)</span>.</p>
+<blockquote>
+<p><strong>Conditional Expectation with respect to a sub-sigma algebra</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{E}, \mathcal{B}(\mathsf{E}), \|\cdot\|_\mathsf{E})\)</span> be a Banach-Borel space, and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{E}\)</span> be a random variable such that <span class="math inline">\(\mathbb{E}[\|\mathrm{X}\|_\mathsf{E}] &lt;\infty\)</span>. Let <span class="math inline">\(\mathcal{G}\subseteq\mathcal{F}\)</span> be a sub-sigma algebra of <span class="math inline">\(\mathcal{F}\)</span>. Then, <strong>there exists</strong> a <span class="math inline">\(\mathcal{G}\)</span>-measurable function <span class="math inline">\(\mathrm{Y}:\Omega\to\mathsf{E}\)</span> with <span class="math inline">\(\mathbb{E}[\|\mathrm{Y}\|_\mathsf{E}] &lt; \infty\)</span> such that
+<span class="math display">\[
+\int_{\mathrm{G}} \mathrm{Y}\, d\mathbb{P}= \int_{\mathsf{G}} \mathrm{X}\, d\mathbb{P}\qquad\qquad \mathsf{G}\in\mathcal{G}.
+\]</span>
+If there exists another random variable <span class="math inline">\(\tilde{\mathrm{Y}}\)</span> satisfying these properties then
+$$</p>
+</blockquote>
+<p>$$</p>
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">
 <h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>
@@ -500,17 +533,9 @@ then by the <span class="math inline">\(\pi\)</span>-<span class="math inline">\
 <p><strong>Cylinder sets</strong>:</p>
 </blockquote>
 </div>
-<div id="transition-kernels" class="section level1">
-<h1>Transition Kernels</h1>
-<blockquote>
-<p><strong>Transition Probability Kernel</strong>: Let <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> and <span class="math inline">\((\mathsf{Y}, \mathcal{Y})\)</span> be two measurable space. A function <span class="math inline">\(K:\mathsf{X}\times\mathcal{Y}\to [0, 1]\)</span> is called a transition probability kernel from <span class="math inline">\((\mathsf{X}, \mathcal{X})\)</span> to <span class="math inline">\((\mathsf{Y}, \mathcal{Y})\)</span> if<br />
-1. the function <span class="math inline">\(K(\cdot, \mathsf{A})\)</span> is <span class="math inline">\(\mathcal{X}\)</span>-measurable for every <span class="math inline">\(\mathsf{A}\in\mathcal{Y}\)</span><br />
-2. the function <span class="math inline">\(K(x, \cdot)\)</span> is a probability measure on <span class="math inline">\((\mathsf{Y}, \mathcal{Y})\)</span> for every <span class="math inline">\(x\in\mathsf{X}\)</span></p>
-</blockquote>
-</div>
 <div id="stochastic-processes" class="section level1">
 <h1>Stochastic Processes</h1>
-<p>A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the <span class="math inline">\(t^{\text{th}}\)</span> sigma algebra tells you the information available at time <span class="math inline">\(t\)</span> (we call it time because usually the index is time).</p>
+<p>A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the <span class="math inline">\(t^{\text{th}}\)</span> sigma algebra tells you the information available at time <span class="math inline">\(t\)</span> (we call it time because usually the index is time). As time progresses, we gain more information.</p>
 <blockquote>
 <p><strong>Filtration</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, and <span class="math inline">\((\mathsf{T}, \leq)\)</span> be a totally-ordered set, which we call an index set. A filtration <span class="math inline">\(\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}\)</span> induced by <span class="math inline">\((\mathsf{T}, \leq)\)</span> is a collection of sub-sigma algebras of <span class="math inline">\(\mathcal{F}\)</span> such that <span class="math inline">\(\mathcal{F}_q\subseteq\mathcal{F}_s\)</span> when <span class="math inline">\(q\leq s\)</span>.</p>
 </blockquote>
