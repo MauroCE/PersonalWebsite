@@ -40,6 +40,7 @@ projects: []
 \newcommand{\Gsf}{\mathsf{G}}
 \newcommand{\Asf}{\mathsf{A}}
 \newcommand{\Tsf}{\mathsf{T}}
+\newcommand{\Bsf}{\mathsf{B}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
