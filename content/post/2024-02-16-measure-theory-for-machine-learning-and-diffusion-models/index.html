@@ -39,6 +39,7 @@ projects: []
 <h1>Introduction</h1>
 <p>In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming <strong>very few prerequisites</strong>. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models.</p>
 <p>If you find any mistake, typo or for anything else, don’t hesitate to contact me.</p>
+<hr />
 <p><a name="randomness"></a></p>
 </div>
 <div id="randomness-mathematics-and-intuition" class="section level1">
@@ -53,6 +54,7 @@ projects: []
 <li>What “things” can have an associated probability? (<span style="color:deepskyblue">blue</span>)</li>
 </ol>
 <p>All we need are <strong>sets</strong> and <strong>functions</strong>.</p>
+<hr />
 <div id="what-this-is-all-about" class="section level2">
 <h2>What this is all about</h2>
 <p>Until we have built enough measure theory to talk about machine learning, I will often talk about this very simple scenario: A person rolling a six-sided die and observing which number comes out on top. This is a classic and straightforward scenario considered in probability theory, but will allow me to talk about various notions in measure theory without getting lost in the details. I will assume:</p>
@@ -107,6 +109,7 @@ then an event is any subset <span class="math inline">\(\mathsf{E}\subseteq \Ome
 \mathcal{F} = 2^\Omega.
 \]</span>
 For example, <span class="math inline">\(\{2, 4, 6\}\in\mathcal{F}\)</span>.</p>
+<hr />
 <p><a name="sigma-algebras"><a/></p>
 </div>
 </div>
@@ -149,6 +152,7 @@ and it is the <em>smallest</em> sigma algebra containing <span class="math inlin
 <blockquote>
 <p><strong>Measurable Space</strong>: Let <span class="math inline">\(\Omega\)</span> be a non-empty set and <span class="math inline">\(\mathcal{F}\subset 2^\Omega\)</span> be a sigma algebra on it. The pair <span class="math inline">\((\Omega, \mathcal{F})\)</span> is called a measurable space, and any set <span class="math inline">\(\mathsf{A}\in\mathcal{F}\)</span> is called <span class="math inline">\(\mathcal{F}\)</span>-measurable.</p>
 </blockquote>
+<hr />
 <p><a name="measures"><a/></p>
 </div>
 <div id="measures" class="section level1">
@@ -175,6 +179,7 @@ and it is the <em>smallest</em> sigma algebra containing <span class="math inlin
 <p><strong>Probability Measure</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a measurable space with <span class="math inline">\(\mathbb{P}\)</span> being a finite measure. If <span class="math inline">\(\mathbb{P}(\mathsf{X}) = 1\)</span> we say that <span class="math inline">\(\mathbb{P}\)</span> is a probability measure. Notice that given any finite measure <span class="math inline">\(\mathbb{M}\)</span>, one can define a corresponding probability measure by normalization <span class="math inline">\(\mathbb{P} := \mathbb{M} / \mathbb{M}(\Omega)\)</span>.</p>
 </blockquote>
 <p>Above, I have define <span class="math inline">\(\sigma\)</span>-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini’s theorem, which we will see later. In simpler language: we require <span class="math inline">\(\sigma\)</span>-finite measures when we need to work with probability density functions or we need to exchange integrals.</p>
+<hr />
 <p><a name="random-variables"><a/></p>
 </div>
 <div id="random-variables-and-distributions" class="section level1">
@@ -206,6 +211,7 @@ For any measurable set <span class="math inline">\(\mathsf{A}\in\mathcal{X}\)</s
 which is the <em>smallest</em> sigma algebra on <span class="math inline">\(\mathsf{X}\)</span> such that <span class="math inline">\(f\)</span> is measurable relative to it, indeed by definition <span class="math inline">\(f\)</span> is <span class="math inline">\(\sigma(f)\)</span>-measurable. Therefor one could write <span class="math inline">\(\sigma(f) = \sigma\left(\left\{f^{-1}(\mathsf{A})\,:\, \mathsf{A}\in\mathcal{Y}\right\}\right)\)</span>.</p>
 </blockquote>
 <p>Finally, just a remark. In the definition of measurable function <span class="math inline">\(\mathrm{X}\)</span>, I have called it <span class="math inline">\(\mathcal{F}\)</span>-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra <span class="math inline">\(\mathrm{X}\)</span> will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.</p>
+<hr />
 <p><a name="comparing-random-variables"><a/></p>
 </div>
 <div id="comparing-random-variables" class="section level1">
@@ -219,6 +225,7 @@ gathers all the outcomes such that the two random variables have the same value.
 \mathbb{P}\left(\left\{\omega\in\Omega\,:\, \mathrm{X}_1(\omega) = \mathrm{X}_2(\omega) \right\}\right) = 1,
 \]</span>
 we say that <span class="math inline">\(\mathrm{X}_1 = \mathrm{X}_2\)</span> <strong>almost surely</strong> or <strong>with probability one</strong>, and typically write <span class="math inline">\(\mathbb{P}(\mathrm{X}_1 = \mathrm{X}_2) = 1\)</span>, or abbreviate <span class="math inline">\(\mathrm{X}_1 = \mathrm{X}_2\)</span> a.s.</p>
+<hr />
 <p><a name="mathematical-spaces"><a/></p>
 </div>
 <div id="mathematical-spaces" class="section level1">
@@ -261,6 +268,7 @@ If we know about their orientation, we know about their size. If we know about t
 <blockquote>
 <p><strong>Banach-Borel space</strong>: From now on, given a Banach space <span class="math inline">\((\mathsf{X}, \|\cdot\|_\mathsf{X})\)</span> where the norm induces a metric, which induces a topology <span class="math inline">\(\tau_\mathsf{X}\)</span> which is used to generate the Borel sigma algebra <span class="math inline">\(\mathcal{B}(\mathsf{X})\)</span>, I will call <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}), \|\cdot\|_\mathsf{X})\)</span> a Banach-Borel space. I don’t think this is common, I just came up with it, but it summarises its main features.</p>
 </blockquote>
+<hr />
 <p><a name="integration"><a/></p>
 </div>
 <div id="integration" class="section level1">
@@ -297,6 +305,7 @@ Indeed this function is <span class="math inline">\(\mathcal{F}\)</span>-measura
 <span class="math display">\[
 \mathbb{M}(1_{\mathsf{A}}) = \int_{\Omega} 1_{\mathsf{A}}(\omega) \, \mathbb{M}(d\omega) = \int_{\mathsf{A}} \mathbb{M}(d\omega) = \mathbb{M}(\mathsf{A}).
 \]</span></p>
+<hr />
 <p><a name="expectations"><a/></p>
 </div>
 <div id="expectations" class="section level1">
@@ -309,6 +318,7 @@ Indeed this function is <span class="math inline">\(\mathcal{F}\)</span>-measura
 \]</span></p>
 </blockquote>
 <p>By definition, the expectation only exists when the conditions of <span class="math inline">\(L^1\)</span> are satisfied. Suppose you have a random variable <span class="math inline">\(\mathrm{X}\)</span> and you apply a transformation to it, what is the distribution of the new random variable? The answer to this question is fundamental for Normalizing Flows and a lot of the more theoretical generative modelling literature.</p>
+<hr />
 <p><a name="lebesgue-measure"><a/></p>
 </div>
 <div id="lebesgue-measure" class="section level1">
@@ -343,6 +353,7 @@ This measure is clearly not finite, since <span class="math inline">\(\text{Leb}
 <span class="math display">\[
 \int_{\mathbb{R}^n} f(x) \text{Leb}_{\mathbb{R}^n}(dx) = \int_{\mathbb{R}^n} f(x) dx.
 \]</span></p>
+<hr />
 <p><a name="density-functions"><a/></p>
 </div>
 <div id="density-functions" class="section level1">
@@ -390,6 +401,7 @@ but we could have chosen <span class="math inline">\(f\)</span>, <span class="ma
 \frac{\mathbb{M}_1(d\omega)}{\mathbb{M}_2(d\omega)}
 \]</span>
 emphasizes the usage of the Radon-Nikodym theorem, since they it is “easier” to think about cancelling the denominator with another term of the form <span class="math inline">\(\mathbb{M}_2(d\omega)\)</span>.</p>
+<hr />
 <p><a name="change-of-variables"><a/></p>
 </div>
 <div id="change-of-variables" class="section level1">
@@ -433,19 +445,30 @@ This looks almost exactly like the change of variables formula we find in basic 
 \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y) = \left|\det \mathrm{J}_{f^{-1}}(y)\right|.
 \]</span></p>
 </blockquote>
-<p>Another great application of the change of variables theorem is being able to write expectations as we usually do in an undergraduate course in probability. Indeed, so far we have been writing the expectation of a random variable <span class="math inline">\(\mathrm{X}:\Omega\to\mathbb{R}\)</span> as integrals over the sample space <span class="math inline">\(\Omega\)</span>
-<span class="math display">\[
-\mathbb{E}[\mathrm{X}] = \int_{\Omega} \mathrm{X}(\omega) \mathbb{P}(d\omega)
-\]</span>
-but these look different from the usual definition of expectation that we are all familiar with
-<span class="math display">\[
-\int_\mathsf{X}x p(x) dx
-\]</span>
-where <span class="math inline">\(p(x)\)</span> is the probability density function of the random variable <span class="math inline">\(\mathrm{X}\)</span>. This can be easily recovered
+<p>Another great application of the change of variables theorem is being able to write expectations as we usually do in an undergraduate course in probability, using <span class="math inline">\(dx\)</span> and <span class="math inline">\(p(x)\)</span>, the density of the random variable.</p>
+<blockquote>
+<p><strong>Undergraduate expectations</strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\(\mathrm{X}:\Omega\to\mathbb{R}\)</span> be a random variable from that space to <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span>, with distribution <span class="math inline">\(\mathbb{P}^\mathrm{X}\)</span> which has density with respect to <span class="math inline">\(\text{Leb}_\mathbb{R}\)</span> given by <span class="math inline">\(p(x)\)</span>. Then we can write
 <span class="math display">\[
 \int_{\Omega} \mathrm{X}(\omega) \mathbb{P}(d\omega) = \int_{\Omega} \mathrm{X}(\omega) \mathbb{P}^{\mathrm{X}^{-1} \circ \mathrm{X}}(d\omega) =
 \int_\mathsf{X}x \frac{\mathbb{P}^\mathrm{X}(dx)}{\text{Leb}_\mathbb{R}(dx)}\text{Leb}_\mathbb{R}(dx) = \int_\mathsf{X}x p(x) dx.
 \]</span></p>
+</blockquote>
+<p>Finally, very often people will write <span class="math inline">\(\mathbb{P}(\mathrm{X}\in\mathsf{A})\)</span> rather than <span class="math inline">\(\mathbb{P}^\mathrm{X}(\mathsf{A})\)</span>. It is straightforward to verify that they are indeed the same thing, once we define the notation <span class="math inline">\(\mathrm{X}\in\mathsf{A}\)</span>.</p>
+<blockquote>
+<p><strong>Cute notation for <span class="math inline">\(\mathbb{P}^\mathrm{X}(\mathsf{A})\)</span></strong>: Let <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> be a probability space, <span class="math inline">\((\mathsf{X}, \mathcal{B}(\mathsf{X}), \|\cdot\|_\mathsf{X})\)</span> be a Banach-Borel space and <span class="math inline">\(\mathrm{X}:\Omega\to\mathsf{X}\)</span> be a random variable in <span class="math inline">\(L^1(\Omega, \mathcal{F}, \mathbb{P}; \mathsf{X})\)</span>. Then we can write
+<span class="math display">\[
+\mathbb{P}^\mathrm{X}(\mathsf{A}) = \mathbb{P}^\mathrm{X}(1_\mathsf{A}) = \mathbb{P}(1_\mathsf{A}\circ \mathrm{X})
+\]</span>
+and by definition the composition of the indicator function and the random variable is
+<span class="math display">\[
+1_\mathsf{A}(\mathrm{X}(\omega)) = \begin{cases}
+1 &amp; \mathrm{X}(\omega) \in \mathsf{A}\\
+0 &amp; \mathrm{X}(\omega) \notin \mathsf{A}
+\end{cases}
+\]</span>
+and then we can <strong>define</strong> the set <span class="math inline">\(\{\mathrm{X}\in \mathsf{A}\} := \left\{\omega\in\Omega\,:\, \mathrm{X}(\omega)\in \mathsf{A}\right\}\)</span>, meaning indeed <span class="math inline">\(\mathbb{P}^\mathrm{X}(\mathsf{A}) = \mathbb{P}(\{\mathrm{X}\in\mathsf{A}\})\)</span> and we typically drop the parenthesis and simply say <span class="math inline">\(\mathbb{P}(\mathrm{X}\in\mathsf{A})\)</span>.</p>
+</blockquote>
+<hr />
 <p><a name="markov-kernels"><a/></p>
 </div>
 <div id="markov-kernels" class="section level1">
@@ -469,6 +492,7 @@ is also a Markov kernel.</p>
 M \circ (L \circ K) = (M \circ L) \circ K
 \]</span>
 which is why one often hears about Markov kernel forming a semigroup. This will be useful in the study of stochastic processes.</p>
+<hr />
 <p><a name="conditional-expectations"><a/></p>
 </div>
 <div id="conditional-expectations" class="section level1">
@@ -483,6 +507,7 @@ which is why one often hears about Markov kernel forming a semigroup. This will 
 If there exists another random variable <span class="math inline">\(\tilde{\mathrm{Y}}\)</span> satisfying these properties then <span class="math inline">\(\mathbb{P}(\tilde{\mathrm{Y}} = \mathrm{Y}) = 1\)</span>, and we call any random variable with these properties a <strong>version</strong> of the conditional expectation of <span class="math inline">\(\mathrm{X}\)</span> given <span class="math inline">\(\mathcal{G}\)</span> and write <span class="math inline">\(\mathrm{Y}= \mathbb{E}[\mathrm{X}\mid \mathcal{G}]\)</span> almost surely.</p>
 </blockquote>
 <p>Given fewer information <span class="math inline">\(\mathcal{G}\subseteq\mathcal{F}\)</span>, the conditional expectation <span class="math inline">\(\mathbb{E}[\mathrm{X}\mid\mathcal{G}]\)</span> is any random variable whose expectation on sets <span class="math inline">\(\mathsf{G}\in\mathcal{G}\)</span> agrees with that of <span class="math inline">\(\mathrm{X}\)</span>. This makes sense: if the set <span class="math inline">\(\mathsf{G}\)</span> is in the sub-sigma algebra that we are conditioning on, that information is available, and so conditioning is useless and we fall back to the standard expectation of <span class="math inline">\(\mathrm{X}\)</span>. Notice that the conditional expectation is not unique, there may be multiple versions.</p>
+<hr />
 </div>
 <div id="pi-systems-and-lambda-systems" class="section level1">
 <h1><span class="math inline">\(\pi\)</span>-Systems and <span class="math inline">\(\lambda\)</span>-Systems</h1>

@@ -38,6 +38,7 @@ projects: []
 \newcommand{\Esf}{\mathsf{E}}
 \newcommand{\Ecal}{\mathcal{E}}
 \newcommand{\Gsf}{\mathsf{G}}
+\newcommand{\Asf}{\mathsf{A}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
@@ -59,6 +60,8 @@ In this post, I will cover enough measure theory so that the reader will be able
 
 If you find any mistake, typo or for anything else, don't hesitate to contact me. 
 
+---
+
 <a name="randomness"></a>
 
 # Randomness, Mathematics, and Intuition
@@ -72,6 +75,8 @@ I have emphasized in three different colors the key components of that sentence.
 2. What "things" can have an associated probability? (<span style="color:deepskyblue">blue</span>)
 
 All we need are **sets** and **functions**. 
+
+---
 
 ## What this is all about
 Until we have built enough measure theory to talk about machine learning, I will often talk about this very simple scenario: A person rolling a six-sided die and observing which number comes out on top. This is a classic and straightforward scenario considered in probability theory, but will allow me to talk about various notions in measure theory without getting lost in the details. I will assume:
@@ -126,6 +131,8 @@ $$
 $$
 For example, $\{2, 4, 6\}\in\mathcal{F}$.
 
+---
+
 <a name="sigma-algebras"><a/>
 
 # Sigma Algebras
@@ -166,6 +173,8 @@ Since we almost always work with a set $\Omega$ and a sigma algebra on it, for c
 
 >**Measurable Space**: Let $\Omega$ be a non-empty set and $\mathcal{F}\subset 2^\Omega$ be a sigma algebra on it. The pair $(\Omega, \mathcal{F})$ is called a measurable space, and any set $\mathsf{A}\in\mathcal{F}$ is called $\mathcal{F}$-measurable.
 
+---
+
 <a name="measures"><a/>
 
 # Measures
@@ -191,6 +200,8 @@ Any finite measure can be turned into a probability measure by normalization. Of
 > **Probability Measure**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a measurable space with $\mathbb{P}$ being a finite measure. If $\mathbb{P}(\mathsf{X}) = 1$ we say that $\mathbb{P}$ is a probability measure. Notice that given any finite measure $\mathbb{M}$, one can define a corresponding probability measure by normalization $\mathbb{P} := \mathbb{M} / \mathbb{M}(\Omega)$.
 
 Above, I have define $\sigma$-finite measures. What is this property useful for? Typically, this is used for the Radon-Nikodym theorem and Fubini's theorem, which we will see later. In  simpler language: we require $\sigma$-finite measures when we need to work with probability density functions or we need to exchange integrals.
+
+---
 
 <a name="random-variables"><a/>
 
@@ -226,6 +237,8 @@ which is the *smallest* sigma algebra on $\mathsf{X}$ such that $f$ is measurabl
 
 Finally, just a remark. In the definition of measurable function $\mathrm{X}$, I have called it $\mathcal{F}$-measurable, specifying the sigma algebra on the domain. However, most times it will be clear from context (or just not that important) which sigma algebra $\mathrm{X}$ will be measurable with respect to. Nonetheless, I will try my best to always specify the sigma algebra. I am aware this makes notation a bit heavier, but in some cases, it may make it more precise and therefore easier to understand.
 
+---
+
 <a name="comparing-random-variables"><a/>
 
 # Comparing Random Variables
@@ -238,6 +251,8 @@ $$
 \Pbb\left(\left\{\omega\in\Omega\,:\, \Xrm_1(\omega) = \Xrm_2(\omega) \right\}\right) = 1,
 $$
 we say that $\Xrm_1 = \Xrm_2$ **almost surely** or **with probability one**, and typically write $\Pbb(\Xrm_1 = \Xrm_2) = 1$, or abbreviate $\Xrm_1 = \Xrm_2$ a.s.
+
+---
 
 <a name="mathematical-spaces"><a/>
 
@@ -282,6 +297,8 @@ If we know about their orientation, we know about their size. If we know about t
 
 > **Banach-Borel space**: From now on, given a Banach space $(\Xsf, \|\cdot\|_\Xsf)$ where the norm induces a metric, which induces a topology $\tau_\Xsf$ which is used to generate the Borel sigma algebra $\Bcal(\Xsf)$, I will call $(\Xsf, \Bcal(\Xsf), \|\cdot\|_\Xsf)$ a Banach-Borel space. I don't think this is common, I just came up with it, but it summarises its main features.
 
+---
+
 <a name="integration"><a/>
 
 # Integration
@@ -319,6 +336,8 @@ $$
 \mathbb{M}(1_{\mathsf{A}}) = \int_{\Omega} 1_{\mathsf{A}}(\omega) \, \mathbb{M}(d\omega) = \int_{\mathsf{A}} \mathbb{M}(d\omega) = \mathbb{M}(\mathsf{A}).
 $$
 
+---
+
 <a name="expectations"><a/>
 
 # Expectations
@@ -330,6 +349,8 @@ $$
 $$
 
 By definition, the expectation only exists when the conditions of $L^1$ are satisfied. Suppose you have a random variable $\mathrm{X}$ and you apply a transformation to it, what is the distribution of the new random variable? The answer to this question is fundamental for Normalizing Flows and a lot of the more theoretical generative modelling literature.
+
+---
 
 <a name="lebesgue-measure"><a/>
 
@@ -366,6 +387,8 @@ This measure is clearly not finite, since $\text{Leb}_{\mathbb{R}}(\mathbb{R})$ 
 $$
 \int_{\mathbb{R}^n} f(x) \text{Leb}_{\mathbb{R}^n}(dx) = \int_{\mathbb{R}^n} f(x) dx.
 $$
+
+---
 
 <a name="density-functions"><a/>
 
@@ -418,6 +441,8 @@ $$
 $$
 emphasizes the usage of the Radon-Nikodym theorem, since they it is "easier" to think about cancelling the denominator with another term of the form $\Mbb_2(d\omega)$. 
 
+---
+
 <a name="change-of-variables"><a/>
 
 # Change of Variables
@@ -460,19 +485,30 @@ $$
 \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y) = \left|\det \mathrm{J}_{f^{-1}}(y)\right|.
 $$
 
-Another great application of the change of variables theorem is being able to write expectations as we usually do in an undergraduate course in probability. Indeed, so far we have been writing the expectation of a random variable $\mathrm{X}:\Omega\to\Rbb$ as integrals over the sample space $\Omega$
-$$
-\Ebb[\Xrm] = \int_{\Omega} \Xrm(\omega) \Pbb(d\omega)
-$$
-but these look different from the usual definition of expectation that we are all familiar with
-$$
-\int_\Xsf x p(x) dx
-$$
-where $p(x)$ is the probability density function of the random variable $\Xrm$. This can be easily recovered
+Another great application of the change of variables theorem is being able to write expectations as we usually do in an undergraduate course in probability, using $dx$ and $p(x)$, the density of the random variable.
+
+> **Undergraduate expectations**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $\Xrm:\Omega\to\Rbb$ be a random variable from that space to $(\Rbb, \Bcal(\Rbb))$, with distribution $\Pbb^\Xrm$ which has density with respect to $\text{Leb}_\Rbb$ given by $p(x)$. Then we can write
 $$
 \int_{\Omega} \Xrm(\omega) \Pbb(d\omega) = \int_{\Omega} \Xrm(\omega) \Pbb^{\Xrm^{-1} \circ \Xrm}(d\omega) = 
 \int_\Xsf x \frac{\Pbb^\Xrm(dx)}{\text{Leb}_\Rbb(dx)}\text{Leb}_\Rbb(dx) = \int_\Xsf x p(x) dx.
 $$
+
+Finally, very often people will write $\Pbb(\Xrm\in\Asf)$ rather than $\Pbb^\Xrm(\Asf)$. It is straightforward to verify that they are indeed the same thing, once we define the notation $\Xrm\in\Asf$. 
+
+> **Cute notation for $\Pbb^\Xrm(\Asf)$**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Xsf, \Bcal(\Xsf), \|\cdot\|_\Xsf)$ be a Banach-Borel space and $\Xrm:\Omega\to\Xsf$ be a random variable in $L^1(\Omega, \Fcal, \Pbb; \Xsf)$. Then we can write
+$$
+\Pbb^\Xrm(\Asf) = \Pbb^\Xrm(1_\Asf) = \Pbb(1_\Asf \circ \Xrm)
+$$
+and by definition the composition of the indicator function and the random variable is
+$$
+1_\Asf(\Xrm(\omega)) = \begin{cases}
+    1 & \Xrm(\omega) \in \Asf \\
+    0 & \Xrm(\omega) \notin \Asf 
+\end{cases}
+$$
+and then we can **define** the set $\{\Xrm \in \Asf\} := \left\{\omega\in\Omega\,:\, \Xrm(\omega)\in \Asf\right\}$, meaning indeed $\Pbb^\Xrm(\Asf) = \Pbb(\{\Xrm\in\Asf\})$ and we typically drop the parenthesis and simply say $\Pbb(\Xrm\in\Asf)$.
+
+---
 
 <a name="markov-kernels"><a/>
 
@@ -499,6 +535,8 @@ M \circ (L \circ K) = (M \circ L) \circ K
 $$
 which is why one often hears about Markov kernel forming a semigroup. This will be useful in the study of stochastic processes.
 
+---
+
 <a name="conditional-expectations"><a/>
 
 # Conditional Expectations
@@ -514,6 +552,7 @@ If there exists another random variable $\tilde{\Yrm}$ satisfying these properti
 
 Given fewer information $\Gcal\subseteq\Fcal$, the conditional expectation $\Ebb[\Xrm\mid\Gcal]$ is any random variable whose expectation on sets $\Gsf\in\Gcal$ agrees with that of $\Xrm$. This makes sense: if the set $\Gsf$ is in the sub-sigma algebra that we are conditioning on, that information is available, and so conditioning is useless and we fall back to the standard expectation of $\Xrm$. Notice that the conditional expectation is not unique, there may be multiple versions.
 
+---
 
 # $\pi$-Systems and $\lambda$-Systems
 
