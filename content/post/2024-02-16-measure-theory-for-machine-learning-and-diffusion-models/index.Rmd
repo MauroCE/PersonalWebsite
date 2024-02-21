@@ -37,6 +37,7 @@ projects: []
 \newcommand{\Gcal}{\mathcal{G}}
 \newcommand{\Esf}{\mathsf{E}}
 \newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Gsf}{\mathsf{G}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
@@ -509,10 +510,9 @@ This is the aim of the next definition/theorem, it says that under certain condi
 $$
 \int_{\mathrm{G}} \Yrm \, d\Pbb = \int_{\mathsf{G}} \Xrm \, d\Pbb \qquad\qquad \mathsf{G}\in\Gcal.
 $$
-If there exists another random variable $\tilde{\Yrm}$ satisfying these properties then
-$$
+If there exists another random variable $\tilde{\Yrm}$ satisfying these properties then $\Pbb(\tilde{\Yrm} = \Yrm) = 1$, and we call any random variable with these properties a **version** of the conditional expectation of $\Xrm$ given $\Gcal$ and write $\Yrm = \Ebb[\Xrm \mid \Gcal]$ almost surely.
 
-$$
+Given fewer information $\Gcal\subseteq\Fcal$, the conditional expectation $\Ebb[\Xrm\mid\Gcal]$ is any random variable whose expectation on sets $\Gsf\in\Gcal$ agrees with that of $\Xrm$. This makes sense: if the set $\Gsf$ is in the sub-sigma algebra that we are conditioning on, that information is available, and so conditioning is useless and we fall back to the standard expectation of $\Xrm$. Notice that the conditional expectation is not unique, there may be multiple versions.
 
 
 # $\pi$-Systems and $\lambda$-Systems
