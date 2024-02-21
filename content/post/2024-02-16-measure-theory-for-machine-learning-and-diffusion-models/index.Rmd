@@ -55,6 +55,7 @@ projects: []
 - [Change of Variables and Jacobians](#change-of-variables)
 - [Markov Kernels](#markov-kernels)
 - [Conditional Expectations](#conditional-expectations)
+- [Stochastic Processes](#stochastic-processes)
 
 # Introduction
 In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
@@ -599,6 +600,10 @@ $$
 then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have the same CDFs, then $\mathbb{P}^{\mathrm{X}_1}$ and $\mathbb{P}^{\mathrm{X}_2}$ agree on the $\pi$-system described above and thus they also agree on $\sigma(\mathsf{P})$. Therefore, as long as we choose $\mathcal{X} \equiv \sigma(\mathsf{P})$ then we are done.
 
 > **Cylinder sets**: 
+
+---
+
+<a name="stochastic-processes"><a/>
 
 # Stochastic Processes
 A stochastic process is a sequence of random variables, indexed by an index set $\Tsf$, defined on the same probability space and that take values on the same space $(\Xsf, \Xcal)$. 
