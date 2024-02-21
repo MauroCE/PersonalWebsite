@@ -20,6 +20,19 @@ projects: []
 \usepackage{amsthm} 
 \theoremstyle{definition}
 \newtheorem{def}{Definition}[thm]
+\newcommand{\Xsf}{\mathsf{X}}
+\newcommand{\Ysf}{\mathsf{Y}}
+\newcommand{\Zsf}{\mathsf{Z}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Ycal}{\mathcal{Y}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Mbb}{\mathbb{M}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Xrm}{\mathrm{X}}
+\newcommand{\Yrm}{\mathrm{Y}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
@@ -32,6 +45,7 @@ projects: []
 - [Lebesgue Measure](#lebesgue-measure)
 - [Density Functions](#density-functions)
 - [Change of Variables and Jacobians](#change-of-variables)
+- [Markov Kernels](#markov-kernels)
 
 # Introduction
 In this post, I will cover enough measure theory so that the reader will be able to understand the theory behind Denoising Diffusion Models, and more generally Machine Learning and Artificial Intelligence. To understand measure theory in full, a lot of background mathematical knowledge is required and inevitable, but I will try my best to make things intuitive and yet precise, while assuming **very few prerequisites**. Most importantly, I will always aim to show examples within Probability, Statistics, or Machine Learning, as to keep things on theme. After this post is complete, the plan is to make another one about Stochastic Calculus and SDEs for Machine Learning and Diffusion Models. 
@@ -193,7 +207,7 @@ $$
 $$
 For any measurable set $\mathsf{A}\in\mathcal{X}$ we write $\mathbb{P}^{\mathrm{X}}(\mathsf{A}) = \mathbb{P}(\mathrm{X}^{-1}(\mathsf{A})) = \mathbb{P}(\mathrm{X}\in\mathsf{A})$.
 
-Notice that this is not just a measure: it is a *probability* measure, since $\mathbb{P}^{\mathrm{X}}(\mathsf{X}) = \mathbb{P}(\Omega) = 1$. 
+Notice that this is not just a measure: it is a *probability* measure, since $\mathbb{P}^{\mathrm{X}}(\mathsf{X}) = \mathbb{P}(\Omega) = 1$. A very neat property, which allows us to derive all sorts of things in probability very easily is that given any probability measure $\mathbb{P}$ and a function $f$ one can always write $\mathbb{P} = \left(\mathbb{P}^{f}\right)^{f^{-1}}$. In other words, the pushforwards cancel each other out. Alternatively, one can also write $\mathbb{P}^{f\circ f^{-1}}$ to save space.
 
 Measure theory is nice because when you don't have something, it gives you the recipe to create it. Remember how before we took any collection of subsets and generated the (smallest) sigma-algebra containing them? Well, given *any function* we can turn it into a measurable function. The trick is that we put into a bag all the preimages of that function and then generate the smallest sigma algebra from this bag. The resulting sigma algebra is then *the smallest (coarser) sigma algebra such that the function is measurable*. 
 
@@ -376,6 +390,12 @@ $$
 \frac{d\mathbb{P}^{\mathrm{X}}}{d\text{Leb}_{\mathbb{R}}}(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\qquad\qquad x\in\mathbb{R}.
 $$
 
+One last thing, there are two main ways of writing a Radon-Nikodym derivative. They look similar, but each emphasizes something different. The first way, shown above, emphasizes that it is a function, whereas another way
+$$
+\frac{\Mbb_1(d\omega)}{\Mbb_2(d\omega)}
+$$
+emphasizes the usage of the Radon-Nikodym theorem, since they it is "easier" to think about cancelling the denominator with another term of the form $\Mbb_2(d\omega)$. 
+
 <a name="change-of-variables"><a/>
 
 # Change of Variables
@@ -418,9 +438,44 @@ $$
 \frac{d\text{Leb}_{\mathbb{R}^n}^{f}}{d\text{Leb}_{\mathbb{R}^n}}(y) = \left|\det \mathrm{J}_{f^{-1}}(y)\right|.
 $$
 
-<a name="transition-kernels"><a/>
+Another great application of the change of variables theorem is being able to write expectations as we usually do in an undergraduate course in probability. Indeed, so far we have been writing the expectation of a random variable $\mathrm{X}:\Omega\to\Rbb$ as integrals over the sample space $\Omega$
+$$
+\Ebb[\Xrm] = \int_{\Omega} \Xrm(\omega) \Pbb(d\omega)
+$$
+but these look different from the usual definition of expectation that we are all familiar with
+$$
+\int_\Xsf x p(x) dx
+$$
+where $p(x)$ is the probability density function of the random variable $\Xrm$. This can be easily recovered
+$$
+\int_{\Omega} \Xrm(\omega) \Pbb(d\omega) = \int_{\Omega} \Xrm(\omega) \Pbb^{\Xrm^{-1} \circ \Xrm}(d\omega) = 
+\int_\Xsf x \frac{\Pbb^\Xrm(dx)}{\text{Leb}_\Rbb(dx)}\text{Leb}_\Rbb(dx) = \int_\Xsf x p(x) dx.
+$$
 
-# Transition Kernels
+<a name="markov-kernels"><a/>
+
+# Markov Kernels
+
+Markov Kernels are fundamental to obtain the measure-theoretic generalization of a conditional distribution and as such they find application all over machine learning. A Markov kernel is a function of two arguments, a point and a set, and we typically write $K(x, \mathsf{A})$. When you see this, just think of something like this $K(\mathsf{A} \mid x)$ meaning that we are conditioning on the first argument, and evaluating a probability measure in the second argument. We need two conditions to make sure $K(x, \mathsf{A})$ is a valid Markov kernel. The first one is that $K(\cdot \mid x)$ should always be a probability measure. This makes sense, no matter what we are conditioning on, we want to have a "conditional" probability measure. The second one, is perhaps less intuitive, and it helps to think of it as just adding regularity that is needed for later notions in this post. This second property is that when you fix the set $\mathsf{A}$, then $K(\mathsf{A} \mid \cdot)$ should be a measurable function. I will **not** use the notation $K(\mathsf{A}\mid x)$ but it helps remembering this form and reading "from $x$ to $\mathsf{A}$".
+
+> **Markov Kernel**: Let $(\mathsf{X}, \mathcal{X})$ and $(\mathsf{Y}, \mathcal{Y})$ be two measurable spaces and let $K:\mathsf{X}\times\mathcal{Y}\to [0, 1]$ be a function satisfying \
+1. The function $K(\cdot, \mathsf{A})$ is $\mathcal{X}$-measurable for any $\mathsf{A}\in\mathcal{Y}$ fixed. \
+2. The function $K(x, \cdot)$ is a probability measure on $(\mathsf{Y}, \mathcal{Y})$ for every $x\in\mathsf{X}$ fixed.
+
+
+Markov kernels have various properties. The first one we explore is that they can be composed.
+
+> **Composition of Markov Kernels**: Let $(\Xsf, \Xcal)$, $(\Ysf, \Ycal)$ and $(\Zsf, \Zcal)$ be measurable spaces and $K:\Xsf\times\Ycal\to[0,1]$ and $L:\Ysf\times\Zcal\to [0, 1]$ be Markov kernels. Then the composition
+$$
+(L\circ K)(x, \mathsf{A}) = \int_{\Ysf} L(y, \mathsf{A}) K(x, dy), \qquad\qquad x\in\Xsf, \mathsf{A}\in\Zcal
+$$
+is also a Markov kernel.
+
+Notice that the composition kernel is defined as an expectation and it always exist because $L(\cdot, \mathsf{A})$ is a bounded function for any $\mathsf{A}\in\Zcal$ and it is integrated on a set of finite measure, since $K(\Ysf, x) = 1$ for any $x\in\Xsf$, which means $L(\cdot, \mathsf{A})$ is integrable over $\Ysf$. The intuition behind these Markov kernels is that going from $x$ to the set $\mathcal{C}$ can be obtained by splitting the trajectory in half: go from $x$ to some other set $\mathsf{B}\in\Ycal$ and then from that set to the final set $\mathsf{A}\in\Zcal$. We need to integrate out the sets in $\Ycal$ because we could potentially go over any such set. This composition property is **associative**, meaning that for suitable kernels
+$$
+M \circ (L \circ K) = (M \circ L) \circ K
+$$
+which is why one often hears about Markov kernel forming a semigroup. This will be useful in the study of stochastic processes.
 
 # $\pi$-Systems and $\lambda$-Systems
 
