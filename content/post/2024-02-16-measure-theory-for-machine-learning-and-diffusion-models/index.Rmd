@@ -39,6 +39,7 @@ projects: []
 \newcommand{\Ecal}{\mathcal{E}}
 \newcommand{\Gsf}{\mathsf{G}}
 \newcommand{\Asf}{\mathsf{A}}
+\newcommand{\Tsf}{\mathsf{T}}
 **Table of Contents**
 
 - [Randomness, Mathematics, and Intuition](#randomness)
@@ -209,13 +210,17 @@ Above, I have define $\sigma$-finite measures. What is this property useful for?
 
 A random variable is a well-behaved function that grabs possible outcomes of an experiments, and maps them to values that are relevant for the problem at hand, and on which we can perform maths. For instance, when flipping a coin, the possible outcomes may be $\Omega = \left\{\text{Head}, \text{Tail}\right\}$, and we note that the two outcomes are *words* and not numbers, in this particular example (in fact, they are not words, but sides of the coin itself). A random variable is a way to *encode* this information more appropriately. In this case, one could map $\text{Head}$ to $0$ and $\text{Tail}$ to $1$ (or vice-versa).
 
-> **Random Variable**: Let $(\Omega, \mathcal{F})$ and $(\mathsf{X}, \mathcal{X})$ be two measurable spaces. A function $\mathrm{X}:\Omega\to\mathsf{X}$ is $\mathcal{F}$-measurable if for every set $\mathsf{B}\in\mathcal{X}$ its preimage $\mathrm{X}^{-1}(\mathsf{B})$ is $\mathcal{F}$-measurable
+> **Random Variable**: Let $(\Omega, \mathcal{F})$ and $(\mathsf{X}, \mathcal{X})$ be two measurable spaces. A function $\mathrm{X}:\Omega\to\mathsf{X}$ is $\mathcal{F}$-measurable if for every set $\mathsf{B}\in\mathcal{X}$ its preimage $\mathrm{X}^{-1}(\mathsf{B})$ is $(\mathcal{F},\Xcal)$-measurable
 $$
 \mathrm{X}^{-1}(\mathsf{B}) \in\mathcal{F} \qquad\forall\, \mathsf{B}\in\mathcal{X}.
 $$
-If on the measurable space $(\Omega, \mathcal{F})$ there is a *probability measure* $\mathbb{P}$, then the $\mathcal{X}$-measurable function $\mathrm{X}$ is called a random variable.
+If on the measurable space $(\Omega, \mathcal{F})$ there is a *probability measure* $\mathbb{P}$, then the $(\Fcal, \mathcal{X})$-measurable function $\mathrm{X}$ is called a random variable.
 
-Earlier, I said that a random variable encodes information *appropriately*. What do I mean by that? The sigma algebra $\mathcal{X}$ encodes information in terms of subsets of $\mathsf{X}$ (in the case of the coin toss, in terms of $\mathsf{X} = \{0, 1\}$), whereas $\mathcal{F}$ encodes information in terms of the outcomes themselves. A function is a random variable then, whenever the information between these two spaces is *compatible*: Given any piece of information (event) in $\mathcal{X}$, there corresponds a piece of information (again, an event) in $\mathcal{F}$.
+In most situations, we will just write $\Fcal$-measurable and not mention $\Xcal$, although (as explained in the next note), it can be important to be precise in some contexts. Earlier, I said that a random variable encodes information *appropriately*. What do I mean by that? The sigma algebra $\mathcal{X}$ encodes information in terms of subsets of $\mathsf{X}$ (in the case of the coin toss, in terms of $\mathsf{X} = \{0, 1\}$), whereas $\mathcal{F}$ encodes information in terms of the outcomes themselves. A function is a random variable then, whenever the information between these two spaces is *compatible*: Given any piece of information (event) in $\mathcal{X}$, there corresponds a piece of information (again, an event) in $\mathcal{F}$.
+
+I need to make a very important point which is often used implicitly in the theory of stochastic processes but, for me, was not obvious at first.
+
+> **Measurability of Random Variables defines them**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Xsf, \Xcal)$ be a measurable space and $\Xrm:\Omega\to\Xsf$ be a random variable. For $\Xrm$ to be a random variable, we require that it is $(\Fcal, \Xcal)$-measurable, meaning that **for any** set $\Asf\in\Xcal$ we **must have** $\Xrm^{-1}(\Asf)\in\Fcal$. I have highlighted those expressions because when we say $\Xrm:\Omega\to\Xsf$ is $(\Fcal, \Xcal)$-measurable, we are automatically saying that $\Fcal$ is the largest sigma algebra for which this happens (there can be smaller ones, as we will see later) **given that we are working with $\Xcal$**. This is fundamental to understand. If we have already defined $\Xrm$ being $(\Fcal, \Xcal)$-measurable and then we grab a large sigma algebra $\Gcal \supset \Fcal$, it cannot be that $\Xrm$ is strictly $(\Gcal, \Xcal)$-measurable **unless we extend the codomain** of $\Xrm$. In this case, the codomain is $\Xsf$ or, more broadly, the measurable space $(\Xsf, \Xcal)$. The definition of $\Xrm$ tells us that any set in $\Xcal$ has preimage in $\Fcal$, which means that no set in $\Xcal$ has preimage in $\Gcal \backslash \Fcal$. One could, potentially, extend the sigma algebra on $\Xcal$ so that some of its sets have preimage in $\Gcal \backslash \Fcal$, but I am not aware of a context where this is done. 
 
 The *only* difference between a measurable function and a random variable is that for a measurable function to be *called* a random variable, we require the original space to have an associated probability measure. This is because the whole point of creating a random variable is so that we can study/sample/work with its *distribution*, which we define next. At first, the distribution of a random variable seems quite cryptic, especially if you have never seen pushforward measures before. The idea, is very simple though. A random variable requires an initial probability space $(\Omega, \mathcal{F}, \mathbb{P})$, however we have not said anything about whether or not we have any measure at all on $(\mathsf{X}, \mathcal{X})$, the space where the random variable $\mathrm{X}$ takes values. It turns out that, we can *construct* a probability measure on $(\mathsf{X}, \mathcal{X})$: for any set $\mathsf{A}\in\mathcal{X}$ we first find its preimage with $\mathrm{X}$ and then measure its size with $\mathbb{P}$, this size is the size that the constructed probability measure will assign to it. Notice what we are doing: we are measuring sets in $\mathcal{X}$ using the size of sets in $\mathcal{F}$. This new probability measure is called a **probability distribution** (or just distribution).
 
@@ -493,20 +498,17 @@ $$
 \int_\Xsf x \frac{\Pbb^\Xrm(dx)}{\text{Leb}_\Rbb(dx)}\text{Leb}_\Rbb(dx) = \int_\Xsf x p(x) dx.
 $$
 
-Finally, very often people will write $\Pbb(\Xrm\in\Asf)$ rather than $\Pbb^\Xrm(\Asf)$. It is straightforward to verify that they are indeed the same thing, once we define the notation $\Xrm\in\Asf$. 
+Very often people will write $\Pbb(\Xrm\in\Asf)$ rather than $\Pbb^\Xrm(\Asf)$. It is straightforward to verify that they are indeed the same thing, once we define the notation $\Xrm\in\Asf$. 
 
-> **Cute notation for $\Pbb^\Xrm(\Asf)$**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Xsf, \Bcal(\Xsf), \|\cdot\|_\Xsf)$ be a Banach-Borel space and $\Xrm:\Omega\to\Xsf$ be a random variable in $L^1(\Omega, \Fcal, \Pbb; \Xsf)$. Then we can write
+> **Cute notation for $\Pbb^\Xrm(\Asf)$**: Let $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Xsf, \Bcal(\Xsf), \|\cdot\|_\Xsf)$ be a Banach-Borel space and $\Xrm:\Omega\to\Xsf$ be a random variable in $L^1(\Omega, \Fcal, \Pbb; \Xsf)$. The distribution of $\Xrm$ is, by definition the measure $\mathbb{P}^\Xrm(\Asf) = \Pbb(X^{-1}(\Asf))$ for any $\Asf\in\Bcal(\Xsf)$. To obtain the **cute** notation we define
 $$
-\Pbb^\Xrm(\Asf) = \Pbb^\Xrm(1_\Asf) = \Pbb(1_\Asf \circ \Xrm)
+\{\Xrm \in \Asf\} := X^{-1}(\Asf)
 $$
-and by definition the composition of the indicator function and the random variable is
-$$
-1_\Asf(\Xrm(\omega)) = \begin{cases}
-    1 & \Xrm(\omega) \in \Asf \\
-    0 & \Xrm(\omega) \notin \Asf 
-\end{cases}
-$$
-and then we can **define** the set $\{\Xrm \in \Asf\} := \left\{\omega\in\Omega\,:\, \Xrm(\omega)\in \Asf\right\}$, meaning indeed $\Pbb^\Xrm(\Asf) = \Pbb(\{\Xrm\in\Asf\})$ and we typically drop the parenthesis and simply say $\Pbb(\Xrm\in\Asf)$.
+and often drop the parentheses $\Pbb^\Xrm(\Asf) = \Pbb(\{\Xrm\in\Asf\}) = \Pbb(\Xrm\in\Asf)$.
+
+Now that we have this notation, we can understand a bit better the following intuition about random variables, which is fundamental for stochastic processes.
+
+>**Intuition for measurability**: The intuition that I like to have about $\Xrm$ being $(\Fcal, \Xcal)$-measurable is that $\Fcal$ contains information in the form of events, and $\Xrm$ reveals information contained in $\Fcal$ through its values in $\Xsf$. Suppose that we wish to know the probability that the random variable $\Xrm$ takes values in $\Asf\in\Xcal$. By construction, we know that this is $\Pbb(X^{-1}(\Asf))$, i.e. we actually compute the probability of the preimage of $\Asf$ under $\Xrm$. Therefore, when we observe $\Xrm\in \Asf$ we are really observing the event $\{\omega\in\Omega\,:\, \Xrm(\omega)\in\Asf\}$ which is in $\Fcal$. Observing the random variable, we are really observing the events that we truly care about, the ones made out of the true underlying outcomes. 
 
 ---
 
@@ -599,17 +601,32 @@ then by the $\pi$-$\lambda$ theorem, if $\mathrm{X}_1$ and $\mathrm{X}_2$ have t
 > **Cylinder sets**: 
 
 # Stochastic Processes
-A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time). As time progresses, we gain more information.
+A stochastic process is a sequence of random variables, indexed by an index set $\Tsf$, defined on the same probability space and that take values on the same space $(\Xsf, \Xcal)$. 
+
+> **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $(\mathsf{T}, \leq)$ be any totally-ordered set. The collection $\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}$ of random variables $\mathrm{X}_t:\Omega\to\mathsf{X}$ each of them being $(\Fcal_t, \Xcal)$-measurable for **some** sub-sigma algebra $\Fcal_t\subseteq\Fcal$ is called a stochastic process. If $\mathsf{T}$ is uncountable, then it is a continuous-time stochastic process, if $\mathsf{T}$ is countable then it is a discrete-time stochastic process.
+
+Notice that I have not mentioned any relationship between the sub-sigma algebras $\Fcal_t$. All I require is that they are valid (but not necessarily strict) sub-sigma algebras $\Fcal_t\subseteq\Fcal$. Typically, we introduce stochastic processes in a time-context where as time progresses, the process evolves and we receive more information. A filtration is the mathematical object that is used to model a increasing sequence of "information". A filtration is a sequence of (nested) sigma algebras that grows larger and larger. Think of it as being a historical record of information, where the $t^{\text{th}}$ sigma algebra tells you the information available at time $t$ (we call it time because usually the index is time). As time progresses, we gain more information.
 
 > **Filtration**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, and $(\mathsf{T}, \leq)$ be a totally-ordered set, which we call an index set. A filtration $\{\mathcal{F}_t\,:\, t\in\mathsf{T}\}$ induced by $(\mathsf{T}, \leq)$ is a collection of sub-sigma algebras of $\mathcal{F}$ such that $\mathcal{F}_q\subseteq\mathcal{F}_s$ when $q\leq s$.
 
+Again, we love naming things in mathematics, so we call $(\Omega, \Fcal, \Pbb, \{\Fcal_t\}_{t\in\Tsf})$ a **filtered probability space**, whenever $\{\Fcal_t\}_{t\in\Tsf}$ is a filtration as defined above. Now, we have introduced filtrations because, in general, we would like to have a stochastic process where each random variable is measurable with respect to the corresponding sub-sigma algebra in the filtration. Recall that when we specify $\Xrm_t$ by saying that it is $(\Fcal_t, \Xcal)$ measurable, we are effectively saying that $\Fcal_t$ is the largest sigma algebra, and so while $\Xrm_t$ can reveal information about $\Fcal_t$ it cannot reveal information about any $\Fcal_{\tau}$ with $\tau > t$. The result is a stochastic process where each random variable cannot reveal information about the future and therefore the process is **non-anticipating**. We call such a stochastic process **adapted** to the filtration.
 
-> **Stochastic Process**: Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, $(\mathsf{X}, \mathcal{X})$ be a measurable space, and $(\mathsf{T}, \leq)$ be any totally-ordered set. The collection $\{\mathrm{X}_t\,:\, t\in\mathsf{T}\}$ of random variables $\mathrm{X}_t:\Omega\to\mathsf{X}$ is called a stochastic process. If $\mathsf{T}$ is uncountable, then it is a continuous-time stochastic process, if $\mathsf{T}$ is countable then it is a discrete-time stochastic process.
+>**Adapted Process**: Let $(\Tsf, \leq)$ be a totally-ordered set, $(\Omega, \Fcal, \Pbb, \{\Fcal_t\}_{t\in\Tsf})$ be a filtered probability space, $(\Xsf, \Xcal)$ be a measurable space, and $\{\Xrm_t\}_{t\in\Tsf}$ be a stochastic process where each random variable $\Xrm_t:\Omega\to\Xsf$ is $(\Fcal_t,\Xcal)$-measurable. Then we say $\{\Xrm_t\,:\, t\in\Tsf\}$ is **adapted** to the filtration $\{\Fcal_t\,:\, t\in\Tsf\}$.
+
+One can construct many different filtrations, but there is one that is very natural once you take into account the various intuitions that we have been building so far. Since each random variable reveals information contained in the corresponding sigma algebra, it makes sense that the $t^{\text{th}}$ sigma algebra is generated by all the preceding random variables. This filtration is called the **natural** filtration. 
+
+> **Natural Filtration**: Let $(\Tsf, \leq)$ be a totally-ordered set, $(\Omega, \Fcal, \Pbb)$ be a probability space, $(\Xsf, \Xcal)$ be a measurable space and $\{\Xrm_t\,:\, t\in\Tsf\}$ be a collection of random variables, where we don't specify yet which sub-sigma algebra they are measurable with respect to. Notice that, sequentially, one can build a filtration as follow
+$$
+\Fcal_\tau^\Xrm := \sigma\left(\left\{\Xrm_t^{-1}(\Bsf) \,:\, t\leq \tau, \Bsf\in\Xcal\right\}\right), \qquad \forall\, \tau\in\Tsf.
+$$
+This is called the natural filtration and the stochastic process is automatically adapted to it.
+
 
 > **Path**: For $\omega\in\Omega$ **fixed** then $t\mapsto \mathrm{X}_t(\omega)$ is a function which we call the path of $\mathrm{X}_t$. 
 
-In fact, to each $\omega\in\Omega$ there corresponds a function $t\mapsto \mathrm{X}_t(\omega)$, so that we can put $\Omega$ on a one-to-one correspondence with the space $\mathsf{X}^\mathsf{T}$ of functions from $\mathsf{T}$ to $\mathsf{X}$.
+In fact, to each $\omega\in\Omega$ there corresponds a function $t\mapsto \mathrm{X}_t(\omega)$, so that we can put $\Omega$ on a one-to-one correspondence with the space $\mathsf{X}^\mathsf{T}$ of functions from $\mathsf{T}$ to $\mathsf{X}$. 
 
+---
 
 # Martingales
 
