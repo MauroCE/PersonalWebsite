@@ -32,3 +32,4 @@ projects: []
 <img src="/renewable_energy_generation_2000_to_2022.png" alt="renewable-energy" width="900"/>
 
 
+
