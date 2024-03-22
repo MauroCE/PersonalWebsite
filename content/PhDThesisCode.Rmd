@@ -33,7 +33,7 @@ I will slowly populate this page with all things code regarding my PhD thesis. C
     - Chapter 2
     - Chapter 3
       - 
-3. Off-the-shelf implementation
+3. Off-the-shelf implementation: [IntegratorSnippets](https://github.com/MauroCE/IntegratorSnippets) repository, soon to be transformed into a Python Package. For now, it handles integrator snippets for filamentary distributions. Tempered distributions are coming soon.
 
 ### Why have I structured the code this way?
 I believe there are two reasons researchers check out a paper's accompanying code:
