@@ -19,6 +19,16 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
+  organization = "Graduate-Level Mathematics for Machine Learning"
+  organization_url = ""
+  title = "Mathematical Machine Learning"
+  url = "ramblings/mathematical-machine-learning/"
+  certificate_url = "ramblings/mathematical-machine-learning/"
+  date_start = "2024-04-18"
+  date_end = "2024-04-18"
+  description = ""
+
+[[item]]
   organization = "Learn about Normalizing Flows in a hands-on course using Python and Pytorch."
   organization_url = ""
   title = "Normalizing Flows Course"
