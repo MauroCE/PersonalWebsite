@@ -6,7 +6,7 @@ slug: []
 categories: []
 tags: []
 subtitle: 'How to sample uniformly from a level set of a Gaussian'
-summary: ''
+summary: 'How to sample uniformly from a level set of a Gaussian'
 authors: []
 lastmod: '2024-04-18T17:11:35+01:00'
 featured: no
