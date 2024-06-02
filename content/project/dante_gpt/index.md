@@ -1,6 +1,6 @@
 ---
 title: Dante GPT
-summary: LLM trained on Dante Alighieri's Divina Commedia.
+summary: LLM trained on Dante Alighieri's Divina Commedia using Pytorch
 tags:
   - Large Language Models
   - GPT
