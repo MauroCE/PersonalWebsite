@@ -27,7 +27,7 @@ links:
     icon_pack: fab
     name: Follow
     url: https://twitter.com/MauroCamaraE
-url_code: 'https://github.com/MauroCE/DanteGPT'
+url_code: ''
 url_pdf: ''
 url_slides: ''
 url_video: ''
@@ -39,4 +39,5 @@ url_video: ''
 #   Otherwise, set `slides = ""`.
 slides: example
 ---
+Checkout the github repo [DanteGPT](https://github.com/MauroCE/DanteGPT).
 
