@@ -17,7 +17,7 @@ role: Research Associate in Statistical Machine Learning
 # Organizations/Affiliations
 organizations:
 - name: University of Bristol
-  url: "https://www.bristol.ac.uk/"
+  url: "https://research-information.bris.ac.uk/en/persons/mauro-camara-escudero-2"
 
 # Short bio (displayed in user profile at end of posts)
 bio: My research interests include approximate manifold sampling and generative models.
@@ -25,13 +25,8 @@ bio: My research interests include approximate manifold sampling and generative 
 interests:
 - Score-based sampling (HMC, MALA)
 - Generative Modelling (VAEs, NFs, DDGM)
-- Denoising Diffusion Models
 - Approximate Manifold Sampling
-- Scalable and Robust inference
-- Particle methods (SMC)
-- Simulator-Based inference
-- Variational Inference
-- General Machine Learning
+- Scalable and Robust inference (SMC, VI, SBI)
 
 education:
   courses:
@@ -74,16 +69,6 @@ user_groups:
 - ResearchersContact
 - Visitors
 ---
-Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety, energy, and environmental sciences. Specialized in scalable sampling, variational methods, and generative modelling. 
-Pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI)
+Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety, energy, and environmental sciences. Pioneered the first algorithm for efficient **Approximate Manifold Sampling** and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI)
 
-In the past, I have organised:
-
-- [Generative Models Reading Group](https://github.com/MauroCE/GMRG)
-- [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/)
-- [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/)
-- [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/)
-- [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/)
-
-
-
+In the past, I have organised: [Generative Models Reading Group](https://github.com/MauroCE/GMRG), [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/), [Compass Seminar Series](https://compass.blogs.bristol.ac.uk/compass-seminar-series/), [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/), [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/).
