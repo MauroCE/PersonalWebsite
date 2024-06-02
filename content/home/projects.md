@@ -33,9 +33,9 @@ subtitle = ""
     name = "NLP"
     tag = "NLP"
   
-  #[[content.filter_button]]
-  #  name = "Other"
-  #  tag = "Demo"
+  [[content.filter_button]]
+    name = "Data Journalism"
+    tag = "Data Journalism"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

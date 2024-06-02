@@ -12,7 +12,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Statistical Machine Learning Ph.D.
+role: Research Associate in Statistical Machine Learning 
 
 # Organizations/Affiliations
 organizations:

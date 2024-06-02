@@ -1,11 +1,12 @@
 ---
 title: Dante GPT
-summary: LLM trained on Dante Alighieri's Divina Commedia using Pytorch
+summary: LLM trained on Dante Alighieri's Divina Commedia using Pytorch.
 tags:
   - Large Language Models
   - GPT
   - Attention
   - Transformers
+  - NLP
 date: '2024-06-02T00:00:00Z'
 
 # Optional external URL for project (replaces project detail page).
