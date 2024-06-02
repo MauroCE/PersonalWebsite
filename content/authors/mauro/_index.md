@@ -24,9 +24,9 @@ bio: My research interests include approximate manifold sampling and generative 
 
 interests:
 - Score-based sampling (HMC, MALA)
-- Generative Models (VAEs, NFs, DDGM)
+- Generative Models (VAEs, DDGM)
 - Approximate Manifold Sampling
-- Scalable and Robust inference (SMC, VI, SBI)
+- Scalable/Robust inference (SMC,SBI)
 
 education:
   courses:
