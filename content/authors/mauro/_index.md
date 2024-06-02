@@ -24,7 +24,7 @@ bio: My research interests include approximate manifold sampling and generative 
 
 interests:
 - Score-based sampling (HMC, MALA)
-- Generative Modelling (VAEs, NFs, DDGM)
+- Generative Models (VAEs, NFs, DDGM)
 - Approximate Manifold Sampling
 - Scalable and Robust inference (SMC, VI, SBI)
 
@@ -33,12 +33,13 @@ education:
   - course: PhD in Computational Statistics and Data Science
     institution: University of Bristol
     year: 2020-2023
-  - course: MRes in Computational Statistics and Data Science
-    institution: University of Bristol
-    year: 2020
   - course: BSc in Mathematics with Year in Employment
     institution: University of Southampton
     year: 2019
+
+# course: MRes in Computational Statistics and Data Science
+# institution: University of Bristol
+# year: 2020
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
