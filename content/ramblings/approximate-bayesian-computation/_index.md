@@ -2,7 +2,7 @@
 # Course title, summary, and position.
 linktitle: Approximate Bayesian Computation
 summary: Basics of Approximate Bayesian Computation and survey the recent methods in the literature.
-weight: 1
+weight: 2
 
 # Page metadata.
 title: Tutorial Overview

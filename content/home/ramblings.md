@@ -19,13 +19,23 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
+  organization = "Literature review on AI Safety, with a focus on Foundational AI."
+  organization_url = ""
+  title = "AI Safety"
+  url = "ramblings/ai-safety/"
+  certificate_url = "ramblings/ai-safety/"
+  date_start = ""
+  date_end = ""
+  description = ""
+
+[[item]]
   organization = "Graduate-Level Mathematics for Machine Learning"
   organization_url = ""
   title = "Mathematical Machine Learning"
   url = "ramblings/mathematical-machine-learning/"
   certificate_url = "ramblings/mathematical-machine-learning/"
-  date_start = "2024-04-18"
-  date_end = "2024-04-18"
+  date_start = ""
+  date_end = ""
   description = ""
 
 [[item]]
@@ -34,8 +44,8 @@ date_format = "Jan 2006"
   title = "Normalizing Flows Course"
   url = "ramblings/normalizing_flows/"
   certificate_url = "ramblings/normalizing_flows/"
-  date_start = "2019-05-01"
-  date_end = "2019-05-16"
+  date_start = ""
+  date_end = ""
   description = ""
   
 [[item]]
@@ -44,8 +54,8 @@ date_format = "Jan 2006"
   title = "Approximate Bayesian Computation"
   url = "ramblings/approximate-bayesian-computation/"
   certificate_url = "ramblings/approximate-bayesian-computation/"
-  date_start = "2021-04-01"
-  date_end = "2021-04-01"
+  date_start = ""
+  date_end = ""
   description = ""
 
 +++
