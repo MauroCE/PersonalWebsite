@@ -34,3 +34,8 @@ Some R&D challenges
     
 4. [Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV)](https://arxiv.org/abs/1711.11279). Given a trained neural network, the user chooses a concepts and constructs a (relatively small) dataset of examples representing this concept, and random examples (they need not be in the training set). Then they learn a linear classifier to separate the activations produced by the trained network for these classes of examples. The normal vector to the decision boundary is the Concept Activation Vector, representing the concept. Then, the directional derivative of the output of the neural network (e.g. of the logits if it is a classification network) with respect to this CAV represents how sensitive the class prediction is to such a concept. They then perform testing to figure out if indeed a concept is related to class prediction in a significant way. 
   ![concept vectors](/concept_vectors.png)
+  
+5. [Explaining Explainability: Understanding Concept Activation Vectors](https://arxiv.org/abs/2404.03713): They examine whether CAVs have three properties: 
+    - *Consistency*: Does the perturbation of the activation $a_{\ell_1}$ by $v_{c, \ell_1}$ correspond to the perturbation of the activation $a_{\ell_2}$ by $v_{c, \ell_2}$ where $\ell_1$ and $\ell_2$ are successive layers?
+    - *Entanglement*
+    - *Spatial Dependence*:
