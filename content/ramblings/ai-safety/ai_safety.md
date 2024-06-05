@@ -36,6 +36,6 @@ Some R&D challenges
   ![concept vectors](/concept_vectors.png)
   
 5. [Explaining Explainability: Understanding Concept Activation Vectors](https://arxiv.org/abs/2404.03713): They examine whether CAVs have three properties: 
-    - *Consistency*: Does the perturbation of the activation $a_{\ell_1}$ by $v_{c, \ell_1}$ correspond to the perturbation of the activation $a_{\ell_2}$ by $v_{c, \ell_2}$ where $\ell_1$ and $\ell_2$ are successive layers?
-    - *Entanglement*
-    - *Spatial Dependence*:
+    - *Consistency*: Does the perturbation of the activation $a_{\ell_1}$ by $v_{c, \ell_1}$ correspond to the perturbation of the activation $a_{\ell_2}$ by $v_{c, \ell_2}$ where $\ell_1$ and $\ell_2$ are successive layers? They find that this is typically not the case, since, they speculate, the CAVs in successive layers probably encode different aspect of that concept.
+    - *Entanglement*: Different concepts can be associated - they tested cosine similarity between CAVs of associated, independent or "equivalent" concepts and find a correspondence. They find that when performing Testing with CAV (TCAV), associations can lead to misleading explanations. 
+    - *Spatial Dependence*: CAVs can be dependent on the position of the concept and how this translates to the activation space. This means that it is possible to use CAVs to check if a model is translation invariant.
