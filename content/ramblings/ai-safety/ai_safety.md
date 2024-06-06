@@ -72,6 +72,8 @@ Some R&D challenges
             - <u>Understanding Base Models via their Representation space</u>: Typically done in two parts:
                 - *Representation Reading*: Identifies representations for high-level concepts () and functions withing a network.
                 - *Representation Control*: Manipulate representations of concepts/functions to meet some requirements (typically safety).
-        - **Assistant Model Explantion**: Base models are undergo an alignment fine-tuning via RLHF. Explainability research focuses on understanding whether knowledge comes from the initial pre-training or from the fine-tunining stage. For instance, [LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) achieves GPT-4-like performance by fine-tuning with only 1000 well-crafted examples and no reinforcement learning. They conclude that almost all knowledge comes from pre-training and fine-tuning is somehow an easier task.
+        - **Assistant Model Explantion**: Base models are undergo an alignment fine-tuning via RLHF. Explainability research in this area focuses on: 
+            - <u>Pre-training vs Fine-tuning</u>: Understanding whether knowledge comes from the initial pre-training or from the fine-tunining stage. For instance, [LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) achieves GPT-4-like performance by fine-tuning with only 1000 well-crafted examples and no reinforcement learning. They conclude that almost all knowledge comes from pre-training and fine-tuning is somehow an easier task. Another conclusion is that data-quality is more important than data quantity in fine-tuning.
+            - <u>Understanding Hallucinations</u>: Hallucinations may be the product of a lack of data or repeated data.
         
         
