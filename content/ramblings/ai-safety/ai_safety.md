@@ -75,5 +75,14 @@ Some R&D challenges
         - **Assistant Model Explantion**: Base models are undergo an alignment fine-tuning via RLHF. Explainability research in this area focuses on: 
             - <u>Pre-training vs Fine-tuning</u>: Understanding whether knowledge comes from the initial pre-training or from the fine-tunining stage. For instance, [LIMA: Less Is More for Alignment](https://arxiv.org/abs/2305.11206) achieves GPT-4-like performance by fine-tuning with only 1000 well-crafted examples and no reinforcement learning. They conclude that almost all knowledge comes from pre-training and fine-tuning is somehow an easier task. Another conclusion is that data-quality is more important than data quantity in fine-tuning.
             - <u>Understanding Hallucinations</u>: Hallucinations may be the product of a lack of data or repeated data.
+          
+    Finally, discusses the following open challenges in Explainablity research:
+        - Souces of Emergent Abilities
+            - Model Perspective: what architectural choices lead to these emergent abilities? Minimum complexity to achive this observed strong performance?
+            - Data Perspective: Which subsets of the training data are responsible for particular model predictions? How does data quality/quantity affect pre-training and fine-tuning?
+        - Differences in reasoning between promted and fine-tuned models.
+        - LLMs often predict via shortcuts rather than reasoning: understanding what causes this, and improving OOD performance is an important task.
+        - It has been found (see [On Attention Redundancy: A Comprehensive Study](https://aclanthology.org/2021.naacl-main.72/)) that often different heads are redundant and could be pruned without a massive impact on model performace. This could lead to model-compression techniques.
+        - Exploring temporal analysis: i.e. understanding how the training dynamics evolves and the phase transitions. For instance, [Sudden Drops in the Loss: Syntax Acquisition, Phase Transitions, and Simplicity Bias in MLMs](https://arxiv.org/abs/2309.07311v4) found a phase transition during pre-training whereby the model gains Syntactic Attention Structure (SAS) which leads to a big drop in loss.
         
         
