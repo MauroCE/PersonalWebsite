@@ -27,6 +27,7 @@ interests:
 - Generative Models (VAEs, DDGM)
 - Approximate Manifold Sampling
 - Scalable/Robust inference (SMC,SBI)
+- AI Safety, Trustworthy AI
 
 education:
   courses:
