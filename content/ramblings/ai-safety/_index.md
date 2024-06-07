@@ -5,7 +5,7 @@ summary: Literature review on AI Safety and related topics
 weight: 1
 
 # Page metadata.
-title: Table of Contents
+title: Literature on AI Safety
 date: "2024-01-01T00:00:00Z"
 lastmod: "2024-06-04T00:00:00Z"
 draft: false  # Is this a draft? true/false
@@ -17,6 +17,7 @@ type: docs  # Do not modify.
 # - weight: Position of link in menu.
 menu:
   ai-safety:
-    name: Table of Contents
+    name: Literature on AI Safety
     weight: 1
 ---
+I will keep track and write informal notes about literature on AI Safety in general, mostly focusing on Trustworthy AI topics such Explainability, Bias, Fairness, Robustness and Security. 

@@ -85,4 +85,9 @@ Some R&D challenges
         - It has been found (see [On Attention Redundancy: A Comprehensive Study](https://aclanthology.org/2021.naacl-main.72/)) that often different heads are redundant and could be pruned without a massive impact on model performace. This could lead to model-compression techniques.
         - Exploring temporal analysis: i.e. understanding how the training dynamics evolves and the phase transitions. For instance, [Sudden Drops in the Loss: Syntax Acquisition, Phase Transitions, and Simplicity Bias in MLMs](https://arxiv.org/abs/2309.07311v4) found a phase transition during pre-training whereby the model gains Syntactic Attention Structure (SAS) which leads to a big drop in loss.
         
+8. [Understanding the Learning Dynamics of Alignment with Human Feedback](https://arxiv.org/abs/2403.18742): They study the learning dynamics of LLM alignment via DPO (whose optimal policy is the same as RLHF). They find that:
+    1. The more "distinguishable"" the distributions of positive and negative examples are, i.e. the more disjoint their supports, the faster the loss curve decreases. In particular, they have results for $\alpha$-subexponential random variables (corresponding to the output of the network before the final unembedding layer) showing indeed how the rate of change in the unembedding weights is potentially faster for more distinguishable example and how the upper bound on the operator norm distance between un-aligned and aligned unembedding weights increases linearly with the number of steps.
+    2. They find that the model tends to **prioritize** learning more distinguishable behaviores at the expense of less distinguishable ones.
+    3. They also find that for an aligned model, misalignment happens faster than for an un-aligned one and motivate this by their earlier results since the aligned model already has a larger preference distinguishability. 
+        
         

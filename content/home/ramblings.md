@@ -28,15 +28,15 @@ date_format = "Jan 2006"
   date_end = ""
   description = ""
 
-[[item]]
-  organization = "Graduate-Level Mathematics for Machine Learning"
-  organization_url = ""
-  title = "Mathematical Machine Learning"
-  url = "ramblings/mathematical-machine-learning/"
-  certificate_url = "ramblings/mathematical-machine-learning/"
-  date_start = ""
-  date_end = ""
-  description = ""
+# [[item]]
+#   organization = "Graduate-Level Mathematics for Machine Learning"
+#   organization_url = ""
+#   title = "Mathematical Machine Learning"
+#   url = "ramblings/mathematical-machine-learning/"
+#   certificate_url = "ramblings/mathematical-machine-learning/"
+#   date_start = ""
+#   date_end = ""
+#   description = ""
 
 [[item]]
   organization = "Learn about Normalizing Flows in a hands-on course using Python and Pytorch."
