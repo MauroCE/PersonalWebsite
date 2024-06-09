@@ -67,5 +67,7 @@ structured as follows:
     4. 30min Talk: Mitigating bias in Binary Classification.
     5. 30min Talk: Trade-offs and other verticals such as Explainability and Robustness.
 2. Practical Session:
-    1. 
+    1. Measure and Mitigate in Binary classification using recruitment data and holisticai library (Equality of Outcome). Several mitigation techniques were explored.
+    2. Measure and Mitigate bias in a face recognition application (Equality of Opportunity).  Several mitigation techniques were explored.
+    3. Explore trade-offs with other verticals, with a focus on explainability (SHAP, LIME, Feature importance)
 
