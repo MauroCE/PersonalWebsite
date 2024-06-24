@@ -119,3 +119,15 @@ That is, the expected squared distance between $Y_i - m^\*(X_i)$ (the difference
 
 > R-learning then dives the data into strata/folds and for each fold estimates $\hat{m}$ and $\hat{e}$ and then plugs them into the empirical loss minimization version of the optimization problem above.
 
+Suppose we have indeed estimated $\hat{m}$ and $\hat{e}$ and for now suppose that we are working on a single fold of the data. The R-learning objective becomes
+$$
+\min_\tau \frac{1}{n}\sum_{i=1}^n (r_i - \tau(x_i)\alpha_i)^2 + \Lambda(\tau),
+$$
+where
+- $r_i = y_i - \hat{m}_i$ is the difference between the observed outcome and the conditional mean outcome for $x_i$
+- $\alpha_i = w_i - \hat{e}_i$ is the difference between the treatment assignment and the estimated propensity for $x_i$. Typically the matrix $X_i$ will have already undergone some feature learning/transformation so one can assume a linear treatment effect
+$$
+\tau(x_i) = B^\top x_i.
+$$
+
+
