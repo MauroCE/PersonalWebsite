@@ -51,8 +51,13 @@ Depending on the application one may wish to model either $f$ or $f^{-1}$, since
 3. **Planar**: they stretch and contract the distribution along some directions $f(z) = z + u h(w^\top z + b)$ where $h$ smooth non-linearity. Basically it's a one-layer NN with a single hidden unit with residual connection. Problem: single hidden unit means limited expressivity.
     - *Sylvester*: $f(z) = z + Uh(W^\top z + b)$ where $W$ is $d\times m$ and $m$ is the number of "hidden units". When $m$ is small, determinant computation is efficient. Problem: hard to invert in general.
 4. **Radial**: Modify distribution around a center point $f(z) = z + \frac{\beta}{\alpha + \|z - z_0\|}(z - z_0)$. Problem: hard to invert.
-5. **Coupling**
-
+5. **Coupling**: $f(z) = [h(z^A, T(z^B)), z^B]$ where $h$ is a bijection known as coupling function, $T$ is a conditioner acting only on $z^B$. Typically the coupling function is element-wise. $T$ can be arbitrarily complex and typically it is a Neural Network.
+6. **Autoregressive Flows**: $y = f(z)$ where each output dimension $y_t$ depends on the previous entries $y_t = h(z_t, T_t(z_{1:t}))$ where $h$ is a bijection parametrized by $\theta$ and $T_t$ are arbitrary functions and $T_1$ is constant. E.g.
+    - *Masked Autoregressive Flows (MAF)*: Computing the inverse is challenging since it requires computing it sequentially.
+    - *Inverse Autoregressive Flows (IAF)*: Here the forward computation is sequential, but the inverse is cheap. Notice that while most flows focus on having the normalizing direction being cheap (for cheap training), IAF instead models the generative direction so that training is expensive but generation is cheap. This is handy in Stochastic Variational Inference, wheras MAFs should be preferred in density estimation.
+7. **Residual**: $f(z) = z + F(z)$ where $F$ is a FFNN. Motivation: residual connection is the discretization of a first order ODE $\dot{x_t} = F(x_t, \theta_t)$. Problem: no closed-form inverse, but can be found via fixed-point iterations.
+8. **Continuous**: Instead of discretizing the ODE like residual flows, let $\Phi^t(z)$ be the solution at time $t$ and $x(0) = z$ be the initial condition. The map $\Phi^t$ is a group of diffeomorphisms on $\mathbb{R}^d$ parametrized by $t\in [0, 1]$, also known as **smooth flow**.
+    - *Neural ODE* (NODE): Model $y = f(z)$ using $f=\Phi^{1}$: an infinitely deep NN with input $z$ and continuous weights $\theta(t)$. Invertibility follows from uniqueness+existence of solutions of the ODE. Trained them using *adjoint sensitivity method* (i.e. backprop in continuous time).
 
 # References
 
