@@ -17,6 +17,15 @@ date_format = "Jan 2006"
 #   `title`, `organization` and `date_start` are the required parameters.
 #   Leave other parameters empty if not required.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+[[item]]
+  organization = "Literature and everything I know about LLMs"
+  organization_url = ""
+  title = "Large Language Models"
+  url = "ramblings/llms/"
+  certificate_url = "ramblings/llms/"
+  date_start = ""
+  date_end = ""
+  description = ""
 
 [[item]]
   organization = "Literature review on AI Safety, with a focus on Foundational AI."
