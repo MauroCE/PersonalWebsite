@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 3) Fine-Tuning
-    weight: 9
+    weight: 10
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 9
+weight: 10
 ---
 Paper: [Scaling Instruction-Finetuned Language Models](https://arxiv.org/pdf/2210.11416) 
 

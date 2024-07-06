@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 2) Layer Norm
-    weight: 5
+    weight: 6
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 5
+weight: 6
 ---
 Paper: [Layer Normalization](https://arxiv.org/abs/1607.06450)
 

@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 2) Layer Norm
-    weight: 7
+    weight: 8
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 7
+weight: 8
 ---
 Nowadays LayerNorm is used *before* the important layers (MHSA/FFNN) and before the skip connection, meaning that our sequence $x$ flows through the transformations in this slightly revised order
 \begin{align}

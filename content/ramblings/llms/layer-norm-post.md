@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 2) Layer Norm
-    weight: 6
+    weight: 7
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 6
+weight: 7
 ---
 The original Transformer paper used LayerNorm after the residual connection and the Multi-Head Self-Attention (MHSA). Suppose $x$ was our input sequence of tokens, then the sequence would go through MHSA, then added to itself and then through LayerNorm
 $$

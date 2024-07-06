@@ -22,3 +22,4 @@ PE can be *absolute* or *relative*, thus encoding either the absolute position o
 | **Deterministic** |    Sinusoidal PE     |         |
 | **Learned**       |    [Convolutional Sequence to Sequence Learning](https://arxiv.org/pdf/1705.03122)     |    [Self-Attention with Relative Position Representations](https://arxiv.org/pdf/1803.02155)  and [Music Transformer](https://arxiv.org/abs/1809.04281)|
 
+Additionally, CoPE uses context-dependent relative PE.

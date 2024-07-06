@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 3) Fine-Tuning
-    weight: 8
+    weight: 9
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 8
+weight: 9
 ---
 Paper: [Finetuned Language Models Are Zero-Shot Learners](https://arxiv.org/abs/2109.01652) </br>
 Repo: [FLAN Instruction Fine-tuning Repo](https://github.com/google-research/flan)
