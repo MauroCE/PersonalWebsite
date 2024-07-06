@@ -16,9 +16,10 @@ weight: 2
 
 | **Symbol** | **Meaning** | **Type** |
 |------------|-------------|----------|
-| $\mathcal{V}$ | Vocabulary | set |  
-| $\mathcal{S}$ | Sorted vocabulary | finite sequence | 
-| $\mathcal{I}$ | Set of token indices | set | 
-| $\mathbf{t}$  | Token | string |
+| $\mathcal{V}$                  | Vocabulary | set |  
+| $\mathcal{V}\^{\text{sorted}}$ | Sorted vocabulary | finite sequence | 
+| $\mathcal{S}$                  | Set of token indices | set | 
+| $\mathbf{t}$                   | Token | string |
+| $s$                            | Token index | integer | 
 | $n_{\text{vocab}}$ | Number of tokens in the vocabulary | integer |
 
