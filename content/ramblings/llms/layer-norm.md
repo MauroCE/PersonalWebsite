@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 2) Layer Norm
-    weight: 6
+    parent: 3) Layer Norm
+    weight: 8
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 6
+weight: 8
 ---
 Paper: [Layer Normalization](https://arxiv.org/abs/1607.06450)
 

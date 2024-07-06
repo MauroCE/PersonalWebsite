@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 1) Positional Encoding
-    weight: 1
+    parent: 2) Positional Encoding
+    weight: 3
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 1
+weight: 3
 ---
 The attention mechanism is order-invariant. Positional Encodings (PE) are used to inject positional information of the tokens (within the context) into the Transformer architecture. Typically, positional encoding are vectors of the same dimension as the embedding vectors, and they get **added** to them.
 

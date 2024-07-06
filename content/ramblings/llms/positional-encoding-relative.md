@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 1) Positional Encoding
-    weight: 4
+    parent: 2) Positional Encoding
+    weight: 6
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 4
+weight: 6
 ---
 Relative positional encoding was introduced in [Self-Attention with Relative Position Representations](https://arxiv.org/pdf/1803.02155) and then improved in [Music Transformer](https://arxiv.org/abs/1809.04281).
 

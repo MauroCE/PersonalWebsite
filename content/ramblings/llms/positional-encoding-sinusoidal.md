@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 1) Positional Encoding
-    weight: 2
+    parent: 2) Positional Encoding
+    weight: 4
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 2
+weight: 4
 ---
 The sinusoidal positional encoding was introduced in the original [Transformer](https://arxiv.org/pdf/1706.03762) paper. It is a **deterministic**, it is not learned and encodes **absolute positions** of tokens within the sequence. In the paper, they compare it with learned PE and find identical results, but hypothesize that sinusoidal encoding might:
 1. learn to attend to *relative* positions

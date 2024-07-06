@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 1) Positional Encoding
-    weight: 5
+    parent: 2) Positional Encoding
+    weight: 7
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 5
+weight: 7
 ---
 [Contextual Positional Embedding](https://arxiv.org/abs/2405.18719) computes context-dependent relative position values and it does so by modifying the attention mechanism. It modifies the attention mechanism in the same way as relative PE, i.e. the $(i, j)$ entry of the attention matrix becomes
 $$
