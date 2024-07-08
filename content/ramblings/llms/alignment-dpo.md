@@ -1,5 +1,5 @@
 ---
-title: Direct Policy Optimization
+title: Direct Preference Optimization
 linktitle: DPO
 toc: true
 type: docs
@@ -17,7 +17,7 @@ From the Bayesian perspective, we know that the optimal policy is given by
 $$
 \pi\^{\*}\_{\phi}(x) = \frac{1}{Z} \pi_0(x)\exp\left(r\_{\phi}(x) / \beta\right), \qquad Z = \int \pi_0(x')\exp\left(r\_{\phi}(x') / \beta\right) dx'
 $$
-The key insight behind [**Direct Policy Optimization**](https://arxiv.org/abs/2305.18290) is that one re-write this to express the reward function as follows
+The key insight behind [**Direct Preference Optimization**](https://arxiv.org/abs/2305.18290) is that one re-write this to express the reward function as follows
 $$
 r\_{\phi}(y\mid x) = \beta\log\left(\frac{\pi\_{\phi}\^{\*}(y\mid x)}{\pi\_0(y\mid x)}\right) + \beta\log Z.
 $$
