@@ -8,10 +8,10 @@ draft: false
 menu:
   llms:
     parent: 4) Fine-Tuning
-    weight: 13
+    weight: 12
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 13
+weight: 12
 ---
 In theory, the first paper to suggest **Supervised Fine-Tuning** was the [paper](https://arxiv.org/abs/2203.02155) introducing InstructGPT. However, their description of the fine-tuning procedure is definitely not clear to me. The paper introducing [**LoRA**](https://arxiv.org/abs/2106.09685) actually does a better job, in my opinion.
 
