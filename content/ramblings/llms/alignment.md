@@ -75,5 +75,5 @@ $$
 $$
 
 ### Reinforcement Learning
-Now that we have available a reward model, we can use reinforcement learning to change the parameters of our policy $\pi\_\theta$.
+Now that we have available a reward model, we can use reinforcement learning to change the parameters of our policy $\pi\_\theta$. We will see PPO and DPO.
 
