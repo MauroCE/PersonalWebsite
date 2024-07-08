@@ -100,10 +100,11 @@ $$
     \boldsymbol{\ell}\_{n\_{\text{batch}}, 1} &\cdots  & \boldsymbol{\ell}\_{n\_{\text{batch}}, T}
 \end{pmatrix} \in\mathbb{R}^{(n\_{\text{batch}}, T, n\_{\text{vocab}})}
 $$
-2. Compute the cross-entropy loss (`F.cross_entropy`)
+2. Compute the cross-entropy loss (`F.cross_entropy`).
 $$
-\mathcal{L} = -\frac{1}{n\_{\text{batch}} \times T}\sum\_{n=1}\^{n\_{\text{batch}}} \sum\_{t=1}^T \log\left(\text{softmax}\left(\boldsymbol{\ell}\_{n, t}\right)\right)
+\mathcal{L} = -\frac{1}{n\_{\text{batch}} \times T}\sum\_{n=1}\^{n\_{\text{batch}}} \sum\_{t=1}^T \log\left(\text{softmax}\left(\boldsymbol{\ell}\_{n, t, \mathbf{y}\_{n, t}}\right)\right)
 $$
+where $\boldsymbol{\ell}\_{n, t, \mathbf{y}\_{n, t}}$ is the $\mathbf{y}\_{n, t}$-entry of the vector $\boldsymbol{\ell}\_{n, t}$. That is, we compute the average negative log-probability of the correct token index ($\mathbf{y}\_{n, t}$) under the model.
 
 We then back-propagate the gradient of this loss to update $\theta$ using e.g. **Adam**.
 
