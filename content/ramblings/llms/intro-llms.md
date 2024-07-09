@@ -124,3 +124,15 @@ s_{n\_{\text{prompt}}+1} \sim \text{Categorical}(\text{softmax}(\boldsymbol{\ell
 $$
 We then use this token index to grab the corresponding token $\mathbf{t}\_{s_{n\_{\text{prompt}}+1}}$ which we append to the (potentially cropped) user prompt and repeat from step 1.
 
+
+### Content of the course
+In the rest of the course, I aim to cover:
+
+1. *Embeddings*: How do we map token indices $s_t$ to their embedding $\mathbf{e}_s$?
+2. *Positional Encoding*: How do we encode positional information into the embeddings?
+3. *LLM structure*: What's the inner structure of an LLM and what design options do we have?
+4. *Unsupervised Pre-Training*: How do we teach the model to sample sensible token indices?
+5. *Supervised Fine-Tuning*: After pre-training how do we specialize our LLM to our task?
+6. *Alignment*: After fine-tuning, how do we make sure that the LLM's output is not harmful?
+
+
