@@ -23,11 +23,11 @@ organizations:
 bio: My research interests include approximate manifold sampling and generative models.
 
 interests:
+- AI Safety, Trustworthy AI
 - Score-based sampling (HMC, MALA)
-- Generative Models (VAEs, DDGM)
+- Generative Models (LLMs, DDGM)
 - Approximate Manifold Sampling
 - Scalable/Robust inference (SMC,SBI)
-- AI Safety, Trustworthy AI
 
 education:
   courses:
@@ -71,4 +71,4 @@ user_groups:
 - ResearchersContact
 - Visitors
 ---
-Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety, energy, and environmental sciences. Pioneered the first algorithm for efficient [Approximate Manifold Sampling](https://maurocamaraescudero.netlify.app/phd_thesis.pdf) and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI). Some random things I have organised: [Generative Models Reading Group](https://github.com/MauroCE/GMRG), [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/), [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/), [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/). Below, you can find my [**course on LLMs**](/#ramblings).
+Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety (particularly (mis-)alignment and training dynamics), energy, and environmental sciences. Pioneered the first algorithm for efficient [Approximate Manifold Sampling](https://maurocamaraescudero.netlify.app/phd_thesis.pdf) and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI). Some random things I have organised: [Generative Models Reading Group](https://github.com/MauroCE/GMRG), [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/), [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/), [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/). Below, you can find my [**course on LLMs**](/#ramblings).
