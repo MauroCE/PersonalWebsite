@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 5) Alignment
-    weight: 16
+    parent: 6) Alignment
+    weight: 18
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 16
+weight: 18
 ---
 The optimization problem of PPO can be rewritten from a Bayesian perspective
 $$

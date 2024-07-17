@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 4) Fine-Tuning
-    weight: 11
+    parent: 5) Fine-Tuning
+    weight: 13
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 11
+weight: 13
 ---
 Paper: [Finetuned Language Models Are Zero-Shot Learners](https://arxiv.org/abs/2109.01652) </br>
 Repo: [FLAN Instruction Fine-tuning Repo](https://github.com/google-research/flan)

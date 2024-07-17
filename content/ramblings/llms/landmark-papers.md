@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 6) Landmark Papers
-    weight: 18
+    parent: 7) Landmark Papers
+    weight: 19
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 18
+weight: 19
 ---
 
 - [Improving Language Understanding by Generative Pre-Training](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) - *Radford 2018, OpenAI* - **GPT**, context $512$. This is a **decoder-only** architecture. Training constists of two stages:

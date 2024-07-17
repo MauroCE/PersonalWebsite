@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 4) Fine-Tuning
-    weight: 12
+    parent: 5) Fine-Tuning
+    weight: 14
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 12
+weight: 14
 ---
 In theory, the first paper to suggest **Supervised Fine-Tuning** was the [paper](https://arxiv.org/abs/2203.02155) introducing InstructGPT. However, their description of the fine-tuning procedure is definitely not clear to me. The paper introducing [**LoRA**](https://arxiv.org/abs/2106.09685) actually does a better job, in my opinion.
 

@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 5) Alignment
-    weight: 14
+    parent: 6) Alignment
+    weight: 16
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 14
+weight: 16
 ---
 **Reinforcement Learning from Human Feedback** (RLHF) was introduced in the [InstructGPT](https://arxiv.org/abs/2203.02155) paper. Suppose that $\pi\_\theta$ is the distribution learned by a  language model after Unsupervised Pre-Training (UPT) and Supervised Fine-Tuning (SFT), that is
 $$

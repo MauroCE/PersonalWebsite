@@ -7,11 +7,11 @@ date: "2019-05-05T00:00:00+01:00"
 draft: false
 menu:
   llms:
-    parent: 4) Fine-Tuning
-    weight: 13
+    parent: 5) Fine-Tuning
+    weight: 15
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 13
+weight: 15
 ---
 In the context of Supervised Fine-Tuning (SFT) it can be very expensive to update all the parameters $\theta$, most of which are large matrices. The key idea of LoRa is that one can update these matrices using a **low-rank update**. In the paper, they freeze all parameters except the matrices $W_k$, $W_q$, $W_v$ and $W_o$ (key, query, value, output) in the MHSA layers, but in principle one could do this adaptation also on the FFNN layers.
 
