@@ -1,0 +1,152 @@
+/* custom.css */
+
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the Freelance Page */
+.freelance-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header Section */
+.intro-section h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.intro-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+/* Services Section */
+.services-section {
+    margin-top: 40px;
+}
+
+.services-section h2 {
+    font-size: 2em;
+    color: #2980b9;
+    margin-bottom: 15px;
+}
+
+.services-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.services-section ul li {
+    font-size: 1.1em;
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.services-section ul li:last-child {
+    border-bottom: none;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    margin-top: 40px;
+}
+
+.portfolio-section h2 {
+    font-size: 2em;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.portfolio-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.portfolio-section ul li {
+    font-size: 1.1em;
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.portfolio-section ul li:last-child {
+    border-bottom: none;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+.testimonials-section h2 {
+    font-size: 2em;
+    color: #e67e22;
+    margin-bottom: 15px;
+}
+
+.testimonials-section blockquote {
+    font-size: 1.1em;
+    color: #34495e;
+    margin: 0;
+    padding: 10px;
+    border-left: 5px solid #e67e22;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 40px;
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.contact-section p {
+    font-size: 1.1em;
+}
+
+.contact-section a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .freelance-container {
+        padding: 10px;
+    }
+
+    .intro-section h1 {
+        font-size: 2em;
+    }
+
+    .services-section h2,
+    .portfolio-section h2,
+    .testimonials-section h2,
+    .contact-section h2 {
+        font-size: 1.5em;
+    }
+}
