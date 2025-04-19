@@ -18,6 +18,26 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
+  title = "Machine Learning Engineer"
+  company = "ExTrac AI"
+  location = "London"
+  date_start = "2024-10-28"
+  description = """Machine Learning for geopolitical intelligence to counter terrorism, extremism and misinformation campaigns."""
+[[experience]]
+  title = "Machine Learning Engineer (Contractor)"
+  company = "Stealth Start Up"
+  location = "Bristol/Washington"
+  date_start = "2024-08-26"
+  date_end = "2024-10-21"
+  description = """Agentic Speech-Writing."""
+[[experience]]
+  title = "Research Associate in Statistical Machine Learning"
+  company = "University of Bristol"
+  location = "Bristol"
+  date_start = "2024-02-01"
+  date_end = "2024-08-23"
+  description = """Research on the theoretical underpinning of generative diffusion models and transformers, and investigating their application to sampling."""
+[[experience]]
   title = "Research Scientist Intern"
   company = "Afiniti"
   company_url = "https://www.afiniti.com/"

@@ -12,17 +12,18 @@ authors:
 superuser: true
 
 # Role/position
-role: Research Associate in Statistical Machine Learning 
+role: Machine Learning Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: University of Bristol
-  url: "https://research-information.bris.ac.uk/en/persons/mauro-camara-escudero-2"
+- name: ExTrac AI
+  url: "https://extrac.ai/"
 
 # Short bio (displayed in user profile at end of posts)
 bio: My research interests include approximate manifold sampling and generative models.
 
 interests:
+- Multilingual LLMs for low-resource languages
 - Score-based sampling (HMC, MALA)
 - Generative Models (VAEs, DDGM)
 - Approximate Manifold Sampling
