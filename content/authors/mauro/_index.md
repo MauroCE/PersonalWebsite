@@ -24,15 +24,15 @@ bio: My research interests include approximate manifold sampling and generative 
 
 interests:
 - Multilingual LLMs for low-resource languages
+- AI Safety, Trustworthy AI
 - Score-based sampling (HMC, MALA)
-- Generative Models (VAEs, DDGM)
+- Generative Models (LLMs, DDGM)
 - Approximate Manifold Sampling
 - Scalable/Robust inference (SMC,SBI)
-- AI Safety, Trustworthy AI
 
 education:
   courses:
-  - course: PhD in Computational Statistics and Data Science
+  - course: PhD in Statistical Machine Learning
     institution: University of Bristol
     year: 2020-2023
   - course: BSc in Mathematics with Year in Employment
@@ -72,4 +72,12 @@ user_groups:
 - ResearchersContact
 - Visitors
 ---
-Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety, energy, and environmental sciences. Pioneered the first algorithm for efficient [Approximate Manifold Sampling](https://maurocamaraescudero.netlify.app/phd_thesis.pdf) and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI). In the past, I have organised: [Generative Models Reading Group](https://github.com/MauroCE/GMRG), [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/), [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/), [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/).
+Passionate about leveraging data to drive positive change, particularly in **tech-for-good** sectors such as democracy, AI safety (particularly (mis-)alignment and training dynamics), energy, and environmental sciences. Pioneered the first algorithm for efficient [Approximate Manifold Sampling](https://maurocamaraescudero.netlify.app/phd_thesis.pdf) and contributed to the development of [Integrator Snippets](https://github.com/MauroCE/IntegratorSnippets), with a focus on Simulator-Based Inference (SBI). Some random things I have organised: [Generative Models Reading Group](https://github.com/MauroCE/GMRG), [Neural Network Reading Group](https://neuralnetworksbristol.netlify.app/), [Bristol Online Charity Danceathon](https://epigram.org.uk/2020/07/24/bristol-dance-groups-host-charity-danceathon/), [Postgraduates in AI (PAI) Link](https://compass.blogs.bristol.ac.uk/events/pai-link/). Below, you can find my [**course on LLMs**](/#ramblings).
+
+Other things I am passionate about include:
+
+- Basketball :basketball: 
+- Dancing (mostly Modern Jive, West Coast Swing and Blues) :dancer:
+- Journalism, especially investigative (e.g. Bellingcat) :detective:
+- Science of Cooking :test_tube: :shallow_pan_of_food:
+- Exercising whether bodyweight, calisthenics or at the gym :weight_lifting:
